@@ -1,6 +1,6 @@
 var contenedores, inputs;
 
-window.onload = function () {
+$(document).ready(function () {
 
     /* Control de elementos datepicker */
 
@@ -12,31 +12,29 @@ window.onload = function () {
         })
     });
 
-    contenedores = document.getElementsByClassName("inputCon");
+    contenedores = $(".inputCon");
 
     for (let index = 0; index < contenedores.length; index++) {
         const element = contenedores[index];
-        element.value = "";
+        element.val("");
     }
 
-    inputs = document.getElementsByClassName("textIn");
+    inputs = $(".textIn");
 
     for (let index = 0; index < inputs.length; index++) {
         const element = inputs[index];
-        element.addEventListener("focusout", function () {
-
+        element.on("focusout", function () {
             if ($(this).hasClass("datepicker") === false) {
-                if (this.value != "") {
-                    this.className = "textIn has-content";
+                if ($(this).val() != "") {
+                    $(this).className = "textIn has-content";
                 } else {
-                    this.className = "textIn"
+                    $(this).className = "textIn"
                 }
             }else{
-                if(this.value == ""){
-                    this.className = "textIn datepicker hasDatepicker";
+                if($(this).value == ""){
+                    $(this).className = "textIn datepicker hasDatepicker";
                 }
             }
-
-        }, false);
+        });
     }
-};
+});
