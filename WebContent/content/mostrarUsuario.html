@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Detalle: ${cliente.email}</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="icon" href="../images/logos/favicon.png">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/mostrarCliente.css" type="text/css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="${pageContext.servletContext.contextPath}/index.jsp">
+            <img src="../images/logos/logo gris.png">
+        </a>
+
+        <div class="user">
+            <a href="#" id="menuUser">
+                <i class="fas fa-angle-down"></i>
+                <ul>
+                    <li>Editar Perfil</li>
+                    <li class="menuUserB">Mis Actividades</li>
+                    <li class="menuUserB">Logros</li>
+                    <li class="menuUserB" id="panel" onclick="Admin.do">Panel de Control</li>
+                    <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
+                </ul>
+            </a>
+            <span>
+                <a href="#">${username}</a>
+            </span>
+            <img src="../images/avatares/Ancla.png">
+        </div>
+    </header>
+
+    <nav>
+        <a href="${pageContext.servletContext.contextPath}/index.jsp">
+            <i class="fas fa-home"></i> &nbsp; Inicio</a>
+        <a href="#">
+            <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
+        <a href="#">
+            <i class="fas fa-search"></i> &nbsp; Actividades</a>
+        <a href="#" id="menuIti">
+            <i class="fas fa-map"></i> &nbsp; Itinerarios
+            <ul>
+                <li id="gijonIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiGijon.html'">
+                    <span>Itinerario de Gijón</span>
+                </li>
+                <li id="avilesIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiAviles.html'">
+                    <span>Itinerario de Avilés</span>
+                </li>
+            </ul>
+        </a>
+        <a href="#">
+            <i class="fas fa-trophy"></i> &nbsp; Premios</a>
+        <a href="#">
+            <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
+    </nav>
+
+    <div class="content">
+        <div id="infoCliente">
+            <div class="infoPersonal">
+                <h1>Información Personal:</h1>
+                <span>Nombre: Iván</span>
+                <span>Apellidos: Rodríguez Valdés</span>
+                <span>Fecha de nacimiento: 1996-10-15</span>
+                <span>Email: ivaninbarcia@gmail.com</span>
+                <span>Rol: admin</span>
+            </div>
+
+            <div class="infoSecundaria">
+                <h1>Información Secundaria:</h1>
+                <span>Teléfono: 650005476</span>
+                <span>Dirección: Calle Colegio San Ignacio nº28 4F</span>
+                <span>Código Postal: 33010</span>
+                <span>Puntos Acumulados: 100</span>
+                <span>Fecha de registro: 2018-02-10</span>
+            </div>
+
+            <div class="adicional">
+                <h1>Información Adicional:</h1>
+                <span>Premios:
+                    <ul>
+                        <li>Premio 1</li>
+                        <li>Premio 2</li>
+                    </ul>
+                </span>
+                <span>Actividades:
+                    <ul>
+                        <li>Actividad 1</li>
+                        <li>Actividad 2</li>
+                    </ul>
+                </span>
+                <span>Multimedias:
+                    <ul>
+                        <li>Multimedia 1</li>
+                        <li>Multimedia 2</li>
+                    </ul>
+                </span>
+                <span>Votos:
+                    <ul>
+                        <li>Multimedia: Multimeida 1 Puntos: 15</li>
+                        <li>Multimedia: Multimeida 1 Puntos: 15</li>
+                    </ul>
+                </span>
+                <span>Comentarios:
+                    <ul>
+                        <li>Multimedia: Multimedia 1 Comentario: textocomentario</li>
+                        <li>Multimedia: Multimedia 1 Comentario: textocomentario</li>
+                    </ul>
+                </span>
+
+            </div>
+
+            <div class="avatar">
+                <img src="../images/avatares/Ancla.png">
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="socials">
+            <a href="#" id="tw">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" id="fb">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" id="ig">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" id="yt">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+
+        <p>Gamitour &copy; 2018</p>
+    </footer>
+</body>
+
+</html>

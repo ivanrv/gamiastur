@@ -1,0 +1,74 @@
+.content{
+    display: block;
+}
+
+#mostrar{
+    display: grid;
+    grid-template-areas: 
+    '. tit tit .'
+    'col1 col1 col2 col2'
+    'col1 col1 col2 col2'
+    'col3 col3 col3 col3';
+    grid-gap: 35px 15px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.col1, .col2, .col3{
+    border: 1px solid #1F2729;
+}
+
+.col1, .col2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 250px;
+    min-width: 500px;
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.col3{
+    margin: 0 auto;
+    width: 90%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+span{
+    margin: 7px 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+ul{
+    list-style: none;
+    padding-left: 20px;
+}
+
+h2{
+    padding-left: 10px;
+    flex-basis: 100%;
+    height: fit-content;
+}
+
+.col1{
+    grid-area: col1;
+}
+
+.col2{
+    grid-area: col2;
+}
+
+.tit{
+    grid-area: tit;
+}
+
+.col3{
+    grid-area: col3;
+}

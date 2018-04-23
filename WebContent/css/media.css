@@ -1,0 +1,227 @@
+
+/* Media querys para controlar diferentes resoluciones de pantalla*/
+
+    /*1366px*/
+        @media(max-width: 1366px){
+            /* Propiedades del header de la página*/
+                header{
+                    margin-top: 30px;
+                    height: 75px;
+                }
+
+                header a img{
+                    margin-left: 70px;
+                }
+
+                /* Propiedades del div de usuario anónimo */
+                    header .anonimo{
+                        margin-right: 70px;
+                        flex-basis: 20%;
+                    }
+                
+                    header .anonimo a{
+                        font-size: 0.7em;
+                    }
+
+                    #login{
+                        padding-left: 10px;
+                    }
+
+                /* Propiedades del div de usuario registrado */
+                    header .user{
+                        border-width: 1px;
+                        margin-right: 70px;
+                        height: 70px;
+                        flex-basis: 25%;
+                    }
+
+                    header .user span a{
+                        font-size: 0.9em;
+                    }
+
+                    #menuUser{
+                        font-size: 0.9em;
+                    }
+
+                    #menuUser ul{
+                        width: 275px;
+                        margin-top: 22px;
+                    }
+
+                    #menuUser:hover ul{
+                        margin-top: 21px;
+                        padding: 5px;
+                        height: 200px;
+                    }
+
+                    #menuUser ul li{
+                        font-size: 0.9em;
+                    }
+
+                    #menuUser .menuUserB{
+                        border-width: 1px;
+                    }
+
+            /* Propiedades de la barra de navegacion */
+                nav{
+                    margin-top: 30px;
+                    height: 55px;
+                }
+
+                nav a{
+                    padding-top: 15px;
+                    font-size: 0.85em;
+                }
+
+                #menuIti ul{
+                    margin-top: 16px;
+                }
+
+                #menuIti:hover ul{
+                    height: 110px;
+                }
+
+                #menuIti ul li{
+                    font-size: 0.85em;
+                }
+
+            /* Propiedades del contenido de la página */
+                .content{
+                    min-height: 500px;
+                    font-size: 0.9em;
+                    margin: 30px 0;
+                }
+
+            /* Propiedades del footer de la página */
+                footer{
+                    padding: 20px 0;
+                    margin-top: 25px;
+                    bottom: -10px;
+                }
+
+                footer .socials a{
+                    font-size: 1em;
+                    height: 42.5px;
+                    width: 42.5px;
+                    border-width: 2px;
+                }
+
+                footer p{
+                    margin-top: 20px;
+                    font-size: 0.7em;
+                }
+
+            /* FALTAN EL RESTO DE COSES FUERA DE LAS COMUNES A TODAS LAS PAGINAS */
+        }
+
+    /*1024px*/
+        @media(max-width:1024px){
+            /* Propiedades del header de la página*/
+                header{
+                    height: 70px;
+                }
+
+                header a img{
+                    margin-left: 50px;
+                }
+
+                /* Propiedades del div de usuario anónimo */
+                    header .anonimo{
+                        margin-right: 50px;
+                        flex-basis: 25%;
+                    }
+
+                /* Propiedades del div de usuario registrado */
+                    header .user{
+                        border-width: 1px;
+                        margin-right: 50px;
+                        height: 60px;
+                        padding: 10px 7px;
+                    }
+
+                    header .user span a{
+                        font-size: 0.8em;
+                    }
+
+                    #menuUser{
+                        font-size: 0.8em;
+                    }
+
+                    #menuUser ul{
+                        width: 210px;
+                        margin-top: 18px;
+                    }
+
+                    #menuUser:hover ul{
+                        margin-top: 17px;
+                        padding: 3px;
+                        height: 170px;
+                    }
+
+                    #menuUser ul li{
+                        font-size: 0.75em;
+                    }
+
+            /* Propiedades de la barra de navegacion */
+                nav{
+                    height: 50px;
+                }
+
+                nav a{ 
+                    padding-top: 13px;
+                    font-size: 0.75em;
+                }
+
+                #menuIti ul{
+                    margin-top: 15px;
+                }
+
+                #menuIti:hover ul{
+                    height: 95px;
+                }
+
+                #menuIti ul li{
+                    font-size: 0.75em;
+                    padding-top: 10px;
+                }
+
+                #menuIti ul li span{
+                    border-width: 1px;
+                    padding-top: 12px;
+                }
+
+            /* Propiedades del contenido de la página */
+                .content{
+                    min-height: 475px;
+                }
+
+            /* Propiedades del footer de la página */
+                footer{
+                    padding: 15px 0;
+                }
+
+                footer .socials a{
+                    font-size: 0.9em;
+                    height: 40px;
+                    width: 40px;
+                    border-width: 2px;
+                }
+
+                footer p{
+                    margin-top: 15px;
+                    font-size: 0.6em;
+                }
+
+            /* FALTAN EL RESTO DE COSES FUERA DE LAS COMUNES A TODAS LAS PAGINAS */
+        }
+
+    /*900px*/
+
+
+    /*600px*/
+
+
+    /*480px*/
+
+
+    /*Verticales*/

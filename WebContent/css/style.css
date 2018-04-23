@@ -1,0 +1,341 @@
+/*https://color.adobe.com/es/cloud/aHR0cHM6Ly9jYy1hcGktYXNzZXRzLmFkb2JlLmlv/library/5a1d8170-7711-11e4-9ba3-076e051a2864/theme/c30c4448-830f-43dc-a3ff-51f5bcb34929/edit/ */
+
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 16pt;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ECF0F1;
+}
+
+
+/*Propiedades del header de la página*/
+
+    header {
+        margin-top: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 85px;
+    }
+
+    header a img {
+        margin-left: 75px;
+        width: 65%;
+    }
+
+    /*Propiedades del div de usuario anónimo*/
+
+        header .anonimo {
+            flex-basis: 15%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+            margin-right: 75px;
+        }
+
+        header .anonimo a {
+            text-decoration: none;
+            color: #1F2729;
+            font-size: 0.9em;
+            box-sizing: border-box;
+            width: 100%;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        #signin {
+            border-right: solid rgba(31, 39, 41, 0.25) 2px;
+        }
+
+        header .anonimo a:hover {
+            color: #72BCC7;
+        }
+
+     
+    /*Propiedades del div de usuario registrado*/
+        header .user {
+            border: 1.5px solid #1F2729;
+            flex-basis: 20%;
+            margin-right: 75px;
+            height: 75px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px 7px;
+        }
+
+        header .user a {
+            color: #1F2729;
+            text-decoration: none;
+        }
+
+        header .user a:hover {
+            color: #72BCC7;
+            transition-duration: 0.3s;
+        }
+
+        header .user span a {
+            color: #1F2729;
+            font-size: 1em;
+            flex-basis: 60%;
+        }
+
+        header .user img {
+            width: 15%;
+            border: 1px #1F2729 solid;
+            box-sizing: border-box;
+        }
+
+
+        /*Animación del menú desplegable de usuario*/
+
+            #menuUser{
+                transform: rotate(-90deg);
+                transition-delay: 0.7s;
+                -moz-transition-duration: 0.2s;
+                -webkit-transition-duration: 0.2s;
+                -o-transition-duration: 0.2s;
+                transition-duration: 0.2s;
+            }
+
+            #menuUser:hover{
+                -moz-transition-duration: 0.2s;
+                -webkit-transition-duration: 0.2s;
+                -o-transition-duration: 0.2s;
+                transition-duration: 0.2s;
+                transform: rotate(0deg);
+                transition-delay: 0s;
+            }
+
+            #menuUser ul{
+                height: 0px;
+                width: 325px;
+                visibility: hidden;
+                overflow: hidden;
+                list-style: none;
+                border: 1px solid #1F2729;
+                background-color: #ECF0F1;
+                color: #1F2729;
+                position: absolute;
+                margin-top: 23px;
+                padding: 0px;
+                text-align: center;
+                -moz-transition-duration: 0.3s;
+                -webkit-transition-duration: 0.3s;
+                -o-transition-duration: 0.3s;
+                transition-duration: 0.3s;
+                transition-delay: 0.4s;
+            }
+
+            #menuUser:hover ul{
+                height: 215px;
+                visibility: visible;
+                margin-top: 22px;
+                padding: 7px;
+                -moz-transition-duration: 0.2s;
+                -webkit-transition-duration: 0.2s;
+                -o-transition-duration: 0.2s;
+                transition-duration: 0.2s;
+                transition-delay: 0.16s;
+            }
+
+            #menuUser ul li{
+                padding: 5px 0;
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            #menuUser ul li:hover{
+                color: #72BCC7;
+                transition-duration: 0.3s;
+            }
+
+            #menuUser .menuUserB{
+                border-top: 2px solid rgba(31, 39, 41, 0.4);
+            }
+
+            #panel{
+                display: inherit;
+                color: #72BCC7;
+            }
+
+
+/*Propiedades de la barra de navegación*/
+
+    nav {
+        margin-top: 35px;
+        height: 65px;
+        background-color: #1F2729;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        align-items: center;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #ECF0F1;
+        height: 100%;
+        padding-top: 20px;
+        box-sizing: border-box;
+        width: 100%;
+        text-align: center;
+        transition: 0.4s;
+        font-size: 0.9em;
+    }
+
+    nav a:hover {
+        text-decoration: none;
+        background-color: #2C3E50;
+        color: #ECF0F1;
+    }
+
+    nav a:active {
+        background-color: #72BCC7;
+        color: #1F2729;
+        transition: 15ms;
+    }
+
+    nav .actual {
+        background-color: #72BCC7;
+        color: #1F2729;
+    }
+
+    nav .actual:hover {
+        background-color: #72BCC7;
+        color: #1F2729;
+    }
+
+    /*Propiedades de la animación del menú de itinerarios*/
+
+        #menuIti ul{
+            height: 0px;
+            width: 16.7%;
+            visibility: hidden;
+            overflow: hidden;
+            list-style: none;
+            background-color: #1F2729;
+            color: #ECF0F1;
+            position: absolute;
+            margin-top: 18px;
+            text-align: center;
+            -moz-transition-duration: 0.2s;
+            -webkit-transition-duration: 0.2s;
+            -o-transition-duration: 0.2s;
+            transition-duration: 0.2s;
+        }
+
+        #menuIti:hover ul{
+            height: 130px;
+            visibility: visible;
+            -moz-transition-duration: 0.2s;
+            -webkit-transition-duration: 0.2s;
+            -o-transition-duration: 0.2s;
+            transition-duration: 0.2s;
+        }
+
+        #menuIti ul li{
+            height: 50%;
+            width: 100%;
+            padding-top:15px;
+        }
+
+        #menuIti ul li span{
+            font-size: 0.9em;
+            padding-top: 17px;
+            border-top: 2px solid rgba(44, 62, 80, 0.6);
+            width: 85%;
+        }
+
+        #gijonIti:hover{
+            background-color: #B51209;
+            transition-duration: 0.4s;
+        }
+
+        #avilesIti:hover{
+            background-color: #4A67E5;
+            transition-duration: 0.4s;
+        }
+
+
+/*Propiedades del contenido de la página*/
+
+    .content {
+        color: #1F2729;
+        margin: 35px 0;
+        background-color: rgba(181, 229, 242, 0.25);
+        padding: 45px 30px 45px 30px;
+        min-height: 536px;
+    }
+
+
+/*Propiedades del footer de la página*/
+
+    footer {
+        width: 100%;
+        background-color: #1F2729;
+        padding: 25px 0;
+        text-align: center;
+        position: relative;
+        bottom: -15px;
+        margin-top: 35px;
+        padding-bottom: 15px;
+    }
+
+    footer .socials {
+        width: 30%;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    footer .socials a {
+        font-size: 1.1em;
+        border: 3px solid #ECF0F1;
+        height: 45px;
+        width: 45px;
+        color: #ECF0F1;
+        text-align: center;
+        box-sizing: border-box;
+        padding-top: 4px;
+        border-radius: 50px;
+        transition: 0.3s;
+    }
+
+    footer .socials a:hover {
+        color: #ECF0F1;
+    }
+
+    #tw:hover {
+        background-color: #00aced;
+        border-color: #00aced;
+    }
+
+    #fb:hover {
+        background-color: #3b5998;
+        border-color: #3b5998;
+    }
+
+    #ig:hover {
+        background-color: #d6249f;
+        border-color: #d6249f;
+    }
+
+    #yt:hover {
+        background-color: #ff0000;
+        border-color:  #ff0000;
+    }
+
+    footer p {
+        margin-top: 25px;
+        color: #ECF0F1;
+        font-size: 0.8em;
+    }

@@ -1,0 +1,189 @@
+
+
+/*Propiedades de títulos*/
+
+    h1 {
+        font-size: 1.7em;
+        margin-bottom: 35px;
+    }
+
+
+/*Propiedades de tabla*/
+
+    .table {
+        border-top: 2px solid #1F2729;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+    }
+
+    .table tr th, .table-striped tr th, .table-responsive tr th{
+        border: 2px solid #1F2729;
+        padding: 7px 5px;
+        background-color: #72BCC7;
+        color: #1F2729;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .table .theadHide{
+        visibility: hidden;
+        width: 105px;
+        border: none;
+    }
+
+    .table tr td, .table-striped tr td, .table-responsive tr td {
+        border: 1px solid #1F2729;
+        padding: 7px 5px;
+    }
+
+    .table tr .hidden {
+        visibility: hidden;
+        border: none;
+    }
+
+    .table tr .btnTabla {
+        width: 105px;
+        border: none;
+        color: #1F2729;
+        text-decoration: none;
+    }
+
+    .table tr a:hover {
+        color: #72BCC7;
+        transition-duration: 0.3s;
+    }
+
+    .nuevo{
+        text-decoration: none;
+        color: #1f2729;
+        font-size: 0.8em;
+    }
+
+    .editar, .eliminar {
+        border: none;
+        cursor: pointer;
+        background: none!important;
+        color: #1F2729;
+        font-size: 0.8em;
+    }
+
+    table tr .btnTabla span {
+        font-size: 0.8em;
+    }
+
+    .editar:hover {
+        color: #72BCC7;
+        font-size: 0.9em;
+    }
+
+    .eliminar:hover {
+        font-size: 0.9em;
+        color: #a0292f;
+    }
+
+    .nuevo:hover {
+        font-size: 0.9em;
+        color: #48ad44;
+    }
+
+    button:focus{
+        outline: 0;
+    }
+
+/*Propiedades de divs*/
+
+    .landing {
+        display: block;
+    }
+
+    .tablaHid {
+        display: none;
+    }
+
+
+/*Propiedades del landing*/
+
+    .selector {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .selector a {
+        text-decoration: none;
+        color: #1F2729;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-basis: 15%;
+        height: 150px;
+        border: 2px solid;
+        padding-top: 35px;
+        font-size: 1.8em;
+        margin: 25px 10px;
+        margin-left: 0;
+        transition: 0.3s;
+    }
+
+    .selector a span {
+        padding-top: 25px;
+        font-size: 0.7em;
+    }
+
+    .selector a:hover {
+        background-color: #1F2729;
+        color: #ECF0F1;
+    }
+
+
+    /*Propiedades de la barra de navegación del admin*/
+
+    .admin {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .admin div {
+        flex-basis: 89%;
+    }
+
+    .admin .navAdmin {
+        flex-basis: 10%;
+        display: none;
+        flex-direction: column;
+    }
+
+    .admin .navAdmin a {
+        text-decoration: none;
+        color: #1F2729;
+        border-right: 1px solid rgba(31, 39, 41, 0.25);
+        font-size: 0.9em;
+        height: 50px;
+        padding: 15px 5px 15px 0px;
+    }
+
+    .admin .navAdmin a span {
+        font-size: 0.75em;
+    }
+
+    .admin .navAdmin a:hover, .admin .navAdmin .selected {
+        color: #72BCC7;
+    }
+
+/* Propiedades de barra del buscador */
+
+#buscador{
+    width: 95%;
+    font-size: 0.7em;
+    background-color: transparent;
+    margin-top: 25px; 
+    margin-right: 7px;
+    border: none;
+    border-bottom: 1px solid rgba(31, 39, 41, 0.25);
+    padding: 5px;
+    outline: none;
+}

@@ -1,0 +1,105 @@
+/* https://color.adobe.com/es/cloud/aHR0cHM6Ly9jYy1hcGktYXNzZXRzLmFkb2JlLmlv/library/5a1d8170-7711-11e4-9ba3-076e051a2864/theme/96fe7096-7b1d-478e-8246-06d4749361c5/edit/ */
+
+/*Propiedades del header de la página*/
+
+    /*Propiedades del div de usuario anónimo*/
+
+        header .anonimo a {
+            color: #151D40;
+        }
+
+        #signin {
+            border-right: solid rgba(21, 29, 64, 0.4) 2px;
+        }
+
+        header .anonimo a:hover {
+            color: #4A67E5;
+        }
+
+
+    /*Propiedades del div de usuario registrado*/
+        header .user {
+            border: 1.5px solid #151D40;
+        }
+
+        header .user a{
+            color: #151D40;
+        }
+
+        header .user a:hover {
+            color: #4A67E5;
+        }
+        header .user img {
+            border: 1px #151D40 solid;
+        }
+
+
+        /*Animación del menú desplegable de usuario*/
+
+            #menuUser ul{
+                border: 1px solid #151D40;
+                color: #151D40;
+            }
+
+            #menuUser ul li:hover{
+                color: #4A67E5;
+                transition-duration: 0.3s;
+            }
+
+            #menuUser .menuUserB{
+                border-top: 2px solid rgba(21, 29, 64, 0.4);
+            }
+
+            #panel{
+                color: #4A67E5;
+            }
+
+
+/*Propiedades de la barra de navegación*/
+
+    nav {
+        background-color: #151D40;
+    }
+
+    nav a:hover {
+        background-color: #29397F;
+        color: #ECF0F1;
+    }
+
+    nav a:active {
+        background-color: #4A67E5;
+        color: #151D40;
+    }
+
+    nav .actual {
+        background-color: #4A67E5;
+        color: #ECF0F1;
+    }
+
+    nav .actual:hover {
+        background-color: #4A67E5;
+        color: #ECF0F1;
+    }
+
+/*Propiedades de la animación del menú de itinerarios*/
+
+    #menuIti ul{
+        background-color: #151D40;
+    }
+    #menuIti ul li span{
+        border-top: 2px solid rgba(41, 57, 127, 0.6);
+    }
+
+
+/*Propiedades del contenido de la página*/
+
+    .content {
+        color: #151D40;
+        background-color: rgba(82, 114, 255, 0.05);
+    }
+
+
+/*Propiedades del footer de la página*/
+    footer {
+        background-color: #151D40;
+    }

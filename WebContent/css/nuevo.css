@@ -1,0 +1,70 @@
+.content{
+    display: block;
+}
+
+#nuevoForm{
+    display: grid;
+    grid-template-areas: 
+    '. tit tit .'
+    'col1 col1 col2 col2'
+    'col1 col1 col2 col2'
+    'col3 col3 col3 col3'
+    '. sbmt sbmt .';
+    grid-gap: 20px 15px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+form{
+    all: initial;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 400px;
+}
+
+
+form div{
+    all: initial;
+}
+
+.col1, .col2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 400px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.col3{
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.taShare{
+    flex-basis: 30%;
+}
+
+.col1{
+    grid-area: col1;
+}
+
+.col2{
+    grid-area: col2;
+}
+
+.sbmt{
+    grid-area: sbmt;
+}
+
+.tit{
+    grid-area: tit;
+}
+
+.col3{
+    grid-area: col3;
+}
