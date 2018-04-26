@@ -3,7 +3,7 @@ package com.gamitour.service;
 import java.util.List;
 
 import com.gamitour.dao.PruebaCulturalDAO;
-import com.gamitour.modelo.PruebaCultural;
+import com.gamitour.modelo.Pruebacultural;
 import com.gamitour.util.MySQLDaoFactory;
 
 public class ServicePruebaCulturalImp implements ServicePruebaCultural {
@@ -17,27 +17,27 @@ public class ServicePruebaCulturalImp implements ServicePruebaCultural {
 	}
 
 	@Override
-	public void insertar(PruebaCultural prueba) {
+	public void insertar(Pruebacultural prueba) {
 		p.insertar(prueba);
 	}
 
 	@Override
-	public void borrar(PruebaCultural prueba) {
+	public void borrar(Pruebacultural prueba) {
 		p.borrar(prueba);
 	}
 
 	@Override
-	public void actualizar(PruebaCultural prueba) {
+	public void actualizar(Pruebacultural prueba) {
 		p.actualizar(prueba);
 	}
 
 	@Override
-	public PruebaCultural buscarPorNombre(String nombre) {
+	public Pruebacultural buscarPorNombre(String nombre) {
 		return p.buscarPorNombre(nombre);
 	}
 
 	@Override
-	public List<PruebaCultural> buscarTodos() {
+	public List<Pruebacultural> buscarTodos() {
 		return p.buscarTodos();
 	}
 

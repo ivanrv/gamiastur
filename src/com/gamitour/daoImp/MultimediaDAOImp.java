@@ -7,7 +7,7 @@ import com.gamitour.dao.MultimediaDAO;
 import com.gamitour.modelo.Cliente;
 import com.gamitour.modelo.Comentario;
 import com.gamitour.modelo.Multimedia;
-import com.gamitour.modelo.PruebaDeportiva;
+import com.gamitour.modelo.Pruebadeportiva;
 import com.gamitour.modelo.Voto;
 import com.gamitour.genericDao.GenericDAOImp;
 
@@ -21,7 +21,7 @@ public class MultimediaDAOImp extends GenericDAOImp<Multimedia, String> implemen
 	}
 
 	@Override
-	public Multimedia buscarMultimedia(Cliente cliente, PruebaDeportiva prueba) {
+	public Multimedia buscarMultimedia(Cliente cliente, Pruebadeportiva prueba) {
 		Multimedia multimedia;
 		
 		sf.getCurrentSession().beginTransaction(); //conexion con la bd
@@ -46,6 +46,7 @@ public class MultimediaDAOImp extends GenericDAOImp<Multimedia, String> implemen
 		
 		secuenciaBorrado(multimedia);
 		
-		System.out.println("Se ha eliminado el multimedia con autor " + multimedia.getCliente().getNombre() + " asociado a la prueba " + multimedia.getPruebaDeportiva().getNombre() + " de la base de datos");
+		System.out.println("Se ha eliminado el multimedia con autor " + multimedia.getCliente().getNombre() + " asociado a la prueba " + multimedia.getPruebadeportiva().getNombre() + " de la base de datos");
 	}
+
 }

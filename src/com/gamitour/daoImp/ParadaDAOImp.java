@@ -7,8 +7,8 @@ import com.gamitour.genericDao.GenericDAOImp;
 import com.gamitour.modelo.Comentario;
 import com.gamitour.modelo.Multimedia;
 import com.gamitour.modelo.Parada;
-import com.gamitour.modelo.PruebaCultural;
-import com.gamitour.modelo.PruebaDeportiva;
+import com.gamitour.modelo.Pruebacultural;
+import com.gamitour.modelo.Pruebadeportiva;
 import com.gamitour.modelo.Voto;
 
 public class ParadaDAOImp extends GenericDAOImp<Parada, String> implements ParadaDAO{
@@ -21,11 +21,11 @@ public class ParadaDAOImp extends GenericDAOImp<Parada, String> implements Parad
 	}
 	
 	public void borrar(Parada parada){
-		for(PruebaCultural pc: parada.getPruebasCulturales()){	//eliminacion de pruebas culturales asociadas a la parada
+		for(Pruebacultural pc: parada.getPruebaculturales()){	//eliminacion de pruebas culturales asociadas a la parada
 			secuenciaBorrado(pc);
 		}
 		
-		for(PruebaDeportiva pd: parada.getPruebasDeportivas()){	//eliminacion de pruebas deportivas asociadas a la parada
+		for(Pruebadeportiva pd: parada.getPruebadeportivas()){	//eliminacion de pruebas deportivas asociadas a la parada
 			for(Multimedia m: pd.getMultimedias()){	//eliminacion de multimedias asociados a la prueba
 				for(Voto v: m.getVotos()){
 					secuenciaBorrado(v);

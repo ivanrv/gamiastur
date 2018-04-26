@@ -1,8 +1,8 @@
 package com.gamitour.dao;
 
 import com.gamitour.genericDao.GenericDAO;
-import com.gamitour.modelo.PruebaDeportiva;
+import com.gamitour.modelo.Pruebadeportiva;
 
-public interface PruebaDeportivaDAO extends GenericDAO<PruebaDeportiva, String>{
+public interface PruebaDeportivaDAO extends GenericDAO<Pruebadeportiva, String>{
 
 }

@@ -8,11 +8,16 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
-                <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
-                <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <title>Gamiastur</title>
+
+                <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+                <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
+
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
             </head>
 
             <body>
@@ -20,7 +25,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
                         <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
                     </a>
-            
+
                     <div class="user">
                         <a href="javascript:void(0)" id="menuUser">
                             <i class="fas fa-angle-down"></i>
@@ -28,8 +33,8 @@
                                 <li>Editar Perfil</li>
                                 <li class="menuUserB">Mis Actividades</li>
                                 <li class="menuUserB">Logros</li>
-                                <c:if test="${userRol}.equals('admin')">
-                                	<li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
+                                <c:if test="${userRol == 'admin'}">
+                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
                                 </c:if>
                                 <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
                             </ul>
@@ -40,8 +45,8 @@
                         <img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
                     </div>
                 </header>
-            
-                <nav>
+
+                <nav data-spy="affix" data-offset-top="150">
                     <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
                         <i class="fas fa-home"></i> &nbsp; Inicio</a>
                     <a href="#">

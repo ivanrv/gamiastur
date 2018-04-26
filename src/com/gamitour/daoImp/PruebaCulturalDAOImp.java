@@ -4,9 +4,9 @@ import org.hibernate.SessionFactory;
 
 import com.gamitour.dao.PruebaCulturalDAO;
 import com.gamitour.genericDao.GenericDAOImp;
-import com.gamitour.modelo.PruebaCultural;
+import com.gamitour.modelo.Pruebacultural;
 
-public class PruebaCulturalDAOImp extends GenericDAOImp<PruebaCultural, String> implements PruebaCulturalDAO{
+public class PruebaCulturalDAOImp extends GenericDAOImp<Pruebacultural, String> implements PruebaCulturalDAO{
 
 	public PruebaCulturalDAOImp(SessionFactory sf) {
 		super(sf);

@@ -39,9 +39,9 @@ public class Principal {
 	public static void main(String[] args) {
 		Principal p = new Principal();
 		
-		p.pruebasRol();
+		//p.pruebasRol();
 		
-		p.pruebasCliente();
+		//p.pruebasCliente();
 		
 		//p.pruebasActividad();
 		
@@ -53,7 +53,7 @@ public class Principal {
 		
 		//p.pruebasNoticia();
 		
-		//p.pruebasParada();
+		p.pruebasParada();
 		
 		//p.pruebasPremio();
 		
@@ -258,11 +258,12 @@ public class Principal {
 		
 		//System.out.println("Numero de parada: " + sParada.buscarPorNombre("parada1").getNumeroParada());
 		
-		/*
+		
 		for(Parada p: sParada.buscarTodos()){
 			System.out.println("Nombre: " + p.getNombre());
+			System.out.println("   Itinerario:" + p.getItinerario().getNombre());
 		}
-		*/
+		
 		
 		//sParada.borrar(sParada.buscarPorNombre("parada1"));
 		

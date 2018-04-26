@@ -47,11 +47,19 @@
         border: none;
         color: #1F2729;
         text-decoration: none;
+        background: none;
+    }
+    
+    .table tr a{
+    	color: #1F2729;
+    	font-size: 0.8em;
     }
 
     .table tr a:hover {
         color: #72BCC7;
         transition-duration: 0.3s;
+        text-decoration: none;
+        font-size: 0.9em;
     }
 
     .nuevo{

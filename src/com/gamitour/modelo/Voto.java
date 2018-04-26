@@ -1,5 +1,5 @@
 package com.gamitour.modelo;
-// Generated 08-ene-2018 19:06:34 by Hibernate Tools 4.3.1.Final
+// Generated Apr 26, 2018 12:27:42 PM by Hibernate Tools 5.2.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,17 +21,12 @@ public class Voto implements java.io.Serializable {
 	private Integer idvoto;
 	private Cliente cliente;
 	private Multimedia multimedia;
-	private Integer puntos;
+	private int puntos;
 
 	public Voto() {
 	}
 
-	public Voto(Cliente cliente, Multimedia multimedia) {
-		this.cliente = cliente;
-		this.multimedia = multimedia;
-	}
-
-	public Voto(Cliente cliente, Multimedia multimedia, Integer puntos) {
+	public Voto(Cliente cliente, Multimedia multimedia, int puntos) {
 		this.cliente = cliente;
 		this.multimedia = multimedia;
 		this.puntos = puntos;
@@ -69,12 +64,12 @@ public class Voto implements java.io.Serializable {
 		this.multimedia = multimedia;
 	}
 
-	@Column(name = "puntos")
-	public Integer getPuntos() {
+	@Column(name = "puntos", nullable = false)
+	public int getPuntos() {
 		return this.puntos;
 	}
 
-	public void setPuntos(Integer puntos) {
+	public void setPuntos(int puntos) {
 		this.puntos = puntos;
 	}
 

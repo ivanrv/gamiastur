@@ -17,9 +17,11 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/style.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/tablas.css" type="text/css">
+                <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/media.css" type="text/css">
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE=" crossorigin="anonymous"></script>
+                <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE="
+                    crossorigin="anonymous"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/tablas.js"></script>
@@ -38,7 +40,9 @@
                                 <li>Editar Perfil</li>
                                 <li class="menuUserB">Mis Actividades</li>
                                 <li class="menuUserB">Logros</li>
-                                <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
+                                <c:if test="${userRol == 'admin'}">
+                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
+                                </c:if>
                                 <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
                             </ul>
                         </a>
@@ -49,7 +53,7 @@
                     </div>
                 </header>
 
-                <nav>
+                <nav data-spy="affix" data-offset-top="150">
                     <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
                         <i class="fas fa-home"></i> &nbsp; Inicio</a>
                     <a href="#">
@@ -130,6 +134,7 @@
 
                     <div class="admin">
                         <div class="navAdmin">
+                            <input type="text" name="buscador" id="buscador" class="textIn inputCon" placeholder="Buscar...">
                             <a href="javascript:void(0)" class="selAdminNav" value="tablaActividades">
                                 <i class="fas fa-search"></i>&nbsp;
                                 <span>Actividades</span>
@@ -262,7 +267,7 @@
                                         <td>${actividad.nombre}</td>
                                         <td>${actividad.fechainicio}</td>
                                         <td>${actividad.fechafin}</td>
-                                        <td>${actividad.ubicacion}</td>
+                                        <td>FALTA POR HACER UBICACION</td>
                                         <td>${actividad.numparticipantes}</td>
                                         <td class="btnTabla">
                                             <form action="Mostrar.do" method="post">
@@ -315,7 +320,7 @@
                                 <c:forEach items="${listaComentarios}" var="comentario">
                                     <tr class="lineaFiltro">
                                         <td>${comentario.cliente.email}</td>
-                                        <td>Subido por: ${comentario.multimedia.cliente.email} &nbsp; Prueba: ${comentario.multimedia.pruebaDeportiva.nombre}</td>
+                                        <td>Subido por: ${comentario.multimedia.cliente.email} &nbsp; Prueba: ${comentario.multimedia.pruebadeportiva.nombre}</td>
                                         <td>${comentario.texto}</td>
                                         <td class="btnTabla">
                                             <form action="Eliminar.do" method="post">
@@ -349,9 +354,9 @@
                                     <tr class="lineaFiltro">
                                         <td>${itinerario.nombre}</td>
                                         <td>${itinerario.categoria}</td>
-                                        <td>${itinerario.ubicacion}</td>
+                                        <td>FALTA POR HACER UBICACION</td>
                                         <td>
-                                            <a href="#modalParadas" value="${itinerario.paradas}" class="itiParadas" data-toggle="modal">
+                                            <a href="#modalParadas" value="${itinerario.nombre}" class="itiParadas" data-toggle="modal">
                                                 <i class="fas fa-map-pin"></i> Ver paradas
                                             </a>
                                         </td>
@@ -405,7 +410,7 @@
                                 <c:forEach items="${listaMultimedias}" var="multimedia">
                                     <tr class="lineaFiltro">
                                         <td>${multimedia.cliente.email}</td>
-                                        <td>${multimedia.pruebaDeportiva.nombre}</td>
+                                        <td>${multimedia.pruebadeportiva.nombre}</td>
                                         <td>${multimedia.fecha}</td>
                                         <td class="btnTabla">
                                             <form action="Mostrar.do" method="post">
@@ -493,6 +498,7 @@
                                     <th>Nombre</th>
                                     <th>Itinerario</th>
                                     <th>Ubicación</th>
+                                    <th>Pruebas</th>
                                     <th class="theadHide"></th>
                                     <th class="theadHide"></th>
                                 </tr>
@@ -500,7 +506,8 @@
                                     <tr class="lineaFiltro">
                                         <td>${parada.nombre}</td>
                                         <td>${parada.itinerario.nombre}</td>
-                                        <td>${parada.ubicacion}</td>
+                                        <td>FALTA POR HACER UBICACION</td>
+                                        <td>FALTA POR HACER PRUEBAS</td>
                                         <td class="btnTabla">
                                             <form action="Mostrar.do" method="post">
                                                 <input type="hidden" name="tipo" value="parada">
@@ -709,7 +716,7 @@
                                 <c:forEach items="${listaVotos}" var="voto">
                                     <tr class="lineaFiltro">
                                         <td>${voto.cliente.email}</td>
-                                        <td>Subido por: ${voto.multimedia.cliente.email} &nbsp; Prueba: ${voto.multimedia.pruebaDeportiva.nombre}</td>
+                                        <td>Subido por: ${voto.multimedia.cliente.email} &nbsp; Prueba: ${voto.multimedia.pruebadeportiva.nombre}</td>
                                         <td>${voto.puntos}</td>
                                         <td class="btnTabla">
                                             <form action="Eliminar.do" method="post">

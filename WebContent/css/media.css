@@ -89,7 +89,8 @@
                 .content{
                     min-height: 500px;
                     font-size: 0.9em;
-                    margin: 30px 0;
+                    margin-bottom: 30px;
+                    margin-top: 190px;
                 }
 
             /* Propiedades del footer de la página */
@@ -193,6 +194,7 @@
             /* Propiedades del contenido de la página */
                 .content{
                     min-height: 475px;
+                    margin-top: 180px;
                 }
 
             /* Propiedades del footer de la página */
