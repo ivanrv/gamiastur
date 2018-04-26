@@ -13,6 +13,7 @@ body {
 }
 
 
+
 /*Propiedades del header de la página*/
 
     header {
@@ -195,6 +196,12 @@ body {
     nav a:hover {
         text-decoration: none;
         background-color: #2C3E50;
+        color: #ECF0F1;
+    }
+
+    nav a:focus{
+        outline: none;
+        text-decoration: none;
         color: #ECF0F1;
     }
 
