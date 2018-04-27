@@ -12,8 +12,8 @@ import com.gamitour.modelo.Itinerario;
 import com.gamitour.modelo.Noticia;
 import com.gamitour.modelo.Parada;
 import com.gamitour.modelo.Premio;
-import com.gamitour.modelo.PruebaCultural;
-import com.gamitour.modelo.PruebaDeportiva;
+import com.gamitour.modelo.Pruebacultural;
+import com.gamitour.modelo.Pruebadeportiva;
 import com.gamitour.service.ServiceActividad;
 import com.gamitour.service.ServiceActividadImp;
 import com.gamitour.service.ServiceCliente;
@@ -116,14 +116,14 @@ public class Nuevo extends Accion{
 			
 		case "cultural":
 			ServicePruebaCultural sPruebaCultural = new ServicePruebaCulturalImp();
-			PruebaCultural cultural = new PruebaCultural(sParada.buscarPorNombre(request.getParameter("parada")), request.getParameter("nombre"), request.getParameter("pregunta"), request.getParameter("respuesta"), Integer.parseInt(request.getParameter("puntos")));
+			Pruebacultural cultural = new Pruebacultural(sParada.buscarPorNombre(request.getParameter("parada")), request.getParameter("nombre"), request.getParameter("pregunta"), request.getParameter("respuesta"), Integer.parseInt(request.getParameter("puntos")));
 			sPruebaCultural.insertar(cultural);
 			request.getSession().setAttribute("listaCulturales", sPruebaCultural.buscarTodos());
 			break;
 			
 		case "deportiva":
 			try {
-				PruebaDeportiva deportiva = new PruebaDeportiva(sParada.buscarPorNombre(request.getParameter("parada")), request.getParameter("nombre"), sdf.parse(request.getParameter("inicio")), sdf.parse(request.getParameter("fin")), request.getParameter("explicacion"), Integer.parseInt(request.getParameter("puntos")), null);
+				Pruebadeportiva deportiva = new Pruebadeportiva(sParada.buscarPorNombre(request.getParameter("parada")), request.getParameter("nombre"), sdf.parse(request.getParameter("inicio")), sdf.parse(request.getParameter("fin")), request.getParameter("explicacion"), Integer.parseInt(request.getParameter("puntos")), null);
 				sPruebaDeportiva.insertar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
 			} catch (NumberFormatException | ParseException e) {

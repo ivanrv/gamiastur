@@ -11,8 +11,8 @@ import com.gamitour.modelo.Itinerario;
 import com.gamitour.modelo.Noticia;
 import com.gamitour.modelo.Parada;
 import com.gamitour.modelo.Premio;
-import com.gamitour.modelo.PruebaCultural;
-import com.gamitour.modelo.PruebaDeportiva;
+import com.gamitour.modelo.Pruebacultural;
+import com.gamitour.modelo.Pruebadeportiva;
 import com.gamitour.service.ServiceActividad;
 import com.gamitour.service.ServiceActividadImp;
 import com.gamitour.service.ServiceCliente;
@@ -138,7 +138,7 @@ public class Update extends Accion{
 			
 		case "cultural":
 			ServicePruebaCultural sPruebaCultural = new ServicePruebaCulturalImp();
-			PruebaCultural cultural = sPruebaCultural.buscarPorNombre(request.getParameter("nombre"));
+			Pruebacultural cultural = sPruebaCultural.buscarPorNombre(request.getParameter("nombre"));
 			
 			cultural.setParada(sParada.buscarPorNombre(request.getParameter("parada")));
 			cultural.setPregunta(request.getParameter("pregunta"));
@@ -151,7 +151,7 @@ public class Update extends Accion{
 			
 		case "deportiva":
 			try {
-				PruebaDeportiva deportiva = sPruebaDeportiva.buscarPorNombre(request.getParameter("nombre"));
+				Pruebadeportiva deportiva = sPruebaDeportiva.buscarPorNombre(request.getParameter("nombre"));
 				
 				deportiva.setParada(sParada.buscarPorNombre(request.getParameter("parada")));
 				deportiva.setFechainicio(sdf.parse(request.getParameter("inicio")));

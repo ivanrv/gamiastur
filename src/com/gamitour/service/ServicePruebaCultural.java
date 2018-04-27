@@ -2,12 +2,12 @@ package com.gamitour.service;
 
 import java.util.List;
 
-import com.gamitour.modelo.PruebaCultural;
+import com.gamitour.modelo.Pruebacultural;
 
 public interface ServicePruebaCultural {
-	public void insertar(PruebaCultural prueba);
-	public void borrar(PruebaCultural prueba);
-	public void actualizar(PruebaCultural prueba);
-	public PruebaCultural buscarPorNombre(String nombre);
-	public List<PruebaCultural> buscarTodos();
+	public void insertar(Pruebacultural prueba);
+	public void borrar(Pruebacultural prueba);
+	public void actualizar(Pruebacultural prueba);
+	public Pruebacultural buscarPorNombre(String nombre);
+	public List<Pruebacultural> buscarTodos();
 }

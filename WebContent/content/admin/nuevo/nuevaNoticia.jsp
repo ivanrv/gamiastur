@@ -17,8 +17,10 @@
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/style.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/form.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/nuevo.css" type="text/css">
+                <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/media.css" type="text/css">
                 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE=" crossorigin="anonymous"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
             </head>
@@ -36,7 +38,9 @@
                                 <li>Editar Perfil</li>
                                 <li class="menuUserB">Mis Actividades</li>
                                 <li class="menuUserB">Logros</li>
-                                <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
+                                <c:if test="${userRol == 'admin'}">
+                                	<li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
+                                </c:if>
                                 <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
                             </ul>
                         </a>
@@ -47,7 +51,7 @@
                     </div>
                 </header>
             
-                <nav>
+                <nav data-spy="affix" data-offset-top="150">
                     <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
                         <i class="fas fa-home"></i> &nbsp; Inicio</a>
                     <a href="#">

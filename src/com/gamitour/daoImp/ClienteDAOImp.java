@@ -1,13 +1,12 @@
 package com.gamitour.daoImp;
 
 import javax.persistence.Query;
-
 import org.hibernate.SessionFactory;
 
 import com.gamitour.dao.ClienteDAO;
 import com.gamitour.genericDao.GenericDAOImp;
-import com.gamitour.modelo.Actividad;
 import com.gamitour.modelo.Cliente;
+import com.gamitour.modelo.ClienteHasActividad;
 import com.gamitour.modelo.Comentario;
 import com.gamitour.modelo.Multimedia;
 import com.gamitour.modelo.Premio;
@@ -50,8 +49,8 @@ public class ClienteDAOImp extends GenericDAOImp<Cliente, String> implements Cli
 			secuenciaBorrado(c);
 		}
 		
-		for(Actividad a: cliente.getActividades()){ //modificacion de las actividades en las que participaba el cliente
-			a.setNumparticipantes(a.getNumparticipantes() -1);
+		for(ClienteHasActividad a: cliente.getClienteHasActividads()){ //modificacion de las actividades en las que participaba el cliente
+			a.getActividad().setNumparticipantes(a.getActividad().getNumparticipantes() -1);
 			sf.getCurrentSession().beginTransaction();
 			sf.getCurrentSession().update(a);
 			sf.getCurrentSession().getTransaction().commit();

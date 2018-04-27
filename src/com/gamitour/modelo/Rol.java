@@ -1,5 +1,5 @@
 package com.gamitour.modelo;
-// Generated 08-ene-2018 19:06:34 by Hibernate Tools 4.3.1.Final
+// Generated Apr 27, 2018 8:12:19 AM by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,6 +26,10 @@ public class Rol implements java.io.Serializable {
 	public Rol() {
 	}
 
+	public Rol(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public Rol(String nombre, Set<Cliente> clientes) {
 		this.nombre = nombre;
 		this.clientes = clientes;
@@ -43,7 +47,7 @@ public class Rol implements java.io.Serializable {
 		this.idrol = idrol;
 	}
 
-	@Column(name = "nombre", length = 60)
+	@Column(name = "nombre", nullable = false, length = 60)
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -52,7 +56,7 @@ public class Rol implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	@OneToMany (fetch = FetchType.EAGER, mappedBy = "rol")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "rol")
 	public Set<Cliente> getClientes() {
 		return this.clientes;
 	}

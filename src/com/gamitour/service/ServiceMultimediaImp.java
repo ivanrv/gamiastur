@@ -5,7 +5,7 @@ import java.util.List;
 import com.gamitour.dao.MultimediaDAO;
 import com.gamitour.modelo.Cliente;
 import com.gamitour.modelo.Multimedia;
-import com.gamitour.modelo.PruebaDeportiva;
+import com.gamitour.modelo.Pruebadeportiva;
 import com.gamitour.util.MySQLDaoFactory;
 
 public class ServiceMultimediaImp implements ServiceMultimedia {
@@ -34,7 +34,7 @@ public class ServiceMultimediaImp implements ServiceMultimedia {
 	}
 
 	@Override
-	public Multimedia buscarMultimedia(Cliente cliente, PruebaDeportiva prueba) {
+	public Multimedia buscarMultimedia(Cliente cliente, Pruebadeportiva prueba) {
 		return m.buscarMultimedia(cliente, prueba);
 	}
 

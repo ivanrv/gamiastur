@@ -1,5 +1,5 @@
 package com.gamitour.modelo;
-// Generated 08-ene-2018 19:06:34 by Hibernate Tools 4.3.1.Final
+// Generated Apr 27, 2018 8:12:19 AM by Hibernate Tools 5.2.10.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -28,17 +28,21 @@ public class Premio implements java.io.Serializable {
 	private String imagen;
 	private Date fechaactivacion;
 	private Date fechaconsumo;
-	private Integer puntos;
+	private int puntos;
 
 	public Premio() {
 	}
 
-	public Premio(Cliente cliente) {
+	public Premio(Cliente cliente, String nombre, String descripcion, Date fechaactivacion, int puntos) {
 		this.cliente = cliente;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.fechaactivacion = fechaactivacion;
+		this.puntos = puntos;
 	}
 
 	public Premio(Cliente cliente, String nombre, String descripcion, String imagen, Date fechaactivacion,
-			Date fechaconsumo, Integer puntos) {
+			Date fechaconsumo, int puntos) {
 		this.cliente = cliente;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -70,7 +74,7 @@ public class Premio implements java.io.Serializable {
 		this.cliente = cliente;
 	}
 
-	@Column(name = "nombre", length = 60)
+	@Column(name = "nombre", nullable = false, length = 60)
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -79,7 +83,7 @@ public class Premio implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	@Column(name = "descripcion", length = 200)
+	@Column(name = "descripcion", nullable = false, length = 200)
 	public String getDescripcion() {
 		return this.descripcion;
 	}
@@ -98,7 +102,7 @@ public class Premio implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "fechaactivacion", length = 10)
+	@Column(name = "fechaactivacion", nullable = false, length = 10)
 	public Date getFechaactivacion() {
 		return this.fechaactivacion;
 	}
@@ -117,12 +121,12 @@ public class Premio implements java.io.Serializable {
 		this.fechaconsumo = fechaconsumo;
 	}
 
-	@Column(name = "puntos")
-	public Integer getPuntos() {
+	@Column(name = "puntos", nullable = false)
+	public int getPuntos() {
 		return this.puntos;
 	}
 
-	public void setPuntos(Integer puntos) {
+	public void setPuntos(int puntos) {
 		this.puntos = puntos;
 	}
 

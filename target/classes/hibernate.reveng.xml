@@ -11,8 +11,9 @@
   <table-filter match-catalog="gamitour" match-name="noticia"/>
   <table-filter match-catalog="gamitour" match-name="parada"/>
   <table-filter match-catalog="gamitour" match-name="premio"/>
-  <table-filter match-catalog="gamitour" match-name="pruebaCultural"/>
-  <table-filter match-catalog="gamitour" match-name="pruebaDeportiva"/>
+  <table-filter match-catalog="gamitour" match-name="pruebacultural"/>
+  <table-filter match-catalog="gamitour" match-name="pruebadeportiva"/>
   <table-filter match-catalog="gamitour" match-name="rol"/>
   <table-filter match-catalog="gamitour" match-name="voto"/>
+  <table-filter match-catalog="gamitour" match-name="imagenactividad"/>
 </hibernate-reverse-engineering>

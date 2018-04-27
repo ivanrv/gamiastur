@@ -1,5 +1,5 @@
 package com.gamitour.modelo;
-// Generated 08-ene-2018 19:06:34 by Hibernate Tools 4.3.1.Final
+// Generated Apr 27, 2018 8:12:19 AM by Hibernate Tools 5.2.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,11 +24,6 @@ public class Comentario implements java.io.Serializable {
 	private String texto;
 
 	public Comentario() {
-	}
-
-	public Comentario(Cliente cliente, Multimedia multimedia) {
-		this.cliente = cliente;
-		this.multimedia = multimedia;
 	}
 
 	public Comentario(Cliente cliente, Multimedia multimedia, String texto) {
@@ -69,7 +64,7 @@ public class Comentario implements java.io.Serializable {
 		this.multimedia = multimedia;
 	}
 
-	@Column(name = "texto", length = 200)
+	@Column(name = "texto", nullable = false, length = 200)
 	public String getTexto() {
 		return this.texto;
 	}

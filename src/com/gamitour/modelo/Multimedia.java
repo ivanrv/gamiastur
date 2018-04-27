@@ -1,17 +1,14 @@
 package com.gamitour.modelo;
-// Generated 08-ene-2018 19:06:34 by Hibernate Tools 4.3.1.Final
-
-import static javax.persistence.GenerationType.IDENTITY;
+// Generated Apr 27, 2018 8:12:19 AM by Hibernate Tools 5.2.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,29 +24,31 @@ import javax.persistence.TemporalType;
 @Table(name = "multimedia", catalog = "gamitour")
 public class Multimedia implements java.io.Serializable {
 
-	private int idmultimedia;
+	private Integer idmultimedia;
 	private Cliente cliente;
-	private PruebaDeportiva pruebaDeportiva;
+	private Pruebadeportiva pruebadeportiva;
 	private Date fecha;
 	private String comentario;
 	private String imagen;
 	private String video;
-	private Integer puntosacumulados;
+	private int puntosacumulados;
 	private Set<Comentario> comentarios = new HashSet<Comentario>(0);
 	private Set<Voto> votos = new HashSet<Voto>(0);
 
 	public Multimedia() {
 	}
 
-	public Multimedia( Cliente cliente, PruebaDeportiva pruebaDeportiva) {
+	public Multimedia(Cliente cliente, Pruebadeportiva pruebadeportiva, Date fecha, int puntosacumulados) {
 		this.cliente = cliente;
-		this.pruebaDeportiva = pruebaDeportiva;
+		this.pruebadeportiva = pruebadeportiva;
+		this.fecha = fecha;
+		this.puntosacumulados = puntosacumulados;
 	}
 
-	public Multimedia(Cliente cliente, PruebaDeportiva pruebaDeportiva, Date fecha, String comentario,
-			String imagen, String video, Integer puntosacumulados, Set<Comentario> comentarios, Set<Voto> votos) {
+	public Multimedia(Cliente cliente, Pruebadeportiva pruebadeportiva, Date fecha, String comentario, String imagen,
+			String video, int puntosacumulados, Set<Comentario> comentarios, Set<Voto> votos) {
 		this.cliente = cliente;
-		this.pruebaDeportiva = pruebaDeportiva;
+		this.pruebadeportiva = pruebadeportiva;
 		this.fecha = fecha;
 		this.comentario = comentario;
 		this.imagen = imagen;
@@ -61,13 +60,13 @@ public class Multimedia implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	
+
 	@Column(name = "idmultimedia", unique = true, nullable = false)
-	public int getIdmultimedia() {
+	public Integer getIdmultimedia() {
 		return this.idmultimedia;
 	}
 
-	public void setIdmultimedia(int idmultimedia) {
+	public void setIdmultimedia(Integer idmultimedia) {
 		this.idmultimedia = idmultimedia;
 	}
 
@@ -83,16 +82,16 @@ public class Multimedia implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "pruebaDeportiva_idpruebadeportiva", nullable = false)
-	public PruebaDeportiva getPruebaDeportiva() {
-		return this.pruebaDeportiva;
+	public Pruebadeportiva getPruebadeportiva() {
+		return this.pruebadeportiva;
 	}
 
-	public void setPruebaDeportiva(PruebaDeportiva pruebaDeportiva) {
-		this.pruebaDeportiva = pruebaDeportiva;
+	public void setPruebadeportiva(Pruebadeportiva pruebadeportiva) {
+		this.pruebadeportiva = pruebadeportiva;
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "fecha", length = 10)
+	@Column(name = "fecha", nullable = false, length = 10)
 	public Date getFecha() {
 		return this.fecha;
 	}
@@ -128,12 +127,12 @@ public class Multimedia implements java.io.Serializable {
 		this.video = video;
 	}
 
-	@Column(name = "puntosacumulados")
-	public Integer getPuntosacumulados() {
+	@Column(name = "puntosacumulados", nullable = false)
+	public int getPuntosacumulados() {
 		return this.puntosacumulados;
 	}
 
-	public void setPuntosacumulados(Integer puntosacumulados) {
+	public void setPuntosacumulados(int puntosacumulados) {
 		this.puntosacumulados = puntosacumulados;
 	}
 

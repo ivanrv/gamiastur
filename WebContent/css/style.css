@@ -13,6 +13,7 @@ body {
 }
 
 
+
 /*Propiedades del header de la página*/
 
     header {
@@ -171,6 +172,7 @@ body {
 
     nav {
         margin-top: 35px;
+        margin-bottom: -140px;
         height: 65px;
         background-color: #1F2729;
         display: flex;
@@ -194,6 +196,12 @@ body {
     nav a:hover {
         text-decoration: none;
         background-color: #2C3E50;
+        color: #ECF0F1;
+    }
+
+    nav a:focus{
+        outline: none;
+        text-decoration: none;
         color: #ECF0F1;
     }
 
@@ -264,12 +272,19 @@ body {
             transition-duration: 0.4s;
         }
 
+    .affix{
+        top: 0;
+        width: 100%;
+        z-index: 9999 !important;
+        margin-top: 0;
+    }
 
 /*Propiedades del contenido de la página*/
 
     .content {
         color: #1F2729;
-        margin: 35px 0;
+        margin-bottom: 35px;
+        margin-top: 200px;
         background-color: rgba(181, 229, 242, 0.25);
         padding: 45px 30px 45px 30px;
         min-height: 536px;
