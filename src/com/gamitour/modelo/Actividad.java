@@ -1,5 +1,5 @@
 package com.gamitour.modelo;
-// Generated Apr 26, 2018 12:27:42 PM by Hibernate Tools 5.2.10.Final
+// Generated Apr 27, 2018 8:12:19 AM by Hibernate Tools 5.2.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -33,6 +33,7 @@ public class Actividad implements java.io.Serializable {
 	private String latitud;
 	private String longitud;
 	private Set<ClienteHasActividad> clienteHasActividads = new HashSet<ClienteHasActividad>(0);
+	private Set<Imagenactividad> imagenactividads = new HashSet<Imagenactividad>(0);
 
 	public Actividad() {
 	}
@@ -49,7 +50,8 @@ public class Actividad implements java.io.Serializable {
 	}
 
 	public Actividad(String nombre, Date fechainicio, Date fechafin, int numparticipantes, double precio, int puntos,
-			String latitud, String longitud, Set<ClienteHasActividad> clienteHasActividads) {
+			String latitud, String longitud, Set<ClienteHasActividad> clienteHasActividads,
+			Set<Imagenactividad> imagenactividads) {
 		this.nombre = nombre;
 		this.fechainicio = fechainicio;
 		this.fechafin = fechafin;
@@ -59,6 +61,7 @@ public class Actividad implements java.io.Serializable {
 		this.latitud = latitud;
 		this.longitud = longitud;
 		this.clienteHasActividads = clienteHasActividads;
+		this.imagenactividads = imagenactividads;
 	}
 
 	@Id
@@ -154,6 +157,15 @@ public class Actividad implements java.io.Serializable {
 
 	public void setClienteHasActividads(Set<ClienteHasActividad> clienteHasActividads) {
 		this.clienteHasActividads = clienteHasActividads;
+	}
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "actividad")
+	public Set<Imagenactividad> getImagenactividads() {
+		return this.imagenactividads;
+	}
+
+	public void setImagenactividads(Set<Imagenactividad> imagenactividads) {
+		this.imagenactividads = imagenactividads;
 	}
 
 }

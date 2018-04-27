@@ -1,5 +1,5 @@
 package com.gamitour.modelo;
-// Generated Apr 26, 2018 12:27:42 PM by Hibernate Tools 5.2.10.Final
+// Generated Apr 27, 2018 8:12:19 AM by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -31,7 +31,7 @@ public class Parada implements java.io.Serializable {
 	private String video;
 	private String latitud;
 	private String longitud;
-	private Set<Pruebacultural> pruebaculturales = new HashSet<Pruebacultural>(0);
+	private Set<Pruebacultural> pruebaculturals = new HashSet<Pruebacultural>(0);
 	private Set<Pruebadeportiva> pruebadeportivas = new HashSet<Pruebadeportiva>(0);
 
 	public Parada() {
@@ -49,7 +49,7 @@ public class Parada implements java.io.Serializable {
 
 	public Parada(int idparada, Itinerario itinerario, String nombre, int numeroParada, String historia,
 			String anecdotario, String gastronomia, String imagen, String video, String latitud, String longitud,
-			Set<Pruebacultural> pruebaculturales, Set<Pruebadeportiva> pruebadeportivas) {
+			Set<Pruebacultural> pruebaculturals, Set<Pruebadeportiva> pruebadeportivas) {
 		this.idparada = idparada;
 		this.itinerario = itinerario;
 		this.nombre = nombre;
@@ -61,7 +61,7 @@ public class Parada implements java.io.Serializable {
 		this.video = video;
 		this.latitud = latitud;
 		this.longitud = longitud;
-		this.pruebaculturales = pruebaculturales;
+		this.pruebaculturals = pruebaculturals;
 		this.pruebadeportivas = pruebadeportivas;
 	}
 
@@ -168,12 +168,12 @@ public class Parada implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "parada")
-	public Set<Pruebacultural> getPruebaculturales() {
-		return this.pruebaculturales;
+	public Set<Pruebacultural> getPruebaculturals() {
+		return this.pruebaculturals;
 	}
 
-	public void setPruebaculturales(Set<Pruebacultural> pruebaculturales) {
-		this.pruebaculturales = pruebaculturales;
+	public void setPruebaculturals(Set<Pruebacultural> pruebaculturals) {
+		this.pruebaculturals = pruebaculturals;
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "parada")

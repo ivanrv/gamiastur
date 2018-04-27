@@ -1,5 +1,5 @@
 package com.gamitour.modelo;
-// Generated Apr 26, 2018 12:27:42 PM by Hibernate Tools 5.2.10.Final
+// Generated Apr 27, 2018 8:12:19 AM by Hibernate Tools 5.2.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,7 +44,7 @@ public class Voto implements java.io.Serializable {
 		this.idvoto = idvoto;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cliente_idcliente", nullable = false)
 	public Cliente getCliente() {
 		return this.cliente;
@@ -54,7 +54,7 @@ public class Voto implements java.io.Serializable {
 		this.cliente = cliente;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "multimedia_idmultimedia", nullable = false)
 	public Multimedia getMultimedia() {
 		return this.multimedia;

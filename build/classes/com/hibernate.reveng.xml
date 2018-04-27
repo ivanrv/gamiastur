@@ -15,4 +15,5 @@
   <table-filter match-catalog="gamitour" match-name="pruebadeportiva"/>
   <table-filter match-catalog="gamitour" match-name="rol"/>
   <table-filter match-catalog="gamitour" match-name="voto"/>
+  <table-filter match-catalog="gamitour" match-name="imagenactividad"/>
 </hibernate-reverse-engineering>

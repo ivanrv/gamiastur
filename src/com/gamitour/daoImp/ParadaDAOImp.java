@@ -21,7 +21,7 @@ public class ParadaDAOImp extends GenericDAOImp<Parada, String> implements Parad
 	}
 	
 	public void borrar(Parada parada){
-		for(Pruebacultural pc: parada.getPruebaculturales()){	//eliminacion de pruebas culturales asociadas a la parada
+		for(Pruebacultural pc: parada.getPruebaculturals()){	//eliminacion de pruebas culturales asociadas a la parada
 			secuenciaBorrado(pc);
 		}
 		

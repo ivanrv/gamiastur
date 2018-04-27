@@ -1,5 +1,5 @@
 package com.gamitour.modelo;
-// Generated Apr 26, 2018 12:27:42 PM by Hibernate Tools 5.2.10.Final
+// Generated Apr 27, 2018 8:12:19 AM by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;

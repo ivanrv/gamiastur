@@ -23,6 +23,7 @@
         <mapping class="com.gamitour.modelo.Noticia"/>
         <mapping class="com.gamitour.modelo.Actividad"/>
         <mapping class="com.gamitour.modelo.Pruebadeportiva"/>
+        <mapping class="com.gamitour.modelo.Imagenactividad"/>
         <mapping class="com.gamitour.modelo.Parada"/>
         <mapping class="com.gamitour.modelo.Rol"/>
         <mapping class="com.gamitour.modelo.ClienteHasActividad"/>
