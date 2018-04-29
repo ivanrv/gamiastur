@@ -90,7 +90,7 @@
                             <span class="focus-border"></span>
                         </div>
                         <div class="inputCon input-effect">
-                            <input class="textIn has-content" type="text" name="ubicacion" placeholder="" value="${itinerario.ubicacion}" required/>
+                            <input class="textIn has-content" type="text" name="ubicacion" placeholder="" value="${itinerario.latitud} ${itinerario.longitud}" required/>
                             <label>Ubicación</label>
                             <span class="focus-border"></span>
                         </div>

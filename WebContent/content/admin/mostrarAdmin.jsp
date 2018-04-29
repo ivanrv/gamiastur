@@ -216,10 +216,10 @@
                                             <form action="Eliminar.do" method="post">
                                                 <input type="hidden" name="tipo" value="cliente">
                                                 <input type="hidden" name="email" value="${cliente.email}">
-                                                <button name="submit" value="submit" class="eliminar">
+                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
                                                     <i class="fas fa-times"></i>&nbsp;
                                                     <span>Eliminar</span>
-                                                </button>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
@@ -283,21 +283,21 @@
                                             <form action="Eliminar.do" method="post">
                                                 <input type="hidden" name="tipo" value="actividad">
                                                 <input type="hidden" name="actividad" value="${actividad.nombre}">
-                                                <button name="submit" value="submit" class="eliminar">
+                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
                                                     <i class="fas fa-times"></i>&nbsp;
                                                     <span>Eliminar</span>
-                                                </button>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
                                 </c:forEach>
-                                <tr>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
+                                <tr style="background-color:transparent">
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
                                     <td class="btnTabla">
                                         <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaActividad.jsp" class="nuevo">
                                             <i class="fas fa-plus"></i>&nbsp;
@@ -327,11 +327,11 @@
                                                 <input type="hidden" name="tipo" value="comentario">
                                                 <input type="hidden" name="email" value="${comentario.cliente.email}">
                                                 <input type="hidden" name="emailMult" value="${comentario.multimedia.cliente.email }">
-                                                <input type="hidden" name="prueba" value="${comentario.multimedia.pruebaDeportiva.nombre}">
-                                                <button name="submit" value="submit" class="eliminar">
+                                                <input type="hidden" name="prueba" value="${comentario.multimedia.pruebadeportiva.nombre}">
+                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
                                                     <i class="fas fa-times"></i>&nbsp;
                                                     <span>Eliminar</span>
-                                                </button>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
@@ -356,7 +356,7 @@
                                         <td>${itinerario.categoria}</td>
                                         <td>FALTA POR HACER UBICACION</td>
                                         <td>
-                                            <a href="#modalParadas" value="${itinerario.nombre}" class="itiParadas" data-toggle="modal">
+                                            <a href="#modalParadas" value="${itinerario.iditinerario}" class="itiParadas" data-toggle="modal">
                                                 <i class="fas fa-map-pin"></i> Ver paradas
                                             </a>
                                         </td>
@@ -374,19 +374,20 @@
                                             <form action="Eliminar.do" method="post">
                                                 <input type="hidden" name="tipo" value="itinerario">
                                                 <input type="hidden" name="itinerario" value="${itinerario.nombre}">
-                                                <button name="submit" value="submit" class="eliminar">
+                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
                                                     <i class="fas fa-times"></i>&nbsp;
                                                     <span>Eliminar</span>
-                                                </button>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
                                 </c:forEach>
-                                <tr>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
+                                <tr style="background-color:transparent">
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
                                     <td class="btnTabla">
                                         <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevoItinerario.jsp" class="nuevo">
                                             <i class="fas fa-plus"></i>&nbsp;
@@ -416,7 +417,7 @@
                                             <form action="Mostrar.do" method="post">
                                                 <input type="hidden" name="tipo" value="multimedia">
                                                 <input type="hidden" name="email" value="${multimedia.cliente.email}">
-                                                <input type="hidden" name="prueba" value="${multimedia.pruebaDeportiva.nombre }">
+                                                <input type="hidden" name="prueba" value="${multimedia.pruebadeportiva.nombre }">
                                                 <button name="submit" value="submit" class="editar">
                                                     <i class="fas fa-info"></i>&nbsp;
                                                     <span>Info</span>
@@ -427,11 +428,11 @@
                                             <form action="Eliminar.do" method="post">
                                                 <input type="hidden" name="tipo" value="multimedia">
                                                 <input type="hidden" name="email" value="${multimedia.cliente.email}">
-                                                <input type="hidden" name="prueba" value="${multimedia.pruebaDeportiva.nombre }">
-                                                <button name="submit" value="submit" class="eliminar">
+                                                <input type="hidden" name="prueba" value="${multimedia.pruebadeportiva.nombre }">
+                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
                                                     <i class="fas fa-times"></i>&nbsp;
                                                     <span>Eliminar</span>
-                                                </button>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
@@ -468,19 +469,19 @@
                                             <form action="Eliminar.do" method="post">
                                                 <input type="hidden" name="tipo" value="noticia">
                                                 <input type="hidden" name="noticia" value="${noticia.nombre}">
-                                                <button name="submit" value="submit" class="eliminar">
+                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
                                                     <i class="fas fa-times"></i>&nbsp;
                                                     <span>Eliminar</span>
-                                                </button>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
                                 </c:forEach>
-                                <tr>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
+                                <tr style="background-color:transparent">
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
                                     <td class="btnTabla">
                                         <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaNoticia.jsp" class="nuevo">
                                             <i class="fas fa-plus"></i>&nbsp;
@@ -522,19 +523,20 @@
                                             <form action="Eliminar.do" method="post">
                                                 <input type="hidden" name="tipo" value="parada">
                                                 <input type="hidden" name="parada" value="${parada.nombre}">
-                                                <button name="submit" value="submit" class="eliminar">
+                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
                                                     <i class="fas fa-times"></i>&nbsp;
                                                     <span>Eliminar</span>
-                                                </button>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
                                 </c:forEach>
-                                <tr>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
+                                <tr style="background-color:transparent">
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
                                     <td class="btnTabla">
                                         <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaParada.jsp" class="nuevo">
                                             <i class="fas fa-plus"></i>&nbsp;
@@ -574,19 +576,19 @@
                                             <form action="Eliminar.do" method="post">
                                                 <input type="hidden" name="tipo" value="premio">
                                                 <input type="hidden" name="premio" value="${premio.nombre}">
-                                                <button name="submit" value="submit" class="eliminar">
+                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
                                                     <i class="fas fa-times"></i>&nbsp;
                                                     <span>Eliminar</span>
-                                                </button>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
                                 </c:forEach>
-                                <tr>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
+                                <tr style="background-color:transparent">
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
                                     <td class="btnTabla">
                                         <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevoPremio.jsp" class="nuevo">
                                             <i class="fas fa-plus"></i>&nbsp;
@@ -626,19 +628,19 @@
                                             <form action="Eliminar.do" method="post">
                                                 <input type="hidden" name="tipo" value="cultural">
                                                 <input type="hidden" name="prueba" value="${cultural.nombre}">
-                                                <button name="submit" value="submit" class="eliminar">
+                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
                                                     <i class="fas fa-times"></i>&nbsp;
                                                     <span>Eliminar</span>
-                                                </button>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
                                 </c:forEach>
-                                <tr>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
+                                <tr style="background-color:transparent">
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
                                     <td class="btnTabla">
                                         <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaCultural.jsp" class="nuevo">
                                             <i class="fas fa-plus"></i>&nbsp;
@@ -680,20 +682,20 @@
                                             <form action="Eliminar.do" method="post">
                                                 <input type="hidden" name="tipo" value="deportiva">
                                                 <input type="hidden" name="prueba" value="${deportiva.nombre}">
-                                                <button name="submit" value="submit" class="eliminar">
+                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
                                                     <i class="fas fa-times"></i>&nbsp;
                                                     <span>Eliminar</span>
-                                                </button>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
                                 </c:forEach>
-                                <tr>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
-                                    <td class="hidden"></td>
+                                <tr style="background-color:transparent">
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
+                                    <td class="hiddenT"></td>
                                     <td class="btnTabla">
                                         <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaDeportiva.jsp" class="nuevo">
                                             <i class="fas fa-plus"></i>&nbsp;
@@ -723,11 +725,11 @@
                                                 <input type="hidden" name="tipo" value="voto">
                                                 <input type="hidden" name="email" value="${voto.cliente.email}">
                                                 <input type="hidden" name="emailMult" value="${voto.multimedia.cliente.email }">
-                                                <input type="hidden" name="prueba" value="${voto.multimedia.pruebaDeportiva.nombre }">
-                                                <button name="submit" value="submit" class="eliminar">
+                                                <input type="hidden" name="prueba" value="${voto.multimedia.pruebadeportiva.nombre }">
+                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
                                                     <i class="fas fa-times"></i>&nbsp;
                                                     <span>Eliminar</span>
-                                                </button>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
@@ -772,6 +774,19 @@
                                     <th class="theadHide"></th>
                                 </tr>
                             </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modalEliminar" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body"><p>¿Está seguro de que desea eliminar?</p></div>
+                        <div class="modal-footer">
+                            <button class="btn" id="btnEliminarModal">Eliminar</button>
+                            <button class="btn" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
                 </div>

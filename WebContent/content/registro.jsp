@@ -8,30 +8,31 @@
     <title>Registro</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="icon" href="../images/logos/favicon.png">
-
+    <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
-    <link rel="stylesheet" href="../css/form.css" type="text/css">
+    <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/form.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <script src="../js/form.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/registro.js" type="text/javascript"></script>
 
 
 </head>
 
 <body>
     <header>
-        <a href="../index.html">
-            <img src="../images/logos/logo gris.png">
+        <a href="${pageContext.servletContext.contextPath}/index.html">
+            <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
         </a>
     </header>
 
     <nav data-spy="affix" data-offset-top="150">
-        <a href="../index.html">
+        <a href="${pageContext.servletContext.contextPath}/index.html">
             <i class="fas fa-home"></i> &nbsp; Inicio</a>
         <a href="#">
             <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
@@ -40,10 +41,10 @@
         <a href="#" id="menuIti">
             <i class="fas fa-map"></i> &nbsp; Itinerarios
             <ul>
-                <li id="gijonIti" onclick="location.href='itiGijon.html'">
+                <li id="gijonIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiGijon.html'">
                     <span>Itinerario de Gij贸n</span>
                 </li>
-                <li id="avilesIti" onclick="location.href='itiAviles.html'">
+                <li id="avilesIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiAviles.html'">
                     <span>Itinerario de Avil茅s</span>
                 </li>
             </ul>
@@ -51,51 +52,53 @@
         <a href="#">
             <i class="fas fa-trophy"></i> &nbsp; Premios</a>
         <a href="#">
-            <i class="fas fa-question"></i> &nbsp; Qui茅nes somos</a>
+            <i class="fas fa-question"></i> &nbsp; Qui閚es somos</a>
     </nav>
 
     <div class="content">
-        <h1>Reg铆strate:</h1>
-        <form action="../php/login.php" method="post" id="regForm">
+        <h1>Reg韘trate:</h1>
+        <span style="font-size: 0.6em;">Los campos marcados con asteriscos son obligatorios</span>
+        <form action="Nuevo.do" method="post" id="regForm">
+            <input type="hidden" name="tipo" value="cliente">
             <div class="inputCon input-effect">
-                <input type="text" name="nombre" placeholder="" class="textIn" />
-                <label>Nombre</label>
+                <input type="text" name="nombre" placeholder="" class="textIn" required />
+                <label>Nombre *</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
-                <input type="text" name="apellidos" placeholder="" class="textIn" />
-                <label>Apellidos</label>
+                <input type="text" name="apellidos" placeholder="" class="textIn" required />
+                <label>Apellidos *</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
-                <input type="email" name="email" placeholder="" class="textIn" />
-                <label>Correo Electr贸nico</label>
+                <input type="email" name="email" placeholder="" class="textIn" required />
+                <label>Correo Electr髇ico *</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
-                <input type="email" name="emailR" placeholder="" class="textIn" />
-                <label>Repita Correo Electr贸nico</label>
+                <input type="email" name="emailR" placeholder="" class="textIn" required/>
+                <label>Repita Correo Electr髇ico *</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
-                <input type="password" name="password" placeholder="" class="textIn" />
-                <label>Contrase帽a</label>
+                <input type="password" name="password" placeholder="" class="textIn" required />
+                <label>Contrase馻 *</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
-                <input type="password" name="passwordR" placeholder="" class="textIn" />
-                <label>Repita Contrase帽a</label>
+                <input type="password" name="passwordR" placeholder="" class="textIn" required/>
+                <label>Repita Contrase馻 *</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
-                <input type="text" name="fechaNac" value=" " placeholder="" class="textIn datepicker" />
-                <label>Fecha de Nacimiento</label>
+                <input type="text" name="fechaNac" value=" " placeholder="" class="textIn datepicker" required/>
+                <label>Fecha de Nacimiento *</label>
                 <span class="focus-border"></span>
             </div>
 
@@ -107,26 +110,24 @@
 
             <div class="inputCon input-effect">
                 <input type="text" name="direccion" placeholder="" class="textIn" />
-                <label>Direcci贸n</label>
+                <label>Direcci髇</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
                 <input type="text" name="CP" placeholder="" class="textIn" />
-                <label>C贸digo Postal</label>
-                <span class="focus-border"></span>
-            </div>
-
-            <div class="inputCon input-effect">
-                <input type="text" name="avatar" placeholder="" class="textIn" />
-                <label>Avatar</label>
+                <label>C骴igo Postal</label>
                 <span class="focus-border"></span>
             </div>
 
             <div>
-                <input type="submit" value="Iniciar Sesi贸n">
-                <span>驴A煤n no tienes cuenta?
-                    <a href="signin.html">Reg铆strate</a>
+                <a href="#modalAvatar" data-toggle="modal" id="selectAvatar" class="btn">Seleccionar avatar</a>
+            </div>
+
+            <div>
+                <a class="btn" id="btnRegistro">Reg韘trarse</a>
+                <span>縔a tienes cuenta?
+                    <a href="${pageContext.servletContext.contextPath}/content/login.jsp">Inicia sesi髇</a>
                 </span>
             </div>
 

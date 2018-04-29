@@ -37,7 +37,7 @@
         padding: 7px 5px;
     }
 
-    .table tr .hidden {
+    .table tr .hiddenT {
         visibility: hidden;
         border: none;
     }
@@ -52,14 +52,13 @@
     
     .table tr a{
     	color: #1F2729;
-    	font-size: 0.8em;
+    	font-size: 0.9em;
     }
 
     .table tr a:hover {
         color: #72BCC7;
         transition-duration: 0.3s;
         text-decoration: none;
-        font-size: 0.9em;
     }
 
     .nuevo{
@@ -74,6 +73,7 @@
         background: none!important;
         color: #1F2729;
         font-size: 0.8em;
+        transition-duration: 0.3s;
     }
 
     table tr .btnTabla span {
@@ -82,23 +82,21 @@
 
     .editar:hover {
         color: #72BCC7;
+        transition-duration: 0.3s;
         font-size: 0.9em;
     }
 
-    .eliminar:hover {
+    .table tr a.eliminar:hover {
         font-size: 0.9em;
-        color: #a0292f;
+        transition-duration: 0.3s;
+        color: #a0292f !important;
     }
 
     .nuevo:hover {
         font-size: 0.9em;
-        color: #48ad44;
+        transition-duration: 0.3s;
+        color: #48ad44 !important;
     }
-
-    button:focus{
-        outline: 0;
-    }
-
 /*Propiedades de divs*/
 
     .landing {
@@ -184,14 +182,60 @@
 
 /* Propiedades de barra del buscador */
 
-#buscador{
-    width: 95%;
-    font-size: 0.7em;
-    background-color: transparent;
-    margin-top: 25px; 
-    margin-right: 7px;
-    border: none;
-    border-bottom: 1px solid rgba(31, 39, 41, 0.25);
-    padding: 5px;
-    outline: none;
-}
+	#buscador{
+	    width: 95%;
+	    font-size: 0.7em;
+	    background-color: transparent;
+	    margin-top: 25px; 
+	    margin-right: 7px;
+	    border: none;
+	    border-bottom: 1px solid rgba(31, 39, 41, 0.25);
+	    padding: 5px;
+	    outline: none;
+	}
+	
+/* Propiedades de ventanas modales */
+
+	#modalParadas .modal-dialog{
+		width: 85%;
+		border: 1px solid #1F2729;
+		border-radius: 10px;
+	}
+	
+	#modalParadas .modal-body{
+		background-color: #ECF0F1;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		padding: 35px 20px;
+		padding-bottom: 10px;
+	}
+	
+	#modalParadas .modal-header {
+		background-color: rgb(114, 188, 199);
+		color: #ECF0F1;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		border-bottom: 1px solid #1f2729;
+	}
+	
+	#modalEliminar .modal-dialog{
+		border: 1px solid #1f2729;
+		border-radius: 10px;
+		margin-top: 8%;
+	}
+	
+	#modalEliminar .modal-header{
+		background-color: #ECF0F1;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+	
+	#modalEliminar .modal-body{
+		background-color: #ECF0F1;
+	}
+	
+	#modalEliminar .modal-footer{
+		background-color: #ECF0F1;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+	}

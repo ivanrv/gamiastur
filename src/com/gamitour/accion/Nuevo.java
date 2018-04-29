@@ -2,6 +2,7 @@ package com.gamitour.accion;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,11 +50,49 @@ public class Nuevo extends Accion{
 		ServiceMultimedia sMultimedia = new ServiceMultimediaImp();
 		ServiceParada sParada = new ServiceParadaImp();
 		ServicePruebaDeportiva sPruebaDeportiva = new ServicePruebaDeportivaImp();
+		String retorno;
 		
 
 		switch(request.getParameter("tipo")){
 		case "cliente":
-			request.getSession().setAttribute("listaClientes", sCliente.buscarTodos());
+			
+			String telefono, direccion, codigopostal, avatar;
+			
+			if(request.getParameter("telefono") == ""){
+				telefono = null;
+			}else{
+				telefono = request.getParameter("telefono");
+			}
+			
+			if(request.getParameter("direccion") == ""){
+				direccion = null;
+			}else{
+				direccion = request.getParameter("direccion");
+			}
+			
+			if(request.getParameter("CP") == ""){
+				codigopostal = null;
+			}else{
+				codigopostal = request.getParameter("CP");
+			}
+			
+			if(request.getParameter("avatar") == null){
+				avatar = null;
+			}else{
+				avatar = request.getParameter("avatar");
+			}
+			
+			Cliente cliente = new Cliente(null, request.getParameter("nombre"), request.getParameter("apellidos"), sdf.parse(request.getParameter("fechaNac")), request.getParameter("email"), request.getParameter("password"), telefono, direccion, codigopostal, avatar, 0, new Date());
+			
+			sCliente.insertar(cliente);
+			
+			request.getSession().setAttribute("userRol", cliente.getRol().getNombre());
+			request.getSession().setAttribute("username",
+					cliente.getNombre() + " " + cliente.getApellidos().substring(0, cliente.getApellidos().indexOf(" ")));
+			request.getSession().setAttribute("userEmail", cliente.getEmail());
+			
+			retorno = "/content/user/index.jsp";
+			
 			break;
 			
 		case "actividad":
@@ -62,6 +101,7 @@ public class Nuevo extends Accion{
 				Actividad actividad = new Actividad(request.getParameter("nombre"), sdf.parse(request.getParameter("inicio")), sdf.parse(request.getParameter("fin")), request.getParameter("ubicacion"), 0, Float.parseFloat(request.getParameter("precio")), request.getParameter("imagen"), Integer.parseInt(request.getParameter("puntos")), null);
 				sActividad.insertar(actividad);
 				request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());
+				retorno = "/content/admin/mostrarAdmin.jsp";
 			} catch (NumberFormatException | ParseException e) {
 				e.printStackTrace();
 			}			
@@ -76,6 +116,7 @@ public class Nuevo extends Accion{
 			Itinerario itinerario = new Itinerario(request.getParameter("nombre"), request.getParameter("categoria"), request.getParameter("duracion"), request.getParameter("ubicacion"), null);
 			sItinerario.insertar(itinerario);
 			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
+			retorno = "/content/admin/mostrarAdmin.jsp";
 			break;
 			
 		case "multimedia":
@@ -89,6 +130,7 @@ public class Nuevo extends Accion{
 				noticia = new Noticia(request.getParameter("nombre"), request.getParameter("texto"), sdf.parse(request.getParameter("alta")), sdf.parse(request.getParameter("caducidad")), request.getParameter("imagen"));
 				sNoticia.insertar(noticia);
 				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
+				retorno = "/content/admin/mostrarAdmin.jsp";
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -108,6 +150,7 @@ public class Nuevo extends Accion{
 				premio = new Premio(sCliente.buscarPorEmail(request.getParameter("cliente")), request.getParameter("nombre"), request.getParameter("descripcion"), request.getParameter("imagen"), sdf.parse(request.getParameter("activacion")), sdf.parse(request.getParameter("consumo")), Integer.parseInt(request.getParameter("puntos")));
 				sPremio.insertar(premio);
 				request.getSession().setAttribute("listaPremios", sPremio.buscarTodos());
+				retorno = "/content/admin/mostrarAdmin.jsp";
 			} catch (NumberFormatException | ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -119,6 +162,7 @@ public class Nuevo extends Accion{
 			Pruebacultural cultural = new Pruebacultural(sParada.buscarPorNombre(request.getParameter("parada")), request.getParameter("nombre"), request.getParameter("pregunta"), request.getParameter("respuesta"), Integer.parseInt(request.getParameter("puntos")));
 			sPruebaCultural.insertar(cultural);
 			request.getSession().setAttribute("listaCulturales", sPruebaCultural.buscarTodos());
+			retorno = "/content/admin/mostrarAdmin.jsp";
 			break;
 			
 		case "deportiva":
@@ -126,6 +170,7 @@ public class Nuevo extends Accion{
 				Pruebadeportiva deportiva = new Pruebadeportiva(sParada.buscarPorNombre(request.getParameter("parada")), request.getParameter("nombre"), sdf.parse(request.getParameter("inicio")), sdf.parse(request.getParameter("fin")), request.getParameter("explicacion"), Integer.parseInt(request.getParameter("puntos")), null);
 				sPruebaDeportiva.insertar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
+				retorno = "/content/admin/mostrarAdmin.jsp";
 			} catch (NumberFormatException | ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -138,7 +183,7 @@ public class Nuevo extends Accion{
 			break;
 		}		
 		
-		return "/content/admin/mostrarAdmin.jsp";
+		return retorno;
 	}
 
 }

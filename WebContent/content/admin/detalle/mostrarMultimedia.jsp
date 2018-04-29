@@ -83,7 +83,7 @@
                             <span>
                                 <strong>Cliente:</strong> ${multimedia.cliente.email}</span>
                             <span>
-                                <strong>Prueba Deportiva:</strong> ${multimedia.pruebaDeportiva.nombre}</span>
+                                <strong>Prueba Deportiva:</strong> ${multimedia.pruebadeportiva.nombre}</span>
                             <span>
                                 <strong>Fecha:</strong> ${multimedia.fecha}</span>
                             <span>

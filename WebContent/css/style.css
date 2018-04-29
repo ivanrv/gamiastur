@@ -8,6 +8,11 @@
     box-sizing: border-box;
 }
 
+:focus{
+	outline: none;
+	text-decoration: none;
+}
+
 body {
     background-color: #ECF0F1;
 }
@@ -354,3 +359,27 @@ body {
         color: #ECF0F1;
         font-size: 0.8em;
     }
+
+/* Ajustes de botones */
+
+.btn{
+    padding: 10px;
+    font-size: 0.8em;
+    color: #ECF0F1;
+    background-color: #1F2729;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #2C3E50;
+    color: #ECF0F1;
+    transition-duration: 0.3s;
+}
+
+.btn:active{
+    background-color: #72BCC7;
+    color: #1F2729;
+    transition-duration: 0.2s;
+}

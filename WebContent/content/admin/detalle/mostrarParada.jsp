@@ -101,7 +101,7 @@
                         </div>
                         <div class="col2">
                             <div class="inputCon input-effect">
-                                <input class="textIn has-content" type="text" name="ubicacion" placeholder="" value="${parada.ubicacion}" required/>
+                                <input class="textIn has-content" type="text" name="ubicacion" placeholder="" value="${parada.latitud} ${parada.longitud}" required/>
                                 <label>Ubicación</label>
                                 <span class="focus-border"></span>
                             </div>

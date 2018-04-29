@@ -94,7 +94,7 @@
                                     <span class="focus-border"></span>
                                 </div>
                                 <div class="inputCon input-effect">
-                                    <input class="textIn has-content" type="text" name="ubicacion" placeholder="" value="${actividad.ubicacion}" required/>
+                                    <input class="textIn has-content" type="text" name="ubicacion" placeholder="" value="${actividad.latitud}  ${actividad.longitud}" required/>
                                     <label>Ubicación</label>
                                     <span class="focus-border"></span>
                                 </div>
@@ -107,7 +107,7 @@
                                 <span class="focus-border"></span>
                             </div>
                             <div class="inputCon input-effect">
-                                <input class="textIn has-content" type="text" name="imagen" placeholder="" value="${actividad.imagen}" required/>
+                                <input class="textIn has-content" type="text" name="imagen" placeholder="" value="${actividad.imagenactividads}" required/>
                                 <label>Imagen</label>
                                 <span class="focus-border"></span>
                             </div>

@@ -116,8 +116,8 @@
                             </span>
                             <span><strong>Actividades:</strong>
                                 <ul>
-                                    <c:forEach items="${cliente.actividades}" var="actividad">
-                                        <li>${actividad.nombre}</li>
+                                    <c:forEach items="${cliente.clienteHasActividads}" var="actividad">
+                                        <li>${actividad.actividad.nombre}</li>
                                     </c:forEach>
                                 </ul>
                             </span>

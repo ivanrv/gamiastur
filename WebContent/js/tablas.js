@@ -1,6 +1,6 @@
 var selectores, selectoresNav, anterior;
 
-$(document).ready(function () {
+$(document).ready(function () {	
     selectoresLanding = $(".selAdmin");
     for (let index = 0; index < selectoresLanding.length; index++) {
         const element = selectoresLanding[index];
@@ -22,19 +22,47 @@ $(document).ready(function () {
     });
 
     $(".itiParadas").click(function () {
-        $("#modalParadasTitle").text("");
+    
+    	alert(${listaParadas});
+    	
+    	/*var paradas = new Array();
+    	
+    	<c:forEach items="${listaParadas}" var="parada" varStatus="status"> 
+    	    paradaDetalles = new Object();
+    	    paradaDetalles.nombre = ${parada.nombre};
+    	    paradaDetalles.itinerario = ${parada.itinerario.iditinerario};
+    	    paradaDetalles.latitud = ${parada.latitud};
+    	    paradaDetalles.longitud = ${parada.longitud};
+    	    
+    	    paradas.push(paradaDetalles);
+    	</c:forEach> */
+    	
+    	
+        var idClick = $(this).attr("value");
+/*
+        <c:forEach items="${listaItinerarios}" var="itinerario">
+        	alert(${itinerario.nombre});
+            <c:if test="${itinerario.id == idClick}">
+                $("#modalParadasTitle").text("Paradas de ${itinerario.nombre}");
+                <c:forEach items="${itinerario.paradas}" var="parada">
+                    $("#modalParadasTable").append("<tr>"
+                    + "<td>${parada.nombre}</td>"
+                    + "<td>${parada.latitud} ${parada.longitud}</td>"
+                    + "<td class='btnTabla'><form action='Mostrar.do' method='post'><input type='hidden' name='tipo' value='parada'/><input type='hidden' name='parada' value='${parada.nombre}'/><button name='submit' value='submit' class='editar'><i class='fas fa-pencil-alt'></i>&nbsp;<span>Editar</span></button></form></td>"
+                    +"<td class='btnTabla'><form action='Eliminar.do' method='post'><input type='hidden' name='tipo' value='parada'/><input type='hidden' name='parada' value='${parada.nombre}'/><button name='submit' value='submit' class='eliminar'><i class='fas fa-times'></i>&nbsp;<span>Eliminar</span></button></form></td>"
+                    + "</tr>");
+                </c:forEach>
+            </c:if>
+        </c:forEach>*/
+    });
 
-        var paradas = $(this).attr("value");
-
-        for (let index = 0; index < paradas.length; index++) {
-            const element = paradas[index];
-            $("#modalParadasTable").append("<tr>"
-                + "<td>" + element.nombre + "</td>"
-                + "<td>" + element.ubicacion + "</td>"
-                + "<td class='btnTabla'><form action='Mostrar.do' method='post'><input type='hidden' name='tipo' value='parada'><input type='hidden' name='parada' value='" + element.nombre + "'><button name='submit' value='submit' class='editar'><i class='fas fa-pencil-alt'></i>&nbsp;<span>Editar</span></button></form></td>"
-                +"<td class='btnTabla'><form action='Eliminar.do' method='post'><input type='hidden' name='tipo' value='parada'><input type='hidden' name='parada' value='" + element.nombre + "'><button name='submit' value='submit' class='eliminar'><i class='fas fa-times'></i>&nbsp;<span>Eliminar</span></button></form></td>"
-                + "</tr>");
-        }
+    $(".eliminar").click(function(){
+    	var form = $(this).parent();
+    	
+        $("#btnEliminarModal").click(function(){
+        	$(this).unbind();
+        	form.submit();
+        });
     });
 });
 
