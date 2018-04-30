@@ -17,12 +17,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/form.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/registro.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/login.js" type="text/javascript"></script>
+    
+    <script> 
+		var error = "${mensajeError}";
+    </script>
 </head>
 
 <body>
@@ -60,7 +66,7 @@
         <h1>Inicia Sesión:</h1>
         <form action="Login.do" method="post">
             <div class="inputCon input-effect">
-                <input type="email" name="email" placeholder="" class="textIn" required/>
+                <input type="email" name="email" placeholder="" class="textIn" value="${prevEmail}" required/>
                 <label>Correo Electrónico</label>
                 <span class="focus-border"></span>
             </div>
@@ -71,13 +77,22 @@
                 <span class="focus-border"></span>
             </div>
             <div>
-                <input type="submit" value="Iniciar Sesión">
+                <input type="submit" class="btn" value="Iniciar Sesión">
                 <span>¿Aún no tienes cuenta?
                     <a href="${pageContext.servletContext.contextPath}/content/registro.jsp">Regístrate</a>
                 </span>
             </div>
 
         </form>
+    </div>
+    
+    <div id="modalError" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-body" id="mensajeError"></div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
     </div>
 
     <footer>

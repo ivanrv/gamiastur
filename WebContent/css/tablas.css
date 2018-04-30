@@ -2,8 +2,7 @@
 
 /*Propiedades de títulos*/
 
-    h1 {
-        font-size: 1.7em;
+    .landing h1 {
         margin-bottom: 35px;
     }
 
@@ -72,7 +71,7 @@
         cursor: pointer;
         background: none!important;
         color: #1F2729;
-        font-size: 0.8em;
+        font-size: 0.9em;
         transition-duration: 0.3s;
     }
 
@@ -83,28 +82,30 @@
     .editar:hover {
         color: #72BCC7;
         transition-duration: 0.3s;
-        font-size: 0.9em;
+        font-size: 1em;
     }
 
     .table tr a.eliminar:hover {
-        font-size: 0.9em;
+        font-size: 1em;
         transition-duration: 0.3s;
         color: #a0292f !important;
     }
 
     .nuevo:hover {
-        font-size: 0.9em;
         transition-duration: 0.3s;
         color: #48ad44 !important;
+        font-size: 1em;
     }
 /*Propiedades de divs*/
 
     .landing {
         display: block;
+        font-size: 1em;
     }
 
     .tablaHid {
         display: none;
+        font-size: 1em;
     }
 
 
@@ -127,16 +128,17 @@
         flex-basis: 15%;
         height: 150px;
         border: 2px solid;
-        padding-top: 35px;
-        font-size: 1.8em;
+        padding-top: 30px;
         margin: 25px 10px;
         margin-left: 0;
         transition: 0.3s;
     }
 
     .selector a span {
-        padding-top: 25px;
-        font-size: 0.7em;
+        padding: 0 7px;
+        padding-top: 15px;
+        font-size: 1.2em;
+        text-align: center;
     }
 
     .selector a:hover {
@@ -144,6 +146,9 @@
         color: #ECF0F1;
     }
 
+    .selAdmin i{
+        font-size: 1.35em;
+    }
 
     /*Propiedades de la barra de navegación del admin*/
 
@@ -196,13 +201,14 @@
 	
 /* Propiedades de ventanas modales */
 
-	#modalParadas .modal-dialog{
+	#modalParadas .modal-dialog, #modalPruebas .modal-dialog{
 		width: 85%;
 		border: 1px solid #1F2729;
-		border-radius: 10px;
+        border-radius: 10px;
+        margin-top: 8%;
 	}
 	
-	#modalParadas .modal-body{
+	#modalParadas .modal-body, #modalPruebas .modal-body{
 		background-color: #ECF0F1;
 		border-bottom-left-radius: 10px;
 		border-bottom-right-radius: 10px;
@@ -210,13 +216,18 @@
 		padding-bottom: 10px;
 	}
 	
-	#modalParadas .modal-header {
+	#modalParadas .modal-header, #modalPruebas .modal-header {
 		background-color: rgb(114, 188, 199);
 		color: #ECF0F1;
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
 		border-bottom: 1px solid #1f2729;
-	}
+    }
+    
+    #modalParadas .modal-header>h4, #modalPruebas .modal-header>h4{
+        font-size: 1.2em;
+        text-align: center;
+    }
 	
 	#modalEliminar .modal-dialog{
 		border: 1px solid #1f2729;

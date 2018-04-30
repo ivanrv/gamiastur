@@ -35,6 +35,8 @@ import com.gamitour.service.ServicePruebaCultural;
 import com.gamitour.service.ServicePruebaCulturalImp;
 import com.gamitour.service.ServicePruebaDeportiva;
 import com.gamitour.service.ServicePruebaDeportivaImp;
+import com.gamitour.service.ServiceRol;
+import com.gamitour.service.ServiceRolImp;
 import com.gamitour.service.ServiceVoto;
 import com.gamitour.service.ServiceVotoImp;
 import com.gamitour.util.Accion;
@@ -50,7 +52,8 @@ public class Nuevo extends Accion{
 		ServiceMultimedia sMultimedia = new ServiceMultimediaImp();
 		ServiceParada sParada = new ServiceParadaImp();
 		ServicePruebaDeportiva sPruebaDeportiva = new ServicePruebaDeportivaImp();
-		String retorno;
+		ServiceRol sRol = new ServiceRolImp();
+		String retorno = "";
 		
 
 		switch(request.getParameter("tipo")){
@@ -82,29 +85,37 @@ public class Nuevo extends Accion{
 				avatar = request.getParameter("avatar");
 			}
 			
-			Cliente cliente = new Cliente(null, request.getParameter("nombre"), request.getParameter("apellidos"), sdf.parse(request.getParameter("fechaNac")), request.getParameter("email"), request.getParameter("password"), telefono, direccion, codigopostal, avatar, 0, new Date());
+			Cliente cliente;
+			try {
+				cliente = new Cliente(sRol.buscarPorNombre("user"), request.getParameter("nombre"), request.getParameter("apellidos"), sdf.parse(request.getParameter("fechaNac")), request.getParameter("email"), request.getParameter("password"), telefono, direccion, codigopostal, avatar, 0, new Date());
+				sCliente.insertar(cliente);
+				
+				System.out.println("tamos cool");
+				
+				request.getSession().setAttribute("userRol", cliente.getRol().getNombre());
+				request.getSession().setAttribute("username",
+						cliente.getNombre() + " " + cliente.getApellidos().substring(0, cliente.getApellidos().indexOf(" ")));
+				request.getSession().setAttribute("userEmail", cliente.getEmail());
+				
+				retorno = "/content/user/index.jsp";
 			
-			sCliente.insertar(cliente);
-			
-			request.getSession().setAttribute("userRol", cliente.getRol().getNombre());
-			request.getSession().setAttribute("username",
-					cliente.getNombre() + " " + cliente.getApellidos().substring(0, cliente.getApellidos().indexOf(" ")));
-			request.getSession().setAttribute("userEmail", cliente.getEmail());
-			
-			retorno = "/content/user/index.jsp";
+			} catch (ParseException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 			
 			break;
 			
 		case "actividad":
 			ServiceActividad sActividad = new ServiceActividadImp();
-			try {
-				Actividad actividad = new Actividad(request.getParameter("nombre"), sdf.parse(request.getParameter("inicio")), sdf.parse(request.getParameter("fin")), request.getParameter("ubicacion"), 0, Float.parseFloat(request.getParameter("precio")), request.getParameter("imagen"), Integer.parseInt(request.getParameter("puntos")), null);
-				sActividad.insertar(actividad);
+			/*try {
+				//Actividad actividad = new Actividad(request.getParameter("nombre"), sdf.parse(request.getParameter("inicio")), sdf.parse(request.getParameter("fin")), request.getParameter("ubicacion"), 0, Float.parseFloat(request.getParameter("precio")), request.getParameter("imagen"), Integer.parseInt(request.getParameter("puntos")), null);
+				//sActividad.insertar(actividad);
 				request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());
 				retorno = "/content/admin/mostrarAdmin.jsp";
 			} catch (NumberFormatException | ParseException e) {
 				e.printStackTrace();
-			}			
+			}		*/	
 			break;
 			
 		case "comentario":
@@ -113,8 +124,8 @@ public class Nuevo extends Accion{
 			break;
 			
 		case "itinerario":
-			Itinerario itinerario = new Itinerario(request.getParameter("nombre"), request.getParameter("categoria"), request.getParameter("duracion"), request.getParameter("ubicacion"), null);
-			sItinerario.insertar(itinerario);
+			//Itinerario itinerario = new Itinerario(request.getParameter("nombre"), request.getParameter("categoria"), request.getParameter("duracion"), request.getParameter("ubicacion"), null);
+			//sItinerario.insertar(itinerario);
 			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
 			retorno = "/content/admin/mostrarAdmin.jsp";
 			break;
@@ -126,20 +137,20 @@ public class Nuevo extends Accion{
 		case "noticia":
 			ServiceNoticia sNoticia = new ServiceNoticiaImp();
 			Noticia noticia;
-			try {
-				noticia = new Noticia(request.getParameter("nombre"), request.getParameter("texto"), sdf.parse(request.getParameter("alta")), sdf.parse(request.getParameter("caducidad")), request.getParameter("imagen"));
+			/*try {
+				//noticia = new Noticia(request.getParameter("nombre"), request.getParameter("texto"), sdf.parse(request.getParameter("alta")), sdf.parse(request.getParameter("caducidad")), request.getParameter("imagen"));
 				sNoticia.insertar(noticia);
 				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
 				retorno = "/content/admin/mostrarAdmin.jsp";
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			break;
 			
 		case "parada":
-			Parada parada = new Parada(sItinerario.buscarPorNombre(request.getParameter("itinerario")), request.getParameter("nombre"), Integer.parseInt(request.getParameter("nParada")), request.getParameter("ubicacion"), request.getParameter("historia"), request.getParameter("anecdotario"), request.getParameter("gastronomia"), request.getParameter("imagen"), null, null);
-			sParada.insertar(parada);
+			//Parada parada = new Parada(sItinerario.buscarPorNombre(request.getParameter("itinerario")), request.getParameter("nombre"), Integer.parseInt(request.getParameter("nParada")), request.getParameter("ubicacion"), request.getParameter("historia"), request.getParameter("anecdotario"), request.getParameter("gastronomia"), request.getParameter("imagen"), null, null);
+			//sParada.insertar(parada);
 			request.getSession().setAttribute("listaParadas", sParada.buscarTodos());
 			break;
 			

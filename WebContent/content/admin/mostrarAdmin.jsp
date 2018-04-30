@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
             <!DOCTYPE html>
             <html lang="es">
@@ -25,6 +24,31 @@
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/tablas.js"></script>
+                
+                <script> 
+                	var stringParadas = "[";
+
+                	<c:forEach items="${listaParadas}" var="parada" varStatus="status">
+						stringParadas += '{"nombre": "${parada.nombre}", "itinerario": "${parada.itinerario.nombre}", "latitud": "${parada.latitud}", "longitud": "${parada.longitud}"}';
+						<c:if test="${!status.last}"> stringParadas += ","</c:if>					
+					</c:forEach>
+					stringParadas += "]";
+
+                	stringDeportivas = "[";
+					<c:forEach items="${listaDeportivas}" var="deportiva" varStatus="status">
+						stringDeportivas += '{"nombre": "${deportiva.nombre}", "parada": "${deportiva.parada.nombre}", "fechainicio": "${deportiva.fechainicio}", "explicacion": "${deportiva.explicacion}", "puntos": "${deportiva.puntos}"}';
+						<c:if test="${!status.last}"> stringDeportivas += ","</c:if>					
+					</c:forEach>
+					stringDeportivas += "]";
+
+                	stringCulturales = "[";
+					<c:forEach items="${listaCulturales}" var="cultural" varStatus="status">
+						stringCulturales += '{"nombre": "${cultural.nombre}", "parada": "${cultural.parada.nombre}", "puntos": "${cultural.puntos}"}';
+						<c:if test="${!status.last}"> stringCulturales += ","</c:if>					
+					</c:forEach>
+					stringCulturales += "]";
+					
+                </script>
             </head>
 
             <body>
@@ -356,7 +380,7 @@
                                         <td>${itinerario.categoria}</td>
                                         <td>FALTA POR HACER UBICACION</td>
                                         <td>
-                                            <a href="#modalParadas" value="${itinerario.iditinerario}" class="itiParadas" data-toggle="modal">
+                                            <a href="#modalParadas" value="${itinerario.nombre}" class="itiParadas" data-toggle="modal">
                                                 <i class="fas fa-map-pin"></i> Ver paradas
                                             </a>
                                         </td>
@@ -508,7 +532,9 @@
                                         <td>${parada.nombre}</td>
                                         <td>${parada.itinerario.nombre}</td>
                                         <td>FALTA POR HACER UBICACION</td>
-                                        <td>FALTA POR HACER PRUEBAS</td>
+                                        <td><a href="#modalPruebas" value="${parada.nombre}" class="paradaPruebas" data-toggle="modal">
+                                                <i class="fas fa-flag"></i> Ver pruebas
+                                            </a></td>
                                         <td class="btnTabla">
                                             <form action="Mostrar.do" method="post">
                                                 <input type="hidden" name="tipo" value="parada">
@@ -605,7 +631,7 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Parada</th>
-                                    <th>Pregunta</th>
+                                    <th>Puntos</th>
                                     <th class="theadHide"></th>
                                     <th class="theadHide"></th>
                                 </tr>
@@ -613,7 +639,7 @@
                                     <tr class="lineaFiltro">
                                         <td>${cultural.nombre}</td>
                                         <td>${cultural.parada.nombre}</td>
-                                        <td>${cultural.pregunta}</td>
+                                        <td>${cultural.puntos}</td>
                                         <td class="btnTabla">
                                             <form action="Mostrar.do" method="post">
                                                 <input type="hidden" name="tipo" value="cultural">
@@ -659,6 +685,7 @@
                                     <th>Parada</th>
                                     <th>Fecha Inicio</th>
                                     <th>Explicación</th>
+                                    <th>Puntos</th>
                                     <th class="theadHide"></th>
                                     <th class="theadHide"></th>
                                 </tr>
@@ -668,6 +695,7 @@
                                         <td>${deportiva.parada.nombre}</td>
                                         <td>${deportiva.fechainicio}</td>
                                         <td>${deportiva.explicacion}</td>
+                                        <td>${deportiva.puntos}</td>
                                         <td class="btnTabla">
                                             <form action="Mostrar.do" method="post">
                                                 <input type="hidden" name="tipo" value="deportiva">
@@ -770,6 +798,39 @@
                                 <tr id="modalParadas">
                                     <th>Nombre</th>
                                     <th>Ubicación</th>
+                                    <th class="theadHide"></th>
+                                    <th class="theadHide"></th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="modalPruebas" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" id="modalPruebasTitle"></h4>
+                        </div>
+
+                        <div class="modal-body">
+                        	<h3>Pruebas Deportivas</h3>
+                            <table class="table table-striped table-responsive" id="modalPruebasDepTable">
+                                <tr id="modalParadas">
+                                    <th>Nombre</th>
+                                    <th>Inicio</th>
+                                    <th>Explicación</th>
+                                    <th>Puntos</th>
+                                    <th class="theadHide"></th>
+                                    <th class="theadHide"></th>
+                                </tr>
+                            </table>
+                            
+                            <h3>Pruebas Culturales</h3>
+                            <table class="table table-striped table-responsive" id="modalPruebasCulTable">
+                                <tr id="modalParadas">
+                                    <th>Nombre</th>
+                                    <th>Puntos</th>
                                     <th class="theadHide"></th>
                                     <th class="theadHide"></th>
                                 </tr>

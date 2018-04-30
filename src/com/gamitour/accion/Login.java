@@ -1,5 +1,6 @@
 package com.gamitour.accion;
 
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,10 +15,18 @@ public class Login extends Accion {
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 
 		ServiceCliente sCliente = new ServiceClienteImp();
-		Cliente cliente = sCliente.buscarPorEmail(request.getParameter("email"));
-
+		Cliente cliente;
+		
+		try{
+			cliente = sCliente.buscarPorEmail(request.getParameter("email"));
+		}catch(NoResultException e){
+			cliente = null;
+		}
+		
+		
 		if (cliente == null) {
 			request.setAttribute("mensajeError", "email");
+			request.setAttribute("prevEmail", request.getParameter("email"));
 			return "/content/login.jsp";
 		} else {
 			if (cliente.getPassword().equals(request.getParameter("password"))) {
@@ -37,7 +46,7 @@ public class Login extends Accion {
 					return "/content/user/index.jsp";
 				}
 			} else {
-				request.setAttribute("mensajeError", "contraseña");
+				request.setAttribute("mensajeError", "pass");
 				return "/content/login.jsp";
 			}
 		}

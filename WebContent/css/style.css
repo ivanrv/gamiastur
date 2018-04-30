@@ -8,16 +8,14 @@
     box-sizing: border-box;
 }
 
-:focus{
-	outline: none;
-	text-decoration: none;
-}
-
 body {
     background-color: #ECF0F1;
 }
 
-
+a:hover, a:focus{
+    text-decoration: none;
+    outline: none;
+}
 
 /*Propiedades del header de la página*/
 
@@ -37,7 +35,7 @@ body {
     /*Propiedades del div de usuario anónimo*/
 
         header .anonimo {
-            flex-basis: 15%;
+            flex-basis: 20%;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -287,12 +285,17 @@ body {
 /*Propiedades del contenido de la página*/
 
     .content {
+        font-size: 1em;
         color: #1F2729;
         margin-bottom: 35px;
         margin-top: 200px;
         background-color: rgba(181, 229, 242, 0.25);
         padding: 45px 30px 45px 30px;
         min-height: 536px;
+    }
+
+    .content h1{
+        font-size: 3.5em;
     }
 
 
@@ -382,4 +385,10 @@ body {
     background-color: #72BCC7;
     color: #1F2729;
     transition-duration: 0.2s;
+}
+
+.btn:focus{
+    border: none;
+    box-shadow: none;
+    outline: none;
 }

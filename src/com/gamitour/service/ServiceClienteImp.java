@@ -41,4 +41,9 @@ public class ServiceClienteImp implements ServiceCliente {
 		return c.buscarTodos();
 	}
 
+	@Override
+	public List<String> buscarEmails() {
+		return c.buscarEmails();
+	}
+
 }
