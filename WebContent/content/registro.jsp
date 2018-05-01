@@ -16,6 +16,7 @@
     <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/form.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/registro.css" />
@@ -28,6 +29,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
     <script src="${pageContext.servletContext.contextPath}/js/registro.js" type="text/javascript"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
     
     <script> var emails = "${clientes}" </script>
 </head>
@@ -72,7 +74,7 @@
 
     <div class="content">
         <h1>Regístrate:</h1>
-        <span style="font-size: 0.6em;">Los campos marcados con asteriscos son obligatorios</span>
+        <span style="font-size: 0.9em;">Los campos marcados con asteriscos son obligatorios</span>
         <form action="Nuevo.do" method="post" id="regForm">
             <input type="hidden" name="tipo" value="cliente">
             <div class="inputCon input-effect">
@@ -140,7 +142,7 @@
             </div>
 
             <div>
-                <a class="btn" id="btnRegistro">Registrarse</a>
+                <a class="btn" id="btnRegistro" onclick="loading();">Registrarse</a>
                 <span>¿Ya tienes cuenta?
                     <a href="${pageContext.servletContext.contextPath}/content/login.jsp">Inicia sesión</a>
                 </span>
@@ -176,6 +178,15 @@
 
         <p>Gamitour &copy; 2018</p>
     </footer>
+    
+    <div id="loader">
+        <div class="sk-folding-cube">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
+    </div>
 </body>
 
 </html>

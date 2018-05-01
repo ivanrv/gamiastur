@@ -92,6 +92,73 @@
         color: #1F2729;
     }
 
+        /* Propiedades de los datepicker */
+
+            .ui-datepicker{
+                width: 20%;
+                background-color: rgba(236, 240, 241, 0.7);
+                border: 1.2px solid #72BCC7; 
+                padding: 25px 15px;
+                padding-top: 7px;
+                margin-top: 7px;
+                color: #1F2729;
+            }
+
+            .ui-datepicker-prev{
+                text-align: left;
+                cursor: pointer;
+            }
+
+            .ui-datepicker-next{
+                text-align: right;
+                float: right;
+                cursor: pointer;
+            }
+
+            .ui-datepicker-next span, .ui-datepicker-prev span{
+                font-size: 0.7em;
+                color: #72BCC7;
+            }
+
+            .ui-datepicker-next:hover span, .ui-datepicker-prev:hover span{
+                color: #2C3E50;
+                transition-duration: 0.3s;
+            }
+
+            .ui-datepicker-title{
+                text-align: center;
+            }
+
+            .ui-datepicker-title span{
+                font-weight: bold;
+            }
+
+            .ui-datepicker-calendar{
+                margin: 0 auto;
+                width: 95%;
+            }
+
+            .ui-datepicker-calendar a{
+                text-decoration: none;
+                color: #1F2729
+            }
+
+            .ui-datepicker-calendar td{
+                text-align: center;
+                background-color: rgba(114, 188, 199, 0.15);
+                cursor: pointer;
+            }
+
+            .ui-datepicker-calendar td:hover{
+                color: #ECF0F1;
+                background-color: rgba(31, 39, 41, 0.4);
+            }
+
+            .ui-state-disabled{
+                visibility: hidden;
+            }
+
+
     /*Animación de los campos de texto*/
 
         :focus{

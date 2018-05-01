@@ -4,13 +4,17 @@ $(document).ready(function () {
     selectoresLanding = $(".selAdmin");
     for (let index = 0; index < selectoresLanding.length; index++) {
         const element = selectoresLanding[index];
-        element.addEventListener("click", function () { first(this.getAttribute("value")); }, false);
+
+        if(!element.classList.contains("selAdminDisabled"))
+            element.addEventListener("click", function () { first(this.getAttribute("value")); }, false);
     }
 
     selectoresNav = $(".selAdminNav");
     for (let index = 0; index < selectoresNav.length; index++) {
         const element = selectoresNav[index];
-        element.addEventListener("click", function () { select(this.getAttribute("value")); }, false);
+
+        if(!element.classList.contains("selAdminNavDisabled"))
+            element.addEventListener("click", function () { select(this.getAttribute("value")); }, false);
     }
 
     $("#buscador").on("keyup", function () {
@@ -67,12 +71,13 @@ $(document).ready(function () {
     });
 
     $(".eliminar").click(function(){
+        loading();
     	var form = $(this).parent();
     	
         $("#btnEliminarModal").click(function(){
         	$(this).unbind();
         	form.submit();
-        });
+        });  
     });
 });
 

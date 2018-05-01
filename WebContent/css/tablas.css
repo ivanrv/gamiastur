@@ -3,6 +3,7 @@
 /*Propiedades de títulos*/
 
     .landing h1 {
+        font-size: 2.5em;
         margin-bottom: 35px;
     }
 
@@ -51,7 +52,7 @@
     
     .table tr a{
     	color: #1F2729;
-    	font-size: 0.9em;
+    	font-size: 0.8em;
     }
 
     .table tr a:hover {
@@ -71,7 +72,7 @@
         cursor: pointer;
         background: none!important;
         color: #1F2729;
-        font-size: 0.9em;
+        font-size: 0.8em;
         transition-duration: 0.3s;
     }
 
@@ -82,11 +83,11 @@
     .editar:hover {
         color: #72BCC7;
         transition-duration: 0.3s;
-        font-size: 1em;
+        font-size: 0.9em;
     }
 
     .table tr a.eliminar:hover {
-        font-size: 1em;
+        font-size: 0.9em;
         transition-duration: 0.3s;
         color: #a0292f !important;
     }
@@ -94,7 +95,7 @@
     .nuevo:hover {
         transition-duration: 0.3s;
         color: #48ad44 !important;
-        font-size: 1em;
+        font-size: 0.9em;
     }
 /*Propiedades de divs*/
 
@@ -150,6 +151,17 @@
         font-size: 1.35em;
     }
 
+    .selector .selAdminDisabled{
+        cursor: not-allowed;
+        color: rgba(31, 39, 41, 0.2);
+        border-color: rgba(31, 39, 41, 0.5);
+    }
+
+    .selector .selAdminDisabled:hover{
+        color: rgba(31, 39, 41, 0.5);
+        background-color: transparent;
+    }
+
     /*Propiedades de la barra de navegación del admin*/
 
     .admin {
@@ -183,6 +195,15 @@
 
     .admin .navAdmin a:hover, .admin .navAdmin .selected {
         color: #72BCC7;
+    }
+
+    .admin .navAdmin .selAdminNavDisabled{
+        color: rgba(31, 39, 41, 0.5); 
+        cursor: not-allowed;
+    }
+
+    .admin .navAdmin .selAdminNavDisabled:hover{
+        color: rgba(31, 39, 41, 0.5);
     }
 
 /* Propiedades de barra del buscador */

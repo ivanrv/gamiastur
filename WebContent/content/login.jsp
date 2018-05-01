@@ -15,6 +15,7 @@
     <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/form.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/registro.css" />
@@ -25,6 +26,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
     <script src="${pageContext.servletContext.contextPath}/js/login.js" type="text/javascript"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
     
     <script> 
 		var error = "${mensajeError}";
@@ -77,7 +79,7 @@
                 <span class="focus-border"></span>
             </div>
             <div>
-                <input type="submit" class="btn" value="Iniciar Sesión">
+                <input type="submit" class="btn" value="Iniciar Sesión" onclick="loading();">
                 <span>¿Aún no tienes cuenta?
                     <a href="${pageContext.servletContext.contextPath}/content/registro.jsp">Regístrate</a>
                 </span>
@@ -113,6 +115,15 @@
 
         <p>Gamitour &copy; 2018</p>
     </footer>
+    
+    <div id="loader">
+			        <div class="sk-folding-cube">
+			            <div class="sk-cube1 sk-cube"></div>
+			            <div class="sk-cube2 sk-cube"></div>
+			            <div class="sk-cube4 sk-cube"></div>
+			            <div class="sk-cube3 sk-cube"></div>
+			        </div>
+			    </div>
 </body>
 
 </html>

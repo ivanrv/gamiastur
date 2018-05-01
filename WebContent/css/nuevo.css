@@ -2,6 +2,14 @@
     display: block;
 }
 
+.tit h1{
+    font-size: 2em;
+}
+
+.tit span{
+    font-size: 0.8em;
+}
+
 #nuevoForm{
     display: grid;
     grid-template-areas: 
@@ -21,11 +29,19 @@ form{
     flex-direction: column;
     justify-content: space-around;
     min-height: 400px;
+    font-size: 1em;
 }
-
 
 form div{
     all: initial;
+}
+
+form .textIn{
+    height: 38px;
+}
+
+form .textIn ~ label{
+    font-size: 1.1em;
 }
 
 .col1, .col2{
@@ -59,6 +75,10 @@ form div{
 
 .sbmt{
     grid-area: sbmt;
+}
+
+.sbmt .btn{
+    margin: 0 15px;
 }
 
 .tit{

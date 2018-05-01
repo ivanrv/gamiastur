@@ -6,6 +6,12 @@ $(document).ready(function() {
 
 	$(function() {
 		$(".datepicker").datepicker({
+			dateFormat: "dd-mm-yy",
+			firstDay: 1,
+			nextText: "Siguiente &raquo;",
+			prevText: "&laquo; Anterior",
+			monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octrubre", "Noviembre", "Diciembre" ],
+			dayNamesMin: [ "D", "L", "M", "X", "J", "V", "S" ],
 			onSelect : function() {
 				$(this).addClass("has-content");
 			}
