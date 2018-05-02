@@ -28,6 +28,15 @@
             </head>
 
             <body>
+            <div id="loader">
+			        <div class="sk-folding-cube">
+			            <div class="sk-cube1 sk-cube"></div>
+			            <div class="sk-cube2 sk-cube"></div>
+			            <div class="sk-cube4 sk-cube"></div>
+			            <div class="sk-cube3 sk-cube"></div>
+			        </div>
+			    </div>
+            
                 <header>
                     <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
                         <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
@@ -92,7 +101,7 @@
 	                        </div>
 	                        <div class="inputCon input-effect">
 	                            <input class="textIn" type="text" name="categoria" placeholder="" required/>
-	                            <label>Categoria *</label>
+	                            <label>Categoría *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
 	                        <div class="inputCon input-effect">
@@ -130,15 +139,6 @@
 
                     <p>Gamitour &copy; 2018</p>
                 </footer>
-                
-                <div id="loader">
-			        <div class="sk-folding-cube">
-			            <div class="sk-cube1 sk-cube"></div>
-			            <div class="sk-cube2 sk-cube"></div>
-			            <div class="sk-cube4 sk-cube"></div>
-			            <div class="sk-cube3 sk-cube"></div>
-			        </div>
-			    </div>
             </body>
 
             </html>

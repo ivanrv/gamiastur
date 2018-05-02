@@ -80,6 +80,19 @@ public class GenericDAOImp<T, Id extends Serializable> implements GenericDAO<T, 
 		sf.getCurrentSession().getTransaction().commit();
 		sf.getCurrentSession().close();
 	}
+
+	@Override
+	public List<String> buscarNombres() {
+		List<String> nombres;
+		
+		sf.getCurrentSession().beginTransaction();
+		Query q = sf.getCurrentSession().createQuery("select o.nombre from " + claseDePersistencia.getSimpleName() + " o");
+		nombres = q.getResultList();
+		sf.getCurrentSession().getTransaction().commit();
+		sf.getCurrentSession().close();
+		
+		return nombres;
+	}
 	
 	
 }

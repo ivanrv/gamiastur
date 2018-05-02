@@ -10,4 +10,5 @@ public interface ServiceNoticia {
 	public void actualizar(Noticia noticia);
 	public Noticia buscarPorNombre(String nombre);
 	public List<Noticia> buscarTodos();
+	public List<String> buscarNombres();
 }

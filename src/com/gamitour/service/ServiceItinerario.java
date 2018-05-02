@@ -10,4 +10,5 @@ public interface ServiceItinerario {
 	public void actualizar(Itinerario itinerario);
 	public Itinerario buscarPorNombre(String nombre);
 	public List<Itinerario> buscarTodos();
+	public List<String> buscarNombres();
 }

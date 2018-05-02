@@ -41,4 +41,9 @@ public class ServiceActividadImp implements ServiceActividad {
 		return a.buscarTodos();
 	}
 
+	@Override
+	public List<String> buscarNombres() {
+		return a.buscarNombres();
+	}
+
 }

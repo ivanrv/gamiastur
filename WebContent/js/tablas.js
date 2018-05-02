@@ -70,12 +70,12 @@ $(document).ready(function () {
         	$("#modalPruebasCulTable").append('<tr class="pruebaRow"><td colspan="2">No existen pruebas culturales asociadas a esta parada</td></tr>');
     });
 
-    $(".eliminar").click(function(){
-        loading();
+    $(".eliminar").click(function(){        
     	var form = $(this).parent();
     	
         $("#btnEliminarModal").click(function(){
         	$(this).unbind();
+        	loading();
         	form.submit();
         });  
     });

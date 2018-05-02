@@ -10,4 +10,5 @@ public interface ServiceActividad {
 	public void actualizar(Actividad actividad);
 	public Actividad buscarPorNombre(String nombre);
 	public List<Actividad> buscarTodos();
+	public List<String> buscarNombres();
 }

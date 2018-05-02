@@ -42,7 +42,7 @@ public class Update extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
 		ServiceCliente sCliente = new ServiceClienteImp();
 		ServiceItinerario sItinerario = new ServiceItinerarioImp();
@@ -65,9 +65,9 @@ public class Update extends Accion{
 				
 				actividad.setFechainicio(sdf.parse(request.getParameter("inicio")));
 				actividad.setFechafin(sdf.parse(request.getParameter("fin")));
-				actividad.setUbicacion(request.getParameter("ubicacion"));
+				actividad.setLatitud(request.getParameter("ubicacion"));
+				actividad.setLongitud(request.getParameter("longitud"));
 				actividad.setPrecio(Float.parseFloat(request.getParameter("precio")));
-				actividad.setImagen(request.getParameter("imagen"));
 				actividad.setPuntos(Integer.parseInt(request.getParameter("puntos")));
 				
 				sActividad.actualizar(actividad);
@@ -87,7 +87,8 @@ public class Update extends Accion{
 			
 			itinerario.setCategoria(request.getParameter("categoria"));
 			itinerario.setDuracion(request.getParameter("duracion"));
-			itinerario.setUbicacion(request.getParameter("ubicacion"));
+			itinerario.setLatitud(request.getParameter("ubicacion"));
+			itinerario.setLongitud(request.getParameter("ubicacion"));
 			
 			sItinerario.actualizar(itinerario);
 			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
@@ -105,13 +106,11 @@ public class Update extends Accion{
 				
 				noticia.setFechaalta(sdf.parse(request.getParameter("alta")));
 				noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));
-				noticia.setImagen(request.getParameter("imagen"));
 				noticia.setTexto(request.getParameter("texto"));
 				
 				sNoticia.actualizar(noticia);
 				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			break;
@@ -121,8 +120,10 @@ public class Update extends Accion{
 			
 			parada.setItinerario(sItinerario.buscarPorNombre(request.getParameter("itinerario")));
 			parada.setNumeroParada(Integer.parseInt(request.getParameter("nParada")));
-			parada.setUbicacion(request.getParameter("ubicacion"));
-			parada.setImagen(request.getParameter("imagen"));
+			
+			parada.setLatitud(request.getParameter("ubicacion"));
+			parada.setLongitud(request.getParameter("ubicacion"));
+			
 			parada.setHistoria(request.getParameter("historia"));
 			parada.setAnecdotario(request.getParameter("anecdotario"));
 			parada.setGastronomia(request.getParameter("gastronomia"));
@@ -156,13 +157,11 @@ public class Update extends Accion{
 				deportiva.setParada(sParada.buscarPorNombre(request.getParameter("parada")));
 				deportiva.setFechainicio(sdf.parse(request.getParameter("inicio")));
 				deportiva.setFechafin(sdf.parse(request.getParameter("fin")));
-				deportiva.setExplicacion(request.getParameter("explicacion"));
 				deportiva.setPuntos(Integer.parseInt(request.getParameter("puntos")));
 				
 				sPruebaDeportiva.actualizar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
 			} catch (NumberFormatException | ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			break;

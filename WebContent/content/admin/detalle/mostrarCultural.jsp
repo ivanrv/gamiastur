@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+        <%@ page import="com.gamitour.service.ServicePruebaCulturalImp" %>
             <!DOCTYPE html>
             <html lang="es">
 
@@ -25,9 +26,26 @@
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js" type="text/javascript"></script>
+                
+                <script> var nombres = "${nombres}" </script>
             </head>
 
             <body>
+            
+            <jsp:useBean id="sPruebaCulturalImp" class="com.gamitour.service.ServicePruebaCulturalImp" />
+	
+			<%
+				ServicePruebaCulturalImp sPruebaCultural = new ServicePruebaCulturalImp();
+				request.getSession().setAttribute("nombres", sPruebaCultural.buscarNombres());
+			%>
+            <div id="loader">
+			        <div class="sk-folding-cube">
+			            <div class="sk-cube1 sk-cube"></div>
+			            <div class="sk-cube2 sk-cube"></div>
+			            <div class="sk-cube4 sk-cube"></div>
+			            <div class="sk-cube3 sk-cube"></div>
+			        </div>
+			    </div>
                 <header>
                     <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
                         <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
@@ -80,6 +98,7 @@
                     <div id="nuevoForm">
                         <div class="tit">
                             <h1>Modificación de Prueba Cultural: ${cultural.nombre}</h1>
+                            <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
                             <form action="Update.do" method="post">
@@ -92,12 +111,12 @@
                                             <option value="${parada.nombre}">${parada.nombre}</option>
                                         </c:forEach>
                                     </select>
-                                    <label>Seleccione una parada</label>
+                                    <label>Seleccione una parada *</label>
                                     <span class="focus-border"></span>
                                 </div>
                                 <div class="inputCon input-effect">
                                     <input class="textIn has-content" type="text" name="pregunta" placeholder="" value="${cultural.pregunta}" required/>
-                                    <label>Pregunta</label>
+                                    <label>Pregunta *</label>
                                     <span class="focus-border"></span>
                                 </div>
                                 
@@ -106,18 +125,18 @@
                             
                             <div class="inputCon input-effect">
                                 <input class="textIn has-content" type="text" name="respuesta" placeholder="" value="${cultural.respuesta}" required/>
-                                <label>Respuesta</label>
+                                <label>Respuesta *</label>
                                 <span class="focus-border"></span>
                             </div>
                             <div class="inputCon input-effect">
                                 <input class="textIn has-content" type="number" name="puntos" placeholder="" value="${cultural.puntos}" required/>
-                                <label>Puntos</label>
+                                <label>Puntos *</label>
                                 <span class="focus-border"></span>
                             </div>
                         </div>
 
                         <div class="sbmt">
-                            <input type="submit" value="Actualizar">
+                            <input type="submit" value="Actualizar" class="btn">
                         </div>
                         </form>
                     </div>
@@ -141,15 +160,6 @@
 
                     <p>Gamitour &copy; 2018</p>
                 </footer>
-                
-                <div id="loader">
-			        <div class="sk-folding-cube">
-			            <div class="sk-cube1 sk-cube"></div>
-			            <div class="sk-cube2 sk-cube"></div>
-			            <div class="sk-cube4 sk-cube"></div>
-			            <div class="sk-cube3 sk-cube"></div>
-			        </div>
-			    </div>        
             </body>
 
             </html>

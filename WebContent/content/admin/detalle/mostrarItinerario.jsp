@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+        <%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
             <!DOCTYPE html>
             <html lang="es">
 
@@ -17,6 +18,7 @@
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/loader.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/style.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/form.css" type="text/css">
+                <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/nuevo.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/media.css" type="text/css">
                 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -25,9 +27,26 @@
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js" type="text/javascript"></script>
+                
+                <script> var nombres = "${nombres}" </script>
             </head>
 
             <body>
+            <div id="loader">
+	            <jsp:useBean id="sParadaImp" class="com.gamitour.service.ServiceParadaImp" />
+		
+				<%
+					ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
+					request.getSession().setAttribute("nombres", sItinerario.buscarNombres());
+				%>
+            
+			        <div class="sk-folding-cube">
+			            <div class="sk-cube1 sk-cube"></div>
+			            <div class="sk-cube2 sk-cube"></div>
+			            <div class="sk-cube4 sk-cube"></div>
+			            <div class="sk-cube3 sk-cube"></div>
+			        </div>
+			    </div>
                 <header>
                     <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
                         <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
@@ -78,29 +97,34 @@
                 </nav>
 
                 <div class="content">
-                    <h1>Actualización de Itinerario: ${itinerario.nombre}</h1>
-                    <form action="Update.do" method="post">
-                        <input type="hidden" name="tipo" value="itinerario">
-                        <input type="hidden" name="nombre" value="${itinerario.nombre}">
-                        <div class="inputCon input-effect">
-                            <input class="textIn has-content" type="text" name="categoria" placeholder="" value="${itinerario.categoria}" required/>
-                            <label>Categoria</label>
-                            <span class="focus-border"></span>
-                        </div>
-                        <div class="inputCon input-effect">
-                            <input class="textIn has-content" type="text" name="duracion" placeholder="" value="${itinerario.duracion}" required/>
-                            <label>Duración</label>
-                            <span class="focus-border"></span>
-                        </div>
-                        <div class="inputCon input-effect">
-                            <input class="textIn has-content" type="text" name="ubicacion" placeholder="" value="${itinerario.latitud} ${itinerario.longitud}" required/>
-                            <label>Ubicación</label>
-                            <span class="focus-border"></span>
-                        </div>
-                        <div>
-                            <input type="submit" value="Actualizar">
-                        </div>
-                    </form>
+					<div class="tit">              
+                    	<h1>Datos del nuevo Itinerario:</h1>
+                    	<span>Los campos marcados con asteriscos son obligatorios</span>
+                    </div>
+                    <div style="width: 30%; margin: auto;">
+	                    <form action="Update.do" method="post">
+	                        <input type="hidden" name="tipo" value="itinerario">
+	                        <input type="hidden" name="nombre" value="${itinerario.nombre}">
+	                        <div class="inputCon input-effect">
+	                            <input class="textIn has-content" type="text" name="categoria" placeholder="" value="${itinerario.categoria}" required/>
+	                            <label>Categoría *</label>
+	                            <span class="focus-border"></span>
+	                        </div>
+	                        <div class="inputCon input-effect">
+	                            <input class="textIn has-content" type="text" name="duracion" placeholder="" value="${itinerario.duracion}" required/>
+	                            <label>Duración *</label>
+	                            <span class="focus-border"></span>
+	                        </div>
+	                        <div class="inputCon input-effect">
+	                            <input class="textIn has-content" type="text" name="ubicacion" placeholder="" value="${itinerario.latitud} ${itinerario.longitud}" required/>
+	                            <label>Ubicación *</label>
+	                            <span class="focus-border"></span>
+	                        </div>
+	                        <div>
+	                            <input type="submit" value="Actualizar">
+	                        </div>
+	                    </form>
+                    </div>
                 </div>
 
                 <footer>
@@ -121,15 +145,6 @@
 
                     <p>Gamitour &copy; 2018</p>
                 </footer>
-                
-                <div id="loader">
-			        <div class="sk-folding-cube">
-			            <div class="sk-cube1 sk-cube"></div>
-			            <div class="sk-cube2 sk-cube"></div>
-			            <div class="sk-cube4 sk-cube"></div>
-			            <div class="sk-cube3 sk-cube"></div>
-			        </div>
-			    </div>
             </body>
 
             </html>

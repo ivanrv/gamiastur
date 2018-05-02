@@ -41,4 +41,9 @@ public class ServicePruebaCulturalImp implements ServicePruebaCultural {
 		return p.buscarTodos();
 	}
 
+	@Override
+	public List<String> buscarNombres() {
+		return p.buscarNombres();
+	}
+
 }

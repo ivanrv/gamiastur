@@ -10,4 +10,5 @@ public interface ServicePruebaDeportiva {
 	public void actualizar(Pruebadeportiva prueba);
 	public Pruebadeportiva buscarPorNombre(String nombre);
 	public List<Pruebadeportiva> buscarTodos();
+	public List<String> buscarNombres();
 }
