@@ -151,7 +151,7 @@
             </div>
 
             <div>
-                <a class="btn" id="btnRegistro" onclick="loading();">Registrarse</a>
+                <a class="btn" id="btnRegistro">Registrarse</a>
                 <span>¿Ya tienes cuenta?
                     <a href="${pageContext.servletContext.contextPath}/content/login.jsp">Inicia sesión</a>
                 </span>

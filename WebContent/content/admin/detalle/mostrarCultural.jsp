@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-        <%@ page import="com.gamitour.service.ServicePruebaCulturalImp" %>
             <!DOCTYPE html>
             <html lang="es">
 
@@ -15,6 +14,7 @@
                 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
                 <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
                 
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/loader.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/style.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/form.css" type="text/css">
@@ -26,19 +26,11 @@
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js" type="text/javascript"></script>
-                
-                <script> var nombres = "${nombres}" </script>
+                <script src="${pageContext.servletContext.contextPath}/js/formFilterCulturalU.js" type="text/javascript"></script>
             </head>
 
             <body>
-            
-            <jsp:useBean id="sPruebaCulturalImp" class="com.gamitour.service.ServicePruebaCulturalImp" />
-	
-			<%
-				ServicePruebaCulturalImp sPruebaCultural = new ServicePruebaCulturalImp();
-				request.getSession().setAttribute("nombres", sPruebaCultural.buscarNombres());
-			%>
-            <div id="loader">
+                <div id="loader">
 			        <div class="sk-folding-cube">
 			            <div class="sk-cube1 sk-cube"></div>
 			            <div class="sk-cube2 sk-cube"></div>
@@ -136,11 +128,20 @@
                         </div>
 
                         <div class="sbmt">
-                            <input type="submit" value="Actualizar" class="btn">
+                            <a id="enviar" class="btn">Actualizar</a>
                         </div>
                         </form>
                     </div>
                 </div>
+                
+                <div id="modalError" class="modal fade" role="dialog">
+			        <div class="modal-dialog">
+			            <div class="modal-body" id="mensajeError"></div>
+			            <div class="modal-footer">
+			                <button class="btn" data-dismiss="modal">Aceptar</button>
+			            </div>
+			        </div>
+			    </div>
 
                 <footer>
                     <div class="socials">
