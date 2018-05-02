@@ -37,10 +37,6 @@
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>FiltroLogin</filter-name>
-		<url-pattern>/content/Nuevo.do</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>FiltroLogin</filter-name>
 		<url-pattern>/content/Update.do</url-pattern>
 	</filter-mapping>
 	<filter-mapping>

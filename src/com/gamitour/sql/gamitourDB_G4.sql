@@ -41,7 +41,7 @@ CREATE TABLE `cliente` (
   KEY `fk_cliente_rol1_idx` (`rol_idrol`),
   CONSTRAINT `fk_cliente_rol1` FOREIGN KEY (`rol_idrol`) REFERENCES `rol` (`idrol`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-INSERT INTO `cliente` VALUES(1, 'Iván', 'Rodríguez', '1996-10-15', 'ivan@gamitour.com', 'admin12', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
+INSERT INTO `cliente` VALUES(1, 'Iván', 'Rodríguez Valdés', '1996-10-15', 'ivan@gamitour.com', 'admin12', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
 
 CREATE TABLE `cliente_has_actividad` (
   `cliente_idcliente` int(11) NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE `parada` (
   `longitud` varchar(45) NOT NULL,
   PRIMARY KEY (`idparada`),
   KEY `fk_parada_itinerario_idx` (`itinerario_iditinerario`),
-  CONSTRAINT `fk_parada_itinerario` FOREIGN KEY (`itinerario_iditinerario`) REFERENCES `itinerario` (`iditinerario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_parada_itinerario` FOREIGN KEY (`itinerario_iditinerario`) REFERENCES `itinerario` (`iditinerario`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `pruebadeportiva` (
@@ -93,7 +93,7 @@ CREATE TABLE `pruebadeportiva` (
   `parada_idparada` int(11) NOT NULL,
   PRIMARY KEY (`idpruebadeportiva`),
   KEY `fk_pruebaDeportiva_parada1_idx` (`parada_idparada`),
-  CONSTRAINT `fk_pruebaDeportiva_parada1` FOREIGN KEY (`parada_idparada`) REFERENCES `parada` (`idparada`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_pruebaDeportiva_parada1` FOREIGN KEY (`parada_idparada`) REFERENCES `parada` (`idparada`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `multimedia` (
@@ -108,8 +108,8 @@ CREATE TABLE `multimedia` (
   PRIMARY KEY (`idmultimedia`),
   KEY `fk_multimedia_cliente1_idx` (`cliente_idcliente`),
   KEY `fk_multimedia_pruebaDeportiva1_idx` (`pruebaDeportiva_idpruebadeportiva`),
-  CONSTRAINT `fk_multimedia_cliente1` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_multimedia_pruebaDeportiva1` FOREIGN KEY (`pruebaDeportiva_idpruebadeportiva`) REFERENCES `pruebadeportiva` (`idpruebadeportiva`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_multimedia_cliente1` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_multimedia_pruebaDeportiva1` FOREIGN KEY (`pruebaDeportiva_idpruebadeportiva`) REFERENCES `pruebadeportiva` (`idpruebadeportiva`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `comentario` (
@@ -120,8 +120,8 @@ CREATE TABLE `comentario` (
   PRIMARY KEY (`idcomentario`),
   KEY `fk_comentario_cliente1_idx` (`cliente_idcliente`),
   KEY `fk_comentario_multimedia1_idx` (`multimedia_idmultimedia`),
-  CONSTRAINT `fk_comentario_cliente1` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_comentario_multimedia1` FOREIGN KEY (`multimedia_idmultimedia`) REFERENCES `multimedia` (`idmultimedia`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_comentario_cliente1` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_comentario_multimedia1` FOREIGN KEY (`multimedia_idmultimedia`) REFERENCES `multimedia` (`idmultimedia`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `imagenactividad` (
@@ -155,7 +155,7 @@ CREATE TABLE `premio` (
   `cliente_idcliente` int(11) NOT NULL,
   PRIMARY KEY (`idpremio`),
   KEY `fk_premio_cliente1_idx` (`cliente_idcliente`),
-  CONSTRAINT `fk_premio_cliente1` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_premio_cliente1` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `pruebacultural` (
@@ -167,7 +167,7 @@ CREATE TABLE `pruebacultural` (
   `parada_idparada` int(11) NOT NULL,
   PRIMARY KEY (`idpruebacultural`),
   KEY `fk_pruebaCultural_parada1_idx` (`parada_idparada`),
-  CONSTRAINT `fk_pruebaCultural_parada1` FOREIGN KEY (`parada_idparada`) REFERENCES `parada` (`idparada`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_pruebaCultural_parada1` FOREIGN KEY (`parada_idparada`) REFERENCES `parada` (`idparada`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `voto` (
@@ -178,6 +178,6 @@ CREATE TABLE `voto` (
   PRIMARY KEY (`idvoto`),
   KEY `fk_voto_cliente1_idx` (`cliente_idcliente`),
   KEY `fk_voto_multimedia1_idx` (`multimedia_idmultimedia`),
-  CONSTRAINT `fk_voto_cliente1` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_voto_multimedia1` FOREIGN KEY (`multimedia_idmultimedia`) REFERENCES `multimedia` (`idmultimedia`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_voto_cliente1` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_voto_multimedia1` FOREIGN KEY (`multimedia_idmultimedia`) REFERENCES `multimedia` (`idmultimedia`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

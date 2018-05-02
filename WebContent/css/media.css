@@ -74,7 +74,7 @@
                 }
 
                 #menuIti ul{
-                    margin-top: 16px;
+                    margin-top: 15px;
                 }
 
                 #menuIti:hover ul{
@@ -91,6 +91,10 @@
                     font-size: 0.9em;
                     margin-bottom: 30px;
                     margin-top: 190px;
+                }
+
+                .content h1{
+                    font-size: 2.1em;
                 }
 
             /* Propiedades del footer de la página */
@@ -112,7 +116,79 @@
                     font-size: 0.7em;
                 }
 
-            /* FALTAN EL RESTO DE COSES FUERA DE LAS COMUNES A TODAS LAS PAGINAS */
+            /* Ajustes de botones */
+                .btn{
+                    font-size: 0.7em;
+                }
+
+            /* Ajustes de formulario */
+
+            .textIn{
+                font-size: 0.8em;
+            }
+
+            .textIn ~ label{
+                font-size: 0.8em;
+            }
+
+            .textIn:focus ~ label, .has-content.textIn ~ label{
+               font-size: 0.5em;
+            }
+
+            form div span{
+                font-size: 0.6em;
+            }
+
+            /* Ajustes de tablas */
+
+                .landing h1{
+                    margin-bottom: 10px;
+                    font-size: 2.3em;
+                }
+
+                .selector a{
+                    height: 130px;
+                    border-width: 1.5px;
+                    padding-top: 25px;
+                    margin-top: 15px;
+                }
+
+                .selector a span{
+                    font-size: 1em;
+                }
+
+                .selAdmin i{
+                    font-size: 1.2em;
+                }
+    
+                .table tr th, .table-striped tr th, .table-responsive tr th{
+                    font-size: 0.8em
+                }
+
+                .table tr td, .table-striped tr td, .table-responsive tr td {
+                    font-size: 0.8em;
+                }
+
+                .table tr .btnTabla span {
+                    font-size: 0.7em;
+                }
+
+                .eliminar i{
+                    font-size: 0.9em;
+                }
+
+                .editar i{
+                    font-size: 0.9em;
+                }
+
+                .table tr .nuevo span{
+                    font-size: 0.9em;
+                }
+
+                .admin .navAdmin a {
+                    font-size: 0.8em;
+                }
+
         }
 
     /*1024px*/

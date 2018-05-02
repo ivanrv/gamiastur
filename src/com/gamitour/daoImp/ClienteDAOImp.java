@@ -1,5 +1,7 @@
 package com.gamitour.daoImp;
 
+import java.util.List;
+
 import javax.persistence.Query;
 import org.hibernate.SessionFactory;
 
@@ -63,6 +65,18 @@ public class ClienteDAOImp extends GenericDAOImp<Cliente, String> implements Cli
 		secuenciaBorrado(cliente);
 		
 		System.out.println("Se ha eliminado el cliente " + cliente.getEmail() + " de la base de datos.");
+	}
+	
+	public List<String> buscarEmails() {
+		List<String> emails;
+		
+		sf.getCurrentSession().beginTransaction();
+		Query q = sf.getCurrentSession().createQuery("select c.email from Cliente c");
+		emails = q.getResultList();
+		sf.getCurrentSession().getTransaction().commit();
+		sf.getCurrentSession().close();
+		
+		return emails;
 	}
 
 }

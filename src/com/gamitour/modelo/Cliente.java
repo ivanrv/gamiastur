@@ -82,6 +82,22 @@ public class Cliente implements java.io.Serializable {
 		this.multimedias = multimedias;
 	}
 
+	public Cliente(Rol rol, String nombre, String apellidos, Date fechanacimiento, String email, String password,
+			String telefono, String direccion, String codigopostal, String avatar, int puntosacumulados, Date fecharegistro) {
+		this.rol = rol;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.fechanacimiento = fechanacimiento;
+		this.email = email;
+		this.password = password;
+		this.telefono = telefono;
+		this.direccion = direccion;
+		this.codigopostal = codigopostal;
+		this.avatar = avatar;
+		this.puntosacumulados = puntosacumulados;
+		this.fecharegistro = fecharegistro;
+	}
+
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 

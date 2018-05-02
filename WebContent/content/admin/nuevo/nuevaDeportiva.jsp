@@ -13,6 +13,7 @@
                 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
                 <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
                 
+                <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/loader.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/style.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/form.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/nuevo.css" type="text/css">
@@ -20,8 +21,10 @@
                 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE=" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
             </head>
 
             <body>
@@ -37,8 +40,8 @@
                                 <li>Editar Perfil</li>
                                 <li class="menuUserB">Mis Actividades</li>
                                 <li class="menuUserB">Logros</li>
-                                <c:if test="${userRol == 'admin'}">
-                                	<li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
+                                <c:if test="${userRol != 'user'}">
+                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
                                 </c:if>
                                 <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
                             </ul>
@@ -78,6 +81,7 @@
                     <div id="nuevoForm">
                         <div class="tit">
                             <h1>Datos de la nueva Prueba Deportiva:</h1>
+                            <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
                             <form action="Nuevo.do" method="post">
@@ -89,40 +93,39 @@
                                             <option value="${parada.nombre}">${parada.nombre}</option>
                                         </c:forEach>
                                     </select>
-                                    <label>Seleccione una parada</label>
+                                    <label>Seleccione una parada *</label>
                                     <span class="focus-border"></span>
-                                </div>
+                                </div>                                
                                 <div class="inputCon input-effect">
-                                    <input class="textIn" type="text" name="nombre" placeholder="" required/>
-                                    <label>Nombre de la Prueba Deportiva</label>
-                                    <span class="focus-border"></span>
-                                </div>
-                                <div class="inputCon input-effect">
-                                    <input class="textIn" type="date" name="inicio" placeholder="" required/>
-                                    <label>Fecha de Inicio</label>
-                                    <span class="focus-border"></span>
-                                </div>
+	                                <input class="textIn" type="number" name="puntos" placeholder="" required/>
+	                                <label>Puntos *</label>
+	                                <span class="focus-border"></span>
+	                            </div>
+                                
+                                
                         </div>
                         <div class="col2">
-                            <div class="inputCon input-effect">
-                                <input class="textIn" type="date" name="fin" placeholder="" required/>
-                                <label>Fecha de Fin</label>
+                        	<div class="inputCon input-effect">
+                                <input class="textIn" type="text" name="nombre" placeholder="" required/>
+                                <label>Nombre de la Prueba Deportiva *</label>
                                 <span class="focus-border"></span>
                             </div>
-                            <div class="inputCon input-effect">
-                                <textarea class="textIn" name="explicacion" placeholder="" required rows="4"></textarea>
-                                <label>Explicación</label>
-                                <span class="focus-border"></span>
-                            </div>
-                            <div class="inputCon input-effect">
-                                <input class="textIn" type="number" name="puntos" placeholder="" required/>
-                                <label>Puntos</label>
-                                <span class="focus-border"></span>
-                            </div>
+	                        <div class="inputCon input-effect">
+	                               <input class="textIn datepicker" type="text" name="inicio" placeholder="" required/>
+	                               <label>Fecha de Inicio *</label>
+	                               <span class="focus-border"></span>
+	                           </div>
+	                           <div class="inputCon input-effect">
+	                            <input class="textIn datepicker" type="text" name="fin" placeholder="" required/>
+	                            <label>Fecha de Fin</label>
+	                            <span class="focus-border"></span>
+	                        </div>
+                       
                         </div>
 
                         <div class="sbmt">
-                            <input type="submit" value="Crear Prueba">
+                        	<button id="addDesc" class="btn">Añadir descripción *</button>
+                            <input type="submit" value="Crear Prueba" class="btn">
                         </div>
                         </form>
                     </div>
@@ -146,6 +149,15 @@
 
                     <p>Gamitour &copy; 2018</p>
                 </footer>
+                
+                <div id="loader">
+			        <div class="sk-folding-cube">
+			            <div class="sk-cube1 sk-cube"></div>
+			            <div class="sk-cube2 sk-cube"></div>
+			            <div class="sk-cube4 sk-cube"></div>
+			            <div class="sk-cube3 sk-cube"></div>
+			        </div>
+			    </div>
             </body>
 
             </html>
