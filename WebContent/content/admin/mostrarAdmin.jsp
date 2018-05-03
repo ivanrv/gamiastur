@@ -71,7 +71,7 @@
                     <div class="user">
                         <a href="javascript:void(0)" id="menuUser">
                             <i class="fas fa-angle-down"></i>
-                            <ul>
+                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
                                 <li>Editar Perfil</li>
                                 <li class="menuUserB">Mis Actividades</li>
                                 <li class="menuUserB">Logros</li>
@@ -896,7 +896,7 @@
                     <p>Gamitour &copy; 2018</p>
                 </footer>
 
-                <div id="modalParadas" class="modal fade" role="dialog">
+                <div id="modalParadas" class="modal fade info-modal" role="dialog">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-header">
                             <button class="close" type="button" data-dismiss="modal">&times;</button>
@@ -916,7 +916,7 @@
                     </div>
                 </div>
                 
-                <div id="modalPruebas" class="modal fade" role="dialog">
+                <div id="modalPruebas" class="modal fade info-modal" role="dialog">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-header">
                             <button class="close" type="button" data-dismiss="modal">&times;</button>
@@ -949,7 +949,7 @@
                     </div>
                 </div>
 
-                <div id="modalEliminar" class="modal fade" role="dialog">
+                <div id="modalEliminar" class="modal fade info-modal" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-header">
                             <button class="close" type="button" data-dismiss="modal">&times;</button>
@@ -961,6 +961,66 @@
                         </div>
                     </div>
                 </div>            
+             
+             	<div id="infoCliente" class="modal fade info-modal" role="dialog">
+        
+		        <div class="modal-dialog">
+		            <div class="modal-header">
+		                <button class="close" type="button" data-dismiss="modal">&times;</button>
+		                <h4 class="modal-title" id="infoClienteTitle"></h4>
+		            </div>
+		            <div class="modal-body">
+		                <div id="infoClienteImg">
+		                    <img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png" alt="">
+		                </div>
+		                <div id="infoClienteInfoPrincipal">
+		                    <p>
+		                        <strong>Nombre: </strong>
+		                        <span id="infoClienteNombre"></span>
+		                    </p>
+		                    <p>
+		                        <strong>Apellidos: </strong>
+		                        <span id="infoClienteApellidos"></span>
+		                    </p>
+		                    <p>
+		                        <strong>Fecha de Nacimiento: </strong>
+		                        <span id="infoClienteFechaNac"></span>
+		                    </p>
+		                    <p>
+		                        <strong>Correo Electr&oacute;nico: </strong>
+		                        <span id="infoClienteEmail"></span>
+		                    </p>
+		                    <p>
+		                        <strong>Rol: </strong>
+		                        <span id="infoClienteRol"></span>
+		                    </p>
+		                </div>
+		                <div id="infoClienteInfoSecundaria">
+		                    <p>
+		                        <strong>Telefono: </strong>
+		                        <span id="infoClienteTelefono"></span>
+		                    </p>
+		                    <p>
+		                        <strong>Direcci&oacute;n: </strong>
+		                        <span id="infoClienteDireccion"></span>
+		                    </p>
+		                    <p>
+		                        <strong>C&oacute;digo Postal: </strong>
+		                        <span id="infoClienteCP"></span>
+		                    </p>
+		                    <p>
+		                        <strong>Puntos Acumulados: </strong>
+		                        <span id="infoClientePuntos"></span>
+		                    </p>
+		                    <p>
+		                        <strong>Fecha de Registro: </strong>
+		                        <span id="infoClienteRegistro"></span>
+		                    </p>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+             
              </body>
 
             </html>

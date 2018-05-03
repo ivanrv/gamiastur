@@ -44,7 +44,7 @@
                     <div class="user">
                         <a href="javascript:void(0)" id="menuUser">
                             <i class="fas fa-angle-down"></i>
-                            <ul>
+                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
                                 <li>Editar Perfil</li>
                                 <li class="menuUserB">Mis Actividades</li>
                                 <li class="menuUserB">Logros</li>

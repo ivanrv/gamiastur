@@ -33,7 +33,7 @@
             </head>
 
             <body>
-            <jsp:useBean id="sParadaImp" class="com.gamitour.service.ServiceParadaImp" />
+            <jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
 		
 				<%
 					ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
@@ -57,7 +57,7 @@
                     <div class="user">
                         <a href="javascript:void(0)" id="menuUser">
                             <i class="fas fa-angle-down"></i>
-                            <ul>
+                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
                                 <li>Editar Perfil</li>
                                 <li class="menuUserB">Mis Actividades</li>
                                 <li class="menuUserB">Logros</li>
@@ -125,7 +125,7 @@
 	                            <input class="textIn" type="text" name="ubicacion" placeholder="" required/>
 	                            <label>Ubicación *</label>
 	                            <span class="focus-border"></span>
-	                        </div>
+	                        </div>	                        
 	                        <div style="text-align: center;">
 	                            <a id="enviar" class="btn">Crear Itinerario</a>
 	                        </div>

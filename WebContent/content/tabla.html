@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
     <link rel="stylesheet" href="../css/tablas.css" type="text/css">
-    
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -69,7 +69,9 @@
     </nav>
 
     <div class="content">
-        <div class="landing">
+        <a href="#infoCliente" data-toggle="modal">LUL</a>
+
+        <!--<div class="landing">
             <h1>Elija la tabla sobre la que quiere trabajar:</h1>
             <div class="selector">
                 <a href="javascript:void(0)" class="selAdmin" value="tablaActividades">
@@ -264,6 +266,64 @@
                         </td>
 
                 </table>
+            </div>
+        </div>-->
+    </div>
+
+    <div id="infoCliente" class="modal fade info-modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="infoClienteTitle"></h4>
+            </div>
+            <div class="modal-body">
+                <div id="infoClienteImg">
+                    <img src="../images/avatares/Ancla.png" alt="">
+                </div>
+                <div id="infoClienteInfoPrincipal">
+                    <p>
+                        <strong>Nombre: </strong>
+                        <span id="infoClienteNombre"></span>
+                    </p>
+                    <p>
+                        <strong>Apellidos: </strong>
+                        <span id="infoClienteApellidos"></span>
+                    </p>
+                    <p>
+                        <strong>Fecha de Nacimiento: </strong>
+                        <span id="infoClienteFechaNac"></span>
+                    </p>
+                    <p>
+                        <strong>Correo Electr&oacute;nico: </strong>
+                        <span id="infoClienteEmail"></span>
+                    </p>
+                    <p>
+                        <strong>Rol: </strong>
+                        <span id="infoClienteRol"></span>
+                    </p>
+                </div>
+                <div id="infoClienteInfoSecundaria">
+                    <p>
+                        <strong>Telefono: </strong>
+                        <span id="infoClienteTelefono"></span>
+                    </p>
+                    <p>
+                        <strong>Direcci&oacute;n: </strong>
+                        <span id="infoClienteDireccion"></span>
+                    </p>
+                    <p>
+                        <strong>C&oacute;digo Postal: </strong>
+                        <span id="infoClienteCP"></span>
+                    </p>
+                    <p>
+                        <strong>Puntos Acumulados: </strong>
+                        <span id="infoClientePuntos"></span>
+                    </p>
+                    <p>
+                        <strong>Fecha de Registro: </strong>
+                        <span id="infoClienteRegistro"></span>
+                    </p>
+                </div>
             </div>
         </div>
     </div>

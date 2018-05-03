@@ -110,6 +110,10 @@ public class Nuevo extends Accion{
 			ServiceActividad sActividad = new ServiceActividadImp();
 			try {
 				Actividad actividad = new Actividad(request.getParameter("nombre"), sdf.parse(request.getParameter("inicio")), 0, Double.parseDouble(request.getParameter("precio")), Integer.parseInt(request.getParameter("puntos")), request.getParameter("ubicacion"), request.getParameter("ubicacion"));
+				
+				if(!request.getParameter("fin").equals(""))
+					actividad.setFechafin(sdf.parse(request.getParameter("fin")));
+				
 				sActividad.insertar(actividad);
 				request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());
 				retorno = "/content/admin/mostrarAdmin.jsp";
@@ -139,6 +143,10 @@ public class Nuevo extends Accion{
 			Noticia noticia;
 			try {
 				noticia = new Noticia(0, request.getParameter("nombre"), request.getParameter("texto"), sdf.parse(request.getParameter("alta")), null); //HAY QUE CAMBIAR EL NULL DE LA IMAGEN
+				
+				if(!request.getParameter("caducidad").equals(""))
+					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));
+				
 				sNoticia.insertar(noticia);
 				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
 				retorno = "/content/admin/mostrarAdmin.jsp";
@@ -150,6 +158,16 @@ public class Nuevo extends Accion{
 			
 		case "parada":
 			Parada parada = new Parada(0, sItinerario.buscarPorNombre(request.getParameter("itinerario")), request.getParameter("nombre"), Integer.parseInt(request.getParameter("nParada")), request.getParameter("ubicacion"), request.getParameter("ubicacion"));
+			
+			if(!request.getParameter("historia").equals(""))
+				parada.setHistoria(request.getParameter("historia"));
+			
+			if(!request.getParameter("anecdotario").equals(""))
+				parada.setAnecdotario(request.getParameter("anecdotario"));
+			
+			if(!request.getParameter("gastronomia").equals(""))
+				parada.setGastronomia(request.getParameter("gastronomia"));
+			
 			sParada.insertar(parada);
 			request.getSession().setAttribute("listaParadas", sParada.buscarTodos());
 			break;
@@ -179,6 +197,10 @@ public class Nuevo extends Accion{
 		case "deportiva":
 			try {
 				Pruebadeportiva deportiva = new Pruebadeportiva(sParada.buscarPorNombre(request.getParameter("parada")), request.getParameter("nombre"), sdf.parse(request.getParameter("inicio")), Integer.parseInt(request.getParameter("puntos")));
+				
+				if(!request.getParameter("fin").equals(""))
+					deportiva.setFechafin(sdf.parse(request.getParameter("fin")));
+					
 				sPruebaDeportiva.insertar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
 				retorno = "/content/admin/mostrarAdmin.jsp";
