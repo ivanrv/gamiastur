@@ -26,7 +26,7 @@
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js" type="text/javascript"></script>
-                <script src="${pageContext.servletContext.contextPath}/js/formFilterNoticia.js" type="text/javascript"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/formFilterNoticiaU.js" type="text/javascript"></script>
             </head>
 
             <body>
@@ -116,14 +116,14 @@
                         <div class="col3">
                             <div class="inputCon input-effect">
                                 <textarea class="textIn has-content" name="texto" placeholder="" required rows="30">${noticia.texto}</textarea>
-                                <label>Texto de la Noticia</label>
+                                <label>Texto de la Noticia *</label>
                                 <span class="focus-border"></span>
                             </div>
                         </div>
 
                         <div class="sbmt">
-                        	<button id="modificarImagen" class="btn">Modificar Imagen</button>
-                            <input type="submit" value="Actualizar" class="btn">
+                        	<a id="modificarImagen" class="btn">Modificar Imagen</a>
+                            <a id="enviar" class="btn">Actualizar</a>
                         </div>
                         </form>
                     </div>

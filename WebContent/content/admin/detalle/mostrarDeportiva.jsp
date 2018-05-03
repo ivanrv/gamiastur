@@ -27,7 +27,7 @@
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js" type="text/javascript"></script>
-                <script src="${pageContext.servletContext.contextPath}/js/formFilterDeportiva.js" type="text/javascript"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/formFilterDeportivaU.js" type="text/javascript"></script>
             </head>
 
             <body>
@@ -102,7 +102,9 @@
                                     <select class="textIn has-content" name="parada" placeholder="" required>
                                         <option selected>${deportiva.parada.nombre}</option>
                                         <c:forEach items="${listaParadas}" var="parada">
-                                            <option value="${parada.nombre}">${parada.nombre}</option>
+                                        	<c:if test="${parada.nombre != deportiva.parada.nombre}">
+                                            	<option value="${parada.nombre}">${parada.nombre}</option>
+                                            </c:if>
                                         </c:forEach>
                                     </select>
                                     <label>Seleccione una parada *</label>
@@ -129,8 +131,8 @@
                         </div>
 
                         <div class="sbmt">
-                        	<button id="modificarExplicacion" class="btn">Modificar Explicación</button>
-                            <input type="submit" value="Actualizar" class="btn">
+                        	<a id="modificarExplicacion" class="btn">Modificar Explicación</a>
+                            <a id="enviar" class="btn">Actualizar</a>
                         </div>
                         </form>
                     </div>

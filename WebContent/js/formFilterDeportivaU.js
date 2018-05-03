@@ -38,27 +38,6 @@ $(document).ready(function () {
             }
         }
 
-        if ($("input[name=ubicacion]").val() == "") {
-            $("#mensajeError").append("<p>La ubicación es un dato obligatorio.</p>");
-            $("input[name=ubicacion]").addClass("has-warning");
-
-            submit = false;
-        }
-
-        if ($("input[name=precio]").val() == "") {
-            $("#mensajeError").append("<p>El precio es un dato obligatorio.</p>");
-            $("input[name=precio]").addClass("has-warning");
-
-            submit = false;
-        } else {
-            if ($("input[name=precio]").val() < 0) {
-                $("#mensajeError").append("<p>El precio no puede ser inferior a 0.</p>");
-                $("input[name=precio]").addClass("has-warning");
-
-                submit = false;
-            }
-        }
-
         if ($("input[name=puntos]").val() == "") {
             $("#mensajeError").append("<p>Los puntos son un dato obligatorio.</p>");
             $("input[name=puntos]").addClass("has-warning");
@@ -74,7 +53,7 @@ $(document).ready(function () {
         }
 
         $(".has-warning").click(function () {
-            $(this).select();;
+            $(this).select();
         });
 
         if (submit) {

@@ -143,8 +143,8 @@
                         </div>
 
                         <div class="sbmt">
-                        	<button id="addDesc" class="btn">Añadir descripción *</button>
-                            <input type="submit" value="Crear Prueba" class="btn">
+                        	<a id="addDesc" class="btn">Añadir descripción *</a>
+                            <a id="enviar" class="btn">Crear Prueba</a>
                         </div>
                         </form>
                     </div>

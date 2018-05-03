@@ -112,7 +112,7 @@
                                     <span class="focus-border"></span>
                                 </div>								
                                 <div style="text-align:center;">
-                                	<button id="addImg" class="btn">Añadir Imagen *</button>
+                                	<a id="addImg" class="btn">Añadir Imagen *</a>
                                 </div>
                         </div>
                         <div class="col2">
@@ -137,7 +137,7 @@
                         </div>
 
                         <div class="sbmt">
-                            <input type="submit" value="Crear Noticia" class="btn">
+                            <a id="enviar" class="btn">Crear Noticia</a>
                         </div>
                         </form>
                     </div>

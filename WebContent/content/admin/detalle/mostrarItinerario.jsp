@@ -28,7 +28,7 @@
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js" type="text/javascript"></script>
-                <!-- <script src="${pageContext.servletContext.contextPath}/js/formFilterItinerario.js" type="text/javascript"></script>-->
+                <script src="${pageContext.servletContext.contextPath}/js/formFilterItinerarioU.js" type="text/javascript"></script>
             </head>
 
             <body>

@@ -26,7 +26,24 @@
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js" type="text/javascript"></script>
-                <script src="${pageContext.servletContext.contextPath}/js/formFilterParada.js" type="text/javascript"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/formFilterParadaU.js" type="text/javascript"></script>
+            	<script>
+            		var nParOriginal = ${parada.numeroParada};
+            	
+	            	var stringItinerarios = "[";
+	
+	            	<c:forEach items="${listaItinerarios}" var="itinerario" varStatus="status">
+						stringItinerarios += '{"nombre": "${itinerario.nombre}", "paradas":['; 
+							<c:forEach items="${itinerario.paradas}" var="par" varStatus="pStatus">
+								stringItinerarios += ' "${par.numeroParada}"';
+								<c:if test="${!pStatus.last}">stringItinerarios += ","</c:if>
+							</c:forEach>							
+							stringItinerarios += ']}';
+						<c:if test="${!status.last}"> stringItinerarios += ","</c:if>					
+					</c:forEach>
+					stringItinerarios += "]"; 
+            	</script>
+            
             </head>
 
             <body>
@@ -101,7 +118,9 @@
                                     <select class="textIn has-content" name="itinerario" placeholder="" required>
                                         <option selected>${parada.itinerario.nombre}</option>
                                         <c:forEach items="${listaItinerarios}" var="itinerario">
-                                            <option value="${itinerario.nombre}">${itinerario.nombre}</option>
+                                        	<c:if test="${itinerario.nombre != parada.itinerario.nombre }">
+                                            	<option value="${itinerario.nombre}">${itinerario.nombre}</option>
+                                            </c:if>
                                         </c:forEach>
                                     </select>
                                     <label>Seleccione un Itinerario *</label>
@@ -140,8 +159,8 @@
                         </div>
 
                         <div class="sbmt">
-                        	<button id="modificarMultimedia" class="btn">Modificar Multimedias</button>
-                            <input type="submit" value="Actualizar" class="btn">
+                        	<a id="modificarMultimedia" class="btn">Modificar Multimedias</a>
+                            <a id="enviar" class="btn">Actualizar</a>
                         </div>
                         </form>
                     </div>

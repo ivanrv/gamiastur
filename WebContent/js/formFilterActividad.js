@@ -101,7 +101,6 @@ $(document).ready(function () {
 
         $(".has-warning").click(function () {
             $(this).select();
-            $(this).unbind();
         });
 
         if (submit) {

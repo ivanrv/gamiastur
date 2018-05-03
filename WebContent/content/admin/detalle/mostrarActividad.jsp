@@ -127,7 +127,7 @@
                             </div>
                             
                             <div>
-                                <button id="modificarImg" class="btn">Modificar Imagen</button>
+                                <a id="modificarImg" class="btn">Modificar Imagen</a>
                             </div>
                             
                         </div>

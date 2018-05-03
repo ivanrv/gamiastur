@@ -26,9 +26,24 @@
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/formFilterParada.js"></script>
                 
-                <script> var nombres = "${nombres}" </script>
+                <script> 
+                	var nombres = "${nombres}";                	
+                	var stringItinerarios = "[";
+
+                	<c:forEach items="${listaItinerarios}" var="itinerario" varStatus="status">
+						stringItinerarios += '{"nombre": "${itinerario.nombre}", "paradas":['; 
+							<c:forEach items="${itinerario.paradas}" var="parada" varStatus="pStatus">
+								stringItinerarios += ' "${parada.numeroParada}"';
+								<c:if test="${!pStatus.last}">stringItinerarios += ","</c:if>
+							</c:forEach>							
+							stringItinerarios += ']}';
+						<c:if test="${!status.last}"> stringItinerarios += ","</c:if>					
+					</c:forEach>
+					stringItinerarios += "]";                
+                </script>
             </head>
 
             <body>
@@ -152,8 +167,8 @@
                         </div>
 
                         <div class="sbmt">
-                        	<button id="addMultimedias" class="btn">Añadir Multimedias</button>
-                            <input type="submit" value="Crear Parada" class="btn">
+                        	<a id="addMultimedias" class="btn">Añadir Multimedias</a>
+                            <a id="enviar" class="btn">Crear Parada</a>
                         </div>
                         </form>
                     </div>

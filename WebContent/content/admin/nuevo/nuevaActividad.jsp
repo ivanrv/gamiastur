@@ -140,7 +140,7 @@
                         </div>
 
                         <div class="sbmt">
-                        	<button id="addImg" class="btn">Añadir Imagen *</button>
+                        	<a id="addImg" class="btn">Añadir Imagen *</a>
                             <a id="enviar"class="btn">Crear Actividad</a>
                         </div>
                         </form>

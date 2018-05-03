@@ -1,10 +1,6 @@
 
 $(document).ready(function () {
 
-    if (typeof nombres != undefined) {
-        var nombresArray = nombres.substring(1, nombres.length - 1).split(", ");
-    }
-
     $("#enviar").click(function () {
         event.preventDefault();
         var submit = true;
@@ -12,28 +8,6 @@ $(document).ready(function () {
         $("#mensajeError").html("");
 
         /* Comprobación de campos obligatorios no vacíos */
-
-        if ($("input[name=nombre]").val() == "") {
-            $("#mensajeError").append("<p>El nombre es un dato obligatorio.</p>");
-            $("input[name=nombre]").addClass("has-warning");
-
-            submit = false;
-        } else {
-            /* Comprobación de nombre no existente */
-
-            var contains = false;
-            nombresArray.forEach(element => {
-                if (element == $("input[name=nombre]").val())
-                    contains = true;
-            });
-
-            if (contains) {
-                $("#mensajeError").append("<p>El nombre introducido no est&#225; disponible.</p>");
-                $("input[name=nombre]").addClass("has-warning");
-
-                submit = false;
-            }
-        }
 
         if ($("select[name=itinerario]").find(":selected").text() == "") {
             $("#mensajeError").append("<p>El itinerario es un dato obligatorio.</p>");
@@ -66,23 +40,6 @@ $(document).ready(function () {
             }
         }
 
-        if(checkNParada){
-            var arrayIti = JSON.parse(stringItinerarios);
-
-            arrayIti.forEach(element => {
-                if($("select[name=itinerario]").find(":selected").text() == element.nombre){
-                    element.paradas.forEach(npar => {
-                        if($("input[name=nParada]").val() == npar){
-                            $("#mensajeError").append("<p>El n&uacute;mero de parada ya existe en el itinerario seleccionado.</p>");
-                            $("input[name=nParada]").addClass("has-warning");
-            
-                            submit = false;
-                        }
-                    });
-                }
-            });
-        }
-
         if ($("textarea[name=historia]").val().length > 200){
             $("#mensajeError").append("<p>El texto correspondiente a la historia es demasiado largo.</p>");
             $("textarea[name=historia]").addClass("has-warning");
@@ -102,6 +59,23 @@ $(document).ready(function () {
             $("textarea[name=gastronomia]").addClass("has-warning");
             
             submit = false;
+        }
+
+        if(checkNParada){
+            var arrayIti = JSON.parse(stringItinerarios);
+
+            arrayIti.forEach(element => {
+                if($("select[name=itinerario]").find(":selected").text() == element.nombre){
+                    element.paradas.forEach(npar => {
+                        if(($("input[name=nParada]").val() == npar) && npar != nParOriginal ){
+                            $("#mensajeError").append("<p>El n&uacute;mero de parada ya existe en el itinerario seleccionado.</p>");
+                            $("input[name=nParada]").addClass("has-warning");
+            
+                            submit = false;
+                        }
+                    });
+                }
+            });
         }
 
         $(".has-warning").click(function () {

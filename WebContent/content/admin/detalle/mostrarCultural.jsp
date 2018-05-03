@@ -100,7 +100,9 @@
                                     <select class="textIn has-content" name="parada" placeholder="" required>
                                         <option selected>${cultural.parada.nombre}</option>
                                         <c:forEach items="${listaParadas}" var="parada">
-                                            <option value="${parada.nombre}">${parada.nombre}</option>
+                                        	<c:if test="${parada.nombre != cultural.parada.nombre}">
+                                            	<option value="${parada.nombre}">${parada.nombre}</option>
+                                           	</c:if>
                                         </c:forEach>
                                     </select>
                                     <label>Seleccione una parada *</label>
