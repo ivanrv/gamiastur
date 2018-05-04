@@ -170,6 +170,7 @@ public class Nuevo extends Accion{
 			
 			sParada.insertar(parada);
 			request.getSession().setAttribute("listaParadas", sParada.buscarTodos());
+			retorno = "/content/admin/mostrarAdmin.jsp";
 			break;
 			
 		case "premio":
