@@ -274,7 +274,7 @@
     }
 
     #infoCliente>.modal-dialog{
-        width: 65%;
+        width: 85%;
     }
 
     #infoCliente>.modal-dialog>.modal-body{
@@ -294,7 +294,7 @@
     }
 
     #infoClienteImg{
-        flex-basis: 10%;
+        flex-basis: 5%;
         text-align: center;
     }
 
@@ -310,10 +310,9 @@
     }
 
     #infoClienteInfoPrincipal{
-        flex-basis: 40%;
+        flex-basis: 37%;
     }
 
     #infoClienteInfoSecundaria{
-        flex-basis: 40%;
-        margin-bottom: 0;
+        flex-basis: 35%;
     }

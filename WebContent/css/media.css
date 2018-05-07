@@ -51,6 +51,10 @@
                     #menuUser:hover ul{
                         margin-top: 21px;
                         padding: 5px;
+                        height: 163px;
+                    }
+
+                    #menuUser:hover .adminUser{
                         height: 200px;
                     }
 
