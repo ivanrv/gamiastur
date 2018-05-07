@@ -92,6 +92,27 @@ $(document).ready(function () {
         	form.submit();
         });  
     });
+
+    $(".procModalInfoCliente").click(function(){
+
+        var arrayClientes = JSON.parse(stringClientes);
+
+        arrayClientes.forEach(element =>{
+            if(element.email == $(this).attr("value")){
+                $("#infoClienteTitle").text("Información de cliente:" + element.email);
+                $("#infoClienteNombre").text(element.nombre);
+                $("#infoClienteApellidos").text(element.apellidos);
+                $("#infoClienteFechaNac").text(element.fechanacimiento);
+                $("#infoClienteEmail").text(element.email);
+                $("#infoClienteRol").text(element.rol);
+                $("#infoClienteTelefono").text(element.telefono);
+                $("#infoClienteDireccion").text(element.direccion);
+                $("#infoClienteCP").text(element.codigopostal);
+                $("#infoClientePuntos").text(element.puntosacumulados);
+                $("#infoClienteRegistro").text(element.fecharegistro);
+            }
+        });
+    });
 });
 
 function first(selector) {

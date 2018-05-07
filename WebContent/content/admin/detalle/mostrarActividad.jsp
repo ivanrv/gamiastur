@@ -109,27 +109,26 @@
                                     <label>Fecha de Fin</label>
                                     <span class="focus-border"></span>
                                 </div>
-                                <div id="mapForm"></div>
-                				<input type="hidden" name="lat" value="">
-                				<input type="hidden" name="lng" value="">
+                                <div class="inputCon input-effect">
+	                                <input class="textIn has-content" type="number" name="precio" placeholder="" value="${actividad.precio}" required/>
+	                                <label>Precio *</label>
+	                                <span class="focus-border"></span>
+	                            </div>                         
                         </div>
-                        <div class="col2">
-                            
-                            <div class="inputCon input-effect">
-                                <input class="textIn has-content" type="number" name="precio" placeholder="" value="${actividad.precio}" required/>
-                                <label>Precio *</label>
-                                <span class="focus-border"></span>
-                            </div>
+                        <div class="col2">            
                             <div class="inputCon input-effect">
                                 <input class="textIn has-content" type="number" name="puntos" placeholder="" value="${actividad.puntos}" required/>
                                 <label>Puntos *</label>
                                 <span class="focus-border"></span>
-                            </div>
+                            </div>                            
+                            
+                            <div id="mapForm"></div>
+               				<input type="hidden" name="lat" value="${actividad.latitud}">
+               				<input type="hidden" name="lng" value="${actividad.longitud}">
                             
                             <div>
                                 <a id="modificarImg" class="btn">Modificar Imagen</a>
-                            </div>
-                            
+                            </div>                            
                         </div>
 
                         <div class="sbmt">

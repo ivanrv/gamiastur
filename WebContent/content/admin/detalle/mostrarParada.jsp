@@ -135,9 +135,9 @@
                                 </div>
                         </div>
                         <div class="col2">
-                            <div id="mapForm"></div>
-                			<input type="hidden" name="lat" value="">
-                			<input type="hidden" name="lng" value="">        
+                            <div id="mapForm" style="height: 300px"></div>
+                			<input type="hidden" name="lat" value="${parada.latitud}">
+                			<input type="hidden" name="lng" value="${parada.longitud}">        
                         </div>
 
                         <div class="col3">

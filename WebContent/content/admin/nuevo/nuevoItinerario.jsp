@@ -105,25 +105,25 @@
                     	<h1>Datos del nuevo Itinerario:</h1>
                     	<span>Los campos marcados con asteriscos son obligatorios</span>
                     </div>
-                    <div style="width: 30%; margin: auto;">
+                    <div style="width: 30%; margin: 35px auto; height: 550px">
 	                    <form action="Nuevo.do" method="post">
 	                        <input type="hidden" name="tipo" value="itinerario">
-	                        <div class="inputCon input-effect">
+	                        <div class="inputCon input-effect" style="margin-bottom: 35px">
 	                            <input class="textIn" type="text" name="nombre" placeholder="" required/>
 	                            <label>Nombre del Itinerario *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
-	                        <div class="inputCon input-effect">
+	                        <div class="inputCon input-effect" style="margin-bottom: 35px">
 	                            <input class="textIn" type="text" name="categoria" placeholder="" required/>
 	                            <label>Categoría *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
-	                        <div class="inputCon input-effect">
+	                        <div class="inputCon input-effect" style="margin-bottom: 35px">
 	                            <input class="textIn" type="text" name="duracion" placeholder="" required/>
 	                            <label>Duración *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
-	                        <div id="mapForm"></div>
+	                        <div id="mapForm" style="margin-bottom: 35px; height: 275px"></div>
                 			<input type="hidden" name="lat" value="">
                 			<input type="hidden" name="lng" value="">	                        
 	                        <div style="text-align: center;">

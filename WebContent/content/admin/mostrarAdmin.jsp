@@ -36,19 +36,26 @@
 					</c:forEach>
 					stringParadas += "]";
 
-                	stringDeportivas = "[";
+                	var stringDeportivas = "[";
 					<c:forEach items="${listaDeportivas}" var="deportiva" varStatus="status">
 						stringDeportivas += '{"nombre": "${deportiva.nombre}", "parada": "${deportiva.parada.nombre}", "fechainicio": "${deportiva.fechainicio}", "explicacion": "${deportiva.explicacion}", "puntos": "${deportiva.puntos}"}';
 						<c:if test="${!status.last}"> stringDeportivas += ","</c:if>					
 					</c:forEach>
 					stringDeportivas += "]";
 
-                	stringCulturales = "[";
+                	var stringCulturales = "[";
 					<c:forEach items="${listaCulturales}" var="cultural" varStatus="status">
 						stringCulturales += '{"nombre": "${cultural.nombre}", "parada": "${cultural.parada.nombre}", "puntos": "${cultural.puntos}"}';
 						<c:if test="${!status.last}"> stringCulturales += ","</c:if>					
 					</c:forEach>
 					stringCulturales += "]";
+
+					var stringClientes = "[";
+					<c:forEach items="${listaClientes}" var="cliente" varStatus="status">
+						stringClientes += '{"email": "${cliente.email}", "nombre": "${cliente.nombre}", "apellidos:" "${cliente.apellidos}", "fechanacimiento": "${cliente.fechanacimiento}", "rol": "${cliente.rol.nombre}", "telefono": "${cliente.telefono}", "direccion": "${cliente.direccion}", "codigopostal": "${cliente.codigopostal}", "puntosacumulados": "${cliente.puntosacumulados}", "fecharegistro": "${cliente.fecharegistro}"}';
+						<c:if test="${!status.last}">stringClientes += ","</c:if>
+					</c:forEach>					
+					stringClientes += "]"
 					
                 </script>
             </head>
@@ -285,15 +292,11 @@
                                         <td>${cliente.apellidos}</td>
                                         <td>${cliente.email}</td>
                                         <td>${cliente.fecharegistro}</td>
-                                        <td class="btnTabla">
-                                            <form action="Mostrar.do" method="post">
-                                                <input type="hidden" name="tipo" value="cliente">
-                                                <input type="hidden" name="email" value="${cliente.email}">
-                                                <button name="submit" value="submit" class="editar">
+                                        <td class="btnTabla">                                           
+                                                <a href="#infoCliente" data-toggle="modal" class="editar procModalInfoCliente" value="${cliente.email}">
                                                     <i class="fas fa-info"></i>&nbsp;
                                                     <span>Info</span>
-                                                </button>
-                                            </form>
+                                                </a>                
                                         </td>
                                         <c:if test="${userRol == 'admin'}">
 	                                        <td class="btnTabla">
@@ -354,7 +357,12 @@
                                         <td>${actividad.nombre}</td>
                                         <td>${actividad.fechainicio}</td>
                                         <td>${actividad.fechafin}</td>
-                                        <td>FALTA POR HACER UBICACION</td>
+                                        <td>
+                                        	<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${actividad.latitud} ${actividad.longitud}">
+                                        		<i class="fas fa-map-marker-alt"></i>&nbsp;
+                                        		<span style="font-size: 1em;">Mostrar Ubicación</span>
+                                        	</a>
+                                        </td>
                                         <td>${actividad.numparticipantes}</td>
                                         <c:if test="${userRol == 'admin'}">
 	                                        <td class="btnTabla">
@@ -451,7 +459,12 @@
                                     <tr class="lineaFiltro">
                                         <td>${itinerario.nombre}</td>
                                         <td>${itinerario.categoria}</td>
-                                        <td>FALTA POR HACER UBICACION</td>
+                                        <td>
+											<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${actividad.latitud} ${actividad.longitud}">
+                                        		<i class="fas fa-map-marker-alt"></i>&nbsp;
+                                        		<span style="font-size: 1em;">Mostrar Ubicación</span>
+                                        	</a>
+										</td>
                                         <td>
                                             <a href="#modalParadas" value="${itinerario.nombre}" class="itiParadas" data-toggle="modal">
                                                 <i class="fas fa-map-pin"></i> Ver paradas
@@ -620,7 +633,12 @@
                                     <tr class="lineaFiltro">
                                         <td>${parada.nombre}</td>
                                         <td>${parada.itinerario.nombre}</td>
-                                        <td>FALTA POR HACER UBICACION</td>
+                                        <td>
+                                        	<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${actividad.latitud} ${actividad.longitud}">
+                                        		<i class="fas fa-map-marker-alt"></i>&nbsp;
+                                        		<span style="font-size: 1em;">Mostrar Ubicación</span>
+                                        	</a>
+                                        </td>
                                         <td>
                                         	<a href="#modalPruebas" value="${parada.nombre}" class="paradaPruebas" data-toggle="modal">
                                                 <i class="fas fa-flag"></i> Ver pruebas

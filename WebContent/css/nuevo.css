@@ -114,7 +114,7 @@ form .textIn ~ label{
 #mapForm{
     width: 97%;
     height: 45%;
-    min-height: 180px;
+    min-height: 200px;
     min-width: 200px;
     border: 1.5px solid #1F2729;  
     margin: auto;

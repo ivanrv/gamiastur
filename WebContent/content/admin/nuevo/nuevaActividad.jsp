@@ -122,21 +122,21 @@
                                     <label>Fecha de Fin</label>
                                     <span class="focus-border"></span>
                                 </div>
+                                <div class="inputCon input-effect">
+	                                <input class="textIn" type="number" name="precio" placeholder="" required/>
+	                                <label>Precio *</label>
+	                                <span class="focus-border"></span>
+	                            </div>
                         </div>
                         <div class="col2">
-                            <div id="mapForm"></div>
-                			<input type="hidden" name="lat" value="">
-                			<input type="hidden" name="lng" value="">
-                            <div class="inputCon input-effect">
-                                <input class="textIn" type="number" name="precio" placeholder="" required/>
-                                <label>Precio *</label>
-                                <span class="focus-border"></span>
-                            </div>
-                            <div class="inputCon input-effect">
+                        	<div class="inputCon input-effect">
                                 <input class="textIn" type="number" name="puntos" placeholder="" required/>
                                 <label>Puntos *</label>
                                 <span class="focus-border"></span>
-                            </div>                                                        
+                            </div>                        
+                            <div id="mapForm" style="height:250px"></div>
+                			<input type="hidden" name="lat" value="">
+                			<input type="hidden" name="lng" value="">                                       
                         </div>
 
                         <div class="sbmt">

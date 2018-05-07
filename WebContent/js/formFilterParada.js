@@ -43,9 +43,8 @@ $(document).ready(function () {
             checkNParada = false;
         }
 
-        if ($("input[name=ubicacion]").val() == "") {
-            $("#mensajeError").append("<p>La ubicación es un dato obligatorio.</p>");
-            $("input[name=ubicacion]").addClass("has-warning");
+        if ($("input[name=lat]").val() == "") {
+            $("#mensajeError").append("<p>La ubicaci&oacute;n es un dato obligatorio.</p>");
 
             submit = false;
         }

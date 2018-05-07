@@ -136,14 +136,14 @@
                                     <label>Número de Parada *</label>
                                     <span class="focus-border"></span>
                                 </div>
+                                <div class="inputCon input-effect">
+	                                <input class="textIn" type="text" name="nombre" placeholder="" required/>
+	                                <label>Nombre de la Parada *</label>
+	                                <span class="focus-border"></span>
+	                            </div>
                         </div>
-                        <div class="col2">
-                        	<div class="inputCon input-effect">
-                                <input class="textIn" type="text" name="nombre" placeholder="" required/>
-                                <label>Nombre de la Parada *</label>
-                                <span class="focus-border"></span>
-                            </div>
-                            <div id="mapForm"></div>
+                        <div class="col2">                   
+                            <div id="mapForm" style="height: 325px"></div>
                 			<input type="hidden" name="lat" value="">
                 			<input type="hidden" name="lng" value="">
                         </div>
