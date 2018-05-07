@@ -222,14 +222,14 @@
 	
 /* Propiedades de ventanas modales */
 
-	#modalParadas .modal-dialog, #modalPruebas .modal-dialog{
+	.info-modal .modal-dialog{
 		width: 85%;
 		border: 1px solid #1F2729;
         border-radius: 10px;
         margin-top: 8%;
 	}
 	
-	#modalParadas .modal-body, #modalPruebas .modal-body{
+	.info-modal .modal-body{
 		background-color: #ECF0F1;
 		border-bottom-left-radius: 10px;
 		border-bottom-right-radius: 10px;
@@ -237,7 +237,7 @@
 		padding-bottom: 10px;
 	}
 	
-	#modalParadas .modal-header, #modalPruebas .modal-header {
+	.info-modal .modal-header {
 		background-color: rgb(114, 188, 199);
 		color: #ECF0F1;
 		border-top-left-radius: 10px;
@@ -245,7 +245,7 @@
 		border-bottom: 1px solid #1f2729;
     }
     
-    #modalParadas .modal-header>h4, #modalPruebas .modal-header>h4{
+    .info-modal .modal-header>h4{
         font-size: 1.2em;
         text-align: center;
     }
@@ -263,11 +263,56 @@
 	}
 	
 	#modalEliminar .modal-body{
-		background-color: #ECF0F1;
+        background-color: #ECF0F1;
+        border-radius: 0;
 	}
 	
 	#modalEliminar .modal-footer{
 		background-color: #ECF0F1;
 		border-bottom-left-radius: 10px;
 		border-bottom-right-radius: 10px;
-	}
+    }
+
+    #infoCliente>.modal-dialog{
+        width: 85%;
+    }
+
+    #infoCliente>.modal-dialog>.modal-body{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    #infoCliente>.modal-dialog>.modal-body>div{
+        padding: 7px 15px;
+        margin-bottom: 15px;
+    }
+    
+    #infoCliente>.modal-dialog>.modal-body>div>p>strong, #infoCliente>.modal-dialog>.modal-body>div>p>span{
+        font-size: 0.9em;
+        padding-right: 7px;
+    }
+
+    #infoClienteImg{
+        flex-basis: 5%;
+        text-align: center;
+    }
+
+    #infoClienteImg>img{
+        height: 95%;
+        border: 1px solid #1F2729;
+        margin-top: 4px;
+    }
+
+    #infoClienteInfoPrincipal, #infoClienteInfoSecundaria{
+        border-left: 1px solid #1f27291c;
+        border-bottom: 1px solid #1f27291c;
+    }
+
+    #infoClienteInfoPrincipal{
+        flex-basis: 37%;
+    }
+
+    #infoClienteInfoSecundaria{
+        flex-basis: 35%;
+    }

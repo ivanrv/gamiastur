@@ -42,6 +42,15 @@
 		request.getSession().setAttribute("clientes", sCliente.buscarEmails());
 	%>
 
+	<div id="loader">
+        <div class="sk-folding-cube">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
+    </div>
+
     <header>
         <a href="${pageContext.servletContext.contextPath}/index.html">
             <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
@@ -142,7 +151,7 @@
             </div>
 
             <div>
-                <a class="btn" id="btnRegistro" onclick="loading();">Registrarse</a>
+                <a class="btn" id="btnRegistro">Registrarse</a>
                 <span>¿Ya tienes cuenta?
                     <a href="${pageContext.servletContext.contextPath}/content/login.jsp">Inicia sesión</a>
                 </span>
@@ -179,14 +188,7 @@
         <p>Gamitour &copy; 2018</p>
     </footer>
     
-    <div id="loader">
-        <div class="sk-folding-cube">
-            <div class="sk-cube1 sk-cube"></div>
-            <div class="sk-cube2 sk-cube"></div>
-            <div class="sk-cube4 sk-cube"></div>
-            <div class="sk-cube3 sk-cube"></div>
-        </div>
-    </div>
+    
 </body>
 
 </html>

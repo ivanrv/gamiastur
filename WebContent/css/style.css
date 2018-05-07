@@ -139,7 +139,7 @@ a:hover, a:focus{
             }
 
             #menuUser:hover ul{
-                height: 215px;
+                height: 177px;
                 visibility: visible;
                 margin-top: 22px;
                 padding: 7px;
@@ -148,6 +148,10 @@ a:hover, a:focus{
                 -o-transition-duration: 0.2s;
                 transition-duration: 0.2s;
                 transition-delay: 0.16s;
+            }
+
+            #menuUser:hover .adminUser{
+                height: 220px;
             }
 
             #menuUser ul li{

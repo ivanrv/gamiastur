@@ -41,4 +41,9 @@ public class ServiceItinerarioImp implements ServiceItinerario {
 		return i.buscarTodos();
 	}
 
+	@Override
+	public List<String> buscarNombres() {
+		return i.buscarNombres();
+	}
+
 }

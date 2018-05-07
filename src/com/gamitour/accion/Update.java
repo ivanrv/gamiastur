@@ -42,7 +42,7 @@ public class Update extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
 		ServiceCliente sCliente = new ServiceClienteImp();
 		ServiceItinerario sItinerario = new ServiceItinerarioImp();
@@ -64,11 +64,13 @@ public class Update extends Accion{
 				Actividad actividad = sActividad.buscarPorNombre(request.getParameter("nombre"));
 				
 				actividad.setFechainicio(sdf.parse(request.getParameter("inicio")));
-				actividad.setFechafin(sdf.parse(request.getParameter("fin")));
-				actividad.setUbicacion(request.getParameter("ubicacion"));
+				actividad.setLatitud(request.getParameter("ubicacion"));
+				actividad.setLongitud(request.getParameter("longitud"));
 				actividad.setPrecio(Float.parseFloat(request.getParameter("precio")));
-				actividad.setImagen(request.getParameter("imagen"));
 				actividad.setPuntos(Integer.parseInt(request.getParameter("puntos")));
+				
+				if(!request.getParameter("fin").equals(""))
+					actividad.setFechafin(sdf.parse(request.getParameter("fin")));
 				
 				sActividad.actualizar(actividad);
 				request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());
@@ -87,7 +89,8 @@ public class Update extends Accion{
 			
 			itinerario.setCategoria(request.getParameter("categoria"));
 			itinerario.setDuracion(request.getParameter("duracion"));
-			itinerario.setUbicacion(request.getParameter("ubicacion"));
+			itinerario.setLatitud(request.getParameter("ubicacion"));
+			itinerario.setLongitud(request.getParameter("ubicacion"));
 			
 			sItinerario.actualizar(itinerario);
 			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
@@ -103,15 +106,15 @@ public class Update extends Accion{
 			try {
 				noticia = sNoticia.buscarPorNombre(request.getParameter("nombre"));
 				
-				noticia.setFechaalta(sdf.parse(request.getParameter("alta")));
-				noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));
-				noticia.setImagen(request.getParameter("imagen"));
+				noticia.setFechaalta(sdf.parse(request.getParameter("alta")));				
 				noticia.setTexto(request.getParameter("texto"));
+				
+				if(!request.getParameter("caducidad").equals(""))
+					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));
 				
 				sNoticia.actualizar(noticia);
 				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			break;
@@ -121,11 +124,18 @@ public class Update extends Accion{
 			
 			parada.setItinerario(sItinerario.buscarPorNombre(request.getParameter("itinerario")));
 			parada.setNumeroParada(Integer.parseInt(request.getParameter("nParada")));
-			parada.setUbicacion(request.getParameter("ubicacion"));
-			parada.setImagen(request.getParameter("imagen"));
-			parada.setHistoria(request.getParameter("historia"));
-			parada.setAnecdotario(request.getParameter("anecdotario"));
-			parada.setGastronomia(request.getParameter("gastronomia"));
+			
+			if(!request.getParameter("historia").equals(""))
+				parada.setHistoria(request.getParameter("historia"));
+			
+			if(!request.getParameter("anecdotario").equals(""))
+				parada.setAnecdotario(request.getParameter("anecdotario"));
+			
+			if(!request.getParameter("gastronomia").equals(""))
+				parada.setGastronomia(request.getParameter("gastronomia"));
+			
+			parada.setLatitud(request.getParameter("ubicacion"));
+			parada.setLongitud(request.getParameter("ubicacion"));
 			
 			sParada.actualizar(parada);
 			request.getSession().setAttribute("listaParadas", sParada.buscarTodos());
@@ -154,15 +164,15 @@ public class Update extends Accion{
 				Pruebadeportiva deportiva = sPruebaDeportiva.buscarPorNombre(request.getParameter("nombre"));
 				
 				deportiva.setParada(sParada.buscarPorNombre(request.getParameter("parada")));
-				deportiva.setFechainicio(sdf.parse(request.getParameter("inicio")));
-				deportiva.setFechafin(sdf.parse(request.getParameter("fin")));
-				deportiva.setExplicacion(request.getParameter("explicacion"));
+				deportiva.setFechainicio(sdf.parse(request.getParameter("inicio")));				
 				deportiva.setPuntos(Integer.parseInt(request.getParameter("puntos")));
+				
+				if(!request.getParameter("fin").equals(""))
+					deportiva.setFechafin(sdf.parse(request.getParameter("fin")));
 				
 				sPruebaDeportiva.actualizar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
 			} catch (NumberFormatException | ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			break;

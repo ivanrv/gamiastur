@@ -39,8 +39,12 @@ $(document).ready(function () {
                 $("#modalParadasTable").append('<tr class="paradaRow"><td>' + element.nombre + '</td><td>' + element.latitud + " " + element.longitud + '</td><td class="btnTabla"><form action="Mostrar.do" method="post"><input type="hidden" name="tipo" value="parada"><input type="hidden" name="parada" value="' + element.nombre + '"><button name="submit" value="submit" class="editar"><i class="fas fa-pencil-alt"></i>&nbsp;<span>Editar</span></button></form></td><td class="btnTabla"><form action="Eliminar.do" method="post"><input type="hidden" name="tipo" value="parada"><input type="hidden" name="parada" value="' + element.nombre + '"><a href="#modalEliminar" data-toggle="modal" class="eliminar"><i class="fas fa-times"></i>&nbsp;<span>Eliminar</span></a></form></td></tr>');
         });
         
-        if($(".paradaRow").length == 0)
+        if($(".paradaRow").length == 0){
         	$("#modalParadasTable").append('<tr class="paradaRow"><td colspan="2">No existen paradas asociadas a este itinerario</td></tr>');
+            $("#modalParadasTable").find(".theadHide").css("display", "none");
+        }else{
+            $("#modalParadasTable").find(".theadHide").css("display", "table-cell");
+        }
     });
 
     $(".paradaPruebas").click(function(){
@@ -58,24 +62,33 @@ $(document).ready(function () {
                 $("#modalPruebasDepTable").append('<tr class="pruebaRow pruebaRowDep"><td>' + element.nombre + '</td><td>' + element.fechainicio + '</td><td>' + element.explicacion + '</td><td>' + element.puntos + '</td><td class="btnTabla"><form action="Mostrar.do" method="post"><input type="hidden" name="tipo" value="deportiva"><input type="hidden" name="prueba" value="' + element.nombre + '"><button name="submit" value="submit" class="editar"><i class="fas fa-pencil-alt"></i>&nbsp;<span>Editar</span></button></form></td><td class="btnTabla"><form action="Eliminar.do" method="post"><input type="hidden" name="tipo" value="deportiva"><input type="hidden" name="prueba" value="' + element.nombre + '"><a href="#modalEliminar" data-toggle="modal" class="eliminar"><i class="fas fa-times"></i>&nbsp;<span>Eliminar</span></a></form></td></tr>');
         });
         
-        if($(".pruebaRowDep").length == 0)
-        	$("#modalPruebasDepTable").append('<tr class="pruebaRow"><td colspan="4">No existen pruebas deportivas asociadas a esta parada</td></tr>');
-        
+        if($(".pruebaRowDep").length == 0){
+            $("#modalPruebasDepTable").append('<tr class="pruebaRow"><td colspan="4">No existen pruebas deportivas asociadas a esta parada</td></tr>');
+            $("#modalPruebasDepTable").find(".theadHide").css("display", "none");
+        }else{
+            $("#modalPruebasDepTable").find(".theadHide").css("display", "table-cell");
+        }
+
+
         arrayCulturales.forEach(element => {
             if(element.parada == paradaClick)
                 $("#modalPruebasCulTable").append('<tr class="pruebaRow pruebaRowCul"><td>' + element.nombre + '</td><td>' + element.puntos + '</td><td class="btnTabla"><form action="Mostrar.do" method="post"><input type="hidden" name="tipo" value="cultural"><input type="hidden" name="prueba" value="' + element.nombre + '"><button name="submit" value="submit" class="editar"><i class="fas fa-pencil-alt"></i>&nbsp;<span>Editar</span></button></form></td><td class="btnTabla"><form action="Eliminar.do" method="post"><input type="hidden" name="tipo" value="cultural"><input type="hidden" name="prueba" value="' + element.nombre + '"><a href="#modalEliminar" data-toggle="modal" class="eliminar"><i class="fas fa-times"></i>&nbsp;<span>Eliminar</span></a></form></td></tr>');
         });
         
-        if($(".pruebaRowCul").length == 0)
+        if($(".pruebaRowCul").length == 0){
         	$("#modalPruebasCulTable").append('<tr class="pruebaRow"><td colspan="2">No existen pruebas culturales asociadas a esta parada</td></tr>');
+            $("#modalPruebasCulTable").find(".theadHide").css("display", "none");
+        }else{
+            $("#modalPruebasCulTable").find(".theadHide").css("display", "table-cell");
+        }
     });
 
-    $(".eliminar").click(function(){
-        loading();
+    $(".eliminar").click(function(){        
     	var form = $(this).parent();
     	
         $("#btnEliminarModal").click(function(){
         	$(this).unbind();
+        	loading();
         	form.submit();
         });  
     });

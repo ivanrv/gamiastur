@@ -24,10 +24,18 @@
                 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE=" crossorigin="anonymous"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-                <script src="${pageContext.servletContext.contextPath}/js/loader.js">
+                <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
             </head>
 
             <body>
+            <div id="loader">
+			        <div class="sk-folding-cube">
+			            <div class="sk-cube1 sk-cube"></div>
+			            <div class="sk-cube2 sk-cube"></div>
+			            <div class="sk-cube4 sk-cube"></div>
+			            <div class="sk-cube3 sk-cube"></div>
+			        </div>
+			    </div>
                 <header>
                     <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
                         <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
@@ -36,7 +44,7 @@
                     <div class="user">
                         <a href="#" id="menuUser">
                             <i class="fas fa-angle-down"></i>
-                            <ul>
+                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
                                 <li>Editar Perfil</li>
                                 <li class="menuUserB">Mis Actividades</li>
                                 <li class="menuUserB">Logros</li>
@@ -176,15 +184,6 @@
 
                     <p>Gamitour &copy; 2018</p>
                 </footer>
-                
-                <div id="loader">
-			        <div class="sk-folding-cube">
-			            <div class="sk-cube1 sk-cube"></div>
-			            <div class="sk-cube2 sk-cube"></div>
-			            <div class="sk-cube4 sk-cube"></div>
-			            <div class="sk-cube3 sk-cube"></div>
-			        </div>
-			    </div>
             </body>
 
             </html>

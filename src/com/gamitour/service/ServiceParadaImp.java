@@ -41,4 +41,9 @@ public class ServiceParadaImp implements ServiceParada {
 		return p.buscarTodos();
 	}
 
+	@Override
+	public List<String> buscarNombres() {
+		return p.buscarNombres();
+	}
+
 }

@@ -10,4 +10,5 @@ public interface ServiceParada {
 	public void actualizar(Parada parada);
 	public Parada buscarPorNombre(String nombre);
 	public List<Parada> buscarTodos();
+	public List<String> buscarNombres();
 }

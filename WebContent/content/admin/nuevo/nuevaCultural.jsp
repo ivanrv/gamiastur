@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+        <%@ page import="com.gamitour.service.ServicePruebaCulturalImp" %>
             <!DOCTYPE html>
             <html lang="es">
 
@@ -13,6 +14,7 @@
                 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
                 <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
                 
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/loader.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/style.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/form.css" type="text/css">
@@ -25,9 +27,26 @@
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/formFilterCultural.js"></script>
+                
+                <script> var nombres = "${nombres}" </script>
             </head>
 
             <body>
+            <jsp:useBean id="sPruebaCulturalImp" class="com.gamitour.service.ServicePruebaCulturalImp" />
+	
+			<%
+				ServicePruebaCulturalImp sPruebaCultural = new ServicePruebaCulturalImp();
+				request.getSession().setAttribute("nombres", sPruebaCultural.buscarNombres());
+			%>
+            <div id="loader">
+			        <div class="sk-folding-cube">
+			            <div class="sk-cube1 sk-cube"></div>
+			            <div class="sk-cube2 sk-cube"></div>
+			            <div class="sk-cube4 sk-cube"></div>
+			            <div class="sk-cube3 sk-cube"></div>
+			        </div>
+			    </div>
                 <header>
                     <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
                         <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
@@ -36,7 +55,7 @@
                     <div class="user">
                         <a href="javascript:void(0)" id="menuUser">
                             <i class="fas fa-angle-down"></i>
-                            <ul>
+                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
                                 <li>Editar Perfil</li>
                                 <li class="menuUserB">Mis Actividades</li>
                                 <li class="menuUserB">Logros</li>
@@ -122,11 +141,20 @@
                         </div>
 
                         <div class="sbmt">
-                            <input type="submit" value="Crear Prueba" class="btn">
+                            <a id="enviar" class="btn">Crear Prueba</a>
                         </div>
                         </form>
                     </div>
                 </div>
+                
+                <div id="modalError" class="modal fade" role="dialog">
+			        <div class="modal-dialog">
+			            <div class="modal-body" id="mensajeError"></div>
+			            <div class="modal-footer">
+			                <button class="btn" data-dismiss="modal">Aceptar</button>
+			            </div>
+			        </div>
+			    </div>
 
                 <footer>
                     <div class="socials">
@@ -146,15 +174,6 @@
 
                     <p>Gamitour &copy; 2018</p>
                 </footer>
-                
-                <div id="loader">
-			        <div class="sk-folding-cube">
-			            <div class="sk-cube1 sk-cube"></div>
-			            <div class="sk-cube2 sk-cube"></div>
-			            <div class="sk-cube4 sk-cube"></div>
-			            <div class="sk-cube3 sk-cube"></div>
-			        </div>
-			    </div>
             </body>
 
             </html>

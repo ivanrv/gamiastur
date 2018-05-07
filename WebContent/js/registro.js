@@ -35,27 +35,18 @@ $(document).ready(function () {
         if ($("input[name=email]").val() == "") {
             $("#mensajeError").append("<p>El correo es un dato obligatorio.</p>")
             $("input[name=email]").addClass("has-warning");
-            $("input[name=email]").click(function () {
-                $(this).select();
-                $(this).unbind();
-            });
 
             submit = false;
         } else {
             if (!validateEmail($("input[name=email]").val())) {
                 $("#mensajeError").append("<p>El correo introducido no es un correo v&#225;lido.</p>")
                 $("input[name=email]").addClass("has-warning");
-                $("input[name=email]").click(function () {
-                    $(this).select();
-                    $(this).unbind();
-                });
 
                 submit = false;
             } else {
                 var contains = false;
 
                 emailsArray.forEach(mail => {
-                	alert(mail);
                     if (mail == $("input[name=email]").val())
                         contains = true;
                 });
@@ -63,10 +54,6 @@ $(document).ready(function () {
                 if (contains) {
                     $("#mensajeError").append("<p>El correo introducido no est&#225; disponible.</p>")
                     $("input[name=email]").addClass("has-warning");
-                    $("input[name=email]").click(function () {
-                        $(this).select();
-                        $(this).unbind();
-                    });
                    
                     submit = false; 
                 } else {
@@ -81,16 +68,6 @@ $(document).ready(function () {
                             $("#mensajeError").append("<p>Los correos no coinciden</p>");
                             $("input[name=email]").addClass("has-warning");
                             $("input[name=emailR]").addClass("has-warning");
-
-                            $("input[name=email]").click(function () {
-                                $(this).select();
-                                $(this).unbind();
-                            });
-
-                            $("input[name=emailR]").click(function () {
-                                $(this).select();
-                                $(this).unbind();
-                            });
 
                             submit = false;
                         }
@@ -116,16 +93,6 @@ $(document).ready(function () {
                     $("input[name=password]").addClass("has-warning");
                     $("input[name=passwordR]").addClass("has-warning");
 
-                    $("input[name=password]").click(function () {
-                        $(this).select();
-                        $(this).unbind();
-                    });
-
-                    $("input[name=passwordR]").click(function () {
-                        $(this).select();
-                        $(this).unbind();
-                    });
-
                     submit = false;
                 }
             }
@@ -138,17 +105,14 @@ $(document).ready(function () {
             submit = false;
         }
 
-        /* Comprobación de email no existente */
-        /*
-        if( COMPROBAR EMAIL NO EXISTE EN BD  ){
-            submit = false;
-        }*/
-
         if (submit) {
-            //$("#regForm").submit();
+            loading();
+            $("#regForm").submit();
         } else {
             $("#modalError").modal();
         }
+
+        
     });
 });
 

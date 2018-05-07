@@ -14,6 +14,7 @@
                 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
                 <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/loader.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/style.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/form.css" type="text/css">
@@ -26,9 +27,18 @@
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js" type="text/javascript"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/formFilterDeportivaU.js" type="text/javascript"></script>
             </head>
 
             <body>
+            <div id="loader">
+			        <div class="sk-folding-cube">
+			            <div class="sk-cube1 sk-cube"></div>
+			            <div class="sk-cube2 sk-cube"></div>
+			            <div class="sk-cube4 sk-cube"></div>
+			            <div class="sk-cube3 sk-cube"></div>
+			        </div>
+			    </div>
                 <header>
                     <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
                         <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
@@ -37,7 +47,7 @@
                     <div class="user">
                         <a href="javascript:void(0)" id="menuUser">
                             <i class="fas fa-angle-down"></i>
-                            <ul>
+                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
                                 <li>Editar Perfil</li>
                                 <li class="menuUserB">Mis Actividades</li>
                                 <li class="menuUserB">Logros</li>
@@ -82,6 +92,7 @@
                     <div id="nuevoForm">
                         <div class="tit">
                             <h1>Actualización de Prueba Deportiva: ${deportiva.nombre}</h1>
+                            <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
                             <form action="Update.do" method="post">
@@ -91,43 +102,50 @@
                                     <select class="textIn has-content" name="parada" placeholder="" required>
                                         <option selected>${deportiva.parada.nombre}</option>
                                         <c:forEach items="${listaParadas}" var="parada">
-                                            <option value="${parada.nombre}">${parada.nombre}</option>
+                                        	<c:if test="${parada.nombre != deportiva.parada.nombre}">
+                                            	<option value="${parada.nombre}">${parada.nombre}</option>
+                                            </c:if>
                                         </c:forEach>
                                     </select>
-                                    <label>Seleccione una parada</label>
+                                    <label>Seleccione una parada *</label>
                                     <span class="focus-border"></span>
                                 </div>
-
+                                
                                 <div class="inputCon input-effect">
-                                    <input class="textIn has-content" type="date" name="inicio" placeholder="" value="${deportiva.fechainicio}" required/>
-                                    <label>Fecha de Inicio</label>
-                                    <span class="focus-border"></span>
-                                </div>
-                                <div class="inputCon input-effect">
-                                    <input class="textIn has-content" type="date" name="fin" placeholder="" value="${deportiva.fechafin}" required/>
-                                    <label>Fecha de Fin</label>
-                                    <span class="focus-border"></span>
-                                </div>
+	                                <input class="textIn has-content" type="number" name="puntos" placeholder="" value="${deportiva.puntos}" required/>
+	                                <label>Puntos *</label>
+	                                <span class="focus-border"></span>
+	                            </div>                                
                         </div>
                         <div class="col2">
                             <div class="inputCon input-effect">
-                                <textarea class="textIn has-content" name="explicacion" placeholder="" required rows="4">${deportiva.explicacion}</textarea>
-                                <label>Explicación</label>
+                                <input class="textIn has-content datepicker" type="text" name="inicio" placeholder="" value="${deportiva.fechainicio}" required/>
+                                <label>Fecha de Inicio *</label>
                                 <span class="focus-border"></span>
                             </div>
                             <div class="inputCon input-effect">
-                                <input class="textIn has-content" type="number" name="puntos" placeholder="" value="${deportiva.puntos}" required/>
-                                <label>Puntos</label>
+                                <input class="textIn has-content datepicker" type="text" name="fin" placeholder="" value="${deportiva.fechafin}" required/>
+                                <label>Fecha de Fin</label>
                                 <span class="focus-border"></span>
-                            </div>
+                            </div>                            
                         </div>
 
                         <div class="sbmt">
-                            <input type="submit" value="Actualizar">
+                        	<a id="modificarExplicacion" class="btn">Modificar Explicación</a>
+                            <a id="enviar" class="btn">Actualizar</a>
                         </div>
                         </form>
                     </div>
                 </div>
+
+				<div id="modalError" class="modal fade" role="dialog">
+			        <div class="modal-dialog">
+			            <div class="modal-body" id="mensajeError"></div>
+			            <div class="modal-footer">
+			                <button class="btn" data-dismiss="modal">Aceptar</button>
+			            </div>
+			        </div>
+			    </div>
 
                 <footer>
                     <div class="socials">
@@ -147,15 +165,6 @@
 
                     <p>Gamitour &copy; 2018</p>
                 </footer>
-                
-                <div id="loader">
-			        <div class="sk-folding-cube">
-			            <div class="sk-cube1 sk-cube"></div>
-			            <div class="sk-cube2 sk-cube"></div>
-			            <div class="sk-cube4 sk-cube"></div>
-			            <div class="sk-cube3 sk-cube"></div>
-			        </div>
-			    </div>
             </body>
 
             </html>

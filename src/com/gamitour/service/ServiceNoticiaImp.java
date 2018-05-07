@@ -41,4 +41,9 @@ public class ServiceNoticiaImp implements ServiceNoticia {
 		return n.buscarTodos();
 	}
 
+	@Override
+	public List<String> buscarNombres() {
+		return n.buscarNombres();
+	}
+
 }

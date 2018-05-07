@@ -10,4 +10,5 @@ public interface ServicePruebaCultural {
 	public void actualizar(Pruebacultural prueba);
 	public Pruebacultural buscarPorNombre(String nombre);
 	public List<Pruebacultural> buscarTodos();
+	public List<String> buscarNombres();
 }

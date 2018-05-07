@@ -41,4 +41,9 @@ public class ServicePruebaDeportivaImp implements ServicePruebaDeportiva {
 		return p.buscarTodos();
 	}
 
+	@Override
+	public List<String> buscarNombres() {
+		return p.buscarNombres();
+	}
+
 }
