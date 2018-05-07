@@ -152,7 +152,7 @@ CREATE TABLE `premio` (
   `fechaactivacion` date NOT NULL,
   `fechaconsumo` date DEFAULT NULL,
   `puntos` int(11) NOT NULL DEFAULT 0,
-  `cliente_idcliente` int(11) NOT NULL,
+  `cliente_idcliente` int(11),
   PRIMARY KEY (`idpremio`),
   KEY `fk_premio_cliente1_idx` (`cliente_idcliente`),
   CONSTRAINT `fk_premio_cliente1` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE CASCADE ON UPDATE CASCADE
