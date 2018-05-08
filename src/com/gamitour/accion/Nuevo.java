@@ -1,14 +1,18 @@
 package com.gamitour.accion;
 
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.gamitour.modelo.Actividad;
 import com.gamitour.modelo.Cliente;
+import com.gamitour.modelo.Imagenactividad;
 import com.gamitour.modelo.Itinerario;
 import com.gamitour.modelo.Noticia;
 import com.gamitour.modelo.Parada;
@@ -21,6 +25,8 @@ import com.gamitour.service.ServiceCliente;
 import com.gamitour.service.ServiceClienteImp;
 import com.gamitour.service.ServiceComentario;
 import com.gamitour.service.ServiceComentarioImp;
+import com.gamitour.service.ServiceImagenActividad;
+import com.gamitour.service.ServiceImagenActividadImp;
 import com.gamitour.service.ServiceItinerario;
 import com.gamitour.service.ServiceItinerarioImp;
 import com.gamitour.service.ServiceMultimedia;
@@ -108,16 +114,26 @@ public class Nuevo extends Accion{
 			
 		case "actividad":
 			ServiceActividad sActividad = new ServiceActividadImp();
+			ServiceImagenActividad sImgActividad = new ServiceImagenActividadImp();
 			try {
-				Actividad actividad = new Actividad(request.getParameter("nombre"), sdf.parse(request.getParameter("inicio")), 0, Double.parseDouble(request.getParameter("precio")), Integer.parseInt(request.getParameter("puntos")), request.getParameter("ubicacion"), request.getParameter("ubicacion"));
+				Actividad actividad = new Actividad(request.getParameter("nombre"), sdf.parse(request.getParameter("inicio")), 0, Double.parseDouble(request.getParameter("precio")), Integer.parseInt(request.getParameter("puntos")), request.getParameter("lat"), request.getParameter("lng"));
 				
 				if(!request.getParameter("fin").equals(""))
 					actividad.setFechafin(sdf.parse(request.getParameter("fin")));
 				
 				sActividad.insertar(actividad);
+				
+				Imagenactividad imagen = new Imagenactividad(sActividad.buscarPorNombre(actividad.getNombre()), request.getContextPath() + "/uploads/actividades/" + request.getParameter("nombre") + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+				System.out.println(imagen.getArchivo());
+				
+				if(!request.getParameter("archivoTitulo").equals(""))
+					imagen.setTitulo(request.getParameter("archivoTitulo"));
+					
+				sImgActividad.insertar(imagen);
+				
 				request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());
 				retorno = "/content/admin/mostrarAdmin.jsp";
-			} catch (NumberFormatException | ParseException e) {
+			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
 				e.printStackTrace();
 			}			
 			break;
@@ -128,7 +144,7 @@ public class Nuevo extends Accion{
 			break;
 			
 		case "itinerario":
-			Itinerario itinerario = new Itinerario(0, request.getParameter("nombre"), request.getParameter("categoria"), request.getParameter("duracion"), request.getParameter("ubicacion"), request.getParameter("ubicacion"));
+			Itinerario itinerario = new Itinerario(0, request.getParameter("nombre"), request.getParameter("categoria"), request.getParameter("duracion"), request.getParameter("lat"), request.getParameter("lng"));
 			sItinerario.insertar(itinerario);
 			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
 			retorno = "/content/admin/mostrarAdmin.jsp";
@@ -157,7 +173,7 @@ public class Nuevo extends Accion{
 			break;
 			
 		case "parada":
-			Parada parada = new Parada(0, sItinerario.buscarPorNombre(request.getParameter("itinerario")), request.getParameter("nombre"), Integer.parseInt(request.getParameter("nParada")), request.getParameter("ubicacion"), request.getParameter("ubicacion"));
+			Parada parada = new Parada(0, sItinerario.buscarPorNombre(request.getParameter("itinerario")), request.getParameter("nombre"), Integer.parseInt(request.getParameter("nParada")), request.getParameter("lat"), request.getParameter("lng"));
 			
 			if(!request.getParameter("historia").equals(""))
 				parada.setHistoria(request.getParameter("historia"));
@@ -177,8 +193,9 @@ public class Nuevo extends Accion{
 			ServicePremio sPremio = new ServicePremioImp();
 			Premio premio;
 			try {
-				premio = new Premio(sCliente.buscarPorEmail(request.getParameter("cliente")), request.getParameter("nombre"), request.getParameter("descripcion"), request.getParameter("imagen"), sdf.parse(request.getParameter("activacion")), sdf.parse(request.getParameter("consumo")), Integer.parseInt(request.getParameter("puntos")));
-				sPremio.insertar(premio);
+				premio = new Premio(null, request.getParameter("nombre"), request.getParameter("descripcion"), sdf.parse(request.getParameter("activacion")), Integer.parseInt(request.getParameter("puntos")));
+				
+				sPremio.insertar(premio);			
 				request.getSession().setAttribute("listaPremios", sPremio.buscarTodos());
 				retorno = "/content/admin/mostrarAdmin.jsp";
 			} catch (NumberFormatException | ParseException e1) {

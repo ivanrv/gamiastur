@@ -64,8 +64,8 @@ public class Update extends Accion{
 				Actividad actividad = sActividad.buscarPorNombre(request.getParameter("nombre"));
 				
 				actividad.setFechainicio(sdf.parse(request.getParameter("inicio")));
-				actividad.setLatitud(request.getParameter("ubicacion"));
-				actividad.setLongitud(request.getParameter("longitud"));
+				actividad.setLatitud(request.getParameter("lat"));
+				actividad.setLongitud(request.getParameter("lng"));
 				actividad.setPrecio(Float.parseFloat(request.getParameter("precio")));
 				actividad.setPuntos(Integer.parseInt(request.getParameter("puntos")));
 				
@@ -89,8 +89,8 @@ public class Update extends Accion{
 			
 			itinerario.setCategoria(request.getParameter("categoria"));
 			itinerario.setDuracion(request.getParameter("duracion"));
-			itinerario.setLatitud(request.getParameter("ubicacion"));
-			itinerario.setLongitud(request.getParameter("ubicacion"));
+			itinerario.setLatitud(request.getParameter("lat"));
+			itinerario.setLongitud(request.getParameter("lng"));
 			
 			sItinerario.actualizar(itinerario);
 			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
@@ -134,8 +134,8 @@ public class Update extends Accion{
 			if(!request.getParameter("gastronomia").equals(""))
 				parada.setGastronomia(request.getParameter("gastronomia"));
 			
-			parada.setLatitud(request.getParameter("ubicacion"));
-			parada.setLongitud(request.getParameter("ubicacion"));
+			parada.setLatitud(request.getParameter("lat"));
+			parada.setLongitud(request.getParameter("lng"));
 			
 			sParada.actualizar(parada);
 			request.getSession().setAttribute("listaParadas", sParada.buscarTodos());

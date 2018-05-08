@@ -41,7 +41,7 @@ CREATE TABLE `cliente` (
   KEY `fk_cliente_rol1_idx` (`rol_idrol`),
   CONSTRAINT `fk_cliente_rol1` FOREIGN KEY (`rol_idrol`) REFERENCES `rol` (`idrol`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-INSERT INTO `cliente` VALUES(1, 'Iván', 'Rodríguez Valdés', '1996-10-15', 'ivan@gamitour.com', 'admin12', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
+INSERT INTO `cliente` VALUES(1, 'Iván', 'Rodríguez Valdés', '1996-10-15', 'ivan@gamiastur.com', 'admin12', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
 
 CREATE TABLE `cliente_has_actividad` (
   `cliente_idcliente` int(11) NOT NULL,

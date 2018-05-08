@@ -61,5 +61,9 @@ public class MySQLDaoFactory {
 	public VotoDAO getVotoDAO(){
 		return new VotoDAOImp(sf);
 	}
+	
+	public ImagenActividadDAO getImagenActividadDAO() {
+		return new ImagenActividadDAOImp(sf);
+	}
 }
 

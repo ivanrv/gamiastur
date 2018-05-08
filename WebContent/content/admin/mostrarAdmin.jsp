@@ -19,6 +19,7 @@
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/tablas.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/media.css" type="text/css">
 
+				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD73nVF-IA4rkBCx98ZVjvV5XVzN_mb-10"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE="
                     crossorigin="anonymous"></script>
@@ -52,10 +53,17 @@
 
 					var stringClientes = "[";
 					<c:forEach items="${listaClientes}" var="cliente" varStatus="status">
-						stringClientes += '{"email": "${cliente.email}", "nombre": "${cliente.nombre}", "apellidos:" "${cliente.apellidos}", "fechanacimiento": "${cliente.fechanacimiento}", "rol": "${cliente.rol.nombre}", "telefono": "${cliente.telefono}", "direccion": "${cliente.direccion}", "codigopostal": "${cliente.codigopostal}", "puntosacumulados": "${cliente.puntosacumulados}", "fecharegistro": "${cliente.fecharegistro}"}';
+						stringClientes += '{"email": "${cliente.email}", "nombre": "${cliente.nombre}", "apellidos": "${cliente.apellidos}", "fechanacimiento": "${cliente.fechanacimiento}", "rol": "${cliente.rol.nombre}", "telefono": "${cliente.telefono}", "direccion": "${cliente.direccion}", "codigopostal": "${cliente.codigopostal}", "puntosacumulados": "${cliente.puntosacumulados}", "fecharegistro": "${cliente.fecharegistro}"}';
 						<c:if test="${!status.last}">stringClientes += ","</c:if>
 					</c:forEach>					
-					stringClientes += "]"
+					stringClientes += "]";
+					
+					var stringPremios = "[";					
+					<c:forEach items="${listaPremios}" var="premio" varStatus="status">
+						stringPremios += '{"nombre": "${premio.nombre}", "cliente": "${premio.cliente.email}", "descripcion": "${premio.descripcion}", "fechaactivacion": "${premio.fechaactivacion}", "fechaconsumo": "${premio.fechaconsumo}", "puntos": "${premio.puntos}"}';
+						<c:if test="${!status.last}">stringPremios += ","</c:if>
+					</c:forEach>					
+					stringPremios += "]";
 					
                 </script>
             </head>
@@ -369,7 +377,7 @@
 	                                            <form action="Mostrar.do" method="post">
 	                                                <input type="hidden" name="tipo" value="actividad">
 	                                                <input type="hidden" name="actividad" value="${actividad.nombre}">
-	                                                <button name="submit" value="submit" class="editar">
+	                                                <button name="submit" value="submit" class="editar" onclick="loading();">
 	                                                    <i class="fas fa-pencil-alt"></i>&nbsp;
 	                                                    <span>Editar</span>
 	                                                </button>
@@ -460,7 +468,7 @@
                                         <td>${itinerario.nombre}</td>
                                         <td>${itinerario.categoria}</td>
                                         <td>
-											<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${actividad.latitud} ${actividad.longitud}">
+											<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${itinerario.latitud} ${itinerario.longitud}">
                                         		<i class="fas fa-map-marker-alt"></i>&nbsp;
                                         		<span style="font-size: 1em;">Mostrar Ubicación</span>
                                         	</a>
@@ -475,7 +483,7 @@
 	                                            <form action="Mostrar.do" method="post">
 	                                                <input type="hidden" name="tipo" value="itinerario">
 	                                                <input type="hidden" name="itinerario" value="${itinerario.nombre}">
-	                                                <button name="submit" value="submit" class="editar">
+	                                                <button name="submit" value="submit" class="editar" onclick="loading();">
 	                                                    <i class="fas fa-pencil-alt"></i>&nbsp;
 	                                                    <span>Editar</span>
 	                                                </button>
@@ -534,7 +542,7 @@
                                                 <input type="hidden" name="tipo" value="multimedia">
                                                 <input type="hidden" name="email" value="${multimedia.cliente.email}">
                                                 <input type="hidden" name="prueba" value="${multimedia.pruebadeportiva.nombre }">
-                                                <button name="submit" value="submit" class="editar">
+                                                <button name="submit" value="submit" class="editar" onclick="loading();">
                                                     <i class="fas fa-info"></i>&nbsp;
                                                     <span>Info</span>
                                                 </button>
@@ -580,7 +588,7 @@
 	                                            <form action="Mostrar.do" method="post">
 	                                                <input type="hidden" name="tipo" value="noticia">
 	                                                <input type="hidden" name="noticia" value="${noticia.nombre}">
-	                                                <button name="submit" value="submit" class="editar">
+	                                                <button name="submit" value="submit" class="editar" onclick="loading();">
 	                                                    <i class="fas fa-pencil-alt"></i>&nbsp;
 	                                                    <span>Editar</span>
 	                                                </button>
@@ -634,7 +642,7 @@
                                         <td>${parada.nombre}</td>
                                         <td>${parada.itinerario.nombre}</td>
                                         <td>
-                                        	<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${actividad.latitud} ${actividad.longitud}">
+                                        	<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${parada.latitud} ${parada.longitud}">
                                         		<i class="fas fa-map-marker-alt"></i>&nbsp;
                                         		<span style="font-size: 1em;">Mostrar Ubicación</span>
                                         	</a>
@@ -649,7 +657,7 @@
 	                                            <form action="Mostrar.do" method="post">
 	                                                <input type="hidden" name="tipo" value="parada">
 	                                                <input type="hidden" name="parada" value="${parada.nombre}">
-	                                                <button name="submit" value="submit" class="editar">
+	                                                <button name="submit" value="submit" class="editar" onclick="loading();">
 	                                                    <i class="fas fa-pencil-alt"></i>&nbsp;
 	                                                    <span>Editar</span>
 	                                                </button>
@@ -707,10 +715,10 @@
                                             <form action="Mostrar.do" method="post">
                                                 <input type="hidden" name="tipo" value="premio">
                                                 <input type="hidden" name="premio" value="${premio.nombre}">
-                                                <button name="submit" value="submit" class="editar">
+                                                <a href="#infoPremio" data-toggle="modal" class="editar procModalInfoPremio" value="${premio.nombre}">
                                                     <i class="fas fa-info"></i>&nbsp;
                                                     <span>Info</span>
-                                                </button>
+                                                </a>
                                             </form>
                                         </td>
                                         <c:if test="${userRol == 'admin'}">
@@ -764,7 +772,7 @@
 	                                            <form action="Mostrar.do" method="post">
 	                                                <input type="hidden" name="tipo" value="cultural">
 	                                                <input type="hidden" name="prueba" value="${cultural.nombre}">
-	                                                <button name="submit" value="submit" class="editar">
+	                                                <button name="submit" value="submit" class="editar" onclick="loading();">
 	                                                    <i class="fas fa-pencil-alt"></i>&nbsp;
 	                                                    <span>Editar</span>
 	                                                </button>
@@ -822,7 +830,7 @@
 	                                            <form action="Mostrar.do" method="post">
 	                                                <input type="hidden" name="tipo" value="deportiva">
 	                                                <input type="hidden" name="prueba" value="${deportiva.nombre}">
-	                                                <button name="submit" value="submit" class="editar">
+	                                                <button name="submit" value="submit" class="editar" onclick="loading();">
 	                                                    <i class="fas fa-pencil-alt"></i>&nbsp;
 	                                                    <span>Editar</span>
 	                                                </button>
@@ -895,25 +903,6 @@
                     </div>
                 </div>
 
-                <footer>
-                    <div class="socials">
-                        <a href="#" id="tw">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" id="fb">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" id="ig">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" id="yt">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-
-                    <p>Gamitour &copy; 2018</p>
-                </footer>
-
                 <div id="modalParadas" class="modal fade info-modal" role="dialog">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-header">
@@ -980,65 +969,133 @@
                     </div>
                 </div>            
              
-             	<div id="infoCliente" class="modal fade info-modal" role="dialog">
-        
-		        <div class="modal-dialog">
-		            <div class="modal-header">
-		                <button class="close" type="button" data-dismiss="modal">&times;</button>
-		                <h4 class="modal-title" id="infoClienteTitle"></h4>
-		            </div>
-		            <div class="modal-body">
-		                <div id="infoClienteImg">
-		                    <img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png" alt="">
-		                </div>
-		                <div id="infoClienteInfoPrincipal">
-		                    <p>
-		                        <strong>Nombre: </strong>
-		                        <span id="infoClienteNombre"></span>
-		                    </p>
-		                    <p>
-		                        <strong>Apellidos: </strong>
-		                        <span id="infoClienteApellidos"></span>
-		                    </p>
-		                    <p>
-		                        <strong>Fecha de Nacimiento: </strong>
-		                        <span id="infoClienteFechaNac"></span>
-		                    </p>
-		                    <p>
-		                        <strong>Correo Electr&oacute;nico: </strong>
-		                        <span id="infoClienteEmail"></span>
-		                    </p>
-		                    <p>
-		                        <strong>Rol: </strong>
-		                        <span id="infoClienteRol"></span>
-		                    </p>
-		                </div>
-		                <div id="infoClienteInfoSecundaria">
-		                    <p>
-		                        <strong>Telefono: </strong>
-		                        <span id="infoClienteTelefono"></span>
-		                    </p>
-		                    <p>
-		                        <strong>Direcci&oacute;n: </strong>
-		                        <span id="infoClienteDireccion"></span>
-		                    </p>
-		                    <p>
-		                        <strong>C&oacute;digo Postal: </strong>
-		                        <span id="infoClienteCP"></span>
-		                    </p>
-		                    <p>
-		                        <strong>Puntos Acumulados: </strong>
-		                        <span id="infoClientePuntos"></span>
-		                    </p>
-		                    <p>
-		                        <strong>Fecha de Registro: </strong>
-		                        <span id="infoClienteRegistro"></span>
-		                    </p>
-		                </div>
-		            </div>
-		        </div>
-		    </div>
+             	<div id="infoCliente" class="modal fade info-modal" role="dialog">        
+			        <div class="modal-dialog">
+			            <div class="modal-header">
+			                <button class="close" type="button" data-dismiss="modal">&times;</button>
+			                <h4 class="modal-title" id="infoClienteTitle"></h4>
+			            </div>
+			            <div class="modal-body">
+			                <div id="infoClienteImg">
+			                    <img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png" alt="">
+			                </div>
+			                <div id="infoClienteInfoPrincipal">
+			                    <p>
+			                        <strong>Nombre: </strong>
+			                        <span id="infoClienteNombre"></span>
+			                    </p>
+			                    <p>
+			                        <strong>Apellidos: </strong>
+			                        <span id="infoClienteApellidos"></span>
+			                    </p>
+			                    <p>
+			                        <strong>Fecha de Nacimiento: </strong>
+			                        <span id="infoClienteFechaNac"></span>
+			                    </p>
+			                    <p>
+			                        <strong>Correo Electr&oacute;nico: </strong>
+			                        <span id="infoClienteEmail"></span>
+			                    </p>
+			                    <p>
+			                        <strong>Rol: </strong>
+			                        <span id="infoClienteRol"></span>
+			                    </p>
+			                </div>
+			                <div id="infoClienteInfoSecundaria">
+			                    <p>
+			                        <strong>Telefono: </strong>
+			                        <span id="infoClienteTelefono"></span>
+			                    </p>
+			                    <p>
+			                        <strong>Direcci&oacute;n: </strong>
+			                        <span id="infoClienteDireccion"></span>
+			                    </p>
+			                    <p>
+			                        <strong>C&oacute;digo Postal: </strong>
+			                        <span id="infoClienteCP"></span>
+			                    </p>
+			                    <p>
+			                        <strong>Puntos Acumulados: </strong>
+			                        <span id="infoClientePuntos"></span>
+			                    </p>
+			                    <p>
+			                        <strong>Fecha de Registro: </strong>
+			                        <span id="infoClienteRegistro"></span>
+			                    </p>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			    
+			    <div id="infoPremio" class="modal fade info-modal" role="dialog">
+			        <div class="modal-dialog">
+			            <div class="modal-header">
+			                <button class="close" type="button" data-dismiss="modal">&times;</button>
+			                <h4 class="modal-title" id="infoPremioTitle"></h4>
+			            </div>
+			            <div class="modal-body">
+			                <div id="infoPremioInfoPrincipal">
+			                    <p>
+			                        <strong>Nombre: </strong>
+			                        <span id="infoPremioNombre"></span>
+			                    </p>
+			                    <p>
+			                        <strong>Asignado a: </strong>
+			                        <span id="infoPremioCliente"></span>
+			                    </p>
+			                    <p>
+			                        <strong>Fecha de Activaci&oacute;n: </strong>
+			                        <span id="infoPremioActivacion"></span>
+			                    </p>
+			                    <p>
+			                        <strong>Fecha de Consumo: </strong>
+			                        <span id="infoPremioConsumo"></span>
+			                    </p>
+			                    <p>
+			                        <strong>Puntos: </strong>
+			                        <span id="infoPremioPuntos"></span>
+			                    </p>
+			                </div>
+			                <div id="infoPremioINfoSecundaria">
+			                    <p>
+			                        <strong>Descripci&oacute;n: </strong><br/>
+			                        <span id="infoPremioDescripcion"></span>
+			                    </p>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
              
+             	<div id="modalMaps" class="modal fade info-modal" role="dialog">
+             		<div class="modal-dialog">
+             			<div class="modal-header">
+             				<button class="close" type="button" data-dismiss="modal">&times;</button>
+             				<h4 class="modal-title">Ubicación</h4>
+             			</div>
+             			<div class="modal-body">
+             				<div id="mapTabla"></div>
+             			</div>
+             		</div>
+             	</div>
+             	
+             	<footer>
+                    <div class="socials">
+                        <a href="#" id="tw">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" id="fb">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" id="ig">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" id="yt">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+
+                    <p>Gamiastur &copy; 2018</p>
+                </footer>
              </body>
 
             </html>

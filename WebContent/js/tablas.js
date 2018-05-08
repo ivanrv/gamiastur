@@ -99,7 +99,7 @@ $(document).ready(function () {
 
         arrayClientes.forEach(element =>{
             if(element.email == $(this).attr("value")){
-                $("#infoClienteTitle").text("Información de cliente:" + element.email);
+                $("#infoClienteTitle").text("Información de cliente: " + element.email);
                 $("#infoClienteNombre").text(element.nombre);
                 $("#infoClienteApellidos").text(element.apellidos);
                 $("#infoClienteFechaNac").text(element.fechanacimiento);
@@ -110,6 +110,38 @@ $(document).ready(function () {
                 $("#infoClienteCP").text(element.codigopostal);
                 $("#infoClientePuntos").text(element.puntosacumulados);
                 $("#infoClienteRegistro").text(element.fecharegistro);
+            }
+        });
+    });
+
+    $(".procModalMaps").click(function(){
+        var centro = new google.maps.LatLng(parseFloat($(this).attr("value").split(" ")[0]), parseFloat($(this).attr("value").split(" ")[1]));
+
+        var map = new google.maps.Map(document.getElementById("mapTabla"), {
+            zoom: 13,
+            center: centro,
+            disableDefaultUI: true,
+            disableDoubleClickZoom: true
+        });
+
+        var marker = new google.maps.Marker({
+            position: centro,
+            map: map
+        });
+    });
+
+    $(".procModalInfoPremio").click(function(){
+        var arrayPremios = JSON.parse(stringPremios);
+
+        arrayPremios.forEach(element =>{
+            if(element.nombre == $(this).attr("value")){
+                $("#infoPremioTitle").text("Información de premio: " + element.nombre);
+                $("#infoPremioNombre").text(element.nombre);
+                $("#infoPremioCliente").text(element.cliente);
+                $("#infoPremioActivacion").text(element.fechaactivacion);
+                $("#infoPremioConsumo").text(element.fechaconsumo);
+                $("#infoPremioPuntos").text(element.puntos);
+                $("#infoPremioDescripcion").text(element.descripcion);
             }
         });
     });

@@ -105,7 +105,7 @@
                             <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
-                            <form action="Nuevo.do" method="post">
+                            <form action="Nuevo.do" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="tipo" value="actividad">
                                 <div class="inputCon input-effect">
                                     <input class="textIn" type="text" name="nombre" placeholder="" required/>
@@ -138,9 +138,31 @@
                 			<input type="hidden" name="lat" value="">
                 			<input type="hidden" name="lng" value="">                                       
                         </div>
+                        
+                        <div id="modalImg" class="modal fade" role="dialog">
+					        <div class="modal-dialog">
+					            <div class="modal-body" id="subidaImg">
+					            	
+					            	<div class="inputCon input-effect" style="margin-bottom:25px">
+		                                <input class="textIn" type="text" name="archivoTitulo" placeholder="Título"/>		                                
+		                                <span class="focus-border"></span>
+		                            </div>
+		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
+		                            	Añadir Archivo
+		                            	<input type="file" name="archivo" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            </label>		                            	                          
+		                            <div>
+		                            	<img id="showImg" src="" alt=""/>
+		                            </div> 
+					            </div>
+					            <div class="modal-footer">
+					                <button class="btn" data-dismiss="modal">Aceptar</button>
+					            </div>
+					        </div>
+					    </div>
 
                         <div class="sbmt">
-                        	<a id="addImg" class="btn">Añadir Imagen *</a>
+                        	<a class="btn" href="#modalImg" data-toggle="modal">Añadir Imagen *</a>
                             <a id="enviar"class="btn">Crear Actividad</a>
                         </div>
                         </form>
@@ -156,14 +178,7 @@
 			        </div>
 			    </div>
 			    
-			    <div id="modalError" class="modal fade" role="dialog">
-			        <div class="modal-dialog">
-			            <div class="modal-body" id="mensajeError"></div>
-			            <div class="modal-footer">
-			                <button class="btn" data-dismiss="modal">Aceptar</button>
-			            </div>
-			        </div>
-			    </div>
+			    
 
                 <footer>
                     <div class="socials">
@@ -181,7 +196,7 @@
                         </a>
                     </div>
 
-                    <p>Gamitour &copy; 2018</p>
+                    <p>Gamiastur &copy; 2018</p>
                 </footer>
             </body>
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+        <%@ page import="com.gamitour.service.ServicePremioImp" %>
             <!DOCTYPE html>
             <html lang="es">
 
@@ -13,6 +14,7 @@
                 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
                 <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
                
+               	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/loader.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/style.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/form.css" type="text/css">
@@ -25,9 +27,20 @@
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/formFilterPremio.js"></script>
+               
+               	<script> var nombres = "${nombres}"</script> 
+                
             </head>
 
             <body>
+            <jsp:useBean id="sPremioImp" class="com.gamitour.service.ServicePremioImp" />
+	
+			<%
+				ServicePremioImp sPremio = new ServicePremioImp();
+				request.getSession().setAttribute("nombres", sPremio.buscarNombres());
+			%>
+            
             <div id="loader">
 			        <div class="sk-folding-cube">
 			            <div class="sk-cube1 sk-cube"></div>
@@ -95,53 +108,45 @@
                             <form action="Nuevo.do" method="post">
                                 <input type="hidden" name="tipo" value="premio">
                                 <div class="inputCon input-effect">
-                                    <select class="textIn" name="itinerario" placeholder="" required>
-                                        <option selected disabled style="display:none"></option>
-                                        <c:forEach items="${listaClientes}" var="cliente">
-                                            <option value="${cliente.email}">${cliente.email}</option>
-                                        </c:forEach>
-                                    </select>
-                                    <label>Seleccione un Cliente</label>
-                                    <span class="focus-border"></span>
-                                </div>
-                                
+	                                <input class="textIn" type="text" name="nombre" placeholder="" required/>
+	                                <label>Nombre del Premio *</label>
+	                                <span class="focus-border"></span>
+	                            </div>
                                 <div class="inputCon input-effect">
                                     <input class="textIn datepicker" type="text" name="activacion" placeholder="" required/>
                                     <label>Fecha de Activación *</label>
                                     <span class="focus-border"></span>
                                 </div>
-                                <div class="inputCon input-effect">
-                                    <input class="textIn datepicker" type="text" name="consumo" placeholder="" required/>
-                                    <label>Fecha de Consumo</label>
-                                    <span class="focus-border"></span>
-                                </div>
                         </div>
-                        <div class="col2">
-                        	<div class="inputCon input-effect">
-                                <input class="textIn" type="text" name="nombre" placeholder="" required/>
-                                <label>Nombre del Premio *</label>
-                                <span class="focus-border"></span>
-                            </div>
+                        <div class="col2">                        	
                             <div class="inputCon input-effect">
                                 <input class="textIn" type="number" name="puntos" placeholder="" required/>
                                 <label>Puntos *</label>
                                 <span class="focus-border"></span>
                             </div>
-
                             <div class="inputCon input-effect">
-                                <textarea class="textIn" name="descripcion" placeholder="" required rows="5"></textarea>
+                                <textarea class="textIn" name="descripcion" placeholder="" required rows="7"></textarea>
                                 <label>Descripción *</label>
                                 <span class="focus-border"></span>
                             </div>                        
                         </div>
 
                         <div class="sbmt">
-                        	<button id="addImg" class="btn">Añadir Imagen</button>
-                            <input type="submit" value="Crear Premio" class="btn">
+                        	<a id="addImg" class="btn">Añadir Imagen</a>
+                            <a class="btn" id="enviar">Crear Premio</a>
                         </div>
                         </form>
                     </div>
                 </div>
+                
+                <div id="modalError" class="modal fade" role="dialog">
+			        <div class="modal-dialog">
+			            <div class="modal-body" id="mensajeError"></div>
+			            <div class="modal-footer">
+			                <button class="btn" data-dismiss="modal">Aceptar</button>
+			            </div>
+			        </div>
+			    </div>
 
                 <footer>
                     <div class="socials">
@@ -159,7 +164,7 @@
                         </a>
                     </div>
 
-                    <p>Gamitour &copy; 2018</p>
+                    <p>Gamiastur &copy; 2018</p>
                 </footer>                
             </body>
 
