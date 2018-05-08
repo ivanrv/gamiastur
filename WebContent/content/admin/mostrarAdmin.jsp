@@ -405,7 +405,7 @@
 	                                    <td class="hiddenT"></td>
 	                                    <td class="hiddenT"></td>                                  
 	                                    <td class="btnTabla">
-	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaActividad.jsp" class="nuevo">
+	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaActividad.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
 	                                            <span>Añadir</span>
 	                                        </a>
@@ -510,7 +510,7 @@
 	                                    <td class="hiddenT"></td>
 	                                    <td class="hiddenT"></td>
 	                                    <td class="btnTabla">
-	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevoItinerario.jsp" class="nuevo">
+	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevoItinerario.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
 	                                            <span>Añadir</span>
 	                                        </a>
@@ -614,7 +614,7 @@
 	                                    <td class="hiddenT"></td>
 	                                    <td class="hiddenT"></td>
 	                                    <td class="btnTabla">
-	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaNoticia.jsp" class="nuevo">
+	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaNoticia.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
 	                                            <span>Añadir</span>
 	                                        </a>
@@ -684,7 +684,7 @@
 	                                    <td class="hiddenT"></td>
 	                                    <td class="hiddenT"></td>
 	                                    <td class="btnTabla">
-	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaParada.jsp" class="nuevo">
+	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaParada.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
 	                                            <span>Añadir</span>
 	                                        </a>
@@ -742,7 +742,7 @@
 	                                    <td class="hiddenT"></td>
 	                                    <td class="hiddenT"></td>
 	                                    <td class="btnTabla">
-	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevoPremio.jsp" class="nuevo">
+	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevoPremio.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
 	                                            <span>Añadir</span>
 	                                        </a>
@@ -796,7 +796,7 @@
 	                                    <td class="hiddenT"></td>
 	                                    <td class="hiddenT"></td>
 	                                    <td class="btnTabla">
-	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaCultural.jsp" class="nuevo">
+	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaCultural.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
 	                                            <span>Añadir</span>
 	                                        </a>
@@ -856,7 +856,7 @@
 	                                    <td class="hiddenT"></td>
 	                                    <td class="hiddenT"></td>
 	                                    <td class="btnTabla">
-	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaDeportiva.jsp" class="nuevo">
+	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaDeportiva.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
 	                                            <span>Añadir</span>
 	                                        </a>

@@ -123,8 +123,7 @@ public class Nuevo extends Accion{
 				
 				sActividad.insertar(actividad);
 				
-				Imagenactividad imagen = new Imagenactividad(sActividad.buscarPorNombre(actividad.getNombre()), request.getContextPath() + "/uploads/actividades/" + request.getParameter("nombre") + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
-				System.out.println(imagen.getArchivo());
+				Imagenactividad imagen = new Imagenactividad(sActividad.buscarPorNombre(actividad.getNombre()), "/actividades/" + request.getParameter("nombre") + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
 				
 				if(!request.getParameter("archivoTitulo").equals(""))
 					imagen.setTitulo(request.getParameter("archivoTitulo"));
@@ -163,10 +162,12 @@ public class Nuevo extends Accion{
 				if(!request.getParameter("caducidad").equals(""))
 					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));
 				
+				noticia.setImagen("/noticias/" + noticia.getNombre() + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+				
 				sNoticia.insertar(noticia);
 				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
 				retorno = "/content/admin/mostrarAdmin.jsp";
-			} catch (ParseException e) {
+			} catch (ParseException | IOException | ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -184,6 +185,17 @@ public class Nuevo extends Accion{
 			if(!request.getParameter("gastronomia").equals(""))
 				parada.setGastronomia(request.getParameter("gastronomia"));
 			
+			try {
+				if(request.getPart("archivoImg") != null)
+					parada.setImagen("/paradas/" + parada.getNombre() + "-" + Paths.get(request.getPart("archivoImg").getSubmittedFileName()).getFileName().toString());
+				
+				if(request.getPart("archivoVideo") != null)
+					parada.setVideo("/paradas/" + parada.getNombre() + "-" + Paths.get(request.getPart("archivoVideo").getSubmittedFileName()).getFileName().toString());
+			} catch (IOException | ServletException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			
 			sParada.insertar(parada);
 			request.getSession().setAttribute("listaParadas", sParada.buscarTodos());
 			retorno = "/content/admin/mostrarAdmin.jsp";
@@ -195,10 +207,13 @@ public class Nuevo extends Accion{
 			try {
 				premio = new Premio(null, request.getParameter("nombre"), request.getParameter("descripcion"), sdf.parse(request.getParameter("activacion")), Integer.parseInt(request.getParameter("puntos")));
 				
+				if(request.getPart("archivo") != null)
+					premio.setImagen("/premios/" + premio.getNombre() + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+				
 				sPremio.insertar(premio);			
 				request.getSession().setAttribute("listaPremios", sPremio.buscarTodos());
 				retorno = "/content/admin/mostrarAdmin.jsp";
-			} catch (NumberFormatException | ParseException e1) {
+			} catch (NumberFormatException | ParseException | IOException | ServletException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
@@ -218,11 +233,13 @@ public class Nuevo extends Accion{
 				
 				if(!request.getParameter("fin").equals(""))
 					deportiva.setFechafin(sdf.parse(request.getParameter("fin")));
+				
+				deportiva.setExplicacion("/deportivas/" + deportiva.getNombre() + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
 					
 				sPruebaDeportiva.insertar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
 				retorno = "/content/admin/mostrarAdmin.jsp";
-			} catch (NumberFormatException | ParseException e) {
+			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

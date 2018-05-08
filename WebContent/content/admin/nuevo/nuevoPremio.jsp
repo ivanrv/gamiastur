@@ -105,7 +105,7 @@
                             <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
-                            <form action="Nuevo.do" method="post">
+                            <form action="Nuevo.do" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="tipo" value="premio">
                                 <div class="inputCon input-effect">
 	                                <input class="textIn" type="text" name="nombre" placeholder="" required/>
@@ -130,9 +130,26 @@
                                 <span class="focus-border"></span>
                             </div>                        
                         </div>
+                        
+                        <div id="modalImg" class="modal fade" role="dialog">
+					        <div class="modal-dialog">
+					            <div class="modal-body" id="subidaImg">
+		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
+		                            	Añadir Archivo
+		                            	<input type="file" name="archivo" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            </label>		                            	                          
+		                            <div>
+		                            	<img id="showFile" src="" alt=""/>
+		                            </div> 
+					            </div>
+					            <div class="modal-footer">
+					                <button class="btn" data-dismiss="modal">Aceptar</button>
+					            </div>
+					        </div>
+					    </div>
 
                         <div class="sbmt">
-                        	<a id="addImg" class="btn">Añadir Imagen</a>
+                        	<a href="#modalImg" class="btn" data-toggle="modal">Añadir Imagen</a>
                             <a class="btn" id="enviar">Crear Premio</a>
                         </div>
                         </form>

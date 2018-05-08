@@ -85,6 +85,12 @@ $(document).ready(function () {
             }
         }
 
+        if((!$("input[name=archivo]").get(0).files) || ($("input[name=archivo]").get(0).files.length == 0)){
+            $("#mensajeError").append("<p>Es obligatorio a&ntilde;adir un archivo de explicaci&oacute;n.</p>")
+
+            submit = false;
+        }
+
         $(".has-warning").click(function () {
             $(this).select();
         });

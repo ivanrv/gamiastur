@@ -61,32 +61,111 @@ public class Controller extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
+		String url = request.getServletPath().substring(request.getServletPath().lastIndexOf("/"));
+		String directorio;
+		String fileName;
+		Part archivo;
+		InputStream archivoStream;
+		File archivoSalida;
+		
+		if((request.getParameter("tipo") != null) && (!url.substring(1, url.length()-3).equals("Eliminar")) && (!url.substring(1, url.length()-3).equals("Admin")) && (!url.substring(1, url.length()-3).equals("Mostrar"))){
 			switch(request.getParameter("tipo")) {
 			case "actividad":
+				if(request.getPart("archivo") != null){
+					directorio = "/opt/tomcat/webapps/uploads/gamitour/actividades/";
+					
+					fileName = request.getParameter("nombre");
+					archivo = request.getPart("archivo");
+					
+					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+									
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
+				break;
 				
-				String directorio = request.getContextPath() + "/uploads/actividades/";
-				System.out.println(directorio);
+			case "parada":
+				directorio = "/opt/tomcat/webapps/uploads/gamitour/paradas/";
+				if(request.getPart("archivoImg") != null){					
+					
+					fileName = request.getParameter("nombre");
+					archivo = request.getPart("archivoImg");
+					
+					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+									
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
 				
-				String fileName = request.getParameter("nombre");
-				Part archivo = request.getPart("archivo");
 				
-				fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
-				
-				System.out.println(fileName);
-				
-				InputStream archivoStream = archivo.getInputStream();
-				File archivoSalida = new File(directorio + fileName);
-				FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
-				archivoStream.close();
+				if(request.getPart("archivoVideo") != null){
+					fileName = request.getParameter("nombre");
+					archivo = request.getPart("archivoVideo");
+					
+					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+									
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
 				
 				break;
+				
+			case "noticia":
+				if(request.getPart("archivo") != null){
+					directorio = "/opt/tomcat/webapps/uploads/gamitour/noticias/";
+					
+					fileName = request.getParameter("nombre");
+					archivo = request.getPart("archivo");
+					
+					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+									
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
+				break;
+				
+			case "premio":
+				if(request.getPart("archivo") != null){
+					directorio = "/opt/tomcat/webapps/uploads/gamitour/premios/";
+					
+					fileName = request.getParameter("nombre");
+					archivo = request.getPart("archivo");
+					
+					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+									
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
+				
+				break;
+				
+			case "deportiva":
+				if(request.getPart("archivo") != null){
+					directorio = "/opt/tomcat/webapps/uploads/gamitour/deportivas/";
+					
+					fileName = request.getParameter("nombre");
+					archivo = request.getPart("archivo");
+					
+					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+									
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
+				break;
 			}
-		}catch(NullPointerException e) {
-			System.out.println("Nullpointer lokete.");
-		}
-		
-		
+		}	
 		
 		doGet(request, response);
 	}

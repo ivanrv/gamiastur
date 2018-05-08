@@ -98,6 +98,12 @@ $(document).ready(function () {
             }
         }
 
+        if((!$("input[name=archivo]").get(0).files) || ($("input[name=archivo]").get(0).files.length == 0)){
+            $("#mensajeError").append("<p>Es obligatorio a&ntilde;adir una imagen.</p>")
+
+            submit = false;
+        }
+
         $(".has-warning").click(function () {
             $(this).select();
         });
@@ -111,17 +117,3 @@ $(document).ready(function () {
     });
 });
 
-function readURL(input){
-    if(input.files && input.files[0]){
-        var reader = new FileReader();
-
-        reader.onload = function(e){
-            $("#showImg").attr("src", e.target.result).height(200);
-
-            if($("input[name=archivoTitulo]").val() != "")
-                $("#showImg").attr("alt", $("input[name=archivoTitulo]").val());
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}

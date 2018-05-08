@@ -96,7 +96,7 @@
                             <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
-                            <form action="Update.do" method="post">
+                            <form action="Update.do" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="tipo" value="actividad">
                                 <input type="hidden" name="nombre" value="${actividad.nombre}">
                                 <div class="inputCon input-effect">
@@ -125,14 +125,34 @@
                             <div id="mapForm"></div>
                				<input type="hidden" name="lat" value="${actividad.latitud}">
                				<input type="hidden" name="lng" value="${actividad.longitud}">
-                            
-                            <div>
-                                <a id="modificarImg" class="btn">Modificar Imagen</a>
-                            </div>                            
                         </div>
+                        
+                        <div id="modalImg" class="modal fade" role="dialog">
+					        <div class="modal-dialog">
+					            <div class="modal-body" id="subidaImg">
+					            	
+					            	<div class="inputCon input-effect" style="margin-bottom:25px">
+		                                <input class="textIn" type="text" name="archivoTitulo" placeholder="Título"/>		                                
+		                                <span class="focus-border"></span>
+		                            </div>
+		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
+		                            	Añadir Archivo
+		                            	<input type="file" name="archivo" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            </label>		                            	                          
+		                            <div>
+		                            	<img id="showFile" src="/static${actividad.imagenactividads.iterator().next().archivo}" alt="" style="height:200px;"/>
+		                            </div> 
+					            </div>
+					            <div class="modal-footer">
+					                <button class="btn" data-dismiss="modal">Aceptar</button>
+					            </div>
+					        </div>
+					    </div>
 
                         <div class="sbmt">
+                        	<a class="btn" href="#modalImg" data-toggle="modal">Modificar Imagen</a>
                             <a id="enviar" type="submit"class="btn">Actualizar</a>
+                         
                         </div>
                         </form>
                     </div>
@@ -141,7 +161,7 @@
                 <div id="modalError" class="modal fade" role="dialog">
 			        <div class="modal-dialog">
 			            <div class="modal-body" id="mensajeError"></div>
-			            <div class="modal-footer">
+			            <div class="modal-footer">			            	
 			                <button class="btn" data-dismiss="modal">Aceptar</button>
 			            </div>
 			        </div>

@@ -84,7 +84,7 @@
                 </nav>
 
                 <div class="content">
-
+					<h1>Bienvenido a Gamiastur, ${username}</h1>
                 </div>
 
                 <footer>

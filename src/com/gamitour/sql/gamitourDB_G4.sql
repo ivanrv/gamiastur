@@ -127,7 +127,7 @@ CREATE TABLE `comentario` (
 CREATE TABLE `imagenactividad` (
   `idImagenActividad` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(45) DEFAULT NULL,
-  `archivo` varchar(45) NOT NULL,
+  `archivo` varchar(200) NOT NULL,
   `idActividad` int(11) NOT NULL UNIQUE,
   PRIMARY KEY (`idImagenActividad`),
   KEY `fk_idactividad_idx` (`idActividad`),

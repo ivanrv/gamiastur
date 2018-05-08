@@ -113,7 +113,7 @@
                             <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
-                            <form action="Update.do" method="post">
+                            <form action="Update.do" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="tipo" value="parada">
                                 <input type="hidden" name="nombre" value="${parada.nombre}">
                                 <div class="inputCon input-effect">
@@ -157,9 +157,46 @@
                                 <span class="focus-border"></span>
                             </div>
                         </div>
+                        
+                        <div id="modalImg" class="modal fade" role="dialog">
+					        <div class="modal-dialog">
+					            <div class="modal-body" id="subidaImg">
+		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
+		                            	Añadir Imagen
+		                            	<input type="file" name="archivoImg" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            </label>		                            	                          
+		                            <div>
+		                            	<img id="showFile" src="/static${parada.imagen}" alt="" style="height:200px;"/>
+		                            </div> 
+					            </div>
+					            <div class="modal-footer">
+					                <button class="btn" data-dismiss="modal">Aceptar</button>
+					            </div>
+					        </div>
+					    </div>
+					    
+					    <div id="modalVideo" class="modal fade" role="dialog">
+					        <div class="modal-dialog modal-lg">
+					            <div class="modal-body" id="subidaVideo">
+		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
+		                            	Añadir Vídeo
+		                            	<input type="file" name="archivoVideo" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            </label>		                            	                          
+		                            <div>
+			                            <video style="height:480px;" controls>
+			                            	<source id="showFileVid" src="/static${parada.video}"/>
+		                            	</video>
+		                            </div> 
+					            </div>
+					            <div class="modal-footer">
+					                <button class="btn" data-dismiss="modal">Aceptar</button>
+					            </div>
+					        </div>
+					    </div>
 
                         <div class="sbmt">
-                        	<a id="modificarMultimedia" class="btn">Modificar Multimedias</a>
+                        	<a href="#modalImg" class="btn" data-toggle="modal">Modificar Imagen</a>
+                        	<a href="#modalVideo" class="btn" data-toggle="modal">Modificar Vídeo</a>
                             <a id="enviar" class="btn">Actualizar</a>
                         </div>
                         </form>

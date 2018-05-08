@@ -1,8 +1,11 @@
 package com.gamitour.accion;
 
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,6 +22,8 @@ import com.gamitour.service.ServiceCliente;
 import com.gamitour.service.ServiceClienteImp;
 import com.gamitour.service.ServiceComentario;
 import com.gamitour.service.ServiceComentarioImp;
+import com.gamitour.service.ServiceImagenActividad;
+import com.gamitour.service.ServiceImagenActividadImp;
 import com.gamitour.service.ServiceItinerario;
 import com.gamitour.service.ServiceItinerarioImp;
 import com.gamitour.service.ServiceMultimedia;
@@ -60,6 +65,7 @@ public class Update extends Accion{
 			
 		case "actividad":
 			ServiceActividad sActividad = new ServiceActividadImp();
+			ServiceImagenActividad sImgAct = new ServiceImagenActividadImp();
 			try {
 				Actividad actividad = sActividad.buscarPorNombre(request.getParameter("nombre"));
 				
@@ -69,12 +75,19 @@ public class Update extends Accion{
 				actividad.setPrecio(Float.parseFloat(request.getParameter("precio")));
 				actividad.setPuntos(Integer.parseInt(request.getParameter("puntos")));
 				
+				if(request.getPart("archivo") != null)
+					actividad.getImagenactividads().iterator().next().setArchivo("/actividades/" + request.getParameter("nombre") + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+				
 				if(!request.getParameter("fin").equals(""))
 					actividad.setFechafin(sdf.parse(request.getParameter("fin")));
 				
+				if(!request.getParameter("archivoTitulo").equals(""))
+					actividad.getImagenactividads().iterator().next().setTitulo(request.getParameter("titulo"));
+				
+				sImgAct.actualizar(actividad.getImagenactividads().iterator().next());
 				sActividad.actualizar(actividad);
 				request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());
-			} catch (NumberFormatException | ParseException e) {
+			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
 				e.printStackTrace();
 			}			
 			break;
@@ -109,12 +122,15 @@ public class Update extends Accion{
 				noticia.setFechaalta(sdf.parse(request.getParameter("alta")));				
 				noticia.setTexto(request.getParameter("texto"));
 				
+				if(request.getPart("archivo") != null)
+					noticia.setImagen("/noticias/" + noticia.getNombre() + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+				
 				if(!request.getParameter("caducidad").equals(""))
 					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));
 				
 				sNoticia.actualizar(noticia);
 				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
-			} catch (ParseException e) {
+			} catch (ParseException | IOException | ServletException e) {
 				e.printStackTrace();
 			}
 			break;
@@ -133,6 +149,17 @@ public class Update extends Accion{
 			
 			if(!request.getParameter("gastronomia").equals(""))
 				parada.setGastronomia(request.getParameter("gastronomia"));
+			
+			try {
+				if(request.getPart("archivoImg") != null)
+					parada.setImagen("/paradas/" + parada.getNombre() + "-" + Paths.get(request.getPart("archivoImg").getSubmittedFileName()).getFileName().toString());
+				
+				if(request.getPart("archivoVideo") != null)
+					parada.setVideo("/paradas/" + parada.getNombre() + "-" + Paths.get(request.getPart("archivoVideo").getSubmittedFileName()).getFileName().toString());
+			} catch (IOException | ServletException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 			
 			parada.setLatitud(request.getParameter("lat"));
 			parada.setLongitud(request.getParameter("lng"));
@@ -170,9 +197,12 @@ public class Update extends Accion{
 				if(!request.getParameter("fin").equals(""))
 					deportiva.setFechafin(sdf.parse(request.getParameter("fin")));
 				
+				if(request.getPart("archivo") != null)
+					deportiva.setExplicacion("/deportivas/" + deportiva.getNombre() + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+				
 				sPruebaDeportiva.actualizar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
-			} catch (NumberFormatException | ParseException e) {
+			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
 				e.printStackTrace();
 			}
 			break;

@@ -152,7 +152,7 @@
 		                            	<input type="file" name="archivo" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
-		                            	<img id="showImg" src="" alt=""/>
+		                            	<img id="showFile" src="" alt=""/>
 		                            </div> 
 					            </div>
 					            <div class="modal-footer">
