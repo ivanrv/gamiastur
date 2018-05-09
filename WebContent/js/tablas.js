@@ -145,6 +145,10 @@ $(document).ready(function () {
             }
         });
     });
+
+    $(".procModalPDF").click(function(){
+        $("#modalPDFDoc").attr("src", "/static" + $(this).attr("value"));
+    });
 });
 
 function first(selector) {

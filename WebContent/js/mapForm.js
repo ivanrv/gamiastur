@@ -18,7 +18,6 @@ initMap = function () {
   var map = new google.maps.Map(document.getElementById('mapForm'), {
     zoom: 11,
     center: centro,
-    disableDefaultUI: true,
     disableDoubleClickZoom: true
   });
 

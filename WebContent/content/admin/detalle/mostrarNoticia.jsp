@@ -122,7 +122,7 @@
                         </div>
                         
                         <div id="modalImg" class="modal fade" role="dialog">
-					        <div class="modal-dialog">
+					        <div class="modal-dialog modal-lg">
 					            <div class="modal-body" id="subidaImg">
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
 		                            	Añadir Archivo

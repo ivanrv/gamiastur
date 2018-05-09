@@ -140,7 +140,7 @@
                         </div>
                         
                         <div id="modalImg" class="modal fade" role="dialog">
-					        <div class="modal-dialog">
+					        <div class="modal-dialog modal-lg">
 					            <div class="modal-body" id="subidaImg">
 					            	
 					            	<div class="inputCon input-effect" style="margin-bottom:25px">

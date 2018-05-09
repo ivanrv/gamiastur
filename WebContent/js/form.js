@@ -54,8 +54,9 @@ function readURL(input){
         reader.onload = function(e){
 			if($(this).attr("name") == "archivoVideo"){
 				$("#showFileVid").attr("src", e.target.result);
+				$("video").height(480);
 			}else{
-				$("#showFile").attr("src", e.target.result).height(200);
+				$("#showFile").attr("src", e.target.result).css("min-height", "400px").css("width", "100%");
 			}
         }
 

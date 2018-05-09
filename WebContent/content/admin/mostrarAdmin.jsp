@@ -824,7 +824,12 @@
 	                                        <td>${deportiva.nombre}</td>
 	                                        <td>${deportiva.parada.nombre}</td>
 	                                        <td>${deportiva.fechainicio}</td>
-	                                        <td>${deportiva.explicacion}</td>
+	                                        <td>
+	                                        	<a href="#modalPDF" data-toggle="modal" value="${deportiva.explicacion}" class="procModalPDF">
+	                                        		<i class="fas fa-file-pdf"></i>&nbsp;
+	                                        		<span>Mostrar Explicación</span>
+	                                        	</a>
+	                                        </td>
 	                                        <td>${deportiva.puntos}</td>
 	                                        <td class="btnTabla">
 	                                            <form action="Mostrar.do" method="post">
@@ -1074,6 +1079,20 @@
              			</div>
              			<div class="modal-body">
              				<div id="mapTabla"></div>
+             			</div>
+             		</div>
+             	</div>
+             	
+             	<div id="modalPDF" class="modal fade info-modal" role="dialog">
+             		<div class="modal-dialog modal-lg">
+             			<div class="modal-header">
+             				<button class="close" type="button" data-dismiss="modal">&times;</button>
+             				<h4 class="modal-title">Explicación</h4>
+             			</div>
+             			<div class="modal-body">
+             				<div>
+             					<embed id="modalPDFDoc" src="" type="application/pdf" style="width:100%; min-height: 400px"/>
+             				</div>
              			</div>
              		</div>
              	</div>
