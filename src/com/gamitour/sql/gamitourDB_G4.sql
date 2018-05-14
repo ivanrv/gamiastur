@@ -41,7 +41,7 @@ CREATE TABLE `cliente` (
   KEY `fk_cliente_rol1_idx` (`rol_idrol`),
   CONSTRAINT `fk_cliente_rol1` FOREIGN KEY (`rol_idrol`) REFERENCES `rol` (`idrol`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-INSERT INTO `cliente` VALUES(1, 'Iván', 'Rodríguez Valdés', '1996-10-15', 'ivan@gamitour.com', 'admin12', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
+INSERT INTO `cliente` VALUES(1, 'Iván', 'Rodríguez Valdés', '1996-10-15', 'ivan@gamiastur.com', 'admin12', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
 
 CREATE TABLE `cliente_has_actividad` (
   `cliente_idcliente` int(11) NOT NULL,
@@ -73,9 +73,9 @@ CREATE TABLE `parada` (
   `historia` varchar(200) DEFAULT NULL,
   `anecdotario` varchar(200) DEFAULT NULL,
   `gastronomia` varchar(200) DEFAULT NULL,
-  `imagen` varchar(45) DEFAULT NULL,
+  `imagen` varchar(100) DEFAULT NULL,
   `itinerario_iditinerario` int(11) NOT NULL,
-  `video` varchar(45) DEFAULT NULL,
+  `video` varchar(100) DEFAULT NULL,
   `latitud` varchar(45) NOT NULL,
   `longitud` varchar(45) NOT NULL,
   PRIMARY KEY (`idparada`),
@@ -100,8 +100,8 @@ CREATE TABLE `multimedia` (
   `idmultimedia` int(11) NOT NULL AUTO_INCREMENT,
   `fecha` date NOT NULL,
   `comentario` varchar(60) DEFAULT NULL,
-  `imagen` varchar(60) DEFAULT NULL,
-  `video` varchar(60) DEFAULT NULL,
+  `imagen` varchar(100) DEFAULT NULL,
+  `video` varchar(100) DEFAULT NULL,
   `cliente_idcliente` int(11) NOT NULL,
   `pruebaDeportiva_idpruebadeportiva` int(11) NOT NULL,
   `puntosacumulados` int(11) NOT NULL DEFAULT 0,
@@ -127,7 +127,7 @@ CREATE TABLE `comentario` (
 CREATE TABLE `imagenactividad` (
   `idImagenActividad` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(45) DEFAULT NULL,
-  `archivo` varchar(45) NOT NULL,
+  `archivo` varchar(100) NOT NULL,
   `idActividad` int(11) NOT NULL UNIQUE,
   PRIMARY KEY (`idImagenActividad`),
   KEY `fk_idactividad_idx` (`idActividad`),
@@ -140,7 +140,7 @@ CREATE TABLE `noticia` (
   `texto` varchar(200) NOT NULL,
   `fechaalta` date NOT NULL,
   `fechacaducidad` date DEFAULT NULL,
-  `imagen` varchar(45) NOT NULL,
+  `imagen` varchar(100) NOT NULL,
   PRIMARY KEY (`idnoticia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -148,11 +148,11 @@ CREATE TABLE `premio` (
   `idpremio` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL,
   `descripcion` varchar(200) NOT NULL,
-  `imagen` varchar(45) DEFAULT NULL,
+  `imagen` varchar(100) DEFAULT NULL,
   `fechaactivacion` date NOT NULL,
   `fechaconsumo` date DEFAULT NULL,
   `puntos` int(11) NOT NULL DEFAULT 0,
-  `cliente_idcliente` int(11) NOT NULL,
+  `cliente_idcliente` int(11),
   PRIMARY KEY (`idpremio`),
   KEY `fk_premio_cliente1_idx` (`cliente_idcliente`),
   CONSTRAINT `fk_premio_cliente1` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE CASCADE ON UPDATE CASCADE

@@ -22,12 +22,14 @@
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/nuevo.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/media.css" type="text/css">
                 
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD73nVF-IA4rkBCx98ZVjvV5XVzN_mb-10"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE=" crossorigin="anonymous"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js" type="text/javascript"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/mapForm.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/formFilterItinerarioU.js" type="text/javascript"></script>
             </head>
 
@@ -94,26 +96,24 @@
                     	<h1>Datos del nuevo Itinerario:</h1>
                     	<span>Los campos marcados con asteriscos son obligatorios</span>
                     </div>
-                    <div style="width: 30%; margin: auto;">
-	                    <form action="Update.do" method="post">
+                    <div style="width: 30%; margin: 35px auto; height: 475px">
+	                    <form action="Update.do" method="post" style="height:100%">
 	                        <input type="hidden" name="tipo" value="itinerario">
 	                        <input type="hidden" name="nombre" value="${itinerario.nombre}">
-	                        <div class="inputCon input-effect">
-	                            <input class="textIn has-content" type="text" name="categoria" placeholder="" value="${itinerario.categoria}" required/>
+	                        <div class="inputCon input-effect" style="margin-bottom:35px">
+	                            <input class="textIn has-content" type="text" name="categoria" placeholder="" value="${itinerario.categoria}" required />
 	                            <label>Categoría *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
-	                        <div class="inputCon input-effect">
+	                        <div class="inputCon input-effect" style="margin-bottom:25px">
 	                            <input class="textIn has-content" type="text" name="duracion" placeholder="" value="${itinerario.duracion}" required/>
 	                            <label>Duración *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
-	                        <div class="inputCon input-effect">
-	                            <input class="textIn has-content" type="text" name="ubicacion" placeholder="" value="${itinerario.latitud} ${itinerario.longitud}" required/>
-	                            <label>Ubicación *</label>
-	                            <span class="focus-border"></span>
-	                        </div>
-	                        <div>
+	                        <div id="mapForm" style="height: 250px"></div>
+                			<input type="hidden" name="lat" value="${itinerario.latitud}">
+                			<input type="hidden" name="lng" value="${itinerario.longitud }">	         
+	                        <div style="margin: auto">
 	                            <a id="enviar" class="btn">Actualizar</a>
 	                        </div>
 	                    </form>
@@ -145,7 +145,7 @@
                         </a>
                     </div>
 
-                    <p>Gamitour &copy; 2018</p>
+                    <p>Gamiastur &copy; 2018</p>
                 </footer>
             </body>
 

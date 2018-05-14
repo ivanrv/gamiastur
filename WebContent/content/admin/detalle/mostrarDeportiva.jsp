@@ -95,7 +95,7 @@
                             <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
-                            <form action="Update.do" method="post">
+                            <form action="Update.do" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="tipo" value="deportiva">
                                 <input type="hidden" name="nombre" value="${deportiva.nombre}">
                                 <div class="inputCon input-effect">
@@ -129,9 +129,26 @@
                                 <span class="focus-border"></span>
                             </div>                            
                         </div>
+                        
+                        <div id="modalImg" class="modal fade" role="dialog">
+					        <div class="modal-dialog modal-lg">
+					            <div class="modal-body" id="subidaImg">
+		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
+		                            	Añadir Archivo
+		                            	<input type="file" name="archivo" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            </label>		                            	                          
+		                            <div>
+		                            	<embed id="showFile" src="/static${deportiva.explicacion}" alt="" style="height:200px;" type="application/pdf"/>
+		                            </div> 
+					            </div>
+					            <div class="modal-footer">
+					                <button class="btn" data-dismiss="modal">Aceptar</button>
+					            </div>
+					        </div>
+					    </div>	
 
                         <div class="sbmt">
-                        	<a id="modificarExplicacion" class="btn">Modificar Explicación</a>
+                        	<a href="#modalImg" data-toggle="modal" class="btn">Modificar Explicación</a>
                             <a id="enviar" class="btn">Actualizar</a>
                         </div>
                         </form>
@@ -163,7 +180,7 @@
                         </a>
                     </div>
 
-                    <p>Gamitour &copy; 2018</p>
+                    <p>Gamiastur &copy; 2018</p>
                 </footer>
             </body>
 

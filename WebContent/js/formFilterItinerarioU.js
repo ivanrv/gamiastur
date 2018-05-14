@@ -23,9 +23,8 @@ $(document).ready(function () {
             submit = false;
         } 
 
-        if ($("input[name=ubicacion]").val() == "") {
+        if ($("input[name=lat]").val() == "") {
             $("#mensajeError").append("<p>La ubicaci&oacute;n es un dato obligatorio.</p>");
-            $("input[name=ubicacion]").addClass("has-warning");
 
             submit = false;
         } 

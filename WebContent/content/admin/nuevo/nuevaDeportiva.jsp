@@ -103,7 +103,7 @@
                             <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
-                            <form action="Nuevo.do" method="post">
+                            <form action="Nuevo.do" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="tipo" value="deportiva">
                                 <div class="inputCon input-effect">
                                     <select class="textIn" name="parada" placeholder="" required>
@@ -138,12 +138,28 @@
 	                            <input class="textIn datepicker" type="text" name="fin" placeholder="" required/>
 	                            <label>Fecha de Fin</label>
 	                            <span class="focus-border"></span>
-	                        </div>
-                       
+	                        </div>                       
                         </div>
-
+                        
+                        <div id="modalImg" class="modal fade" role="dialog">
+					        <div class="modal-dialog modal-lg">
+					            <div class="modal-body" id="subidaImg">
+		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
+		                            	Añadir Archivo
+		                            	<input type="file" name="archivo" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            </label>		                            	                          
+		                            <div>
+		                            	<embed id="showFile" src="" alt="" type="application/pdf"/>
+		                            </div> 
+					            </div>
+					            <div class="modal-footer">
+					                <button class="btn" data-dismiss="modal">Aceptar</button>
+					            </div>
+					        </div>
+					    </div>	
+					    
                         <div class="sbmt">
-                        	<a id="addDesc" class="btn">Añadir descripción *</a>
+                        	<a href="#modalImg" class="btn" data-toggle="modal">Añadir descripción *</a>
                             <a id="enviar" class="btn">Crear Prueba</a>
                         </div>
                         </form>
@@ -175,7 +191,7 @@
                         </a>
                     </div>
 
-                    <p>Gamitour &copy; 2018</p>
+                    <p>Gamiastur &copy; 2018</p>
                 </footer>
             </body>
 

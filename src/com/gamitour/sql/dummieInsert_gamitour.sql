@@ -11,14 +11,14 @@ INSERT INTO `actividad` VALUES (5, 'Actividad 5', '2018-05-01', '2018-05-01', 0,
 
 /*INSERTS CLIENTE*/
 
-INSERT INTO `cliente` VALUES(2, 'Gestión', 'Actividades Deportivas', CURRENT_DATE, 'deportivas@gamitour.com', 'deportivas12', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 3);
-INSERT INTO `cliente` VALUES(3, 'Gestión', 'Turismo Hostelería', CURRENT_DATE, 'turismo@gamitour.com', 'turismo12', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 4);
-INSERT INTO `cliente` VALUES(4, 'Cliente', 'Apellidos Prueba', '2018-05-01', 'cliente@gamitour.com', 'test', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 1);
-INSERT INTO `cliente` VALUES(5, 'Cliente2', 'Apellidos2 Prueba2', '2018-05-02', 'cliente2@gamitour.com', 'test', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 1);
-INSERT INTO `cliente` VALUES(6, 'Imanol', 'Fernández García', CURRENT_DATE, 'imanol@gamitour.com', 'temporal', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
-INSERT INTO `cliente` VALUES(7, 'Daniel', 'Tascón Coalla', CURRENT_DATE, 'tascon@gamitour.com', 'temporal', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
-INSERT INTO `cliente` VALUES(8, 'Javitxu', 'Rubio Álvarez', CURRENT_DATE, 'javitxu@gamitour.com', 'temporal', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
-INSERT INTO `cliente` VALUES(9, 'Administrador', 'Gamitour Gamiastur', CURRENT_DATE, 'admin@gamitour.com', 'temporal', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
+INSERT INTO `cliente` VALUES(2, 'Gestión', 'Actividades Deportivas', CURRENT_DATE, 'deportivas@gamiastur.com', 'deportivas12', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 3);
+INSERT INTO `cliente` VALUES(3, 'Gestión', 'Turismo Hostelería', CURRENT_DATE, 'turismo@gamiastur.com', 'turismo12', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 4);
+INSERT INTO `cliente` VALUES(4, 'Cliente', 'Apellidos Prueba', '2018-05-01', 'cliente@gamiastur.com', 'test', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 1);
+INSERT INTO `cliente` VALUES(5, 'Cliente2', 'Apellidos2 Prueba2', '2018-05-02', 'cliente2@gamiastur.com', 'test', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 1);
+INSERT INTO `cliente` VALUES(6, 'Imanol', 'Fernández García', CURRENT_DATE, 'imanol@gamiastur.com', 'temporal', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
+INSERT INTO `cliente` VALUES(7, 'Daniel', 'Tascón Coalla', CURRENT_DATE, 'tascon@gamiastur.com', 'temporal', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
+INSERT INTO `cliente` VALUES(8, 'Javitxu', 'Rubio Álvarez', CURRENT_DATE, 'javitxu@gamiastur.com', 'temporal', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
+INSERT INTO `cliente` VALUES(9, 'Administrador', 'Gamitour Gamiastur', CURRENT_DATE, 'admin@gamiastur.com', 'temporal', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
 
 /*INSERTS CLIENTE_HAS_ACTIVIDAD*/
 

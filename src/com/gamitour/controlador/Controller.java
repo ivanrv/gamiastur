@@ -1,19 +1,29 @@
 package com.gamitour.controlador;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Paths;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
+import org.apache.commons.io.FileUtils;
+
+import com.gamitour.service.ServiceImagenActividad;
+import com.gamitour.service.ServiceImagenActividadImp;
 import com.gamitour.util.Accion;
 
 /**
  * Servlet implementation class ClienteController
  */
+@MultipartConfig
 @WebServlet("/ClienteController")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -44,16 +54,119 @@ public class Controller extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + ejecutar);
 		}else{
 			despachador.forward(request, response);
-		}
-		
-		
+		}	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String url = request.getServletPath().substring(request.getServletPath().lastIndexOf("/"));
+		String directorio;
+		String fileName;
+		Part archivo;
+		InputStream archivoStream;
+		File archivoSalida;
+		
+		if((request.getParameter("tipo") != null) && (!url.substring(1, url.length()-3).equals("Eliminar")) && (!url.substring(1, url.length()-3).equals("Admin")) && (!url.substring(1, url.length()-3).equals("Mostrar"))){
+			switch(request.getParameter("tipo")) {
+			case "actividad":
+				if(request.getPart("archivo") != null){
+					directorio = "/opt/tomcat/webapps/uploads/gamitour/actividades/";
+					
+					fileName = request.getParameter("nombre");
+					archivo = request.getPart("archivo");
+					
+					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+									
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
+				break;
+				
+			case "parada":
+				directorio = "/opt/tomcat/webapps/uploads/gamitour/paradas/";
+				if(request.getPart("archivoImg") != null){					
+					
+					fileName = request.getParameter("nombre");
+					archivo = request.getPart("archivoImg");
+					
+					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+									
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
+				
+				
+				if(request.getPart("archivoVideo") != null){
+					fileName = request.getParameter("nombre");
+					archivo = request.getPart("archivoVideo");
+					
+					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+									
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
+				
+				break;
+				
+			case "noticia":
+				if(request.getPart("archivo") != null){
+					directorio = "/opt/tomcat/webapps/uploads/gamitour/noticias/";
+					
+					fileName = request.getParameter("nombre");
+					archivo = request.getPart("archivo");
+					
+					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+									
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
+				break;
+				
+			case "premio":
+				if(request.getPart("archivo") != null){
+					directorio = "/opt/tomcat/webapps/uploads/gamitour/premios/";
+					
+					fileName = request.getParameter("nombre");
+					archivo = request.getPart("archivo");
+					
+					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+									
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
+				
+				break;
+				
+			case "deportiva":
+				if(request.getPart("archivo") != null){
+					directorio = "/opt/tomcat/webapps/uploads/gamitour/deportivas/";
+					
+					fileName = request.getParameter("nombre");
+					archivo = request.getPart("archivo");
+					
+					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+									
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
+				break;
+			}
+		}	
+		
 		doGet(request, response);
 	}
 

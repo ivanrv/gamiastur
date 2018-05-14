@@ -46,3 +46,20 @@ $(document).ready(function() {
 		}, false);
 	}
 });
+
+function readURL(input){
+    if(input.files && input.files[0]){
+        var reader = new FileReader();
+
+        reader.onload = function(e){
+			if($(this).attr("name") == "archivoVideo"){
+				$("#showFileVid").attr("src", e.target.result);
+				$("video").height(480);
+			}else{
+				$("#showFile").attr("src", e.target.result).css("min-height", "400px").css("width", "100%");
+			}
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}

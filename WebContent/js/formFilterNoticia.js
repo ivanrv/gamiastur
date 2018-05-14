@@ -71,6 +71,12 @@ $(document).ready(function () {
             submit = false;
         }
 
+        if((!$("input[name=archivo]").get(0).files) || ($("input[name=archivo]").get(0).files.length == 0)){
+            $("#mensajeError").append("<p>Es obligatorio a&ntilde;adir una imagen.</p>")
+
+            submit = false;
+        }
+
         $(".has-warning").click(function () {
             $(this).select();
         });

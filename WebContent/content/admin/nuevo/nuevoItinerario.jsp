@@ -14,19 +14,21 @@
                 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
                 <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
                
-               <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+               	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/loader.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/style.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/form.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/nuevo.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/media.css" type="text/css">
                 
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD73nVF-IA4rkBCx98ZVjvV5XVzN_mb-10"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE=" crossorigin="anonymous"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/mapForm.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/formFilterItinerario.js"></script>
                 
                 <script> var nombres = "${nombres}" </script>
@@ -103,29 +105,27 @@
                     	<h1>Datos del nuevo Itinerario:</h1>
                     	<span>Los campos marcados con asteriscos son obligatorios</span>
                     </div>
-                    <div style="width: 30%; margin: auto;">
+                    <div style="width: 30%; margin: 35px auto; height: 550px">
 	                    <form action="Nuevo.do" method="post">
 	                        <input type="hidden" name="tipo" value="itinerario">
-	                        <div class="inputCon input-effect">
+	                        <div class="inputCon input-effect" style="margin-bottom: 35px">
 	                            <input class="textIn" type="text" name="nombre" placeholder="" required/>
 	                            <label>Nombre del Itinerario *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
-	                        <div class="inputCon input-effect">
+	                        <div class="inputCon input-effect" style="margin-bottom: 35px">
 	                            <input class="textIn" type="text" name="categoria" placeholder="" required/>
 	                            <label>Categoría *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
-	                        <div class="inputCon input-effect">
+	                        <div class="inputCon input-effect" style="margin-bottom: 35px">
 	                            <input class="textIn" type="text" name="duracion" placeholder="" required/>
 	                            <label>Duración *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
-	                        <div class="inputCon input-effect">
-	                            <input class="textIn" type="text" name="ubicacion" placeholder="" required/>
-	                            <label>Ubicación *</label>
-	                            <span class="focus-border"></span>
-	                        </div>	                        
+	                        <div id="mapForm" style="margin-bottom: 35px; height: 275px"></div>
+                			<input type="hidden" name="lat" value="">
+                			<input type="hidden" name="lng" value="">	                        
 	                        <div style="text-align: center;">
 	                            <a id="enviar" class="btn">Crear Itinerario</a>
 	                        </div>
@@ -158,7 +158,7 @@
                         </a>
                     </div>
 
-                    <p>Gamitour &copy; 2018</p>
+                    <p>Gamiastur &copy; 2018</p>
                 </footer>
             </body>
 

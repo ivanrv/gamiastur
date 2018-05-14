@@ -3,7 +3,7 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-        <property name="context-root" value="gamitour"/>
         <property name="java-output-path" value="/gamitour/build/classes"/>
+        <property name="context-root" value="gamiastur"/>
     </wb-module>
 </project-modules>

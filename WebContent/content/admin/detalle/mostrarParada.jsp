@@ -20,12 +20,14 @@
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/nuevo.css" type="text/css">
                 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/media.css" type="text/css">
                 
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD73nVF-IA4rkBCx98ZVjvV5XVzN_mb-10"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE=" crossorigin="anonymous"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js" type="text/javascript"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/mapForm.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/formFilterParadaU.js" type="text/javascript"></script>
             	<script>
             		var nParOriginal = ${parada.numeroParada};
@@ -111,7 +113,7 @@
                             <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
-                            <form action="Update.do" method="post">
+                            <form action="Update.do" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="tipo" value="parada">
                                 <input type="hidden" name="nombre" value="${parada.nombre}">
                                 <div class="inputCon input-effect">
@@ -133,11 +135,9 @@
                                 </div>
                         </div>
                         <div class="col2">
-                            <div class="inputCon input-effect">
-                                <input class="textIn has-content" type="text" name="ubicacion" placeholder="" value="${parada.latitud} ${parada.longitud}" required/>
-                                <label>Ubicación *</label>
-                                <span class="focus-border"></span>
-                            </div>        
+                            <div id="mapForm" style="height: 300px"></div>
+                			<input type="hidden" name="lat" value="${parada.latitud}">
+                			<input type="hidden" name="lng" value="${parada.longitud}">        
                         </div>
 
                         <div class="col3">
@@ -157,9 +157,46 @@
                                 <span class="focus-border"></span>
                             </div>
                         </div>
+                        
+                        <div id="modalImg" class="modal fade" role="dialog">
+					        <div class="modal-dialog">
+					            <div class="modal-body" id="subidaImg">
+		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
+		                            	Añadir Imagen
+		                            	<input type="file" name="archivoImg" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            </label>		                            	                          
+		                            <div>
+		                            	<img id="showFile" src="/static${parada.imagen}" alt="" style="height:200px;"/>
+		                            </div> 
+					            </div>
+					            <div class="modal-footer">
+					                <button class="btn" data-dismiss="modal">Aceptar</button>
+					            </div>
+					        </div>
+					    </div>
+					    
+					    <div id="modalVideo" class="modal fade" role="dialog">
+					        <div class="modal-dialog modal-lg">
+					            <div class="modal-body" id="subidaVideo">
+		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
+		                            	Añadir Vídeo
+		                            	<input type="file" name="archivoVideo" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            </label>		                            	                          
+		                            <div>
+			                            <video style="height:480px;" controls>
+			                            	<source id="showFileVid" src="/static${parada.video}"/>
+		                            	</video>
+		                            </div> 
+					            </div>
+					            <div class="modal-footer">
+					                <button class="btn" data-dismiss="modal">Aceptar</button>
+					            </div>
+					        </div>
+					    </div>
 
                         <div class="sbmt">
-                        	<a id="modificarMultimedia" class="btn">Modificar Multimedias</a>
+                        	<a href="#modalImg" class="btn" data-toggle="modal">Modificar Imagen</a>
+                        	<a href="#modalVideo" class="btn" data-toggle="modal">Modificar Vídeo</a>
                             <a id="enviar" class="btn">Actualizar</a>
                         </div>
                         </form>
@@ -191,7 +228,7 @@
                         </a>
                     </div>
 
-                    <p>Gamitour &copy; 2018</p>
+                    <p>Gamiastur &copy; 2018</p>
                 </footer>
             </body>
 

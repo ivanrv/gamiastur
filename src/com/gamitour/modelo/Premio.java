@@ -65,7 +65,7 @@ public class Premio implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "cliente_idcliente", nullable = false)
+	@JoinColumn(name = "cliente_idcliente")
 	public Cliente getCliente() {
 		return this.cliente;
 	}
