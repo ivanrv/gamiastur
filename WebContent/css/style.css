@@ -241,42 +241,50 @@ a:hover, a:focus{
             position: absolute;
             margin-top: 18px;
             text-align: center;
-            -moz-transition-duration: 0.2s;
-            -webkit-transition-duration: 0.2s;
-            -o-transition-duration: 0.2s;
-            transition-duration: 0.2s;
+            -moz-transition-duration: 0.4s;
+            -webkit-transition-duration: 0.4s;
+            -o-transition-duration: 0.4s;
+            transition-duration: 0.4s;
         }
 
         #menuIti:hover ul{
-            height: 130px;
+        	min-height: 110px;
+            height: fit-content;
             visibility: visible;
-            -moz-transition-duration: 0.2s;
-            -webkit-transition-duration: 0.2s;
-            -o-transition-duration: 0.2s;
-            transition-duration: 0.2s;
+            -moz-transition-duration: 0.4s;
+            -webkit-transition-duration: 0.4s;
+            -o-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            z-index:25;
+        }
+        
+        #menuIti:active{
+        	background-color: #2C3E50;
+        	color: #ECF0F1;
         }
 
         #menuIti ul li{
-            height: 50%;
+            min-height: 55px;
             width: 100%;
+            padding: 10px 4px;
             padding-top:15px;
+            border-bottom: 1.5px solid rgba(44, 62, 80, 0.6);
         }
 
         #menuIti ul li span{
             font-size: 0.9em;
             padding-top: 17px;
-            border-top: 2px solid rgba(44, 62, 80, 0.6);
             width: 85%;
         }
-
-        #gijonIti:hover{
-            background-color: #B51209;
-            transition-duration: 0.4s;
+        
+        #menuIti ul li:hover{
+        	background-color: #2C3E50;
         }
-
-        #avilesIti:hover{
-            background-color: #4A67E5;
-            transition-duration: 0.4s;
+        
+        #menuIti ul li:active{
+        	background-color: #72BCC7;
+        	color: #1F2729;
+        	transition: 15ms;    
         }
 
     .affix{
@@ -398,3 +406,27 @@ a:hover, a:focus{
     outline: none;
     color: #ECF0F1;
 }
+
+
+#modalAdmin .modal-dialog{
+	border: 1px solid #1f2729;
+	border-radius: 10px;
+	margin-top: 8%;
+}
+
+#modalAdmin .modal-header{
+	background-color: #ECF0F1;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+#modalAdmin .modal-body{
+       background-color: #ECF0F1;
+       border-radius: 0;
+}
+
+#modalAdmin .modal-footer{
+	background-color: #ECF0F1;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+   }

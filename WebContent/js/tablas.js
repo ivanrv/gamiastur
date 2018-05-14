@@ -36,7 +36,7 @@ $(document).ready(function () {
         
         arrayParadas.forEach(element => {
             if(element.itinerario == idClick)
-                $("#modalParadasTable").append('<tr class="paradaRow"><td>' + element.nombre + '</td><td>' + element.latitud + " " + element.longitud + '</td><td class="btnTabla"><form action="Mostrar.do" method="post"><input type="hidden" name="tipo" value="parada"><input type="hidden" name="parada" value="' + element.nombre + '"><button name="submit" value="submit" class="editar"><i class="fas fa-pencil-alt"></i>&nbsp;<span>Editar</span></button></form></td><td class="btnTabla"><form action="Eliminar.do" method="post"><input type="hidden" name="tipo" value="parada"><input type="hidden" name="parada" value="' + element.nombre + '"><a href="#modalEliminar" data-toggle="modal" class="eliminar"><i class="fas fa-times"></i>&nbsp;<span>Eliminar</span></a></form></td></tr>');
+                $("#modalParadasTable").append('<tr class="paradaRow"><td>' + element.nombre + '</td><td><a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="' + element.latitud + " " + element.longitud + '"><i class="fas fa-map-marker-alt"></i>&nbsp;<span style="font-size: 1em;">Mostrar Ubicación</span></a></td><td class="btnTabla"><form action="Mostrar.do" method="post"><input type="hidden" name="tipo" value="parada"><input type="hidden" name="parada" value="' + element.nombre + '"><button name="submit" value="submit" class="editar"><i class="fas fa-pencil-alt"></i>&nbsp;<span>Editar</span></button></form></td><td class="btnTabla"><form action="Eliminar.do" method="post"><input type="hidden" name="tipo" value="parada"><input type="hidden" name="parada" value="' + element.nombre + '"><a href="#modalEliminar" data-toggle="modal" class="eliminar"><i class="fas fa-times"></i>&nbsp;<span>Eliminar</span></a></form></td></tr>');
         });
         
         if($(".paradaRow").length == 0){
@@ -59,9 +59,9 @@ $(document).ready(function () {
 
         arrayDeportivas.forEach(element => {
             if(element.parada == paradaClick)
-                $("#modalPruebasDepTable").append('<tr class="pruebaRow pruebaRowDep"><td>' + element.nombre + '</td><td>' + element.fechainicio + '</td><td>' + element.explicacion + '</td><td>' + element.puntos + '</td><td class="btnTabla"><form action="Mostrar.do" method="post"><input type="hidden" name="tipo" value="deportiva"><input type="hidden" name="prueba" value="' + element.nombre + '"><button name="submit" value="submit" class="editar"><i class="fas fa-pencil-alt"></i>&nbsp;<span>Editar</span></button></form></td><td class="btnTabla"><form action="Eliminar.do" method="post"><input type="hidden" name="tipo" value="deportiva"><input type="hidden" name="prueba" value="' + element.nombre + '"><a href="#modalEliminar" data-toggle="modal" class="eliminar"><i class="fas fa-times"></i>&nbsp;<span>Eliminar</span></a></form></td></tr>');
-        });
-        
+                $("#modalPruebasDepTable").append('<tr class="pruebaRow pruebaRowDep"><td>' + element.nombre + '</td><td>' + element.fechainicio + '</td><td><a href="#modalPDF" data-toggle="modal" value="' + element.explicacion + '" class="procModalPDF"><i class="fas fa-file-pdf"></i>&nbsp;<span style="font-size: 1em;">Mostrar Explicación</span></a></td><td>' + element.puntos + '</td><td class="btnTabla"><form action="Mostrar.do" method="post"><input type="hidden" name="tipo" value="deportiva"><input type="hidden" name="prueba" value="' + element.nombre + '"><button name="submit" value="submit" class="editar"><i class="fas fa-pencil-alt"></i>&nbsp;<span>Editar</span></button></form></td><td class="btnTabla"><form action="Eliminar.do" method="post"><input type="hidden" name="tipo" value="deportiva"><input type="hidden" name="prueba" value="' + element.nombre + '"><a href="#modalEliminar" data-toggle="modal" class="eliminar"><i class="fas fa-times"></i>&nbsp;<span>Eliminar</span></a></form></td></tr>');
+        });        
+     
         if($(".pruebaRowDep").length == 0){
             $("#modalPruebasDepTable").append('<tr class="pruebaRow"><td colspan="4">No existen pruebas deportivas asociadas a esta parada</td></tr>');
             $("#modalPruebasDepTable").find(".theadHide").css("display", "none");

@@ -146,6 +146,8 @@ public class Nuevo extends Accion{
 			Itinerario itinerario = new Itinerario(0, request.getParameter("nombre"), request.getParameter("categoria"), request.getParameter("duracion"), request.getParameter("lat"), request.getParameter("lng"));
 			sItinerario.insertar(itinerario);
 			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
+			if(request.getSession().getAttribute("itinerarios") != null)
+				request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
 			retorno = "/content/admin/mostrarAdmin.jsp";
 			break;
 			

@@ -64,51 +64,49 @@
 			        </div>
 			    </div>
                 <header>
-                    <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
+                    <a href="${pageContext.servletContext.contextPath}/index.jsp">
                         <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
                     </a>
             
                     <div class="user">
-                        <a href="javascript:void(0)" id="menuUser">
-                            <i class="fas fa-angle-down"></i>
-                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
-                                <li>Editar Perfil</li>
-                                <li class="menuUserB">Mis Actividades</li>
-                                <li class="menuUserB">Logros</li>
-                                <c:if test="${userRol != 'user'}">
-                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
-                                </c:if>
-                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
-                            </ul>
-                        </a>
-                        <span>
-                            <a href="#">${username}</a>
-                        </span>
-                        <img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
-                    </div>
+	                        <a href="javascript:void(0)" id="menuUser">
+	                            <i class="fas fa-angle-down"></i>
+	                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
+	                                <li onclick="loading(); location.href='${pageContext.servletContext.contextPath}/content/user/editarPerfil.jsp';">Editar Perfil</li>
+	                                <li class="menuUserB" onclick="location.href='${pageContext.servletContext.contextPath}/content/user/misActividades.jsp'">Mis Actividades</li>
+	                                <li class="menuUserB" onclick="location.href='${pageContext.servletContext.contextPath}/content/user/misPremios.jsp'">Premios</li>
+	                                <c:if test="${userRol != 'user'}">
+	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
+	                                </c:if>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
+	                            </ul>
+	                        </a>
+	                        <span>
+	                            <a href="${pageContext.servletContext.contextPath}/content/user/perfil.jsp">${username}</a>
+	                        </span>
+	                        <img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
+	                    </div>
                 </header>
-            
-                <nav data-spy="affix" data-offset-top="150">
-                    <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
+            <nav data-spy="affix" data-offset-top="150">
+                    <a href="${pageContext.servletContext.contextPath}/index.jsp" onclick="loading();">
                         <i class="fas fa-home"></i> &nbsp; Inicio</a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/noticias.jsp" onclick="loading();">
                         <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" onclick="loading();">
                         <i class="fas fa-search"></i> &nbsp; Actividades</a>
-                    <a href="#" id="menuIti">
+                    <a href="${pageContext.servletContext.contextPath}/content/itinerarios.jsp" id="menuIti" onclick="loading();">
                         <i class="fas fa-map"></i> &nbsp; Itinerarios
                         <ul>
-                            <li id="gijonIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiGijon.html'">
-                                <span>Itinerario de Gijón</span>
-                            </li>
-                            <li id="avilesIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiAviles.html'">
-                                <span>Itinerario de Avilés</span>
-                            </li>
+                        	<c:forEach items="${listaItinerarios}" var="iti">
+                        		<li id="" onclick="loading();">
+                        			<span>${iti.nombre}</span>
+                        		</li>
+                        	</c:forEach>
                         </ul>
                     </a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
                         <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 

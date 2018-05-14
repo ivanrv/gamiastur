@@ -50,7 +50,7 @@ public class Controller extends HttpServlet {
 		
 		despachador = request.getRequestDispatcher(ejecutar);
 		
-		if(ejecutar.equals("/index.html")){
+		if(ejecutar.equals("/index.jsp")){
 			response.sendRedirect(request.getContextPath() + ejecutar);
 		}else{
 			despachador.forward(request, response);

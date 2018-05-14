@@ -42,8 +42,8 @@ public class Login extends Accion {
 
 				if (request.getSession().getAttribute("filter") != null) {
 					return request.getSession().getAttribute("filter").toString();
-				} else {
-					return "/content/user/index.jsp";
+				} else {					
+					return "/index.jsp";
 				}
 			} else {
 				request.setAttribute("mensajeError", "pass");

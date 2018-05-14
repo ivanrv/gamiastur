@@ -10,7 +10,7 @@ public class Logout extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		request.getSession().invalidate();
-		return "/index.html";
+		return "/index.jsp";
 	}
 
 }

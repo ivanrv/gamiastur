@@ -93,6 +93,10 @@
     }
 
         /* Propiedades de los datepicker */
+        
+        	#ui-datepicker-div {
+        		display: none;
+        	}
 
             .ui-datepicker{
                 width: 20%;

@@ -107,6 +107,8 @@ public class Update extends Accion{
 			
 			sItinerario.actualizar(itinerario);
 			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
+			if(request.getSession().getAttribute("itinerarios") != null)
+				request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
 			break;
 			
 		case "multimedia":

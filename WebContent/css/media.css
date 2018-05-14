@@ -78,13 +78,9 @@
                 }
 
                 #menuIti ul{
-                    margin-top: 15px;
+                    margin-top: 14px;
                 }
-
-                #menuIti:hover ul{
-                    height: 110px;
-                }
-
+                
                 #menuIti ul li{
                     font-size: 0.85em;
                 }

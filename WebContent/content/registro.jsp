@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="com.gamitour.service.ServiceClienteImp" %>
+<%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -35,12 +36,15 @@
 </head>
 
 <body>
-	<jsp:useBean id="sClienteImp" class="com.gamitour.service.ServiceClienteImp" />
-	
-	<%
-		ServiceClienteImp sCliente = new ServiceClienteImp();
-		request.getSession().setAttribute("clientes", sCliente.buscarEmails());
-	%>
+
+	<c:if test="${itinerarios == null}">
+           <jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
+
+		<%
+			ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
+			request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+		%>
+	</c:if>
 
 	<div id="loader">
         <div class="sk-folding-cube">
@@ -52,34 +56,33 @@
     </div>
 
     <header>
-        <a href="${pageContext.servletContext.contextPath}/index.html">
+        <a href="${pageContext.servletContext.contextPath}/index.jsp">
             <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
         </a>
     </header>
 
     <nav data-spy="affix" data-offset-top="150">
-        <a href="${pageContext.servletContext.contextPath}/index.html">
-            <i class="fas fa-home"></i> &nbsp; Inicio</a>
-        <a href="#">
-            <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
-        <a href="#">
-            <i class="fas fa-search"></i> &nbsp; Actividades</a>
-        <a href="#" id="menuIti">
-            <i class="fas fa-map"></i> &nbsp; Itinerarios
-            <ul>
-                <li id="gijonIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiGijon.html'">
-                    <span>Itinerario de Gijón</span>
-                </li>
-                <li id="avilesIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiAviles.html'">
-                    <span>Itinerario de Avilés</span>
-                </li>
-            </ul>
-        </a>
-        <a href="#">
-            <i class="fas fa-trophy"></i> &nbsp; Premios</a>
-        <a href="#">
-            <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
-    </nav>
+                    <a href="${pageContext.servletContext.contextPath}/index.jsp" onclick="loading();">
+                        <i class="fas fa-home"></i> &nbsp; Inicio</a>
+                    <a href="${pageContext.servletContext.contextPath}/content/noticias.jsp" onclick="loading();">
+                        <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
+                    <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" onclick="loading();">
+                        <i class="fas fa-search"></i> &nbsp; Actividades</a>
+                    <a href="${pageContext.servletContext.contextPath}/content/itinerarios.jsp" id="menuIti" onclick="loading();">
+                        <i class="fas fa-map"></i> &nbsp; Itinerarios
+                        <ul>
+                        	<c:forEach items="${itinerarios}" var="iti">
+                        		<li id="" onclick="loading();">
+                        			<span>${iti}</span>
+                        		</li>
+                        	</c:forEach>
+                        </ul>
+                    </a>
+                    <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
+                        <i class="fas fa-trophy"></i> &nbsp; Premios</a>
+                    <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
+                </nav>
 
     <div class="content">
         <h1>Regístrate:</h1>
@@ -123,7 +126,7 @@
             </div>
 
             <div class="inputCon input-effect">
-                <input type="text" name="fechaNac" value=" " placeholder="" class="textIn datepicker" required/>
+                <input type="text" name="fechaNac" value="" placeholder="" class="textIn datepicker" required/>
                 <label>Fecha de Nacimiento *</label>
                 <span class="focus-border"></span>
             </div>
