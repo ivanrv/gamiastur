@@ -2,6 +2,7 @@
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
         <%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
+        <%@ page import="com.gamitour.service.ServiceClienteImp" %>
         
             <!DOCTYPE html>
             <html lang="es">
@@ -18,6 +19,7 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/user.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -28,17 +30,22 @@
 
             <body>
             
-            <c:if test="${itinerarios == null}">
-	            <jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
-		
+	            <c:if test="${itinerarios == null}">
+		            <jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
+			
+					<%
+						ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
+						request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+					%>
+				</c:if>
+				
+				<jsp:useBean id="sClienteImp" class="com.gamitour.service.ServiceClienteImp" />
 				<%
-					ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
-					request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+					ServiceClienteImp sCliente = new ServiceClienteImp();
+					request.setAttribute("cliente", sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()));
 				%>
-			</c:if>
             
-            
-            <div id="loader">
+            	<div id="loader">
 			        <div class="sk-folding-cube">
 			            <div class="sk-cube1 sk-cube"></div>
 			            <div class="sk-cube2 sk-cube"></div>
@@ -105,7 +112,20 @@
                 </nav>
 
                 <div class="content">
-					<h1>PERFIL ${username}</h1>
+					<div id="showPerfil">
+						<h2> Perfil de <span>${username}</span></h2>
+						<div id="perfilInfoPersonal">
+							<div id="perfilImgContainer">
+								<img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
+							</div>
+							
+							<div id="pefilDataContainer"></div>
+						</div>						
+						
+						<div id="perfilActividades"></div>
+						
+						<div id="perfilPremios"></div>					
+					</div>
                 </div>
 
                 <footer>

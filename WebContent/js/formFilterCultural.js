@@ -18,20 +18,29 @@ $(document).ready(function () {
 
             submit = false;
         } else {
-            /* Comprobación de nombre no existente */
-
-            var contains = false;
-            nombresArray.forEach(element => {
-                if (element == $("input[name=nombre]").val())
-                    contains = true;
-            });
-
-            if (contains) {
-                $("#mensajeError").append("<p>El nombre introducido no est&#225; disponible.</p>");
-                $("input[name=nombre]").addClass("has-warning");
-
-                submit = false;
-            }
+        	
+        	if ($("input[name=nombre]").val().length > 60){
+                $("#mensajeError").append("<p>El nombre de la prueba es demasiado largo.</p>");
+                $("textarea[name=texto]").addClass("has-warning");
+                
+                submit = false;      		
+        	} else {
+        	
+	            /* Comprobación de nombre no existente */
+	
+	            var contains = false;
+	            nombresArray.forEach(element => {
+	                if (element == $("input[name=nombre]").val())
+	                    contains = true;
+	            });
+	
+	            if (contains) {
+	                $("#mensajeError").append("<p>El nombre introducido no est&#225; disponible.</p>");
+	                $("input[name=nombre]").addClass("has-warning");
+	
+	                submit = false;
+	            }
+        	}
         }
 
         if ($("select[name=parada]").find(":selected").text() == "") {

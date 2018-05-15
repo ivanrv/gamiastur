@@ -106,6 +106,8 @@
                 </nav>
 
                 <div class="content">
+                	<a id="backPanel" href="Admin.do" onclick="loading();"><i class="fas fa-undo-alt"></i>&nbsp; Volver al panel de control</a>
+                	
                     <div id="nuevoForm">
                         <div class="tit">
                             <h1>Actualización de Parada: ${parada.nombre}</h1>
@@ -161,8 +163,8 @@
 					        <div class="modal-dialog">
 					            <div class="modal-body" id="subidaImg">
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
-		                            	Añadir Imagen
-		                            	<input type="file" name="archivoImg" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            	Modificar Imagen
+		                            	<input type="file" name="archivoImg" onchange="readURL(this)" accept=".jpg, .png, .jpeg, .gif, .bmp" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
 		                            	<img id="showFile" src="/static${parada.imagen}" alt="" style="height:200px;"/>
@@ -178,8 +180,8 @@
 					        <div class="modal-dialog modal-lg">
 					            <div class="modal-body" id="subidaVideo">
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
-		                            	Añadir Vídeo
-		                            	<input type="file" name="archivoVideo" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            	Modificar Vídeo
+		                            	<input type="file" name="archivoVideo" onchange="readURL(this)" accept=".mp4" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
 			                            <video style="height:480px;" controls>

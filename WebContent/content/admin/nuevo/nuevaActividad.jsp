@@ -98,6 +98,8 @@
                 </nav>
 
                 <div class="content">
+                	<a id="backPanel" href="Admin.do" onclick="loading();"><i class="fas fa-undo-alt"></i>&nbsp; Volver al panel de control</a>
+                
                     <div id="nuevoForm">
                         <div class="tit">
                             <h1>Datos de la nueva Actividad:</h1>
@@ -147,8 +149,8 @@
 		                                <span class="focus-border"></span>
 		                            </div>
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
-		                            	Añadir Archivo
-		                            	<input type="file" name="archivo" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            	Añadir Imagen
+		                            	<input type="file" name="archivo" accept=".jpg, .png, .jpeg, .gif, .bmp" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
 		                            	<img id="showFile" src="" alt=""/>

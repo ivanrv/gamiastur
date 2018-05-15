@@ -11,9 +11,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.gamitour.service.ServiceCliente;
-import com.gamitour.service.ServiceClienteImp;
-
 /**
  * Servlet Filter implementation class FiltroLogin
  */
@@ -45,8 +42,6 @@ public class FiltroLogin implements Filter {
 		res.setHeader("Cache-Control", "no-store");
 		res.setHeader("Pragma", "no-cache");
 		res.setDateHeader("Expires", 0);
-		
-		ServiceCliente sCliente = new ServiceClienteImp();
 		
 		if(req.getSession().getAttribute("username") == null){
 			req.getSession().setAttribute("filter", req.getRequestURL());

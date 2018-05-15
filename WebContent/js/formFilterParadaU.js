@@ -61,6 +61,18 @@ $(document).ready(function () {
             submit = false;
         }
 
+        if ($("input[name=archivoImg]").files[0].size > 5242880){
+            $("#mensajeError").append("<p>La imagen seleccionada es demasiado grande.</p>");
+
+            submit = false;
+        }
+
+        if ($("input[name=archivoVideo]").get(0).files[0].size > 15728640){
+            $("#mensajeError").append("<p>El v&iacute;deo seleccionado es demasiado grande.</p>");
+
+            submit = false;
+        }
+
         if(checkNParada){
             var arrayIti = JSON.parse(stringItinerarios);
 

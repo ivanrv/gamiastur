@@ -86,6 +86,8 @@
                 </nav>
                 
                 <div class="content">
+                	<a id="backPanel" href="Admin.do" onclick="loading();"><i class="fas fa-undo-alt"></i>&nbsp; Volver al panel de control</a>
+                	
                     <div id="nuevoForm">
                         <div class="tit">
                             <h1>Modificación de Prueba Cultural: ${cultural.nombre}</h1>

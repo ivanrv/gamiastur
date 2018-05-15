@@ -1,14 +1,16 @@
 package com.gamitour.accion;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.FilenameUtils;
 
 import com.gamitour.modelo.Actividad;
 import com.gamitour.modelo.Cliente;
@@ -60,6 +62,7 @@ public class Nuevo extends Accion{
 		ServicePruebaDeportiva sPruebaDeportiva = new ServicePruebaDeportivaImp();
 		ServiceRol sRol = new ServiceRolImp();
 		String retorno = "";
+		Calendar fecha = Calendar.getInstance();
 		
 
 		switch(request.getParameter("tipo")){
@@ -96,8 +99,6 @@ public class Nuevo extends Accion{
 				cliente = new Cliente(sRol.buscarPorNombre("user"), request.getParameter("nombre"), request.getParameter("apellidos"), sdf.parse(request.getParameter("fechaNac")), request.getParameter("email"), request.getParameter("password"), telefono, direccion, codigopostal, avatar, 0, new Date());
 				sCliente.insertar(cliente);
 				
-				System.out.println("tamos cool");
-				
 				request.getSession().setAttribute("userRol", cliente.getRol().getNombre());
 				request.getSession().setAttribute("username",
 						cliente.getNombre() + " " + cliente.getApellidos().substring(0, cliente.getApellidos().indexOf(" ")));
@@ -123,7 +124,7 @@ public class Nuevo extends Accion{
 				
 				sActividad.insertar(actividad);
 				
-				Imagenactividad imagen = new Imagenactividad(sActividad.buscarPorNombre(actividad.getNombre()), "/actividades/" + request.getParameter("nombre") + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+				Imagenactividad imagen = new Imagenactividad(sActividad.buscarPorNombre(actividad.getNombre()), "/actividades/" + request.getParameter("nombre") + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				if(!request.getParameter("archivoTitulo").equals(""))
 					imagen.setTitulo(request.getParameter("archivoTitulo"));
@@ -159,12 +160,10 @@ public class Nuevo extends Accion{
 			ServiceNoticia sNoticia = new ServiceNoticiaImp();
 			Noticia noticia;
 			try {
-				noticia = new Noticia(0, request.getParameter("nombre"), request.getParameter("texto"), sdf.parse(request.getParameter("alta")), null); //HAY QUE CAMBIAR EL NULL DE LA IMAGEN
+				noticia = new Noticia(0, request.getParameter("nombre"), request.getParameter("texto"), sdf.parse(request.getParameter("alta")), "/noticias/" + request.getParameter("nombre") + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName())); 
 				
 				if(!request.getParameter("caducidad").equals(""))
-					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));
-				
-				noticia.setImagen("/noticias/" + noticia.getNombre() + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));							
 				
 				sNoticia.insertar(noticia);
 				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
@@ -189,10 +188,10 @@ public class Nuevo extends Accion{
 			
 			try {
 				if(request.getPart("archivoImg") != null)
-					parada.setImagen("/paradas/" + parada.getNombre() + "-" + Paths.get(request.getPart("archivoImg").getSubmittedFileName()).getFileName().toString());
+					parada.setImagen("/paradas/" + parada.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoImg").getSubmittedFileName()));
 				
 				if(request.getPart("archivoVideo") != null)
-					parada.setVideo("/paradas/" + parada.getNombre() + "-" + Paths.get(request.getPart("archivoVideo").getSubmittedFileName()).getFileName().toString());
+					parada.setVideo("/paradas/" + parada.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoVideo").getSubmittedFileName()));
 			} catch (IOException | ServletException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
@@ -210,7 +209,7 @@ public class Nuevo extends Accion{
 				premio = new Premio(null, request.getParameter("nombre"), request.getParameter("descripcion"), sdf.parse(request.getParameter("activacion")), Integer.parseInt(request.getParameter("puntos")));
 				
 				if(request.getPart("archivo") != null)
-					premio.setImagen("/premios/" + premio.getNombre() + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+					premio.setImagen("/premios/" + premio.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				sPremio.insertar(premio);			
 				request.getSession().setAttribute("listaPremios", sPremio.buscarTodos());
@@ -236,7 +235,7 @@ public class Nuevo extends Accion{
 				if(!request.getParameter("fin").equals(""))
 					deportiva.setFechafin(sdf.parse(request.getParameter("fin")));
 				
-				deportiva.setExplicacion("/deportivas/" + deportiva.getNombre() + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+				deportiva.setExplicacion("/deportivas/" + deportiva.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 					
 				sPruebaDeportiva.insertar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());

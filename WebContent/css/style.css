@@ -423,10 +423,26 @@ a:hover, a:focus{
 #modalAdmin .modal-body{
        background-color: #ECF0F1;
        border-radius: 0;
+       text-align: center;
 }
 
 #modalAdmin .modal-footer{
 	background-color: #ECF0F1;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-   }
+}
+
+#backPanel{
+	margin-bottom: -15px;
+	display: block;
+	width: fit-content;
+	text-align: left;
+	color: #1f2729;
+	font-size: 1.2em;
+}
+
+#backPanel:hover, #backPanel:active{
+	color: #72BCC7;
+}
+   
+   

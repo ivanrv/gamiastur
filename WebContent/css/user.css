@@ -1,0 +1,40 @@
+
+/* Pantalla de perfil de usuario */
+
+    #showPerfil h2{
+        flex-basis: 100%;
+        text-align: center;
+        font-size: 1.6em;
+    }
+
+    #showPerfil h2 span{
+        font-size: 1em;
+        color: #2C3E50;
+    }
+
+    #showPerfil>div{
+        margin: 30px auto;
+    }
+
+    #perfilInfoPersonal{
+        background-color: red;
+        min-height: 400px;
+    }
+
+    #perfilActividades{
+        background-color: blueviolet;
+        min-height: 400px;
+    }
+
+    #perfilPremios{
+        background-color: greenyellow;
+        min-height: 400px;
+    }
+
+/* Pantalla de editar perfil de usuario */
+
+
+/* Pantalla de actividades de usuario */
+
+
+/* Pantalla de premios de usuario */

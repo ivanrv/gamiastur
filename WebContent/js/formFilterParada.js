@@ -19,20 +19,29 @@ $(document).ready(function () {
 
             submit = false;
         } else {
-            /* Comprobación de nombre no existente */
-
-            var contains = false;
-            nombresArray.forEach(element => {
-                if (element == $("input[name=nombre]").val())
-                    contains = true;
-            });
-
-            if (contains) {
-                $("#mensajeError").append("<p>El nombre introducido no est&#225; disponible.</p>");
-                $("input[name=nombre]").addClass("has-warning");
-
-                submit = false;
-            }
+        	
+        	if ($("input[name=nombre]").val().length > 60){
+                $("#mensajeError").append("<p>El nombre de la parada es demasiado largo.</p>");
+                $("textarea[name=texto]").addClass("has-warning");
+                
+                submit = false;      		
+        	} else {
+        	
+	            /* Comprobación de nombre no existente */
+	
+	            var contains = false;
+	            nombresArray.forEach(element => {
+	                if (element == $("input[name=nombre]").val())
+	                    contains = true;
+	            });
+	
+	            if (contains) {
+	                $("#mensajeError").append("<p>El nombre introducido no est&#225; disponible.</p>");
+	                $("input[name=nombre]").addClass("has-warning");
+	
+	                submit = false;
+	            }
+        	}
         }
 
         if ($("select[name=itinerario]").find(":selected").text() == "") {
@@ -100,6 +109,18 @@ $(document).ready(function () {
             $("#mensajeError").append("<p>El texto correspondiente a la gastronom&iacute;a es demasiado largo.</p>");
             $("textarea[name=gastronomia]").addClass("has-warning");
             
+            submit = false;
+        }
+
+        if ($("input[name=archivoImg]").get(0).files[0].size > 5242880){
+            $("#mensajeError").append("<p>La imagen seleccionada es demasiado grande.</p>");
+
+            submit = false;
+        }
+
+        if ($("input[name=archivoVideo]").get(0).files[0].size > 15728640){
+            $("#mensajeError").append("<p>El v&iacute;deo seleccionado es demasiado grande.</p>");
+
             submit = false;
         }
 

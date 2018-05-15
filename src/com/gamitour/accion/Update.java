@@ -1,19 +1,20 @@
 package com.gamitour.accion;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FilenameUtils;
+
 import com.gamitour.modelo.Actividad;
 import com.gamitour.modelo.Itinerario;
 import com.gamitour.modelo.Noticia;
 import com.gamitour.modelo.Parada;
-import com.gamitour.modelo.Premio;
 import com.gamitour.modelo.Pruebacultural;
 import com.gamitour.modelo.Pruebadeportiva;
 import com.gamitour.service.ServiceActividad;
@@ -48,6 +49,7 @@ public class Update extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		Calendar fecha = Calendar.getInstance();
 
 		ServiceCliente sCliente = new ServiceClienteImp();
 		ServiceItinerario sItinerario = new ServiceItinerarioImp();
@@ -76,7 +78,7 @@ public class Update extends Accion{
 				actividad.setPuntos(Integer.parseInt(request.getParameter("puntos")));
 				
 				if(request.getPart("archivo") != null)
-					actividad.getImagenactividads().iterator().next().setArchivo("/actividades/" + request.getParameter("nombre") + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+					actividad.getImagenactividads().iterator().next().setArchivo("/actividades/" + request.getParameter("nombre") + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				if(!request.getParameter("fin").equals(""))
 					actividad.setFechafin(sdf.parse(request.getParameter("fin")));
@@ -125,7 +127,7 @@ public class Update extends Accion{
 				noticia.setTexto(request.getParameter("texto"));
 				
 				if(request.getPart("archivo") != null)
-					noticia.setImagen("/noticias/" + noticia.getNombre() + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+					noticia.setImagen("/noticias/" + noticia.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				if(!request.getParameter("caducidad").equals(""))
 					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));
@@ -154,10 +156,10 @@ public class Update extends Accion{
 			
 			try {
 				if(request.getPart("archivoImg") != null)
-					parada.setImagen("/paradas/" + parada.getNombre() + "-" + Paths.get(request.getPart("archivoImg").getSubmittedFileName()).getFileName().toString());
+					parada.setImagen("/paradas/" + parada.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoImg").getSubmittedFileName()));
 				
 				if(request.getPart("archivoVideo") != null)
-					parada.setVideo("/paradas/" + parada.getNombre() + "-" + Paths.get(request.getPart("archivoVideo").getSubmittedFileName()).getFileName().toString());
+					parada.setVideo("/paradas/" + parada.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoVideo").getSubmittedFileName()));
 			} catch (IOException | ServletException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
@@ -200,7 +202,7 @@ public class Update extends Accion{
 					deportiva.setFechafin(sdf.parse(request.getParameter("fin")));
 				
 				if(request.getPart("archivo") != null)
-					deportiva.setExplicacion("/deportivas/" + deportiva.getNombre() + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+					deportiva.setExplicacion("/deportivas/" + deportiva.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				sPruebaDeportiva.actualizar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());

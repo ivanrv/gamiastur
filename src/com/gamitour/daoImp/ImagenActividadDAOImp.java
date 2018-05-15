@@ -1,7 +1,5 @@
 package com.gamitour.daoImp;
 
-import java.util.List;
-
 import org.hibernate.SessionFactory;
 
 import com.gamitour.dao.ImagenActividadDAO;

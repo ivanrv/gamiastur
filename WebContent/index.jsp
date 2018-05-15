@@ -114,10 +114,10 @@
 	                        <div class="modal-header">
 	                            <button class="close" type="button" data-dismiss="modal">&times;</button>
 	                        </div>
-	                        <div class="modal-body"><p>¡Vaya! Tienes un perfil de administrador. ¿Te gustaría entrar a la consola de administración?</p></div>
+	                        <div class="modal-body"><p>¡Vaya! Tienes un perfil de administrador. ¿Te gustaría entrar al panel de control de administrador?</p></div>
 	                        <div class="modal-footer">
-	                            <button class="btn" onclick="loading(); location.href='Admin.do'">Administrar</button>
-	                            <button class="btn" data-dismiss="modal">Cancelar</button>
+	                            <button class="btn" onclick="loading(); location.href='Admin.do'">Adelante</button>
+	                            <button class="btn" data-dismiss="modal">En otro momento</button>
 	                        </div>
 	                    </div>
 	                </div>   

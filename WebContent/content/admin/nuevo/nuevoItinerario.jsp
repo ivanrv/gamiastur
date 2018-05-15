@@ -100,6 +100,8 @@
                 </nav>
 
                 <div class="content">
+                	<a id="backPanel" href="Admin.do" onclick="loading();"><i class="fas fa-undo-alt"></i>&nbsp; Volver al panel de control</a>
+                	
                     <div class="tit">              
                     	<h1>Datos del nuevo Itinerario:</h1>
                     	<span>Los campos marcados con asteriscos son obligatorios</span>
