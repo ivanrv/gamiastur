@@ -58,13 +58,6 @@
                     <a href="${pageContext.servletContext.contextPath}/index.jsp">
                         <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
                     </a>
-                    
-                    <c:if test="${username == null}">
-	                    <div class="anonimo">
-				            <a href="content/registro.jsp" id="signin">Registrarse</a>
-				            <a href="content/login.jsp" id="login">Iniciar Sesión</a>
-				        </div>			                    
-                    </c:if>
 
 					<c:if test="${username != null}">
 	                    <div class="user">

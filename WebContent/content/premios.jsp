@@ -51,8 +51,8 @@
                     
                     <c:if test="${username == null}">
 	                    <div class="anonimo">
-				            <a href="content/registro.jsp" id="signin">Registrarse</a>
-				            <a href="content/login.jsp" id="login">Iniciar Sesión</a>
+				            <a href="${pageContext.servletContext.contextPath}/content/registro.jsp" id="signin">Registrarse</a>
+				            <a href="${pageContext.servletContext.contextPath}/content/login.jsp" id="login">Iniciar Sesión</a>
 				        </div>			                    
                     </c:if>
 
