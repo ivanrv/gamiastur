@@ -78,14 +78,14 @@ $(document).ready(function () {
             $("textarea[name=texto]").addClass("has-warning");
 
             submit = false;
-        } else {
+        }/* else {
         	if ($("textarea[name=texto]").val().length > 200){
                 $("#mensajeError").append("<p>El texto de la noticia es demasiado largo.</p>");
                 $("textarea[name=texto]").addClass("has-warning");
                 
                 submit = false;
             }
-        }
+        }*/
 
         if((!$("input[name=archivo]").get(0).files) || ($("input[name=archivo]").get(0).files.length == 0)){
             $("#mensajeError").append("<p>Es obligatorio a&ntilde;adir una imagen.</p>")

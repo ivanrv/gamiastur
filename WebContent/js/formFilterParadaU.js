@@ -40,6 +40,7 @@ $(document).ready(function () {
             }
         }
 
+        /*
         if ($("textarea[name=historia]").val().length > 200){
             $("#mensajeError").append("<p>El texto correspondiente a la historia es demasiado largo.</p>");
             $("textarea[name=historia]").addClass("has-warning");
@@ -60,6 +61,7 @@ $(document).ready(function () {
             
             submit = false;
         }
+        */
 
         if ($("input[name=archivoImg]").files[0].size > 5242880){
             $("#mensajeError").append("<p>La imagen seleccionada es demasiado grande.</p>");
