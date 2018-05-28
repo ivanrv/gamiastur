@@ -11,7 +11,7 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                <title>Editar Perfil: ${username}</title>
+                <title>Perfil: ${username}</title>
 
                 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
                 <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
@@ -19,33 +19,34 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/user.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/form.js"></script>
             </head>
 
             <body>
             
-            <c:if test="${itinerarios == null}">
-	            <jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
-		
+	            <c:if test="${itinerarios == null}">
+		            <jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
+			
+					<%
+						ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
+						request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+					%>
+				</c:if>
+				
+				<jsp:useBean id="sClienteImp" class="com.gamitour.service.ServiceClienteImp" />
 				<%
-					ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
-					request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+					ServiceClienteImp sCliente = new ServiceClienteImp();
+					request.setAttribute("cliente", sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()));
 				%>
-			</c:if>
             
-            <jsp:useBean id="sClienteImp" class="com.gamitour.service.ServiceClienteImp" />
-			<%
-				ServiceClienteImp sCliente = new ServiceClienteImp();
-				request.setAttribute("cliente", sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()));
-			%>
-            
-            
-            <div id="loader">
+            	<div id="loader">
 			        <div class="sk-folding-cube">
 			            <div class="sk-cube1 sk-cube"></div>
 			            <div class="sk-cube2 sk-cube"></div>
@@ -82,7 +83,7 @@
                 </header>
 
                 <nav data-spy="affix" data-offset-top="150">
-                    <a href="${pageContext.servletContext.contextPath}/index.jsp" class="actual" onclick="loading();">
+                    <a href="${pageContext.servletContext.contextPath}/index.jsp" onclick="loading();">
                         <i class="fas fa-home"></i> &nbsp; Inicio</a>
                     <a href="${pageContext.servletContext.contextPath}/content/noticias.jsp" onclick="loading();">
                         <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
@@ -106,60 +107,119 @@
 
                 <div class="content">
 					<div id="showPerfil" class="row">
-						<h2> Editar perfil: <span>${username}</span></h2>
+						<h2 class="h2 text-center"> Editar perfil: <em>${username}</em></h2>
 						<div id="perfilInfoPersonal" class="col-xs-12">
 							<div id="perfilImgContainer" class="col-xs-3">
 								<img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
 							</div>
-							
+							<form action="Update.do" method="post" id="editPerfilForm">
+							<input type="hidden" name="tipo" value="cliente">
 							<div id="perfilDataContainer" class="col-xs-9">
 								<div id="perfilDataPrin" class="col-xs-6">
-									<p><b>Nombre:</b> <span>${cliente.nombre}</span></p>
-									<p><b>Apellidos:</b> <span>${cliente.apellidos}</span></p>
-									<p><b>Fecha de Nacimiento:</b> <span>${cliente.fechanacimiento}</span></p>
-									<p><b>Email:</b> <span>${cliente.email}</span></p>
+								
+									<div class="inputCon input-effect">
+						                <input type="text" name="nombre" placeholder="" class="textIn has-content" required value="${cliente.nombre}" />
+						                <label>Nombre</label>
+						                <span class="focus-border"></span>
+						            </div>
+									
+									<div class="inputCon input-effect">
+						                <input type="text" name="apellidos" placeholder="" class="textIn has-content" required value="${cliente.apellidos}" />
+						                <label>Apellidos</label>
+						                <span class="focus-border"></span>
+						            </div>
+						            
+						            <div class="inputCon input-effect">
+						                <input type="text" name="nombre" placeholder="" class="textIn datepicker has-content" required value="${cliente.fechanacimiento}" />
+						                <label>Fecha de Nacimiento</label>
+						                <span class="focus-border"></span>
+						            </div>
+						            
+						            <div class="inputCon input-effect">
+						                <input type="text" name="email" placeholder="" class="textIn has-content" required value="${cliente.email}" />
+						                <label>Email</label>
+						                <span class="focus-border"></span>
+						            </div>
 								</div>
 								
 								<div id="perfilDataSec" class="col-xs-6">
-									<p><b>Teléfono:</b> <span>${cliente.telefono}</span></p>
-									<p><b>Dirección:</b> <span>${cliente.direccion}</span></p>
-									<p><b>Código Postal:</b> <span>${cliente.codigopostal}</span></p>
-									<p><b>Puntos Acumulados:</b> <span>${cliente.puntosacumulados}</span></p>
+								
+									<div class="inputCon input-effect">
+						                <input type="text" name="telefono" placeholder="" class="textIn" <c:if test="${cliente.telefono != null }">class="has-content"</c:if> required value="${cliente.telefono}" />
+						                <label>Teléfono</label>
+						                <span class="focus-border"></span>
+						            </div>
+									
+									<div class="inputCon input-effect">
+						                <input type="text" name="direccion" placeholder="" class="textIn" <c:if test="${cliente.direccion != null }">class="has-content"</c:if> required value="${cliente.direccion}" />
+						                <label>Dirección</label>
+						                <span class="focus-border"></span>
+						            </div>
+						            
+						            <div class="inputCon input-effect">
+						                <input type="text" name="codigopostal" placeholder="" class="textIn" <c:if test="${cliente.codigopostal != null }">class="has-content"</c:if> required value="${cliente.codigopostal}" />
+						                <label>Código Postal</label>
+						                <span class="focus-border"></span>
+						            </div>
+							          
+						            <div class="col-md-12">
+							            <div class="col-md-9 text-right">
+											<a href="#modalPassword" class="btn" data-toggle="modal">Cambiar Contraseña</a>
+										</div>
+										
+										<div class="col-md-3 text-center">
+											<a href="" class="btn" onclick="loading();">Guardar</a>
+										</div>
+						            </div>						            
 								</div>
+		
+								
+								<div id="modalPassword" class="modal fade" role="dialog">
+							        <div class="modal-dialog">
+							        	<div class="modalHeader">
+							        		<h3 class="h3">Cambio de contraseña</h3>
+							        	</div>
+							            <div class="modal-body" id="passwordContainer">
+							            	<div class="inputCon input-effect">
+								                <input type="password" name="passActual" placeholder="" class="textIn" required />
+								                <label>Contraseña actual</label>
+								                <span class="focus-border"></span>
+								            </div>
+								            
+								            <div class="inputCon input-effect">
+								                <input type="password" name="password" placeholder="" class="textIn" required />
+								                <label>Nueva Contraseña</label>
+								                <span class="focus-border"></span>
+								            </div>
+								            
+								            <div class="inputCon input-effect">
+								                <input type="password" name="passwordR" placeholder="" class="textIn" required />
+								                <label>Repita Contraseña</label>
+								                <span class="focus-border"></span>
+								            </div>
+							            </div>
+							            <div class="modal-footer">
+							                <a class="btn" data-dismiss="modal">Aceptar</a>
+							            </div>
+							        </div>
+							    </div>
+								
+								
 							</div>
-							
-							<div id="perfilEditar" class="col-xs-3">
-								<a href="${pageContext.servletContext.contextPath}/content/user/editarPerfil.jsp">Editar Perfil</a>
-							</div>
+							</form>
 						</div>						
-						
-						<div id="perfilActividades" class="col-xs-6">
-							<h3><a href="${pageContext.servletContext.contextPath}/content/user/misActividades.jsp" onclick="loading();">Actividades</a></h3>
-							<div id="perfilActData">
-								<ul>
-									<c:forEach items="${cliente.clienteHasActividads}" var="cliAct">
-										<li>
-											<a href="">${cliAct.actividad.nombre}</a>
-										</li>
-									</c:forEach>
-								</ul>
-							</div>
-						</div>
-						
-						<div id="perfilPremios" class="col-xs-6">
-							<h3><a href="${pageContext.servletContext.contextPath}/content/user/misPremios.jsp" onclick="loading()">Premios</a></h3>
-							<div id="perfilPremData">
-								<ul>
-									<c:forEach items="${cliente.premios}" var="premio">
-										<li>
-											<a href="">${premio.nombre}</a>
-										</li>
-									</c:forEach>
-								</ul>
-							</div>
-						</div>					
+										
 					</div>
                 </div>
+                
+                <div id="modalError" class="modal fade" role="dialog">
+			        <div class="modal-dialog">
+			            <div class="modal-body" id="mensajeError"></div>
+			            <div class="modal-footer">
+			                <button class="btn" data-dismiss="modal">Aceptar</button>
+			            </div>
+			        </div>
+			    </div>
 
                 <footer>
                     <div class="socials">

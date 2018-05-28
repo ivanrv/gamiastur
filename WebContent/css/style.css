@@ -12,9 +12,16 @@ body {
     background-color: #ECF0F1;
 }
 
+a {
+	color: #2C3E50;
+	transition: 0.4s;
+}
+
 a:hover, a:focus{
     text-decoration: none;
     outline: none;
+    color: #72BCC7;
+    transition: 0.4s;
 }
 
 /*Propiedades del header de la página*/
