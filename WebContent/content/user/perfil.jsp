@@ -105,19 +105,42 @@
                 </nav>
 
                 <div class="content">
-					<div id="showPerfil">
+					<div id="showPerfil" class="row">
 						<h2> Perfil de <span>${username}</span></h2>
-						<div id="perfilInfoPersonal">
-							<div id="perfilImgContainer">
+						<div id="perfilInfoPersonal" class="col-xs-12">
+							<div id="perfilImgContainer" class="col-xs-3">
 								<img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
 							</div>
 							
-							<div id="pefilDataContainer"></div>
+							<div id="perfilDataContainer" class="col-xs-9">
+								<div id="perfilDataPrin" class="col-xs-6">
+									<p><b>Nombre:</b> <span>${cliente.nombre}</span></p>
+									<p><b>Apellidos:</b> <span>${cliente.apellidos}</span></p>
+									<p><b>Fecha de Nacimiento:</b> <span>${cliente.fechanacimiento}</span></p>
+									<p><b>Email:</b> <span>${cliente.email}</span></p>
+								</div>
+								
+								<div id="perfilDataSec" class="col-xs-6">
+									<p><b>Teléfono:</b> <span>${cliente.telefono}</span></p>
+									<p><b>Dirección:</b> <span>${cliente.direccion}</span></p>
+									<p><b>Código Postal:</b> <span>${cliente.codigopostal}</span></p>
+									<p><b>Puntos Acumulados:</b> <span>${cliente.puntosacumulados}</span></p>
+								</div>
+								
+								<div class="col-xs-8"></div>
+								
+								<div class="col-xs-2">
+									<a href="" class="btn btn-primary">Cambiar Contraseña</a>
+								</div>
+								
+								<div class="col-xs-2">
+									<a href="" class="btn btn-primary" onclick="loading();">Guardar</a>
+								</div>
+								
+							</div>
+							
 						</div>						
-						
-						<div id="perfilActividades"></div>
-						
-						<div id="perfilPremios"></div>					
+										
 					</div>
                 </div>
 

@@ -2,6 +2,7 @@
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
         <%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
+        <%@ page import="com.gamitour.service.ServiceClienteImp" %>
         
             <!DOCTYPE html>
             <html lang="es">
@@ -36,6 +37,12 @@
 					request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
 				%>
 			</c:if>
+            
+            <jsp:useBean id="sClienteImp" class="com.gamitour.service.ServiceClienteImp" />
+			<%
+				ServiceClienteImp sCliente = new ServiceClienteImp();
+				request.setAttribute("cliente", sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()));
+			%>
             
             
             <div id="loader">
@@ -98,7 +105,60 @@
                 </nav>
 
                 <div class="content">
-					<h1>EDITAR PERFIL ${username}</h1>
+					<div id="showPerfil" class="row">
+						<h2> Editar perfil: <span>${username}</span></h2>
+						<div id="perfilInfoPersonal" class="col-xs-12">
+							<div id="perfilImgContainer" class="col-xs-3">
+								<img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
+							</div>
+							
+							<div id="perfilDataContainer" class="col-xs-9">
+								<div id="perfilDataPrin" class="col-xs-6">
+									<p><b>Nombre:</b> <span>${cliente.nombre}</span></p>
+									<p><b>Apellidos:</b> <span>${cliente.apellidos}</span></p>
+									<p><b>Fecha de Nacimiento:</b> <span>${cliente.fechanacimiento}</span></p>
+									<p><b>Email:</b> <span>${cliente.email}</span></p>
+								</div>
+								
+								<div id="perfilDataSec" class="col-xs-6">
+									<p><b>Teléfono:</b> <span>${cliente.telefono}</span></p>
+									<p><b>Dirección:</b> <span>${cliente.direccion}</span></p>
+									<p><b>Código Postal:</b> <span>${cliente.codigopostal}</span></p>
+									<p><b>Puntos Acumulados:</b> <span>${cliente.puntosacumulados}</span></p>
+								</div>
+							</div>
+							
+							<div id="perfilEditar" class="col-xs-3">
+								<a href="${pageContext.servletContext.contextPath}/content/user/editarPerfil.jsp">Editar Perfil</a>
+							</div>
+						</div>						
+						
+						<div id="perfilActividades" class="col-xs-6">
+							<h3><a href="${pageContext.servletContext.contextPath}/content/user/misActividades.jsp" onclick="loading();">Actividades</a></h3>
+							<div id="perfilActData">
+								<ul>
+									<c:forEach items="${cliente.clienteHasActividads}" var="cliAct">
+										<li>
+											<a href="">${cliAct.actividad.nombre}</a>
+										</li>
+									</c:forEach>
+								</ul>
+							</div>
+						</div>
+						
+						<div id="perfilPremios" class="col-xs-6">
+							<h3><a href="${pageContext.servletContext.contextPath}/content/user/misPremios.jsp" onclick="loading()">Premios</a></h3>
+							<div id="perfilPremData">
+								<ul>
+									<c:forEach items="${cliente.premios}" var="premio">
+										<li>
+											<a href="">${premio.nombre}</a>
+										</li>
+									</c:forEach>
+								</ul>
+							</div>
+						</div>					
+					</div>
                 </div>
 
                 <footer>

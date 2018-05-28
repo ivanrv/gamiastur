@@ -17,9 +17,30 @@
     }
 
     #perfilInfoPersonal{
-        background-color: red;
-        min-height: 400px;
+        min-height: 225px;
     }
+    
+    #perfilImgContainer{
+		text-align: center;
+	}
+    
+	#perfilImgContainer > img{
+		border-radius: 100px;
+		height: 85%;
+	}
+	
+	#perfilDataContainer {
+		min-height: 225px;
+		padding-top: 35px;
+	}
+	
+	#perfilDataSec{
+		border-left: 1px solid rgba(31, 39, 41, 0.25);
+	}
+	
+	#perfilEditar{
+		text-align: center;
+	}
 
     #perfilActividades{
         background-color: blueviolet;
@@ -30,6 +51,12 @@
         background-color: greenyellow;
         min-height: 400px;
     }
+    
+    
+
+
+
+
 
 /* Pantalla de editar perfil de usuario */
 
