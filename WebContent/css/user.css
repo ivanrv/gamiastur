@@ -275,5 +275,20 @@
 
 /* Pantalla de actividades de usuario */
 
+	#showActividades>h2{
+        flex-basis: 100%;
+        text-align: center;
+        font-size: 1.6em;
+    }
+
+    #showActividades>h2>em{
+        font-size: 0.9em;
+        color: #2C3E50;
+    }
+
+    #showActividades>div{
+        margin: 30px auto;
+    }
+
 
 /* Pantalla de premios de usuario */

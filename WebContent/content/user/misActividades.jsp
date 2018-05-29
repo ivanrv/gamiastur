@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
         <%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
+        <%@ page import="com.gamitour.service.ServiceClienteImp" %>
         
             <!DOCTYPE html>
             <html lang="es">
@@ -18,6 +20,7 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/user.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -36,6 +39,12 @@
 					request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
 				%>
 			</c:if>
+            
+            <jsp:useBean id="sClienteImp" class="com.gamitour.service.ServiceClienteImp"/>
+            <%
+            	ServiceClienteImp sCliente = new ServiceClienteImp();
+            	request.setAttribute("clienteActividades", sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()).getClienteHasActividads());
+            %>
             
             
             <div id="loader">
@@ -75,7 +84,7 @@
                 </header>
 
                 <nav data-spy="affix" data-offset-top="150">
-                    <a href="${pageContext.servletContext.contextPath}/index.jsp" class="actual" onclick="loading();">
+                    <a href="${pageContext.servletContext.contextPath}/index.jsp" onclick="loading();">
                         <i class="fas fa-home"></i> &nbsp; Inicio</a>
                     <a href="${pageContext.servletContext.contextPath}/content/noticias.jsp" onclick="loading();">
                         <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
@@ -98,7 +107,34 @@
                 </nav>
 
                 <div class="content">
-					<h1>MIS ACTIVIDADES ${username}</h1>
+					<div id="showActividades" class="row">
+						<h2 class="h2 text-center"> Mis actividades: <em>${username}</em></h2>
+						<div class="row" id="actividadesContainer">
+							<c:forEach items="${clienteActividades}" var="cliAct">
+								<div class="col-xs-12">
+									<div class="col-xs-3">
+										<img src="/static${cliAct.actividad.imagenactividads.iterator().next().archivo}">
+									</div>
+									<div class="col-xs-3">${cliAct.actividad.nombre}</div>
+									<div class="col-xs-2">${cliAct.actividad.puntos} Puntos</div>
+									<div class="col-xs-2"><fmt:formatDate value="${cliAct.actividad.fechainicio}" pattern="dd-MM-yyyy"/></div>
+									<div class="col-xs-2">
+										<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${cliAct.actividad.latitud} ${cliAct.actividad.longitud}">
+                                        	<i class="fas fa-map-marker-alt"></i>&nbsp;
+                                        	<span>Mostrar Ubicación</span>
+                                        </a>
+									</div>
+								</div>
+							</c:forEach>
+							
+							<c:if test="${fn:length(clienteActividades) == 0 }">
+									<div class="col-xs-12 text-center">
+										<h3 class="h3">-- No existe ninguna actividad para mostrar --</h3>
+										<h4 class="h4">-- Echa un vistazo a nuestras actividades <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" onclick="loading();">aquí</a> --</h4>
+									</div>
+							</c:if>	
+						</div>
+					</div>
                 </div>
 
                 <footer>

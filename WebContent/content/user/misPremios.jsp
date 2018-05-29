@@ -2,6 +2,7 @@
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
         <%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
+        <%@ page import="com.gamitour.service.ServiceClienteImp" %>
         
             <!DOCTYPE html>
             <html lang="es">
@@ -37,6 +38,11 @@
 				%>
 			</c:if>
             
+            <jsp:useBean id="sClienteImp" class="com.gamitour.service.ServiceClienteImp"/>
+            <%
+            	ServiceClienteImp sCliente = new ServiceClienteImp();
+            	request.setAttribute("premios", sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()).getPremios());
+            %>
             
             <div id="loader">
 			        <div class="sk-folding-cube">
@@ -98,7 +104,26 @@
                 </nav>
 
                 <div class="content">
-					<h1>MIS PREMIOS ${username}</h1>
+					<div id="showPremios" class="row">
+						<h2 class="h2 text-center"> Mis premios: <em>${username}</em></h2>
+						<div class="row" id="premiosContainer">
+							<c:forEach items="${premios}" var="premio">
+								<div class="col-xs-12">
+									<div class="col-xs-3">${premio.nombre}</div>
+									<div class="col-xs-5">${premio.descripcion}</div>
+									<div class="col-xs-2">${premio.puntos} Puntos</div>
+									<div class="col-xs-2"><a href="#" class="btn">Consumir</a></div>
+								</div>
+							</c:forEach>
+							
+							<c:if test="${fn:length(premios) == 0 }">
+									<div class="col-xs-12 text-center">
+										<h3 class="h3">-- No existe ningún premio para mostrar --</h3>
+										<h4 class="h4">-- Echa un vistazo a nuestras premios <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">aquí</a> --</h4>
+									</div>
+							</c:if>	
+						</div>
+					</div>
                 </div>
 
                 <footer>
