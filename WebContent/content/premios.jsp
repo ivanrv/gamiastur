@@ -18,6 +18,7 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/premios.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -109,24 +110,24 @@
                 </nav>
 
                 <div class="content">
-					<h1>PREMIOS</h1>
-					<div id="premiosContainer">
-                		<c:forEach items="premios" var="premio">
-                			<div class="col-xs-4 premioItem">
+					<h1 class="text-center">Premios Disponibles</h1>
+					<div id="premiosContainer" class="row">
+                		<c:forEach items="${premios}" var="premio">
+                			<div class="col-xs-3 premioItem">
                 				<div class="premioImg">
                 					<img alt="" src="/static${premio.imagen}"/>
                 				</div>
                 				
-                				<div class="premioNombre">${premio.nombre}</div>
+                				<div class="premioNombre text-center"><h3 class="h3">${premio.nombre}</h3></div>
                 				
                 				<div class="premioData">
                 					<div class="col-xs-6"></div>
-                					<div class="col-xs-6">${premio.puntos} Puntos</div>
+                					<div class="col-xs-6 text-right"><span>${premio.puntos} Puntos</span></div>
                 				</div>
                 				
-                				<div class="premioDesc">${premio.descripcion}</div>
+                				<div class="premioDesc"><span>${premio.descripcion}</span></div>
                 				
-                				<div class="premioActiva">
+                				<div class="premioActiva text-center">
                 					<a class="btn" href="">Activar</a>
                 				</div>
                 			</div>

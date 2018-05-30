@@ -20,6 +20,7 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/actividades.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -111,26 +112,24 @@
                 </nav>
 
                 <div class="content">
-                	<h1>ACTIVIDADES</h1>
-                	<div id="actividadesContainer">
-                		<c:forEach items="actividades" var="actividad">
-                			<div class="col-xs-4 actividadItem">
+                	<h1 class="text-center">Nuestras Actividades</h1>
+                	<div id="actividadesContainer" class="row">
+                		<c:forEach items="${actividades}" var="actividad">
+                			<div class="col-xs-3 actividadItem">
                 				<div class="actividadImg">
                 					<img alt="" src="/static${actividad.imagenactividads.iterator().next().archivo}"/>
                 				</div>
                 				
-                				<div class="actividadNombre">
-                					${actividad.nombre}
-                				</div>
+                				<div class="actividadNombre text-center"><h3 class="h3">${actividad.nombre}</h3></div>
                 				
                 				<div class="actividadData">
-                					<div class="col-xs-6"><fmt:formatDate value="${cliAct.actividad.fechainicio}" pattern="dd-MM-yyyy"/></div>
-                					<div class="col-xs-6">${actividad.puntos} Puntos</div>
-                					<div class="col-xs-6">${actividad.numparticipantes} Participantes inscritos</div>
-                					<div class="col-xs-6">${actividad.precio}€</div>
+                					<div class="col-xs-6 text-center"><span><fmt:formatDate value="${actividad.fechainicio}" pattern="dd-MM-yyyy"/></span></div>
+                					<div class="col-xs-6 text-center"><span>${actividad.puntos} Puntos</span></div>
+                					<div class="col-xs-6 text-center"><span>${actividad.numparticipantes} Participantes inscritos</span></div>
+                					<div class="col-xs-6 text-center"><span>${actividad.precio}€</span></div>
                 				</div>
                 				
-                				<div class="actividadReserva">
+                				<div class="actividadReserva text-center">
                 					<a class="btn" href="">Reservar</a>
                 				</div>
                 			</div>

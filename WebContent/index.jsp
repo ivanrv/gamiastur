@@ -27,17 +27,16 @@
             </head>
 
             <body>
-            <c:if test="${itinerarios == null}">
-	            <jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
+            	<c:if test="${itinerarios == null}">
+	            	<jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
 		
-				<%
-					ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
-					request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
-				%>
-			</c:if>
+					<%
+						ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
+						request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+					%>
+				</c:if>
             
-            
-            <div id="loader">
+            	<div id="loader">
 			        <div class="sk-folding-cube">
 			            <div class="sk-cube1 sk-cube"></div>
 			            <div class="sk-cube2 sk-cube"></div>
@@ -104,7 +103,101 @@
                 </nav>
 
                 <div class="content">
-					<h1>Bienvenido a Gamiastur ${username}</h1>
+                	<div id="carouselIndex" class="row carousel slide" data-ride="carousel">                		
+                		<ol class="carousel-indicators">
+                			<li data-target="#carouselIndex" data-slide-to="0" class="active"></li>
+                			<li data-target="#carouselIndex" data-slide-to="1"></li>
+                			<li data-target="#carouselIndex" data-slide-to="2"></li>
+                		</ol>
+                	
+                		<div class="carousel-inner">
+                			<div class="item active">
+                				<img src="${pageContext.servletContext.contextPath}/images/carousel/gijon.jpg">
+                			</div>
+                			
+                			<div class="item">
+                				<img src="${pageContext.servletContext.contextPath}/images/carousel/llanes.jpg">
+                			</div>                			              
+                			
+                			<div class="item">
+                				<img src="${pageContext.servletContext.contextPath}/images/carousel/somiedo.jpg">
+                			</div>
+                		</div>                		                		                	
+                	</div>
+                	
+                	<div id="bienvenida" class="row text-center">
+	              		<h1>Bienvenido a Gamiastur</h1>
+	              		<h3 class="h3">Echa un vistazo a lo que podemos ofrecerte</h3>
+              		</div>
+              		
+              		<div class="row" id="actividadesItinerarios">
+              			<div class="col-xs-2"></div>
+              			<div class="col-xs-3 text-center">
+              				<h2 class="h2"><i class="fas fa-search"></i></h2>
+              				<h2 class="h2">Nuestras Actividades</h2>
+              				<span>Conoce nuestras fantásticas actividades y diviértete con nosotros</span>
+              				<a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Descubrir</a>
+              			</div>
+              			<div class="col-xs-2"></div>
+              			<div class="col-xs-3 text-center">
+              				<h2 class="h2"><i class="fas fa-map"></i></h2>
+              				<h2 class="h2">Fantásticos Itinerarios</h2>
+              				<span>Recorre fantásticos lugares con nuestros maravillosos itinerarios</span>
+              				<a href="${pageContext.servletContext.contextPath}/content/itinerarios.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Saber más</a>
+              			</div>
+              			<div class="col-xs-2"></div>
+              		</div>
+              		
+              		<div class="row" id="noticiasPremios">
+              			<div class="col-xs-3 text-center"></div>
+              			<div class="col-xs-3 text-center">
+              				<h2 class="h2"><i class="fas fa-search"></i></h2>
+              				<h2 class="h2">Últimas Noticias</h2>
+              				<span>No te pierdas ninguna noticia de interés turístico</span>
+              				<a href="${pageContext.servletContext.contextPath}/content/noticias.jsp" class="btn" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Mantenerse Informado</a>
+              			</div>
+              			<div class="col-xs-8"></div>
+              			<div class="col-xs-6"></div>
+              			<div class="col-xs-3 text-center">
+              				<h2 class="h2"><i class="fas fa-trophy"></i></h2>
+              				<h2 class="h2">Premios Impresionantes</h2>
+              				<span>Gana fantásticos premios solamente con participar en nuestros servicios</span>
+              				<a href="${pageContext.servletContext.contextPath}/content/premios.jsp" class="btn" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Obtener Premios</a>
+              			</div>
+              			<div class="col-xs-1 text-center"></div>
+              		</div>
+              		
+              		<div class="row" id="aboutDiv">
+              			<div class="col-xs-4"></div>
+              			<div class="col-xs-4 text-center">
+              				<h2 class="h2"><i class="fas fa-question"></i></h2>
+              				<h2 class="h2">Sobre Nosotros</h2>
+              				<span>Descubre un poco más sobre el equipo detrás de Gamiastur</span>
+              				<a href="${pageContext.servletContext.contextPath}/content/about.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Conocernos</a>
+              			</div>
+              			<div class="col-xs-4"></div>
+              		</div>
+              		
+              		
+              		<c:if test="${username == null}">              		
+              		<div class="row" id="registrarseDiv">
+              			<div class="col-xs-2"></div>
+              			<div class="col-xs-3 text-center">
+              				<h2 class="h2"><i class="fas fa-sign-in-alt"></i></h2>
+              				<h2 class="h2">Únete</h2>
+              				<span>Participa en Gamiastur y disfruta de todas las ventajas</span>
+              				<a href="${pageContext.servletContext.contextPath}/content/registro.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Registrarse</a>
+              			</div>
+              			<div class="col-xs-2"></div>
+              			<div class="col-xs-3 text-center">
+              				<h2 class="h2"><i class="fas fa-key"></i></h2>
+              				<h2 class="h2">Inicia Sesión</h2>
+              				<span>¿Ya tienes cuenta? Accede y participa</span>
+              				<a href="${pageContext.servletContext.contextPath}/content/login.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Entrar</a>
+              			</div>
+              			<div class="col-xs-2"></div>
+              		</div>
+              		</c:if>
                 </div>
                 
                 <c:if test="${(userRol == 'admin' || userRol == 'hosteleria' || userRol == 'deportivas') && (popup != true)}">

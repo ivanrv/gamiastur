@@ -34,6 +34,11 @@
 					request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
 				%>
 			</c:if>
+			
+			<%
+				ServiceItinerarioImp sIti = new ServiceItinerarioImp();
+				request.setAttribute("itinerariosOBJ", sIti.buscarTodos());
+			%>
             
             <div id="loader">
 			        <div class="sk-folding-cube">
@@ -102,7 +107,11 @@
                 </nav>
 
                 <div class="content">
-					<h1>ITINERARIOS</h1>
+                	<div id="itinerariosContainer" class="row">
+                		<c:forEach items="${itinerariosOBJ}" var="itiOBJ">
+                			<div class="col-xs-3 itiItem">${itiOBJ.nombre}</div>
+                		</c:forEach>
+                	</div>                
                 </div>
 
                 <footer>
@@ -126,3 +135,18 @@
       		</body>
 
             </html>
+            
+            <script>
+				var stringItinerarios = "[";
+
+            	<c:forEach items="${itinerariosOBJ}" var="iti" varStatus="status">
+					stringItinerarios += '{"id": "${iti.iditinerario}", "nombre": "${iti.nombre}", "categoria": "${iti.categoria}", "duracion":"${iti.duracion}", "latitud": "${iti.latitud}", "longitud": "${iti.longitud}", "paradas":[';
+					<c:forEach items="${iti.paradas}" var="parada" varStatus="parStatus">
+						stringItinerarios += '{"idparada": "${parada.idparada}", "nombre": "${parada.nombre}", "numeroParada": "${parada.numeroParada}", "historia": "${parada.historia}", "anecdotario": "${parada.anecdotario}", "gastronomia": "${parada.gastronomia}", "imagen": "${parada.imagen}", "latitud": "${parada.latitud}", "longitud": "${parada.longitud}"}';
+						<c:if test="${!parStatus.last}"> stringItinerarios += "," </c:if>
+					</c:forEach>
+					stringItinerarios += "]}";
+					<c:if test="${!status.last}"> stringItinerarios += ","</c:if>					
+				</c:forEach>
+				stringItinerarios += "]"; 
+            </script>

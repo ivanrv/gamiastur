@@ -1,0 +1,36 @@
+
+.actividadItem{
+	margin: 40px auto 30px auto;
+}
+
+.actividadImg, .actividadNombre, .actividadData, .actividadReserva{
+    border-right: 1px solid #1F2729;
+    border-left: 1px solid #1F2729;
+}
+
+.actividadImg{	
+	border-top: 1px solid #1F2729;
+	width: 100%;
+	height: 200px;
+}
+
+.actividadReserva{
+	border-bottom: 1px solid #1F2729;
+}
+
+.actividadReserva a {
+	margin-top: 20px;
+	margin-bottom: 25px;
+}
+
+.h3 {
+	margin: 0;
+	padding-top: 15px;
+	padding-bottom: 20px;
+}
+
+.actividadData span{
+	font-size: 0.7em;
+	padding: 7px 0;
+}
+

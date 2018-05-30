@@ -104,7 +104,7 @@ public class Nuevo extends Accion{
 						cliente.getNombre() + " " + cliente.getApellidos().substring(0, cliente.getApellidos().indexOf(" ")));
 				request.getSession().setAttribute("userEmail", cliente.getEmail());
 				
-				retorno = "/content/user/index.jsp";
+				retorno = "index.jsp";
 			
 			} catch (ParseException e2) {
 				// TODO Auto-generated catch block
