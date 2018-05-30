@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+        <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
         <%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
+        <%@ page import="com.gamitour.service.ServiceActividadImp" %>
             <!DOCTYPE html>
             <html lang="es">
 
@@ -34,6 +37,12 @@
 					request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
 				%>
 			</c:if>
+			
+			<jsp:useBean id="sActividadImp" class="com.gamitour.service.ServiceActividadImp" />
+			<%
+				ServiceActividadImp sActividad = new ServiceActividadImp();
+				request.setAttribute("actividades", sActividad.buscarTodos());
+			%>
             
             <div id="loader">
 			        <div class="sk-folding-cube">
@@ -89,7 +98,7 @@
                         <i class="fas fa-map"></i> &nbsp; Itinerarios
                         <ul>
                         	<c:forEach items="${itinerarios}" var="iti">
-                        		<li id="" onclick="loading();">
+                        		<li id="${iti}" onclick="loading();">
                         			<span>${iti}</span>
                         		</li>
                         	</c:forEach>
@@ -102,7 +111,36 @@
                 </nav>
 
                 <div class="content">
-					<h1>ACTIVIDADES</h1>
+                	<h1>ACTIVIDADES</h1>
+                	<div id="actividadesContainer">
+                		<c:forEach items="actividades" var="actividad">
+                			<div class="col-xs-4 actividadItem">
+                				<div class="actividadImg">
+                					<img alt="" src="/static${actividad.imagenactividads.iterator().next().archivo}"/>
+                				</div>
+                				
+                				<div class="actividadNombre">
+                					${actividad.nombre}
+                				</div>
+                				
+                				<div class="actividadData">
+                					<div class="col-xs-6"><fmt:formatDate value="${cliAct.actividad.fechainicio}" pattern="dd-MM-yyyy"/></div>
+                					<div class="col-xs-6">${actividad.puntos} Puntos</div>
+                					<div class="col-xs-6">${actividad.numparticipantes} Participantes inscritos</div>
+                					<div class="col-xs-6">${actividad.precio}€</div>
+                				</div>
+                				
+                				<div class="actividadReserva">
+                					<a class="btn" href="">Reservar</a>
+                				</div>
+                			</div>
+                		</c:forEach>
+                		
+                		<c:if test="${fn:length(actividades) == 0 }">
+                			<h2 class="h2 text-center">-- Actualmente no tenemos ninguna actividad disponible --</h2>
+                			<h3 class="h3 text-center">Inténtalo en otro momento</h3>
+                		</c:if>
+                	</div>
                 </div>
 
                 <footer>

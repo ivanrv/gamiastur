@@ -2,6 +2,7 @@
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
         <%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
+        <%@ page import="com.gamitour.service.ServicePremioImp" %>
             <!DOCTYPE html>
             <html lang="es">
 
@@ -34,6 +35,12 @@
 					request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
 				%>
 			</c:if>
+			
+			<jsp:useBean id="sPremioImp" class="com.gamitour.service.ServicePremioImp" />
+			<%
+				ServicePremioImp sPremio = new ServicePremioImp();
+				request.setAttribute("premios", sPremio.buscarTodos());
+			%>
              
             <div id="loader">
 			        <div class="sk-folding-cube">
@@ -103,6 +110,33 @@
 
                 <div class="content">
 					<h1>PREMIOS</h1>
+					<div id="premiosContainer">
+                		<c:forEach items="premios" var="premio">
+                			<div class="col-xs-4 premioItem">
+                				<div class="premioImg">
+                					<img alt="" src="/static${premio.imagen}"/>
+                				</div>
+                				
+                				<div class="premioNombre">${premio.nombre}</div>
+                				
+                				<div class="premioData">
+                					<div class="col-xs-6"></div>
+                					<div class="col-xs-6">${premio.puntos} Puntos</div>
+                				</div>
+                				
+                				<div class="premioDesc">${premio.descripcion}</div>
+                				
+                				<div class="premioActiva">
+                					<a class="btn" href="">Activar</a>
+                				</div>
+                			</div>
+                		</c:forEach>
+                		
+                		<c:if test="${fn:length(premios) == 0 }">
+                			<h2 class="h2 text-center">-- Actualmente no tenemos ningún premio disponible --</h2>
+                			<h3 class="h3 text-center">Inténtalo en otro momento</h3>
+                		</c:if>
+                	</div>
                 </div>
 
                 <footer>
