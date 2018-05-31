@@ -89,11 +89,11 @@
                         <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
                     <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" onclick="loading();">
                         <i class="fas fa-search"></i> &nbsp; Actividades</a>
-                    <a href="${pageContext.servletContext.contextPath}/content/itinerarios.jsp" id="menuIti" onclick="loading();">
+                   <a href="javascript:void(0)" id="menuIti" onclick="loading(); redirectIti();">
                         <i class="fas fa-map"></i> &nbsp; Itinerarios
                         <ul>
                         	<c:forEach items="${listaItinerarios}" var="iti">
-                        		<li id="" onclick="loading();">
+                        		<li value="${iti}" onclick="loading();">
                         			<span>${iti.nombre}</span>
                         		</li>
                         	</c:forEach>

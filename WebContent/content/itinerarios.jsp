@@ -90,11 +90,11 @@
                         <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
                     <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" onclick="loading();">
                         <i class="fas fa-search"></i> &nbsp; Actividades</a>
-                    <a href="${pageContext.servletContext.contextPath}/content/itinerarios.jsp" class="actual" id="menuIti" onclick="loading();">
+                    <a href="javascript:void(0)" class="actual" id="menuIti" onclick="loading(); redirectIti();">
                         <i class="fas fa-map"></i> &nbsp; Itinerarios
                         <ul>
                         	<c:forEach items="${itinerarios}" var="iti">
-                        		<li id="" onclick="loading();">
+                        		<li value="${iti}" onclick="loading();">
                         			<span>${iti}</span>
                         		</li>
                         	</c:forEach>
@@ -107,9 +107,21 @@
                 </nav>
 
                 <div class="content">
+                BRUH
                 	<div id="itinerariosContainer" class="row">
                 		<c:forEach items="${itinerariosOBJ}" var="itiOBJ">
-                			<div class="col-xs-3 itiItem">${itiOBJ.nombre}</div>
+                			<div class="col-xs-3 itiItem">
+                				<div class="itiFade">
+                					<h3 class="h3 text-center">${itiOBJ.nombre}</h3>
+                					<div class="text-center">
+                						<form action="${pageContext.servletContext.contextPath}/content/itinerario.jsp" method="GET" id="iti${itiOBJ.iditinerario}">
+                							<input type="hidden" name="iti" value="${itiOBJ.nombre}"/>
+                							<button type="submit" value="xd" class="btn">xd</button> 
+                						</form>
+                						<a value="${itiOBJ.iditinerario}" href="javascript:void(0);" class="btn btn-contrast btnIti" onclick="loading();">Comenzar</a>
+                					</div>
+                				</div>
+                			</div>
                 		</c:forEach>
                 	</div>                
                 </div>

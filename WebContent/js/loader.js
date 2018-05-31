@@ -13,3 +13,31 @@ $(window).on("load", function(){
 function loading(){
     $("#loader").fadeIn(300);
 }
+
+$(document).ready(function(){
+	$("#menuIti li").click(function(){
+		var iti = true;
+
+		var form = document.createElement("form");
+	    var element1 = document.createElement("input"); 
+
+	    form.method = "GET";
+	    form.action = "/gamiastur/content/itinerario.jsp";
+	    
+	    element1.name="iti";
+	    element1.value= $(this).attr("value");
+	    form.appendChild(element1);
+	    
+	    document.body.appendChild(form);
+	    
+	    form.submit();
+	})
+});
+
+function  redirectIti(){
+	setTimeout(function(){
+		if (typeof iti == "undefined")
+			location.href=("/gamiastur/content/itinerarios.jsp");
+	}, 800);
+	
+}

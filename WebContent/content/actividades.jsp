@@ -95,11 +95,11 @@
                         <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
                     <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" class="actual" onclick="loading();">
                         <i class="fas fa-search"></i> &nbsp; Actividades</a>
-                    <a href="${pageContext.servletContext.contextPath}/content/itinerarios.jsp" id="menuIti" onclick="loading();">
+                   <a href="javascript:void(0)" id="menuIti" onclick="loading(); redirectIti();">
                         <i class="fas fa-map"></i> &nbsp; Itinerarios
                         <ul>
                         	<c:forEach items="${itinerarios}" var="iti">
-                        		<li id="${iti}" onclick="loading();">
+                        		<li value="${iti}" onclick="loading();">
                         			<span>${iti}</span>
                         		</li>
                         	</c:forEach>
@@ -125,12 +125,12 @@
                 				<div class="actividadData">
                 					<div class="col-xs-6 text-center"><span><fmt:formatDate value="${actividad.fechainicio}" pattern="dd-MM-yyyy"/></span></div>
                 					<div class="col-xs-6 text-center"><span>${actividad.puntos} Puntos</span></div>
-                					<div class="col-xs-6 text-center"><span>${actividad.numparticipantes} Participantes inscritos</span></div>
+                					<div class="col-xs-6 text-center"><span>${actividad.numparticipantes} Participantes</span></div>
                 					<div class="col-xs-6 text-center"><span>${actividad.precio}€</span></div>
                 				</div>
                 				
                 				<div class="actividadReserva text-center">
-                					<a class="btn" href="">Reservar</a>
+                					<a class="btn" href="<c:choose><c:when test="${username!=null}">#modalReserva</c:when><c:otherwise>${pageContext.servletContext.contextPath}/content/registro.jsp</c:otherwise></c:choose>" <c:if test="${username!=null}">data-toggle="modal"</c:if>>Reservar</a>                					
                 				</div>
                 			</div>
                 		</c:forEach>

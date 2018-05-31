@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
         <%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
-        <%@ page import="com.gamitour.service.ServicePremioImp" %>
+        <%
+			ServiceItinerarioImp sIti = new ServiceItinerarioImp();
+			request.setAttribute("itiOBJ", sIti.buscarPorNombre(request.getParameter("iti")));
+		%>
             <!DOCTYPE html>
             <html lang="es">
 
@@ -10,7 +14,7 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                <title>Premios</title>
+                <title>${itiOBJ.nombre}</title>
 
                 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
                 <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
@@ -18,7 +22,6 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
-                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/premios.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -28,22 +31,16 @@
             </head>
 
             <body>
-            <c:if test="${itinerarios == null}">
-	            <jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
-		
-				<%
-					ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
-					request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
-				%>
-			</c:if>
+	            <c:if test="${itinerarios == null}">
+		            <jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
 			
-			<jsp:useBean id="sPremioImp" class="com.gamitour.service.ServicePremioImp" />
-			<%
-				ServicePremioImp sPremio = new ServicePremioImp();
-				request.setAttribute("premios", sPremio.buscarTodos());
-			%>
-             
-            <div id="loader">
+					<%
+						ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
+						request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+					%>
+				</c:if>			
+            
+            	<div id="loader">
 			        <div class="sk-folding-cube">
 			            <div class="sk-cube1 sk-cube"></div>
 			            <div class="sk-cube2 sk-cube"></div>
@@ -93,7 +90,7 @@
                         <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
                     <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" onclick="loading();">
                         <i class="fas fa-search"></i> &nbsp; Actividades</a>
-                   <a href="javascript:void(0)" id="menuIti" onclick="loading(); redirectIti();">
+                    <a href="javascript:void(0)" class="actual" id="menuIti" onclick="loading(); redirectIti();">
                         <i class="fas fa-map"></i> &nbsp; Itinerarios
                         <ul>
                         	<c:forEach items="${itinerarios}" var="iti">
@@ -103,40 +100,14 @@
                         	</c:forEach>
                         </ul>
                     </a>
-                    <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" class="actual" onclick="loading();">
+                    <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
                         <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
-					<h1 class="text-center">Premios Disponibles</h1>
-					<div id="premiosContainer" class="row">
-                		<c:forEach items="${premios}" var="premio">
-                			<div class="col-xs-3 premioItem">
-                				<div class="premioImg">
-                					<img alt="" src="/static${premio.imagen}"/>
-                				</div>
-                				
-                				<div class="premioNombre text-center"><h3 class="h3">${premio.nombre}</h3></div>
-                				
-                				<div class="premioData">
-                					<div class="col-xs-12 text-right"><span>${premio.puntos} Puntos</span></div>
-                				</div>
-                				
-                				<div class="premioDesc"><span>${premio.descripcion}</span></div>
-                				
-                				<div class="premioActiva text-center">
-                					<a class="btn" href="<c:choose><c:when test="${username!=null}">#modalActivar</c:when><c:otherwise>${pageContext.servletContext.contextPath}/content/registro.jsp</c:otherwise></c:choose>" <c:if test="${username!=null}">data-toggle="modal"</c:if>>Activar</a>
-                				</div>
-                			</div>
-                		</c:forEach>
-                		
-                		<c:if test="${fn:length(premios) == 0 }">
-                			<h2 class="h2 text-center">-- Actualmente no tenemos ningún premio disponible --</h2>
-                			<h3 class="h3 text-center">Inténtalo en otro momento</h3>
-                		</c:if>
-                	</div>
+                	<h1>${itiOBJ.nombre}</h1>  BRUH           
                 </div>
 
                 <footer>
@@ -160,3 +131,23 @@
       		</body>
 
             </html>
+            
+            <script>
+            var stringParadas = "[";
+
+        	<c:forEach items="${itiOBJ.paradas}" var="parada" varStatus="status">
+				stringParadas += '{"nombre": "${parada.nombre}","numeroParada": "${parada.numeroParada}", "historia": "${parada.historia}", "anecdotario": "${parada.anecdotario}", "gastronomia": "${parada.gastronomia}", "imagen": "${parada.imagen}", "video": "${parada.video}", "latitud": "${parada.latitud}", "longitud": "${parada.longitud}", "pruebasDeportivas": [';
+				<c:forEach items="${parada.pruebadeportivas}" var="pd" varStatus="pdStatus">
+					stringParadas += '{"nombre": "${pd.nombre}", "fechainicio": "<fmt:formatDate value="${pd.fechainicio}" pattern="dd-MM-yyyy"/>", "fechafin": "<fmt:formatDate value="${pd.fechafin}" pattern="dd-MM-yyyy"/>", "explicacion": "${pd.explicacion}", "puntos": "${pd.puntos}"}';
+					<c:if test="${!pdStatus.last}">stringParadas += ",";</c:if>
+				</c:forEach>
+				stringParadas += '], "pruebasCulutrales": [';
+				<c:forEach items="${parada.pruebaculturals}" var="pc" varStatus="pcStatus">
+					stringParadas += '{"nombre": "${pc.nombre}", "pregunta": "${pc.pregunta}", "respuesta": "${pc.respuesta}", "puntos": "${pc.puntos}"}';
+					<c:if test="${!pcStatus.last}">stringParadas += ",";</c:if>
+				</c:forEach>
+				stringParadas += "]}";
+				<c:if test="${!status.last}"> stringParadas += ",";</c:if>					
+			</c:forEach>
+			stringParadas += "]";
+            </script>
