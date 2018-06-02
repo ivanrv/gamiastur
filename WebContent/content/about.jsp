@@ -17,6 +17,7 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/about.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -106,10 +107,9 @@
 					<h1 class="text-center">Descubre Quiénes Somos</h1>
 					
 					<div class="row" id="teamContainer">
-						<h2 class="h2 text-center">Nuestro Equipo</h2>
 						<div class="col-xs-3 teamItem">
 							<div class="teamImg">
-								<img src="" alt=""/>
+								<img src="${pageContext.servletContext.contextPath}/images/team/mrx.jpg" alt=""/>
 							</div>
 							
 							<div class="teamNombre">
@@ -122,18 +122,14 @@
 							
 							<div class="teamContact">
 								<div class="teamEmail">
-									<a href="mailto:maildeejemplo@gmail.com" target="_top"><span>maildeejemplo@gmail.com</span></a>
-								</div>
-								
-								<div class="teamSocials">
-									
+									<a href="mailto:maildeejemplo@gmail.com" target="_top"><span><i class="far fa-envelope"></i> &nbsp; maildeejemplo@gmail.com</span></a>
 								</div>
 							</div>							
 						</div>
 						
 						<div class="col-xs-3 teamItem">
 							<div class="teamImg">
-								<img src="" alt=""/>
+								<img src="${pageContext.servletContext.contextPath}/images/team/mrx.jpg" alt=""/>
 							</div>
 							
 							<div class="teamNombre">
@@ -146,18 +142,14 @@
 							
 							<div class="teamContact">
 								<div class="teamEmail">
-									<a href="mailto:maildeejemplo@gmail.com" target="_top"><span>maildeejemplo@gmail.com</span></a>
-								</div>
-								
-								<div class="teamSocials">
-									
+									<a href="mailto:maildeejemplo@gmail.com" target="_top"><span><i class="far fa-envelope"></i> &nbsp;maildeejemplo@gmail.com</span></a>
 								</div>
 							</div>							
 						</div>
 				
 						<div class="col-xs-3 teamItem">
 							<div class="teamImg">
-								<img src="" alt=""/>
+								<img src="${pageContext.servletContext.contextPath}/images/team/mrx.jpg" alt=""/>
 							</div>
 							
 							<div class="teamNombre">
@@ -170,18 +162,14 @@
 							
 							<div class="teamContact">
 								<div class="teamEmail">
-									<a href="mailto:maildeejemplo@gmail.com" target="_top"><span>maildeejemplo@gmail.com</span></a>
-								</div>
-								
-								<div class="teamSocials">
-									
+									<a href="mailto:maildeejemplo@gmail.com" target="_top"><span><i class="far fa-envelope"></i> &nbsp;maildeejemplo@gmail.com</span></a>
 								</div>
 							</div>							
 						</div>
 
 						<div class="col-xs-3 teamItem">
 							<div class="teamImg">
-								<img src="" alt=""/>
+								<img src="${pageContext.servletContext.contextPath}/images/team/mrx.jpg" alt=""/>
 							</div>
 							
 							<div class="teamNombre">
@@ -194,13 +182,9 @@
 							
 							<div class="teamContact">
 								<div class="teamEmail">
-									<a href="mailto:maildeejemplo@gmail.com" target="_top"><span>maildeejemplo@gmail.com</span></a>
+									<a href="mailto:maildeejemplo@gmail.com" target="_top"><span><i class="far fa-envelope"></i> &nbsp;maildeejemplo@gmail.com</span></a>
 								</div>
-								
-								<div class="teamSocials">
-									
-								</div>
-							</div>							
+							</div>
 						</div>
 					</div>
 					
@@ -208,7 +192,7 @@
 						<h2 class="h2 text-center">Dónde Estamos</h2>
 						<div class="col-xs-2"></div>
 						
-						<div class="col-xs-4">
+						<div class="col-xs-3 text-right">
 							<h3 class="h3">Gamiastur</h3>
 							<p class="locationDireccion">Calle Luis Moya Blanco, 335</p>
 							<p class="locationDireccion">33203 Gijón - Asturias - España</p>
@@ -216,36 +200,14 @@
 							<p class="locationDireccion"><i class="far fa-envelope"></i> &nbsp; info@gamiastur.com</p>							
 						</div>
 						
-						<div class="col-xs-4">
+						<div class="col-xs-2"></div>
+						
+						<div class="col-xs-3">
 							<div id="locationMap"></div>
 						</div>
 						
 						<div class="col-xs-2"></div>
-					</div>
-					
-					<div class="row" id="adicionalContainer">
-						<h2 class="h2 text-center">Nuestros Colaboradores</h2>
-						<div class="col-xs-2"></div>
-						
-						<div class="col-xs-2">
-							CIFP LA LABORAL
-						</div>
-						
-						<div class="col-xs-1"></div>
-						
-						<div class="col-xs-2">
-							CIFP DEL DEPORTE
-						</div>
-						
-						<div class="col-xs-1"></div>
-						
-						<div class="col-xs-2">
-							CIFP DE TURISMO
-						</div>
-											
-						<div class="col-xs-2"></div>					
-					</div>
-					
+					</div>					
                 </div>
 
                 <footer>

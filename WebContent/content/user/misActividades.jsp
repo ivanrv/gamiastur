@@ -21,6 +21,7 @@
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/user.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/misActs.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -111,18 +112,21 @@
 						<h2 class="h2 text-center"> Mis actividades: <em>${username}</em></h2>
 						<div class="row" id="actividadesContainer">
 							<c:forEach items="${clienteActividades}" var="cliAct">
-								<div class="col-xs-12">
-									<div class="col-xs-3">
+								<div class="row act">
+									<div class="col-xs-2 imgAct text-center">
 										<img src="/static${cliAct.actividad.imagenactividads.iterator().next().archivo}">
 									</div>
-									<div class="col-xs-3">${cliAct.actividad.nombre}</div>
-									<div class="col-xs-2">${cliAct.actividad.puntos} Puntos</div>
-									<div class="col-xs-2"><fmt:formatDate value="${cliAct.actividad.fechainicio}" pattern="dd-MM-yyyy"/></div>
-									<div class="col-xs-2">
+									<div class="col-xs-2 text-center">${cliAct.actividad.nombre}</div>
+									<div class="col-xs-2 text-center">${cliAct.actividad.puntos} Puntos</div>
+									<div class="col-xs-2 text-center"><fmt:formatDate value="${cliAct.actividad.fechainicio}" pattern="dd-MM-yyyy"/></div>
+									<div class="col-xs-2 text-center">
 										<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${cliAct.actividad.latitud} ${cliAct.actividad.longitud}">
                                         	<i class="fas fa-map-marker-alt"></i>&nbsp;
                                         	<span>Mostrar Ubicación</span>
                                         </a>
+									</div>
+									<div class="col-xs-2 text-right">
+										<a class="btn" href="">Cancelar Reserva</a>
 									</div>
 								</div>
 							</c:forEach>

@@ -19,6 +19,7 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/misPrem.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -108,11 +109,11 @@
 						<h2 class="h2 text-center"> Mis premios: <em>${username}</em></h2>
 						<div class="row" id="premiosContainer">
 							<c:forEach items="${premios}" var="premio">
-								<div class="col-xs-12">
-									<div class="col-xs-3">${premio.nombre}</div>
-									<div class="col-xs-5">${premio.descripcion}</div>
-									<div class="col-xs-2">${premio.puntos} Puntos</div>
-									<div class="col-xs-2"><a href="#" class="btn">Consumir</a></div>
+								<div class="col-xs-12 prem">
+									<div class="col-xs-3 text-center">${premio.nombre}</div>
+									<div class="col-xs-5 text-center">${premio.descripcion}</div>
+									<div class="col-xs-2 text-center">${premio.puntos} Puntos</div>
+									<div class="col-xs-2 text-right"><a href="#" class="btn">Consumir</a></div>
 								</div>
 							</c:forEach>
 							

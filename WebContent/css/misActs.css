@@ -1,0 +1,17 @@
+
+#actividadesContainer{
+	padding: 0 40px;
+}
+
+.act{
+	border: 1px solid #1F2729;
+	padding: 35px 0;
+	margin-top: 35px;
+}
+
+.imgAct>img{
+	width: 100%;
+	height: auto;
+	max-height: 200px;
+	border: 1px solid #1F2729;
+}
