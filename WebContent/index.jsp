@@ -149,22 +149,25 @@
               		</div>
               		
               		<div class="row" id="noticiasPremios">
-              			<div class="col-xs-3 text-center"></div>
-              			<div class="col-xs-3 text-center">
-              				<h2 class="h2"><i class="fas fa-search"></i></h2>
-              				<h2 class="h2">Últimas Noticias</h2>
-              				<span>No te pierdas ninguna noticia de interés turístico</span>
-              				<a href="${pageContext.servletContext.contextPath}/content/noticias.jsp" class="btn" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Mantenerse Informado</a>
+              			<div class="row">
+	              			<div class="col-xs-3 text-center"></div>
+	              			<div class="col-xs-3 text-center">
+	              				<h2 class="h2"><i class="fas fa-search"></i></h2>
+	              				<h2 class="h2">Últimas Noticias</h2>
+	              				<span>No te pierdas ninguna noticia de interés turístico</span>
+	              				<a href="${pageContext.servletContext.contextPath}/content/noticias.jsp" class="btn" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Mantenerse Informado</a>
+	              			</div>
               			</div>
-              			<div class="col-xs-8"></div>
-              			<div class="col-xs-6"></div>
-              			<div class="col-xs-3 text-center">
-              				<h2 class="h2"><i class="fas fa-trophy"></i></h2>
-              				<h2 class="h2">Premios Impresionantes</h2>
-              				<span>Gana fantásticos premios solamente con participar en nuestros servicios</span>
-              				<a href="${pageContext.servletContext.contextPath}/content/premios.jsp" class="btn" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Obtener Premios</a>
+              			
+              			<div class="row">
+	              			<div class="col-xs-6"></div>
+	              			<div class="col-xs-3 text-center">
+	              				<h2 class="h2"><i class="fas fa-trophy"></i></h2>
+	              				<h2 class="h2">Premios Impresionantes</h2>
+	              				<span>Gana fantásticos premios solamente con participar en nuestros servicios</span>
+	              				<a href="${pageContext.servletContext.contextPath}/content/premios.jsp" class="btn" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Obtener Premios</a>
+	              			</div>
               			</div>
-              			<div class="col-xs-1 text-center"></div>
               		</div>
               		
               		<div class="row" id="aboutDiv">

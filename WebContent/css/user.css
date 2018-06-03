@@ -290,5 +290,83 @@
         margin: 30px auto;
     }
 
+	#actividadesContainer{
+		padding: 0 40px;
+	}
+	
+	.act{
+		border: 1px solid #1F2729;
+		padding: 35px 0;
+		margin-top: 35px;
+	}
+	
+	.imgAct>img{
+		width: 100%;
+		height: auto;
+		max-height: 200px;
+		border: 1px solid #1F2729;
+	}
+
 
 /* Pantalla de premios de usuario */
+
+	#showPremios{
+		padding: 0 40px;
+	}
+	
+	.prem{
+		border: 1px solid #1F2729;
+		padding: 35px 0;
+		margin-top: 35px;
+	}
+
+
+/* Estilos de modales */
+
+	.modal-dialog{
+	    border: 1px solid #1F2729;
+	    border-radius: 10px;
+	    margin-top: 10%;
+	}
+	
+	.modal-body{
+	    background-color: #ECF0F1;
+	    border-top-left-radius: 10px;
+	    border-top-right-radius: 10px;
+	}
+	
+	.modal-body>p{
+	    font-size: 0.9em;
+	}
+	
+	.modal-footer{
+	    background-color: #ECF0F1;
+	    border-bottom-right-radius: 10px;
+	    border-bottom-left-radius: 10px;
+	}
+	
+	#modalPassword .modal-header{
+		background-color: #ECF0F1;
+	    border-top-left-radius: 10px;
+	    border-top-right-radius: 10px;
+	}
+	
+	#modalPassword .modal-body{
+		border-radius: 0;
+		border-top: none;
+	}
+	
+	#modalPassword .modal-footer{
+		border-top: none;
+	}
+	
+	.danger{
+		background-color: #a0292f;
+		border: 1px solid transparent;
+	}
+	
+	.danger:hover{
+		background-color: transparent;
+		border: 1px solid #1F2729;
+		color: #a0292f;
+	}

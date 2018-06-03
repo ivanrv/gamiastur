@@ -163,12 +163,16 @@
 						            </div>
 							          
 						            <div class="col-md-12">
-							            <div class="col-md-9 text-right">
+							            <div class="col-md-6 text-right">
 											<a href="#modalPassword" class="btn" data-toggle="modal">Cambiar Contraseña</a>
+										</div>
+																				
+										<div class="col-md-3 text-center">
+											<a href="" class="btn" onclick="loading();">Guardar</a>
 										</div>
 										
 										<div class="col-md-3 text-center">
-											<a href="" class="btn" onclick="loading();">Guardar</a>
+											<a href="#modalBorrar" class="btn danger" data-toggle="modal">Borrar Perfil</a>
 										</div>
 						            </div>						            
 								</div>
@@ -176,24 +180,24 @@
 								
 								<div id="modalPassword" class="modal fade" role="dialog">
 							        <div class="modal-dialog">
-							        	<div class="modalHeader">
-							        		<h3 class="h3">Cambio de contraseña</h3>
+							        	<div class="modal-header">
+							        		<h3 class="h3 text-center">Cambio de contraseña</h3>
 							        	</div>
 							            <div class="modal-body" id="passwordContainer">
 							            	<div class="inputCon input-effect">
-								                <input type="password" name="passActual" placeholder="" class="textIn" required />
+								                <input type="password" name="passActual" placeholder="Contraseña Actual" class="textIn" required />
 								                <label>Contraseña actual</label>
 								                <span class="focus-border"></span>
 								            </div>
 								            
 								            <div class="inputCon input-effect">
-								                <input type="password" name="password" placeholder="" class="textIn" required />
+								                <input type="password" name="password" placeholder="Nueva Contraseña" class="textIn" required />
 								                <label>Nueva Contraseña</label>
 								                <span class="focus-border"></span>
 								            </div>
 								            
 								            <div class="inputCon input-effect">
-								                <input type="password" name="passwordR" placeholder="" class="textIn" required />
+								                <input type="password" name="passwordR" placeholder="Repita Contraseña" class="textIn" required />
 								                <label>Repita Contraseña</label>
 								                <span class="focus-border"></span>
 								            </div>
@@ -217,6 +221,34 @@
 			            <div class="modal-body" id="mensajeError"></div>
 			            <div class="modal-footer">
 			                <button class="btn" data-dismiss="modal">Aceptar</button>
+			            </div>
+			        </div>
+			    </div>
+			    
+			    <div id="modalBorrar" class="modal fade" role="dialog">
+			        <div class="modal-dialog">
+			            <div class="modal-body" id="mensajeBorrar">
+			            	<p class="text-center">¿Está seguro de que quiere eliminar su perfil? Esto eliminará toda la información relacionada con usted de la que disponemos, además de todos sus progresos y premios.</p>
+			            	<p class="text-center">¿Desea continuar?</p>
+			            </div>
+			            <div class="modal-footer">
+			                <a href="#modalConfirmar" class="btn danger" data-toggle="modal">Continuar</a>
+			            </div>
+			        </div>
+			    </div>
+			    
+			    <div id="modalConfirmar" class="modal fade" role="dialog">
+			        <div class="modal-dialog">
+			            <div class="modal-body" id="mensajeConfirmar">
+			            	<p class="text-center">Para eliminar su perfil es necesario que introduzca su contraseña de nuevo.</p>
+			            	<div class="inputCon input-effect">
+				                <input type="password" name="passConfirmar" placeholder="Contraseña Actual" class="textIn" required />
+				                <label>Contraseña actual</label>
+				                <span class="focus-border"></span>
+				            </div>
+			            </div>
+			            <div class="modal-footer">
+			                <a href="" class="btn danger" data-toggle="modal">Borrar mi perfil</a>
 			            </div>
 			        </div>
 			    </div>

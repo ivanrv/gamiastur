@@ -30,21 +30,25 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
     <script src="${pageContext.servletContext.contextPath}/js/registro.js" type="text/javascript"></script>
-    <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
-    
-    <script> var emails = "${clientes}" </script>
+    <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script> 
 </head>
 
 <body>
 
 	<c:if test="${itinerarios == null}">
            <jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
-
 		<%
 			ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
 			request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+			
 		%>
 	</c:if>
+	
+	<jsp:useBean id="sClienteImp" class="com.gamitour.service.ServiceClienteImp"/>
+	<%
+		ServiceClienteImp sCli = new ServiceClienteImp();
+		request.setAttribute("emails", sCli.buscarEmails());
+	%>
 
 	<div id="loader">
         <div class="sk-folding-cube">
@@ -193,5 +197,7 @@
     
     
 </body>
+
+<script> var emails = "${emails}" </script>
 
 </html>

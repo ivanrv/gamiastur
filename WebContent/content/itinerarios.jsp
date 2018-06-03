@@ -17,6 +17,7 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/itinerarios.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -107,18 +108,15 @@
                 </nav>
 
                 <div class="content">
-                BRUH
                 	<div id="itinerariosContainer" class="row">
                 		<c:forEach items="${itinerariosOBJ}" var="itiOBJ">
-                			<div class="col-xs-3 itiItem">
+                			<div class="itiItem col-xs-3" style="background: 'url(/static${itiOBJ.paradas.iterator().next().imagen}'"  value="iti${itiOBJ.iditinerario}">
                 				<div class="itiFade">
                 					<h3 class="h3 text-center">${itiOBJ.nombre}</h3>
                 					<div class="text-center">
                 						<form action="${pageContext.servletContext.contextPath}/content/itinerario.jsp" method="GET" id="iti${itiOBJ.iditinerario}">
                 							<input type="hidden" name="iti" value="${itiOBJ.nombre}"/>
-                							<button type="submit" value="xd" class="btn">xd</button> 
                 						</form>
-                						<a value="${itiOBJ.iditinerario}" href="javascript:void(0);" class="btn btn-contrast btnIti" onclick="loading();">Comenzar</a>
                 					</div>
                 				</div>
                 			</div>
@@ -146,19 +144,10 @@
                 </footer>               
       		</body>
 
-            </html>
-            
-            <script>
-				var stringItinerarios = "[";
+			<script>
+				$(".itiItem").click(function(){
+					$("#" + $(this).attr('value')).submit();
+				});
+			</script>
 
-            	<c:forEach items="${itinerariosOBJ}" var="iti" varStatus="status">
-					stringItinerarios += '{"id": "${iti.iditinerario}", "nombre": "${iti.nombre}", "categoria": "${iti.categoria}", "duracion":"${iti.duracion}", "latitud": "${iti.latitud}", "longitud": "${iti.longitud}", "paradas":[';
-					<c:forEach items="${iti.paradas}" var="parada" varStatus="parStatus">
-						stringItinerarios += '{"idparada": "${parada.idparada}", "nombre": "${parada.nombre}", "numeroParada": "${parada.numeroParada}", "historia": "${parada.historia}", "anecdotario": "${parada.anecdotario}", "gastronomia": "${parada.gastronomia}", "imagen": "${parada.imagen}", "latitud": "${parada.latitud}", "longitud": "${parada.longitud}"}';
-						<c:if test="${!parStatus.last}"> stringItinerarios += "," </c:if>
-					</c:forEach>
-					stringItinerarios += "]}";
-					<c:if test="${!status.last}"> stringItinerarios += ","</c:if>					
-				</c:forEach>
-				stringItinerarios += "]"; 
-            </script>
+            </html>

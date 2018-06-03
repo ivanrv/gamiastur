@@ -107,7 +107,7 @@
                 </nav>
 
                 <div class="content">
-                	<h1>${itiOBJ.nombre}</h1>  BRUH           
+                	<h1>${itiOBJ.nombre}</h1>     
                 </div>
 
                 <footer>

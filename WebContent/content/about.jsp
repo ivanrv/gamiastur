@@ -20,6 +20,7 @@
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/about.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
+				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD73nVF-IA4rkBCx98ZVjvV5XVzN_mb-10"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -190,7 +191,7 @@
 					
 					<div class="row" id="locationContainer">
 						<h2 class="h2 text-center">Dónde Estamos</h2>
-						<div class="col-xs-2"></div>
+						<div class="col-xs-3"></div>
 						
 						<div class="col-xs-3 text-right">
 							<h3 class="h3">Gamiastur</h3>
@@ -200,9 +201,7 @@
 							<p class="locationDireccion"><i class="far fa-envelope"></i> &nbsp; info@gamiastur.com</p>							
 						</div>
 						
-						<div class="col-xs-2"></div>
-						
-						<div class="col-xs-3">
+						<div class="col-xs-3 text-left">
 							<div id="locationMap"></div>
 						</div>
 						
@@ -228,6 +227,27 @@
 
                     <p>Gamiastur &copy; 2018</p>
                 </footer>               
-      		</body>
+      		</body>      		
+      		
+      		<script>
+          		
+      		  var centro = { lat: 43.524605, lng: -5.613414 };
+      		  
+      		  var map = new google.maps.Map(document.getElementById('locationMap'), {
+      		    zoom: 16,
+      		    center: centro,
+      		    disableDoubleClickZoom: true,
+      		    draggable: false,
+      		    zoomControl: false,
+      		   	scrollwheel: false,
+      		    fullscreenControl: false
+      		  });
+      		  
+      		  var marker = new google.maps.Marker({
+      		   	position: centro,
+      		    map: map
+      		  });
 
+      		</script>
+      		
             </html>
