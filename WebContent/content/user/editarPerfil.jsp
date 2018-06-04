@@ -27,6 +27,7 @@
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/formFilterEditarPerfil.js"></script>
             </head>
 
             <body>
@@ -44,6 +45,7 @@
 				<%
 					ServiceClienteImp sCliente = new ServiceClienteImp();
 					request.setAttribute("cliente", sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()));
+					request.setAttribute("emails", sCliente.buscarEmails());
 				%>
             
             	<div id="loader">
@@ -168,7 +170,7 @@
 										</div>
 																				
 										<div class="col-md-3 text-center">
-											<a href="" class="btn" onclick="loading();">Guardar</a>
+											<a href="javascript:void(0);" id="guardarEditarPerfil" class="btn">Guardar</a>
 										</div>
 										
 										<div class="col-md-3 text-center">
@@ -185,7 +187,7 @@
 							        	</div>
 							            <div class="modal-body" id="passwordContainer">
 							            	<div class="inputCon input-effect">
-								                <input type="password" name="passActual" placeholder="Contraseña Actual" class="textIn" required />
+								                <input type="password" name="passActual" id="passActual" placeholder="Contraseña Actual" class="textIn" required />
 								                <label>Contraseña actual</label>
 								                <span class="focus-border"></span>
 								            </div>
@@ -203,12 +205,10 @@
 								            </div>
 							            </div>
 							            <div class="modal-footer">
-							                <a class="btn" data-dismiss="modal">Aceptar</a>
+							                <a href="javascript:void(0);" class="btn" id="btnCambioPass">Aceptar</a>
 							            </div>
 							        </div>
 							    </div>
-								
-								
 							</div>
 							</form>
 						</div>						
@@ -242,13 +242,17 @@
 			            <div class="modal-body" id="mensajeConfirmar">
 			            	<p class="text-center">Para eliminar su perfil es necesario que introduzca su contraseña de nuevo.</p>
 			            	<div class="inputCon input-effect">
-				                <input type="password" name="passConfirmar" placeholder="Contraseña Actual" class="textIn" required />
+				                <input type="password" name="passConfirmar" id="passConfirmar" placeholder="Contraseña Actual" class="textIn" required />
 				                <label>Contraseña actual</label>
 				                <span class="focus-border"></span>
 				            </div>
+				            <form action="Eliminar.do" method="POST" id="formBorrar">
+				            	<input type="hidden" name="tipo" value="clienteUSER"/>
+				            	<input type="hidden" name="email" value="${cliente.email}"/>
+				            </form>
 			            </div>
 			            <div class="modal-footer">
-			                <a href="" class="btn danger" data-toggle="modal">Borrar mi perfil</a>
+			                <a href="javascript:void(0);" id="checkPassDelete" class="btn danger" data-toggle="modal">Borrar mi perfil</a>
 			            </div>
 			        </div>
 			    </div>
@@ -272,5 +276,8 @@
                     <p>Gamiastur &copy; 2018</p>
                 </footer>               
       		</body>
-
+				<script>
+					var lul = "${cliente.password}";
+					var emails = "${emails}";
+				</script>
             </html>

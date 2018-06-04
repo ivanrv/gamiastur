@@ -195,7 +195,7 @@
               			<div class="col-xs-3 text-center">
               				<h2 class="h2"><i class="fas fa-key"></i></h2>
               				<h2 class="h2">Inicia Sesión</h2>
-              				<span>¿Ya tienes cuenta? Accede y participa</span>
+              				<span>¿Ya tienes cuenta? Accede y descubre nuestras actividades</span>
               				<a href="${pageContext.servletContext.contextPath}/content/login.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Entrar</a>
               			</div>
               			<div class="col-xs-2"></div>

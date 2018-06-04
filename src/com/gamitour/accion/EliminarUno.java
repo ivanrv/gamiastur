@@ -54,6 +54,11 @@ public class EliminarUno extends Accion{
 			retorno = "Admin.do";
 			break;
 			
+		case "clienteUSER":
+			sCliente.borrar(sCliente.buscarPorEmail(request.getParameter("email")));
+			retorno = "/index.jsp";
+			break;
+			
 		case "actividad":
 			sActividad.borrar(sActividad.buscarPorNombre(request.getParameter("actividad")));
 			request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());

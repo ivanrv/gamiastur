@@ -107,7 +107,16 @@
                 </nav>
 
                 <div class="content">
-                	<h1>${itiOBJ.nombre}</h1>     
+                	<h1 class="text-center">${itiOBJ.nombre}</h1>
+                	<h4 class="text-center h4">${itiOBJ.categoria}   ${itiOBJ.duracion}</h4>
+                	
+                	<div class="" id="mapaContainer">
+                		<div id="mapaIti"></div>                	
+                	</div>
+                	
+                	<div class="" id="paradasContainer">
+                	
+                	</div>
                 </div>
 
                 <footer>

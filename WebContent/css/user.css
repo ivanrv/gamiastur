@@ -356,7 +356,7 @@
 		border-top: none;
 	}
 	
-	#modalPassword .modal-footer{
+	#modalPassword .modal-footer, #modalConfirmar .modal-footer{
 		border-top: none;
 	}
 	

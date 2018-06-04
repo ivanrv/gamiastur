@@ -1,15 +1,59 @@
 
-$(document).ready(function () {
-
-    var emailsArray = emails.substring(1, emails.length - 1).split(", ");
-
-    $("#btnRegistro").click(function () {
-        event.preventDefault();
-        $("#mensajeError").html("");
-        var submit = true;
-
-        /* Comprobación de campos obligatorios no vacíos */
-        if ($("input[name=nombre]").val() == "") {
+$(document).ready(function(){
+	
+	var cambioPass = false;
+	
+	if (typeof emails != undefined)
+		var emailsArray = emails.substring(1, emails.length -1).split(", ");
+	
+	$("#checkPassDelete").click(function(){
+		if($("#passConfirmar").val() == lul)
+			$("#formBorrar").submit();
+	});
+	
+	$("#btnCambioPass").click(function(){
+		$("#mensajeError").html("");
+		
+		if($("#passActual").val() == lul){
+			if($("input[name=password]").val() == ""){
+				$("#mensajeError").append("<p>Es necesario introducir una nueva contrase&ntilde;a</p>");
+				$("input[name=password]").addClass("has-warning");
+			}else{
+				if($("input[name=passwordR]").val() == ""){
+					$("#mensajeError").append("<p>Por favor, repita la contrase&ntilde;a introducida</p>");
+					$("input[name=passwordR]").addClass("has-warning");
+				}else{
+					if(!$("input[name=password]").val() != $("input[name=passwordR]").val()){
+						$("#mensajeError").append("<p>Las contrase&ntilde;as no coinciden</p>");
+						$("input[name=password]").addClass("has-warning");
+						$("input[name=passwordR]").addClass("has-warning");
+					}else{
+						cambioPass = true;
+					}			
+				}
+			}
+		}else{
+			$("#mensajeError").append("<p>La contrase&ntilde;a actual es incorrecta</p>");
+			$("#passActual").addClass("has-warning");
+		}
+		
+		$(".has-warning").click(function () {
+            $(this).select();
+        });
+		
+		if (!cambioPass)
+			$("#modalError").modal();
+		else
+			$("#modalPassword").modal("hide");
+	});
+	
+	
+	
+	$("#guardarEditarPerfil").click(function(){
+		var submit = true;
+		$("#mensajeError").html("");
+		
+		if ($("input[name=nombre]").val() == "") {
             $("#mensajeError").append("<p>El nombre es un dato obligatorio.</p>");
             $("input[name=nombre]").addClass("has-warning");
 
@@ -56,44 +100,6 @@ $(document).ready(function () {
                     $("input[name=email]").addClass("has-warning");
                    
                     submit = false; 
-                } else {
-
-                    if ($("input[name=emailR]").val() == "") {
-                        $("#mensajeError").append("<p>Por favor, repita el correo introducido.</p>")
-                        $("input[name=emailR]").addClass("has-warning");
-
-                        submit = false;
-                    } else {
-                        if ($("input[name=email]").val() != $("input[name=emailR]").val()) {
-                            $("#mensajeError").append("<p>Los correos no coinciden</p>");
-                            $("input[name=email]").addClass("has-warning");
-                            $("input[name=emailR]").addClass("has-warning");
-
-                            submit = false;
-                        }
-                    }
-                }
-            }
-        }
-
-        if ($("input[name=password]").val() == "") {
-            $("#mensajeError").append("<p>La contrase&ntilde;a es un dato obligatorio.</p>")
-            $("input[name=password]").addClass("has-warning");
-
-            submit = false;
-        } else {
-            if ($("input[name=passwordR]").val() == "") {
-                $("#mensajeError").append("<p>Por favor, repita la contrase&ntilde;a introducida.</p>")
-                $("input[name=passwordR]").addClass("has-warning");
-
-                submit = false;
-            } else {
-                if ($("input[name=password]").val() != $("input[name=passwordR]").val()) {
-                    $("#mensajeError").append("<p>Las contrase&ntilde;as no coinciden</p>");
-                    $("input[name=password]").addClass("has-warning");
-                    $("input[name=passwordR]").addClass("has-warning");
-
-                    submit = false;
                 }
             }
         }
@@ -122,14 +128,12 @@ $(document).ready(function () {
 
         if (submit) {
             loading();
+            if(!cambioPass)
+            	$("#modalPassword").find("input").attr("value") == "";
             $("#regForm").submit();
         } else {
             $("#modalError").modal();
-        }        
-    });
+        }   
+	});
 });
 
-function validateEmail(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-}
