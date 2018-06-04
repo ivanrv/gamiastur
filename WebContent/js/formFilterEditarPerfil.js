@@ -2,6 +2,7 @@
 $(document).ready(function(){
 	
 	var cambioPass = false;
+	var userMail = $("input[name=email]").val();
 	
 	if (typeof emails != undefined)
 		var emailsArray = emails.substring(1, emails.length -1).split(", ");
@@ -9,6 +10,9 @@ $(document).ready(function(){
 	$("#checkPassDelete").click(function(){
 		if($("#passConfirmar").val() == lul)
 			$("#formBorrar").submit();
+		else{
+			alert("La contraseña introducida no es correcta");
+		}
 	});
 	
 	$("#btnCambioPass").click(function(){
@@ -23,7 +27,7 @@ $(document).ready(function(){
 					$("#mensajeError").append("<p>Por favor, repita la contrase&ntilde;a introducida</p>");
 					$("input[name=passwordR]").addClass("has-warning");
 				}else{
-					if(!$("input[name=password]").val() != $("input[name=passwordR]").val()){
+					if($("input[name=password]").val() != $("input[name=passwordR]").val()){
 						$("#mensajeError").append("<p>Las contrase&ntilde;as no coinciden</p>");
 						$("input[name=password]").addClass("has-warning");
 						$("input[name=passwordR]").addClass("has-warning");
@@ -91,7 +95,7 @@ $(document).ready(function(){
                 var contains = false;
 
                 emailsArray.forEach(mail => {
-                    if (mail == $("input[name=email]").val())
+                    if (mail == $("input[name=email]").val() && mail != userMail )
                         contains = true;
                 });
 
@@ -104,19 +108,19 @@ $(document).ready(function(){
             }
         }
         
-        if ($("input[name=fechaNac]").val() == "") {
+        if ($("input[name=fechanacimiento]").val() == "") {
             $("#mensajeError").append("<p>La fecha de nacimiento es un dato obligatorio.</p>");
-            $("input[name=fechaNac]").addClass("has-warning");
+            $("input[name=fechanacimiento]").addClass("has-warning");
 
             submit = false;
         } else {
             /* Comprobación fecha de nacimiento < 2010 */
 
-            var fInicio = $("input[name=fechaNac]").val().split("-");
+            var fInicio = $("input[name=fechanacimiento]").val().split("-");
 
             if (new Date(fInicio[2], fInicio[1] - 1, fInicio[0]) > new Date(2010, 0, 1)) {
                 $("#mensajeError").append("<p>La fecha de nacimiento no puede ser posterior a 2010.</p>");
-                $("input[name=fechaNac]").addClass("has-warning");
+                $("input[name=fechanacimiento]").addClass("has-warning");
 
                 submit = false;
             } 
@@ -137,3 +141,7 @@ $(document).ready(function(){
 	});
 });
 
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}

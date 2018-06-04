@@ -51,7 +51,7 @@ public class EliminarUno extends Accion{
 		case "cliente":
 			sCliente.borrar(sCliente.buscarPorEmail(request.getParameter("email")));
 			request.getSession().setAttribute("listaClientes", sCliente.buscarTodos());
-			retorno = "Admin.do";
+			retorno = "Logout.do";
 			break;
 			
 		case "clienteUSER":

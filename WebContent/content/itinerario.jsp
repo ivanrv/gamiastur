@@ -28,6 +28,27 @@
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
+                <script src="${pageContext.servletContext.contextPath}/js/itinerario.js"></script>
+                <script>
+		            var stringParadas = "[";
+		
+		        	<c:forEach items="${itiOBJ.paradas}" var="parada" varStatus="status">
+						stringParadas += '{"nombre": "${parada.nombre}","numeroParada": "${parada.numeroParada}", "historia": "${parada.historia}", "anecdotario": "${parada.anecdotario}", "gastronomia": "${parada.gastronomia}", "imagen": "${parada.imagen}", "video": "${parada.video}", "latitud": "${parada.latitud}", "longitud": "${parada.longitud}", "pruebasDeportivas": [';
+						<c:forEach items="${parada.pruebadeportivas}" var="pd" varStatus="pdStatus">
+							stringParadas += '{"nombre": "${pd.nombre}", "fechainicio": "<fmt:formatDate value="${pd.fechainicio}" pattern="dd-MM-yyyy"/>", "fechafin": "<fmt:formatDate value="${pd.fechafin}" pattern="dd-MM-yyyy"/>", "explicacion": "${pd.explicacion}", "puntos": "${pd.puntos}"}';
+							<c:if test="${!pdStatus.last}">stringParadas += ",";</c:if>
+						</c:forEach>
+						stringParadas += '], "pruebasCulutrales": [';
+						<c:forEach items="${parada.pruebaculturals}" var="pc" varStatus="pcStatus">
+							stringParadas += '{"nombre": "${pc.nombre}", "pregunta": "${pc.pregunta}", "respuesta": "${pc.respuesta}", "puntos": "${pc.puntos}"}';
+							<c:if test="${!pcStatus.last}">stringParadas += ",";</c:if>
+						</c:forEach>
+						stringParadas += "]}";
+						<c:if test="${!status.last}"> stringParadas += ",";</c:if>					
+					</c:forEach>
+					stringParadas += "]";
+		         </script>
+                
             </head>
 
             <body>
@@ -108,7 +129,7 @@
 
                 <div class="content">
                 	<h1 class="text-center">${itiOBJ.nombre}</h1>
-                	<h4 class="text-center h4">${itiOBJ.categoria}   ${itiOBJ.duracion}</h4>
+                	<h4 class="text-center h4">${itiOBJ.categoria} &nbsp; &nbsp; &nbsp; &nbsp; ${itiOBJ.duracion}</h4>
                 	
                 	<div class="" id="mapaContainer">
                 		<div id="mapaIti"></div>                	
@@ -141,22 +162,3 @@
 
             </html>
             
-            <script>
-            var stringParadas = "[";
-
-        	<c:forEach items="${itiOBJ.paradas}" var="parada" varStatus="status">
-				stringParadas += '{"nombre": "${parada.nombre}","numeroParada": "${parada.numeroParada}", "historia": "${parada.historia}", "anecdotario": "${parada.anecdotario}", "gastronomia": "${parada.gastronomia}", "imagen": "${parada.imagen}", "video": "${parada.video}", "latitud": "${parada.latitud}", "longitud": "${parada.longitud}", "pruebasDeportivas": [';
-				<c:forEach items="${parada.pruebadeportivas}" var="pd" varStatus="pdStatus">
-					stringParadas += '{"nombre": "${pd.nombre}", "fechainicio": "<fmt:formatDate value="${pd.fechainicio}" pattern="dd-MM-yyyy"/>", "fechafin": "<fmt:formatDate value="${pd.fechafin}" pattern="dd-MM-yyyy"/>", "explicacion": "${pd.explicacion}", "puntos": "${pd.puntos}"}';
-					<c:if test="${!pdStatus.last}">stringParadas += ",";</c:if>
-				</c:forEach>
-				stringParadas += '], "pruebasCulutrales": [';
-				<c:forEach items="${parada.pruebaculturals}" var="pc" varStatus="pcStatus">
-					stringParadas += '{"nombre": "${pc.nombre}", "pregunta": "${pc.pregunta}", "respuesta": "${pc.respuesta}", "puntos": "${pc.puntos}"}';
-					<c:if test="${!pcStatus.last}">stringParadas += ",";</c:if>
-				</c:forEach>
-				stringParadas += "]}";
-				<c:if test="${!status.last}"> stringParadas += ",";</c:if>					
-			</c:forEach>
-			stringParadas += "]";
-            </script>

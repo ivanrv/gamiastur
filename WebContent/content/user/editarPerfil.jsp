@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
         <%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
         <%@ page import="com.gamitour.service.ServiceClienteImp" %>
+        
+        <jsp:useBean id="sClienteImp" class="com.gamitour.service.ServiceClienteImp" />
+				<%
+					ServiceClienteImp sCliente = new ServiceClienteImp();
+					request.setAttribute("cliente", sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()));
+					request.setAttribute("emails", sCliente.buscarEmails());
+				%>
         
             <!DOCTYPE html>
             <html lang="es">
@@ -32,6 +40,11 @@
 
             <body>
             
+            <script>
+					var lul = "${cliente.password}";
+					var emails = "${emails}";
+				</script>
+		            
 	            <c:if test="${itinerarios == null}">
 		            <jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
 			
@@ -41,12 +54,7 @@
 					%>
 				</c:if>
 				
-				<jsp:useBean id="sClienteImp" class="com.gamitour.service.ServiceClienteImp" />
-				<%
-					ServiceClienteImp sCliente = new ServiceClienteImp();
-					request.setAttribute("cliente", sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()));
-					request.setAttribute("emails", sCliente.buscarEmails());
-				%>
+				
             
             	<div id="loader">
 			        <div class="sk-folding-cube">
@@ -132,7 +140,7 @@
 						            </div>
 						            
 						            <div class="inputCon input-effect">
-						                <input type="text" name="nombre" placeholder="" class="textIn datepicker has-content" required value="${cliente.fechanacimiento}" />
+						                <input type="text" name="fechanacimiento" placeholder="" class="textIn datepicker has-content" required value="<fmt:formatDate value='${cliente.fechanacimiento}' pattern='dd-MM-yyyy'/>" />
 						                <label>Fecha de Nacimiento</label>
 						                <span class="focus-border"></span>
 						            </div>
@@ -276,8 +284,4 @@
                     <p>Gamiastur &copy; 2018</p>
                 </footer>               
       		</body>
-				<script>
-					var lul = "${cliente.password}";
-					var emails = "${emails}";
-				</script>
             </html>
