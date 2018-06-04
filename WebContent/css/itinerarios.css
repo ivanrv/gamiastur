@@ -8,6 +8,7 @@
     border: 1px solid transparent;
     padding: 0;
     cursor: pointer;
+    transition: all 400ms;
 }
 
 .itiFade{
@@ -18,22 +19,27 @@
 	transition: all 400ms;
 }
 
-.itiItem h3{
+.itiName {
 	position: absolute;
-	bottom: 55px;
-	left: 35%;
+	bottom: 60px;
+}
+
+.itiItem h3{
 	color: transparent;
 	transition: all 400ms;
 }
 
 .itiItem:hover{
 	border: 1px solid #1F2729;
+	transition: all 300ms;
 }
 
 .itiItem:hover .itiFade{
 	background-color:  rgba(28, 28, 28, 0);
+	transition: all 300ms;
 }
 
 .itiItem:hover h3{
 	color: #ECF0F1;
+	transition: all 300ms;
 }

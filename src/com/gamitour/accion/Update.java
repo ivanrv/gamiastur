@@ -50,6 +50,7 @@ public class Update extends Accion{
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		Calendar fecha = Calendar.getInstance();
+		String retorno = null;
 
 		ServiceCliente sCliente = new ServiceClienteImp();
 		ServiceItinerario sItinerario = new ServiceItinerarioImp();
@@ -89,6 +90,7 @@ public class Update extends Accion{
 				sImgAct.actualizar(actividad.getImagenactividads().iterator().next());
 				sActividad.actualizar(actividad);
 				request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());
+				retorno = "Admin.do";
 			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
 				e.printStackTrace();
 			}			
@@ -111,6 +113,7 @@ public class Update extends Accion{
 			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
 			if(request.getSession().getAttribute("itinerarios") != null)
 				request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+			retorno = "Admin.do";
 			break;
 			
 		case "multimedia":
@@ -134,6 +137,7 @@ public class Update extends Accion{
 				
 				sNoticia.actualizar(noticia);
 				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
+				retorno = "Admin.do";
 			} catch (ParseException | IOException | ServletException e) {
 				e.printStackTrace();
 			}
@@ -153,7 +157,6 @@ public class Update extends Accion{
 			
 			if(!request.getParameter("gastronomia").equals(""))
 				parada.setGastronomia(request.getParameter("gastronomia"));
-			
 			try {
 				if(request.getPart("archivoImg") != null)
 					parada.setImagen("/paradas/" + parada.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoImg").getSubmittedFileName()));
@@ -170,6 +173,7 @@ public class Update extends Accion{
 			
 			sParada.actualizar(parada);
 			request.getSession().setAttribute("listaParadas", sParada.buscarTodos());
+			retorno = "Admin.do";
 			break;
 			
 		case "premio":
@@ -188,6 +192,7 @@ public class Update extends Accion{
 			
 			sPruebaCultural.actualizar(cultural);
 			request.getSession().setAttribute("listaCulturales", sPruebaCultural.buscarTodos());
+			retorno = "Admin.do";
 			break;
 			
 		case "deportiva":
@@ -206,6 +211,7 @@ public class Update extends Accion{
 				
 				sPruebaDeportiva.actualizar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
+				retorno = "Admin.do";
 			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
 				e.printStackTrace();
 			}
@@ -217,7 +223,7 @@ public class Update extends Accion{
 			break;
 		}		
 		
-		return "/content/admin/mostrarAdmin.jsp";
+		return retorno;
 	}
 
 }

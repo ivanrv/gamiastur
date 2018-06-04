@@ -124,9 +124,16 @@
                                 <span class="focus-border"></span>
                             </div>                            
                             
-                            <div id="mapForm"></div>
-               				<input type="hidden" name="lat" value="${actividad.latitud}">
-               				<input type="hidden" name="lng" value="${actividad.longitud}">
+                            <div style="height:250px">  
+                            	<div id="floating-paner" class="inputCon input-effect" style="margin-bottom: 15px">
+                            		<input id="address" type="textbox" class="textIn"/>
+                            		<label>Introduzca una dirección a buscar</label>
+                                	<span class="focus-border"></span>
+                            	</div>                      
+	                            <div id="mapForm" style="height:100%"></div>
+	                			<input type="hidden" name="lat" value="">
+	                			<input type="hidden" name="lng" value="">  
+                			</div> 
                         </div>
                         
                         <div id="modalImg" class="modal fade" role="dialog">

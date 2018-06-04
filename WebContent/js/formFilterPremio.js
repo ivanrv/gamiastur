@@ -88,11 +88,12 @@ $(document).ready(function () {
                 submit = false;
             }
         }
-
-        if ($("input[name=archivo]").get(0).files[0].size > 5242880){
-            $("#mensajeError").append("<p>La imagen seleccionada es demasiado grande.</p>");
-
-            submit = false;
+        if(!(!$("input[name=archivo]").get(0).files) || ($("input[name=archivo]").get(0).files.length == 0)){
+	        if ($("input[name=archivo]").get(0).files[0].size > 5242880){
+	            $("#mensajeError").append("<p>La imagen seleccionada es demasiado grande.</p>");
+	
+	            submit = false;
+	        }
         }
 
         $(".has-warning").click(function () {

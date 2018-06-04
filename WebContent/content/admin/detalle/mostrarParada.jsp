@@ -136,9 +136,16 @@
                                 </div>
                         </div>
                         <div class="col2">
-                            <div id="mapForm" style="height: 300px"></div>
-                			<input type="hidden" name="lat" value="${parada.latitud}">
-                			<input type="hidden" name="lng" value="${parada.longitud}">        
+                            <div style="height:325px">  
+                            	<div id="floating-paner" class="inputCon input-effect" style="margin-bottom: 15px">
+                            		<input id="address" type="textbox" class="textIn"/>
+                            		<label>Introduzca una dirección a buscar</label>
+                                	<span class="focus-border"></span>
+                            	</div>                      
+	                            <div id="mapForm" style="height:100%"></div>
+	                			<input type="hidden" name="lat" value="">
+	                			<input type="hidden" name="lng" value="">  
+                			</div>       
                         </div>
 
                         <div class="col3">

@@ -51,6 +51,8 @@ public class Controller extends HttpServlet {
 		
 		if(ejecutar.equals("/index.jsp")){
 			response.sendRedirect(request.getContextPath() + ejecutar);
+		}else if(ejecutar.equals("Admin.do")){
+			response.sendRedirect("/gamiastur/Admin.do");
 		}else{
 			despachador.forward(request, response);
 		}	

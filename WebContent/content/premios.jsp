@@ -127,7 +127,7 @@
                 				<div class="premioDesc"><span>${premio.descripcion}</span></div>
                 				
                 				<div class="premioActiva text-center">
-                					<a class="btn" href="<c:choose><c:when test="${username!=null}">#modalActivar</c:when><c:otherwise>${pageContext.servletContext.contextPath}/content/registro.jsp</c:otherwise></c:choose>" <c:if test="${username!=null}">data-toggle="modal"</c:if>>Activar</a>
+                					<a class="btn" href="<c:choose><c:when test="${username!=null}">#modalActivar</c:when><c:otherwise>${pageContext.servletContext.contextPath}/content/login.jsp</c:otherwise></c:choose>" <c:if test="${username!=null}">data-toggle="modal"</c:if>>Activar</a>
                 				</div>
                 			</div>
                 		</c:forEach>

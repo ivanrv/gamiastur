@@ -132,7 +132,7 @@ public class Nuevo extends Accion{
 				sImgActividad.insertar(imagen);
 				
 				request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());
-				retorno = "/content/admin/mostrarAdmin.jsp";
+				retorno = "Admin.do";				
 			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
 				e.printStackTrace();
 			}			
@@ -149,7 +149,7 @@ public class Nuevo extends Accion{
 			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
 			if(request.getSession().getAttribute("itinerarios") != null)
 				request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
-			retorno = "/content/admin/mostrarAdmin.jsp";
+			retorno = "Admin.do";
 			break;
 			
 		case "multimedia":
@@ -167,7 +167,7 @@ public class Nuevo extends Accion{
 				
 				sNoticia.insertar(noticia);
 				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
-				retorno = "/content/admin/mostrarAdmin.jsp";
+				retorno = "Admin.do";
 			} catch (ParseException | IOException | ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -199,7 +199,7 @@ public class Nuevo extends Accion{
 			
 			sParada.insertar(parada);
 			request.getSession().setAttribute("listaParadas", sParada.buscarTodos());
-			retorno = "/content/admin/mostrarAdmin.jsp";
+			retorno = "Admin.do";
 			break;
 			
 		case "premio":
@@ -213,7 +213,7 @@ public class Nuevo extends Accion{
 				
 				sPremio.insertar(premio);			
 				request.getSession().setAttribute("listaPremios", sPremio.buscarTodos());
-				retorno = "/content/admin/mostrarAdmin.jsp";
+				retorno = "Admin.do";
 			} catch (NumberFormatException | ParseException | IOException | ServletException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -225,7 +225,7 @@ public class Nuevo extends Accion{
 			Pruebacultural cultural = new Pruebacultural(sParada.buscarPorNombre(request.getParameter("parada")), request.getParameter("nombre"), request.getParameter("pregunta"), request.getParameter("respuesta"), Integer.parseInt(request.getParameter("puntos")));
 			sPruebaCultural.insertar(cultural);
 			request.getSession().setAttribute("listaCulturales", sPruebaCultural.buscarTodos());
-			retorno = "/content/admin/mostrarAdmin.jsp";
+			retorno = "Admin.do";
 			break;
 			
 		case "deportiva":
@@ -239,7 +239,7 @@ public class Nuevo extends Accion{
 					
 				sPruebaDeportiva.insertar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
-				retorno = "/content/admin/mostrarAdmin.jsp";
+				retorno = "Admin.do";
 			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

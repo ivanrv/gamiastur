@@ -110,9 +110,11 @@
                 <div class="content">
                 	<div id="itinerariosContainer" class="row">
                 		<c:forEach items="${itinerariosOBJ}" var="itiOBJ">
-                			<div class="itiItem col-xs-3" style="background: 'url(/static${itiOBJ.paradas.iterator().next().imagen}'"  value="iti${itiOBJ.iditinerario}">
+                			<div class="itiItem col-xs-3" style="background: url('/static${itiOBJ.paradas.iterator().next().imagen}')"  value="iti${itiOBJ.iditinerario}">
                 				<div class="itiFade">
-                					<h3 class="h3 text-center">${itiOBJ.nombre}</h3>
+                					<div class="itiName">
+                						<h3 class="h3 text-center">${itiOBJ.nombre}</h3>
+                					</div>
                 					<div class="text-center">
                 						<form action="${pageContext.servletContext.contextPath}/content/itinerario.jsp" method="GET" id="iti${itiOBJ.iditinerario}">
                 							<input type="hidden" name="iti" value="${itiOBJ.nombre}"/>
