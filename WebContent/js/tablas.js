@@ -1,6 +1,10 @@
 var selectores, selectoresNav, anterior;
 
 $(document).ready(function () {	
+	
+	if (typeof flag != "undefined")
+		first(flag);
+	
     selectoresLanding = $(".selAdmin");
     for (let index = 0; index < selectoresLanding.length; index++) {
         const element = selectoresLanding[index];

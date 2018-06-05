@@ -38,6 +38,12 @@ public class MostrarAccion extends Accion{
 			request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
 			request.getSession().setAttribute("listaVotos", sVoto.buscarTodos());
 		}
+		
+		if(request.getSession().getAttribute("flag") != null) {
+			request.setAttribute("flag", request.getSession().getAttribute("flag"));
+			request.getSession().removeAttribute("flag");
+		}
+		
 		return "/content/admin/mostrarAdmin.jsp";
 	}
 

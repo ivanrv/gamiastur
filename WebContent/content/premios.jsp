@@ -40,7 +40,7 @@
 			<jsp:useBean id="sPremioImp" class="com.gamitour.service.ServicePremioImp" />
 			<%
 				ServicePremioImp sPremio = new ServicePremioImp();
-				request.setAttribute("premios", sPremio.buscarTodos());
+				request.setAttribute("premios", sPremio.buscarDisponibles());
 			%>
              
             <div id="loader">

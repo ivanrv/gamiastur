@@ -10,5 +10,6 @@ public interface ServicePremio {
 	public void actualizar(Premio premio);
 	public Premio buscarPorNombre(String nombre);
 	public List<Premio> buscarTodos();
+	public List<Premio> buscarDisponibles();
 	public List<String> buscarNombres();
 }

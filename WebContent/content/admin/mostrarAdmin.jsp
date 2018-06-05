@@ -27,7 +27,8 @@
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
-                <script src="${pageContext.servletContext.contextPath}/js/tablas.js"></script>              
+                <script src="${pageContext.servletContext.contextPath}/js/tablas.js"></script>   
+                <c:if test="${flag != null}"><script>var flag = "${flag}"</script></c:if>           
             </head>
 
             <body>
