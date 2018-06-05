@@ -50,7 +50,7 @@ public class Controller extends HttpServlet {
 		despachador = request.getRequestDispatcher(ejecutar);
 		
 		if(ejecutar.equals("/index.jsp")){
-			response.sendRedirect(request.getContextPath() + ejecutar);
+			response.sendRedirect(request.getContextPath() + "/index.jsp");
 		}else if(ejecutar.equals("Admin.do")){
 			response.sendRedirect("/gamiastur/Admin.do");
 		}else if(ejecutar.equals("Logout.do")){
@@ -58,7 +58,7 @@ public class Controller extends HttpServlet {
 		}else if(ejecutar.equals("misActs")) {
 			response.sendRedirect("/gamiastur/content/user/misActividades.jsp");
 		}else if(ejecutar.equals("perfil.jsp")) {
-			response.sendRedirect("/gamiastur/content/user/perfil.jsp");
+			response.sendRedirect(request.getContextPath() + "/content/user/perfil.jsp");
 		}else{
 			despachador.forward(request, response);
 		}	

@@ -124,9 +124,17 @@
 	                            <label>Duración *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
-	                        <div id="mapForm" style="margin-bottom: 35px; height: 275px"></div>
+	                         
+                           	<div id="floating-paner" class="inputCon input-effect" style="margin-bottom: 15px;">
+                           		<input id="address" type="textbox" class="textIn"/>
+                           		<label>Introduzca una dirección a buscar</label>
+                               	<span class="focus-border"></span>
+                           	</div>    
+                           	<div id="mapForm" style="height:275px; margin-bottom: 35px;"></div>                  
+                            
                 			<input type="hidden" name="lat" value="">
-                			<input type="hidden" name="lng" value="">	                        
+                			<input type="hidden" name="lng" value="">         
+                			                 
 	                        <div style="text-align: center;">
 	                            <a id="enviar" class="btn">Crear Itinerario</a>
 	                        </div>

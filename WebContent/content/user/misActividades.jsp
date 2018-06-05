@@ -125,7 +125,7 @@
                                         </a>
 									</div>
 									<div class="col-xs-2 text-right">
-										<a class="btn" href="">Cancelar Reserva</a>
+										<a class="btn btnReserva" href="#modalCancelar" value="${cliAct.actividad.nombre}" data-toggle="modal">Cancelar Reserva</a>
 									</div>
 								</div>
 							</c:forEach>
@@ -139,6 +139,22 @@
 						</div>
 					</div>
                 </div>
+                
+                <div id="modalCancelar" class="modal fade" role="dialog">
+			        <div class="modal-dialog">
+			            <div class="modal-body" id="mensajeBorrar">
+			            	<p class="text-center">¿Está seguro de querer abandonar esta actividad?</p>
+			            </div>
+			            <div class="modal-footer">
+			                <form action="Reserva.do" method="post">
+			                	<input type="hidden" id="actReserva" name="actividad" value=""/>
+			                	<input type="hidden" name="tipo" value="cancela"/>
+			                	<input type="submit" class="btn" value="Abandonar"></input>
+			           			<a href="javascript:void(0);" class="btn" data-dismiss="modal">Cancelar</a>
+			                </form>
+			            </div>
+			        </div>
+			    </div>
 
                 <footer>
                     <div class="socials">
@@ -159,5 +175,11 @@
                     <p>Gamiastur &copy; 2018</p>
                 </footer>               
       		</body>
+
+			<script>
+				$(".btnReserva").click(function(){
+					$("#actReserva").attr("value", $(this).attr("value"));
+				});
+			</script>
 
             </html>

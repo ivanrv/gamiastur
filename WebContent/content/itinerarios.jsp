@@ -112,7 +112,7 @@
                 		<c:forEach items="${itinerariosOBJ}" var="itiOBJ">
                 			<div class="itiItem col-xs-3" style="background: url('/static${itiOBJ.paradas.iterator().next().imagen}')"  value="iti${itiOBJ.iditinerario}">
                 				<div class="itiFade">
-                					<div class="itiName">
+                					<div class="itiName text-center">
                 						<h3 class="h3 text-center">${itiOBJ.nombre}</h3>
                 					</div>
                 					<div class="text-center">

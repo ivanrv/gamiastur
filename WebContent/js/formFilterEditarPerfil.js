@@ -134,7 +134,7 @@ $(document).ready(function(){
             loading();
             if(!cambioPass)
             	$("#modalPassword").find("input").attr("value") == "";
-            $("#regForm").submit();
+            $("#editPerfilForm").submit();
         } else {
             $("#modalError").modal();
         }   

@@ -99,6 +99,8 @@ public class Update extends Accion{
 			if(!request.getParameter("password").equals(""))
 				cliente.setPassword(request.getParameter("password"));
 			
+			sCliente.actualizar(cliente);
+			
 			retorno = "perfil.jsp";
 			break;
 			
@@ -126,6 +128,7 @@ public class Update extends Accion{
 				sImgAct.actualizar(actividad.getImagenactividads().iterator().next());
 				sActividad.actualizar(actividad);
 				request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());
+				request.getSession().setAttribute("flag", "tablaActividades");
 				retorno = "Admin.do";
 			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
 				e.printStackTrace();
@@ -149,6 +152,7 @@ public class Update extends Accion{
 			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
 			if(request.getSession().getAttribute("itinerarios") != null)
 				request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+			request.getSession().setAttribute("flag", "tablaItinerarios");
 			retorno = "Admin.do";
 			break;
 			
@@ -173,6 +177,7 @@ public class Update extends Accion{
 				
 				sNoticia.actualizar(noticia);
 				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
+				request.getSession().setAttribute("flag", "tablaNoticias");
 				retorno = "Admin.do";
 			} catch (ParseException | IOException | ServletException e) {
 				e.printStackTrace();
@@ -209,6 +214,7 @@ public class Update extends Accion{
 			
 			sParada.actualizar(parada);
 			request.getSession().setAttribute("listaParadas", sParada.buscarTodos());
+			request.getSession().setAttribute("flag", "tablaParadas");
 			retorno = "Admin.do";
 			break;
 			
@@ -228,6 +234,7 @@ public class Update extends Accion{
 			
 			sPruebaCultural.actualizar(cultural);
 			request.getSession().setAttribute("listaCulturales", sPruebaCultural.buscarTodos());
+			request.getSession().setAttribute("flag", "tablaCulturales");
 			retorno = "Admin.do";
 			break;
 			
@@ -247,6 +254,7 @@ public class Update extends Accion{
 				
 				sPruebaDeportiva.actualizar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
+				request.getSession().setAttribute("flag", "tablaDeportivas");
 				retorno = "Admin.do";
 			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
 				e.printStackTrace();

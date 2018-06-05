@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
         <%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
+        <%@ page import="com.gamitour.service.ServiceNoticiaImp" %>
             <!DOCTYPE html>
             <html lang="es">
 
@@ -17,6 +19,7 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/noticias.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -34,6 +37,13 @@
 					request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
 				%>
 			</c:if>
+			
+			<jsp:useBean id="sNoticiaImp" class="com.gamitour.service.ServiceNoticiaImp" />
+			<%
+				ServiceNoticiaImp sNoticia = new ServiceNoticiaImp();
+				request.setAttribute("noticias", sNoticia.buscarTodos());
+			%>
+			
             
             <div id="loader">
 			        <div class="sk-folding-cube">
@@ -102,7 +112,31 @@
                 </nav>
 
                 <div class="content">
-					<h1>NOTICIAS</h1>
+					<h1 class="text-center">Últimas Noticias</h1>
+					<div id="noticiasContainer" class="row">
+                		<c:forEach items="${noticias}" var="noticia">
+                			<div class="col-xs-3 noticiaItem">
+                				<div class="noticiaImg">
+                					<img alt="" src="/static${noticia.imagen}"/>
+                				</div>
+                				
+                				<div class="noticiaNombre text-center"><h3 class="h3">${noticia.nombre}</h3></div>
+                				
+                				<div class="noticiaData">
+                					<div class="col-xs-12 text-right"><span><fmt:formatDate value="${noticia.fechaalta}" pattern="dd-MM-yyyy"/></span></div>
+                				</div>
+                				
+                				<div class="noticiaMas text-center">
+                					<a class="btn" href="">Ver más</a>
+                				</div>
+                			</div>
+                		</c:forEach>
+                		
+                		<c:if test="${fn:length(noticias) == 0 }">
+                			<h2 class="h2 text-center">-- Actualmente no tenemos ninguna noticia disponible --</h2>
+                			<h3 class="h3 text-center">Inténtalo en otro momento</h3>
+                		</c:if>
+                	</div>
                 </div>
 
                 <footer>

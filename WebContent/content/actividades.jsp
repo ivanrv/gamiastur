@@ -130,7 +130,7 @@
                 				</div>
                 				
                 				<div class="actividadReserva text-center">
-                					<a class="btn" href="<c:choose><c:when test="${username!=null}">#modalReserva</c:when><c:otherwise>${pageContext.servletContext.contextPath}/content/login.jsp</c:otherwise></c:choose>" <c:if test="${username!=null}">data-toggle="modal"</c:if>>Reservar</a>                					
+                					<a class="btn btnReserva" value="${actividad.nombre}" href="<c:choose><c:when test="${username!=null}">#modalReserva</c:when><c:otherwise>${pageContext.servletContext.contextPath}/content/login.jsp</c:otherwise></c:choose>" <c:if test="${username!=null}">data-toggle="modal"</c:if>>Reservar</a>                					
                 				</div>
                 			</div>
                 		</c:forEach>
@@ -141,6 +141,23 @@
                 		</c:if>
                 	</div>
                 </div>
+                
+                <div id="modalReserva" class="modal fade" role="dialog">
+			        <div class="modal-dialog">
+			            <div class="modal-body" id="mensajeBorrar">
+			            	<p class="text-center">¿Está seguro de querer participar en esta actividad?</p>
+			            </div>
+			            <div class="modal-footer">
+			                <form action="Reserva.do" method="post">
+			                	<input type="hidden" id="actReserva" name="actividad" value=""/>
+			                	<input type="hidden" name="tipo" value="reserva"/>
+			                	<input type="submit" class="btn" value="Participar"></input>
+			           			<a href="javascript:void(0);" class="btn" data-dismiss="modal">Cancelar</a>
+			                </form>
+			            </div>
+			        </div>
+			    </div>
+                
 
                 <footer>
                     <div class="socials">
@@ -161,5 +178,11 @@
                     <p>Gamiastur &copy; 2018</p>
                 </footer>               
       		</body>
+      		
+      		<script>
+				$(".btnReserva").click(function(){
+					$("#actReserva").attr("value", $(this).attr("value"));
+				});
+      		</script>
 
             </html>

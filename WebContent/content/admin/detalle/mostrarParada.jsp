@@ -142,7 +142,7 @@
                             		<label>Introduzca una dirección a buscar</label>
                                 	<span class="focus-border"></span>
                             	</div>                      
-	                            <div id="mapForm" style="height:100%"></div>
+	                            <div id="mapForm" style="height:85%"></div>
 	                			<input type="hidden" name="lat" value="">
 	                			<input type="hidden" name="lng" value="">  
                 			</div>       

@@ -1,13 +1,15 @@
 
+var paradas;
+
 $(document).ready(function () {
-	var paradas = JSON.parse(stringParadas);
+	paradas = JSON.parse(stringParadas);
 	
 	initMap();
 
 	showParada(1);
 
 	$(".btnParada").click(function(){
-		showParada($(this).attr(value));
+		showParada($(this).find("input[type=hidden]").attr("value"));
 	});
 	
 });
@@ -50,18 +52,18 @@ function showParada(numParada){
 				$("#btnParadaBack").css("visibility", "hidden");
 				$("#btnParadaNext").css("visibility", "visible");
 
-				$("#btnParadaNext").attr("value", parada.numeroParada + 1);
+				$("#btnParadaNext").find("input[type=hidden]").attr("value", parseInt(parada.numeroParada) + 1);
 			}else if (parada.numeroParada == paradas.length){
 				$("#btnParadaBack").css("visibility", "visible");
 				$("#btnParadaNext").css("visibility", "hidden");
 
-				$("#btnParadaBack").attr("value", parada.numeroParada -1);
+				$("#btnParadaBack").find("input[type=hidden]").attr("value", parseInt(parada.numeroParada) - 1);
 			}else{
 				$("#btnParadaBack").css("visibility", "visible");
 				$("#btnParadaNext").css("visibility", "visible");
 			
-				$("#btnParadaBack").attr("value", parada.numeroParada - 1);
-				$("#btnParadaNext").attr("value", parada.numeroParada + 1);
+				$("#btnParadaNext").find("input[type=hidden]").attr("value", parseInt(parada.numeroParada) + 1);
+				$("#btnParadaBack").find("input[type=hidden]").attr("value", parseInt(parada.numeroParada) - 1);
 			}
 		}
 	}
@@ -73,7 +75,7 @@ function initMapaParada(lat, lng){
 	var center = new google.maps.LatLng(parseFloat(lat), parseFloat(lng));
 
 	var mapaParada = new google.maps.Map(document.getElementById("paradaMap"), {
-		zoom: 15,
+		zoom: 17,
 		center: center,
 		disableDoubleCLickZoom: true,
 		draggable: false,
@@ -95,7 +97,7 @@ initMap = function () {
 	waypoints = [];
 
 	var mapa = new google.maps.Map(document.getElementById('mapaIti'),{
-		zoom: 13,
+		zoom: 15,
 		center: new google.maps.LatLng(parseFloat(paradas[0].latitud), parseFloat(paradas[0].longitud))
 	});
 	

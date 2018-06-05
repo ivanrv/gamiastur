@@ -113,7 +113,7 @@
 									<div class="col-xs-3 text-center">${premio.nombre}</div>
 									<div class="col-xs-5 text-center">${premio.descripcion}</div>
 									<div class="col-xs-2 text-center">${premio.puntos} Puntos</div>
-									<div class="col-xs-2 text-right"><a href="#" class="btn">Consumir</a></div>
+									<div class="col-xs-2 text-right"><a href="#modalActivar" class="btn btnCanjea" value="${premio.nombre}" data-toggle="modal">Consumir</a></div>
 								</div>
 							</c:forEach>
 							
@@ -126,6 +126,22 @@
 						</div>
 					</div>
                 </div>
+                
+                <div id="modalActivar" class="modal fade" role="dialog">
+			        <div class="modal-dialog">
+			            <div class="modal-body" id="mensajeBorrar">
+			            	<p class="text-center">¿Está seguro de querer consumir este premio?</p>
+			            </div>
+			            <div class="modal-footer">
+			                <form action="Activa.do" method="post">
+			                	<input type="hidden" id="actPremio" name="premio" value=""/>
+			                	<input type="hidden" name="tipo" value="canjea"/>
+			                	<input type="submit" class="btn" value="Consumir"></input>
+			           			<a href="javascript:void(0);" class="btn" data-dismiss="modal">Cancelar</a>
+			                </form>
+			            </div>
+			        </div>
+			    </div>
 
                 <footer>
                     <div class="socials">
@@ -146,5 +162,11 @@
                     <p>Gamiastur &copy; 2018</p>
                 </footer>               
       		</body>
+
+			<script>
+				$(".btnCanjea").click(function(){
+					$("#actPremio").attr("value", $(this).attr("value"));
+				});
+      		</script>
 
             </html>

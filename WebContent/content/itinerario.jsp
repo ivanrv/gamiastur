@@ -22,6 +22,7 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/loader.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/itinerario.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD73nVF-IA4rkBCx98ZVjvV5XVzN_mb-10"></script>
@@ -144,45 +145,65 @@
                 		</div>
                 		
                 		<div class="col-xs-12" id="dataContainer">
-                			<div class="col-xs-4">
+                			<div class="col-xs-4 dataText">
                 				<span id="paradaHistoria"></span>
                 			</div>
                 			
-                			<div class="col-xs-4">
+                			<div class="col-xs-4 dataText">
                 				<span id="paradaAnecdotario"></span>
                 			</div>
                 			
-                			<div class="col-xs-4">
+                			<div class="col-xs-4 dataText">
                 				<span id="paradaGastronomia"></span>
                 			</div>	
                 		</div>
                 		
                 		<div class="col-xs-12" id="adicionalContainer">
-                			<div class="col-xs-6" id="vidContainer">
+                			<div class="col-xs-6 text-right" id="vidContainer">
                 				<video src="" id="paradaVid"></video>
+                				
                 			</div>
                 			
-                			<div class="col-xs-6" id="mapContainer">
+                			<div class="col-xs-6 text-left" id="mapContainer">
                 				<div id="paradaMap"></div>
                 			</div>
                 		</div>
                 		
-                		<c:if test="${username != null}">
-	                		<div class="col-xs-12" id="pruebasContainer">
-	                			<div class="col-xs-6" id="deportivasContainer"></div>
-	                			
-	                			<div class="col-xs-6" id="culturalesContainer"></div>
-	                		</div>
-                		</c:if>
-                		
                 		<div class="col-xs-12" id="btnsContainer">
-                			<div class="col-xs-6 text-left">
-                				<div class="btnParada" id="btnParadaBack"></div>
+                			<div class="col-xs-1"></div>
+                			
+                			<c:choose>
+                				<c:when test="${username != null}">
+                					<div class="col-xs-2 text-center">
+                						<div class="btnPruebas" id="btnDeportivas"><i class="fas fa-volleyball-ball"></i></div>
+                					</div>
+                					<div class="col-xs-2 text-center">
+                						<div class="btnPruebas" id="btnCulturales"><i class="fas fa-book"></i></div>
+                					</div>
+                				</c:when>
+                			
+                				<c:otherwise>
+                					<div class="col-xs-2 text-center"></div>
+                					<div class="col-xs-2 text-center"></div>
+                				</c:otherwise>
+                			</c:choose>
+                			
+                			<div class="col-xs-2 text-center"></div>
+                			
+                			<div class="col-xs-2 text-center">
+                				<div class="btnParada" id="btnParadaBack" value="">
+                				&larr; &nbsp; Anterior
+                				<input type="hidden" value=""/>
+                				</div>
                 			</div>
                 			
-                			<div class="col-xs-6 text-right">
-                				<div class="btnParada" id="btnParadaNext"></div>
-                			</div> 
+                			
+                			<div class="col-xs-2 text-center">
+                				<div class="btnParada" id="btnParadaNext">
+                				Siguiente &nbsp; &rarr;
+                				<input type="hidden" value=""/>
+                				</div>
+                			</div>                    			                        			
                 		</div>
                 	</div>
                 </div>

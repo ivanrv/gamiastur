@@ -114,7 +114,7 @@ $(document).ready(function () {
         }
         */
         
-        if(!(!$("input[name=archivoImg]").get(0).files) || ($("input[name=archivoImg]").get(0).files.length == 0)){
+        if(typeof $("input[name=archivoImg]").get(0).files[0] != "undefined"){
 	        if ($("input[name=archivoImg]").get(0).files[0].size > 5242880){
 	            $("#mensajeError").append("<p>La imagen seleccionada es demasiado grande.</p>");
 	
@@ -122,7 +122,7 @@ $(document).ready(function () {
 	        }
         }
         
-        if(!(!$("input[name=archivoVideo]").get(0).files) || ($("input[name=archivoVideo]").get(0).files.length == 0)){
+        if(typeof $("input[name=archivoVideo]").get(0).files[0] != "undefined"){
 	        if ($("input[name=archivoVideo]").get(0).files[0].size > 15728640){
 	            $("#mensajeError").append("<p>El v&iacute;deo seleccionado es demasiado grande.</p>");
 	

@@ -1,4 +1,6 @@
 
+var iti = false;
+
 $(window).on("load", function(){
 
     setTimeout(function(){
@@ -15,8 +17,10 @@ function loading(){
 }
 
 $(document).ready(function(){
+
 	$("#menuIti li").click(function(){
-		var iti = true;
+
+		iti = true;
 
 		var form = document.createElement("form");
 	    var element1 = document.createElement("input"); 
@@ -31,12 +35,12 @@ $(document).ready(function(){
 	    document.body.appendChild(form);
 	    
 	    form.submit();
-	})
+	});
 });
 
 function  redirectIti(){
 	setTimeout(function(){
-		if (typeof iti == "undefined")
+		if (iti == false)
 			location.href=("/gamiastur/content/itinerarios.jsp");
 	}, 800);
 	
