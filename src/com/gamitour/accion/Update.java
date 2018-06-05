@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.FilenameUtils;
 
 import com.gamitour.modelo.Actividad;
+import com.gamitour.modelo.Cliente;
 import com.gamitour.modelo.Itinerario;
 import com.gamitour.modelo.Noticia;
 import com.gamitour.modelo.Parada;
@@ -63,7 +64,42 @@ public class Update extends Accion{
 
 		switch(request.getParameter("tipo")){
 		case "cliente":
-			request.getSession().setAttribute("listaClientes", sCliente.buscarTodos());
+			Cliente cliente = sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString());
+			
+			if (!cliente.getNombre().equals(request.getParameter("nombre"))) {
+				cliente.setNombre(request.getParameter("nombre"));				
+				request.getSession().setAttribute("username", cliente.getNombre() + " " + cliente.getApellidos().substring(0, cliente.getApellidos().indexOf(" ")));
+			}
+			
+			if (!cliente.getApellidos().equals(request.getParameter("apellidos"))) {
+				cliente.setApellidos(request.getParameter("apellidos"));				
+				request.getSession().setAttribute("username", cliente.getNombre() + " " + cliente.getApellidos().substring(0, cliente.getApellidos().indexOf(" ")));
+			}
+			
+			if (!cliente.getEmail().equals(request.getParameter("email"))) {
+				cliente.setEmail(request.getParameter("email"));
+				request.getSession().setAttribute("userEmail", cliente.getEmail());
+			}
+			
+			try {
+				cliente.setFechanacimiento(sdf.parse(request.getParameter("fechanacimiento")));
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
+			
+			if (!request.getParameter("telefono").equals(""))
+				cliente.setTelefono(request.getParameter("telefono"));
+			
+			if(!request.getParameter("direccion").equals(""))
+				cliente.setDireccion(request.getParameter("direccion"));
+			
+			if(!request.getParameter("codigopostal").equals(""))
+				cliente.setCodigopostal(request.getParameter("codigopostal"));
+			
+			if(!request.getParameter("password").equals(""))
+				cliente.setPassword(request.getParameter("password"));
+			
+			retorno = "perfil.jsp";
 			break;
 			
 		case "actividad":
