@@ -9,6 +9,7 @@ import com.gamitour.accion.Logout;
 import com.gamitour.accion.MostrarAccion;
 import com.gamitour.accion.MostrarUno;
 import com.gamitour.accion.Nuevo;
+import com.gamitour.accion.Reserva;
 import com.gamitour.accion.Update;
 
 public abstract class Accion {
@@ -44,6 +45,10 @@ public abstract class Accion {
 		
 		if(tipo.equals("Update")){
 			accion = new Update();
+		}
+		
+		if(tipo.equals("Reserva")) {
+			accion = new Reserva();
 		}
 		
 		return accion;

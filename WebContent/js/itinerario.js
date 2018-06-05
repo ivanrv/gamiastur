@@ -3,8 +3,91 @@ $(document).ready(function () {
 	var paradas = JSON.parse(stringParadas);
 	
 	initMap();
-  
+
+	showParada(1);
+
+	$(".btnParada").click(function(){
+		showParada($(this).attr(value));
+	});
+	
 });
+
+
+function showParada(numParada){
+	
+	for (let index = 0; index < paradas.length; index++) {
+		const parada = paradas[index];
+
+		if (parada.numeroParada == numParada){
+			$("#paradaTit").css("background-image", "static" + parada.imagen);
+
+			$("#paradaNombre").text(parada.nombre);
+			$("#paradaNumero").text("Parada " + parada.numeroParada);
+			
+			if(parada.historia == "")
+				$("#paradaHistoria").text("No tenemos datos históricos de esta parada");
+			else
+				$("#paradaHistoria").text(parada.historia);
+
+			if(parada.anecdotario == "")
+				$("#paradaAnecdotario").text("No tenemos datos anecdóticos de esta parada");
+			else
+				$("#paradaAnecdotario").text(parada.anecdotario);
+
+			if(parada.gastronomia == "")
+				$("#paradaGastronomia").text("No tenemos datos gastronómicos de esta parada");
+			else
+				$("#paradaGastronomia").text(parada.gastronomia);
+
+			$("#paradaVid").attr("src", "static" + parada.video);
+			initMapaParada(parada.latitud, parada.longitud);
+
+			if(typeof $("#pruebasContainer") != undefined){
+				//TODO PRUEBAS
+			}
+
+			if (parada.numeroParada == 1){
+				$("#btnParadaBack").css("visibility", "hidden");
+				$("#btnParadaNext").css("visibility", "visible");
+
+				$("#btnParadaNext").attr("value", parada.numeroParada + 1);
+			}else if (parada.numeroParada == paradas.length){
+				$("#btnParadaBack").css("visibility", "visible");
+				$("#btnParadaNext").css("visibility", "hidden");
+
+				$("#btnParadaBack").attr("value", parada.numeroParada -1);
+			}else{
+				$("#btnParadaBack").css("visibility", "visible");
+				$("#btnParadaNext").css("visibility", "visible");
+			
+				$("#btnParadaBack").attr("value", parada.numeroParada - 1);
+				$("#btnParadaNext").attr("value", parada.numeroParada + 1);
+			}
+		}
+	}
+	
+}
+
+function initMapaParada(lat, lng){
+	
+	var center = new google.maps.LatLng(parseFloat(lat), parseFloat(lng));
+
+	var mapaParada = new google.maps.Map(document.getElementById("paradaMap"), {
+		zoom: 15,
+		center: center,
+		disableDoubleCLickZoom: true,
+		draggable: false,
+		zoomControl: false,
+		scrollwheel: false,
+		fullscreenControl: false
+	});
+
+	new google.maps.Marker({
+		position: center,
+		map: mapaParada
+	});
+
+}
 
 initMap = function () {
 	

@@ -24,6 +24,7 @@
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/style.css" />
                 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.servletContext.contextPath}/css/media.css" />
 
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD73nVF-IA4rkBCx98ZVjvV5XVzN_mb-10"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -131,12 +132,58 @@
                 	<h1 class="text-center">${itiOBJ.nombre}</h1>
                 	<h4 class="text-center h4">${itiOBJ.categoria} &nbsp; &nbsp; &nbsp; &nbsp; ${itiOBJ.duracion}</h4>
                 	
-                	<div class="" id="mapaContainer">
+                	<div class="row" id="mapaContainer">
                 		<div id="mapaIti"></div>                	
                 	</div>
                 	
-                	<div class="" id="paradasContainer">
-                	
+                	<div class="row" id="paradasContainer">
+                		<div class="text-center col-xs-12" id="paradaTit">
+                			<h2 class="h2" id="paradaNombre"></h2>
+                			
+                			<h4 class="h4" id="paradaNumero"></h4>
+                		</div>
+                		
+                		<div class="col-xs-12" id="dataContainer">
+                			<div class="col-xs-4">
+                				<span id="paradaHistoria"></span>
+                			</div>
+                			
+                			<div class="col-xs-4">
+                				<span id="paradaAnecdotario"></span>
+                			</div>
+                			
+                			<div class="col-xs-4">
+                				<span id="paradaGastronomia"></span>
+                			</div>	
+                		</div>
+                		
+                		<div class="col-xs-12" id="adicionalContainer">
+                			<div class="col-xs-6" id="vidContainer">
+                				<video src="" id="paradaVid"></video>
+                			</div>
+                			
+                			<div class="col-xs-6" id="mapContainer">
+                				<div id="paradaMap"></div>
+                			</div>
+                		</div>
+                		
+                		<c:if test="${username != null}">
+	                		<div class="col-xs-12" id="pruebasContainer">
+	                			<div class="col-xs-6" id="deportivasContainer"></div>
+	                			
+	                			<div class="col-xs-6" id="culturalesContainer"></div>
+	                		</div>
+                		</c:if>
+                		
+                		<div class="col-xs-12" id="btnsContainer">
+                			<div class="col-xs-6 text-left">
+                				<div class="btnParada" id="btnParadaBack"></div>
+                			</div>
+                			
+                			<div class="col-xs-6 text-right">
+                				<div class="btnParada" id="btnParadaNext"></div>
+                			</div> 
+                		</div>
                 	</div>
                 </div>
 

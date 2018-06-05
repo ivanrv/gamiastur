@@ -55,6 +55,10 @@ public class Controller extends HttpServlet {
 			response.sendRedirect("/gamiastur/Admin.do");
 		}else if(ejecutar.equals("Logout.do")){
 			response.sendRedirect("Logout.do");
+		}else if(ejecutar.equals("misActs")) {
+			response.sendRedirect("/gamiastur/content/user/misActividades.jsp");
+		}else if(ejecutar.equals("perfil.jsp")) {
+			response.sendRedirect("/gamiastur/content/user/perfil.jsp");
 		}else{
 			despachador.forward(request, response);
 		}	
