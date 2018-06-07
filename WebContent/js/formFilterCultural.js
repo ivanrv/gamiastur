@@ -13,7 +13,7 @@ $(document).ready(function () {
         /* Comprobación de campos obligatorios no vacíos */
 
         if ($("input[name=nombre]").val() == "") {
-            $("#mensajeError").append("<p>El nombre es un dato obligatorio.</p>");
+            $("#mensajeError").append("<p>El nombre es un dato obligatoriÓó??¿?¿?¿?.</p>");
             $("input[name=nombre]").addClass("has-warning");
 
             submit = false;
