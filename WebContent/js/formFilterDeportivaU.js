@@ -52,6 +52,12 @@ $(document).ready(function () {
             }
         }
 
+        if ($("input[name=archivo]").get(0).files[0].size > 5242880){
+            $("#mensajeError").append("<p>El archivo seleccionado es demasiado grande.</p>");
+
+            submit = false;
+        }
+
         $(".has-warning").click(function () {
             $(this).select();
         });

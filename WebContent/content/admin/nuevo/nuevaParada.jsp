@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
         <%@ page import="com.gamitour.service.ServiceParadaImp" %>
@@ -6,7 +6,7 @@
             <html lang="es">
 
             <head>
-                <meta charset="UTF-8">
+                <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
                 <title>Nueva Parada</title>
@@ -64,55 +64,55 @@
 			        </div>
 			    </div>
                 <header>
-                    <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
+                    <a href="${pageContext.servletContext.contextPath}/index.jsp">
                         <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
                     </a>
             
                     <div class="user">
-                        <a href="javascript:void(0)" id="menuUser">
-                            <i class="fas fa-angle-down"></i>
-                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
-                                <li>Editar Perfil</li>
-                                <li class="menuUserB">Mis Actividades</li>
-                                <li class="menuUserB">Logros</li>
-                                <c:if test="${userRol != 'user'}">
-                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
-                                </c:if>
-                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
-                            </ul>
-                        </a>
-                        <span>
-                            <a href="#">${username}</a>
-                        </span>
-                        <img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
-                    </div>
+	                        <a href="javascript:void(0)" id="menuUser">
+	                            <i class="fas fa-angle-down"></i>
+	                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
+	                                <li onclick="loading(); location.href='${pageContext.servletContext.contextPath}/content/user/editarPerfil.jsp';">Editar Perfil</li>
+	                                <li class="menuUserB" onclick="location.href='${pageContext.servletContext.contextPath}/content/user/misActividades.jsp'">Mis Actividades</li>
+	                                <li class="menuUserB" onclick="location.href='${pageContext.servletContext.contextPath}/content/user/misPremios.jsp'">Premios</li>
+	                                <c:if test="${userRol != 'user'}">
+	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
+	                                </c:if>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
+	                            </ul>
+	                        </a>
+	                        <span>
+	                            <a href="${pageContext.servletContext.contextPath}/content/user/perfil.jsp">${username}</a>
+	                        </span>
+	                        <img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
+	                    </div>
                 </header>
-            
-                <nav data-spy="affix" data-offset-top="150">
-                    <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
+            <nav data-spy="affix" data-offset-top="150">
+                    <a href="${pageContext.servletContext.contextPath}/index.jsp" onclick="loading();">
                         <i class="fas fa-home"></i> &nbsp; Inicio</a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/noticias.jsp" onclick="loading();">
                         <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" onclick="loading();">
                         <i class="fas fa-search"></i> &nbsp; Actividades</a>
-                    <a href="#" id="menuIti">
+                   <a href="javascript:void(0)" id="menuIti" onclick="loading(); redirectIti();">
                         <i class="fas fa-map"></i> &nbsp; Itinerarios
                         <ul>
-                            <li id="gijonIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiGijon.html'">
-                                <span>Itinerario de GijÃ³n</span>
-                            </li>
-                            <li id="avilesIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiAviles.html'">
-                                <span>Itinerario de AvilÃ©s</span>
-                            </li>
+                        	<c:forEach items="${listaItinerarios}" var="iti">
+                        		<li value="${iti}" onclick="loading();">
+                        			<span>${iti.nombre}</span>
+                        		</li>
+                        	</c:forEach>
                         </ul>
                     </a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
-                    <a href="#">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                    <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
+                	<a id="backPanel" href="Admin.do" onclick="loading();"><i class="fas fa-undo-alt"></i>&nbsp; Volver al panel de control</a>
+                
                     <div id="nuevoForm">
                         <div class="tit">
                             <h1>Datos de la nueva Parada:</h1>
@@ -133,7 +133,7 @@
                                 </div>                                
                                 <div class="inputCon input-effect">
                                     <input class="textIn" type="number" name="nParada" placeholder="" required/>
-                                    <label>NÃºmero de Parada *</label>
+                                    <label>Número de Parada *</label>
                                     <span class="focus-border"></span>
                                 </div>
                                 <div class="inputCon input-effect">
@@ -143,9 +143,16 @@
 	                            </div>
                         </div>
                         <div class="col2">                   
-                            <div id="mapForm" style="height: 325px"></div>
-                			<input type="hidden" name="lat" value="">
-                			<input type="hidden" name="lng" value="">
+                            <div style="height:325px">  
+                            	<div id="floating-paner" class="inputCon input-effect" style="margin-bottom: 15px">
+                            		<input id="address" type="textbox" class="textIn"/>
+                            		<label>Introduzca una dirección a buscar</label>
+                                	<span class="focus-border"></span>
+                            	</div>                      
+	                            <div id="mapForm" style="height:85%"></div>
+	                			<input type="hidden" name="lat" value="">
+	                			<input type="hidden" name="lng" value="">  
+                			</div> 
                         </div>
 
                         <div class="col3">
@@ -161,7 +168,7 @@
                             </div>
                             <div class="inputCon input-effect">
                                 <textarea class="textIn taShare" name="gastronomia" placeholder="" required rows="10"></textarea>
-                                <label>Gastronomia</label>
+                                <label>Gastronomía</label>
                                 <span class="focus-border"></span>
                             </div>
                         </div>
@@ -170,8 +177,8 @@
 					        <div class="modal-dialog modal-lg">
 					            <div class="modal-body" id="subidaImg">
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
-		                            	AÃ±adir Imagen
-		                            	<input type="file" name="archivoImg" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            	Añadir Imagen
+		                            	<input type="file" name="archivoImg" onchange="readURL(this)" accept=".jpg, .png, .jpeg, .gif, .bmp" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
 		                            	<img id="showFile" src="" alt=""/>
@@ -187,8 +194,8 @@
 					        <div class="modal-dialog modal-lg">
 					            <div class="modal-body" id="subidaVideo">
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
-		                            	AÃ±adir VÃ­deo
-		                            	<input type="file" name="archivoVideo" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            	Añadir Ví­deo
+		                            	<input type="file" name="archivoVideo" onchange="readURL(this)" accept=".mp4" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
 		                            	<video style="height:480px;" controls>
@@ -204,8 +211,8 @@
                         
 
                         <div class="sbmt">
-                        	<a href="#modalImg" class="btn" data-toggle="modal">AÃ±adir Imagen</a>
-                        	<a href="#modalVideo" class="btn" data-toggle="modal">AÃ±adir VÃ­deo</a>
+                        	<a href="#modalImg" class="btn" data-toggle="modal">Añadir Imagen</a>
+                        	<a href="#modalVideo" class="btn" data-toggle="modal">Añadir Vídeo</a>
                             <a id="enviar" class="btn">Crear Parada</a>
                         </div>
                         </form>

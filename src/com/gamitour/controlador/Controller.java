@@ -3,7 +3,7 @@ package com.gamitour.controlador;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Paths;
+import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,9 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 
-import com.gamitour.service.ServiceImagenActividad;
-import com.gamitour.service.ServiceImagenActividadImp;
 import com.gamitour.util.Accion;
 
 /**
@@ -50,8 +49,16 @@ public class Controller extends HttpServlet {
 		
 		despachador = request.getRequestDispatcher(ejecutar);
 		
-		if(ejecutar.equals("/index.html")){
-			response.sendRedirect(request.getContextPath() + ejecutar);
+		if(ejecutar.equals("/index.jsp")){
+			response.sendRedirect(request.getContextPath() + "/index.jsp");
+		}else if(ejecutar.equals("Admin.do")){
+			response.sendRedirect("/gamiastur/Admin.do");
+		}else if(ejecutar.equals("Logout.do")){
+			response.sendRedirect("Logout.do");
+		}else if(ejecutar.equals("misActs")) {
+			response.sendRedirect("/gamiastur/content/user/misActividades.jsp");
+		}else if(ejecutar.equals("perfil.jsp")) {
+			response.sendRedirect(request.getContextPath() + "/content/user/perfil.jsp");
 		}else{
 			despachador.forward(request, response);
 		}	
@@ -67,6 +74,7 @@ public class Controller extends HttpServlet {
 		Part archivo;
 		InputStream archivoStream;
 		File archivoSalida;
+		Calendar fecha = Calendar.getInstance();
 		
 		if((request.getParameter("tipo") != null) && (!url.substring(1, url.length()-3).equals("Eliminar")) && (!url.substring(1, url.length()-3).equals("Admin")) && (!url.substring(1, url.length()-3).equals("Mostrar"))){
 			switch(request.getParameter("tipo")) {
@@ -77,7 +85,7 @@ public class Controller extends HttpServlet {
 					fileName = request.getParameter("nombre");
 					archivo = request.getPart("archivo");
 					
-					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+					fileName += "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -93,7 +101,7 @@ public class Controller extends HttpServlet {
 					fileName = request.getParameter("nombre");
 					archivo = request.getPart("archivoImg");
 					
-					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+					fileName += "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -106,7 +114,7 @@ public class Controller extends HttpServlet {
 					fileName = request.getParameter("nombre");
 					archivo = request.getPart("archivoVideo");
 					
-					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+					fileName += "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -123,7 +131,7 @@ public class Controller extends HttpServlet {
 					fileName = request.getParameter("nombre");
 					archivo = request.getPart("archivo");
 					
-					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+					fileName += "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -139,7 +147,7 @@ public class Controller extends HttpServlet {
 					fileName = request.getParameter("nombre");
 					archivo = request.getPart("archivo");
 					
-					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+					fileName += "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -156,7 +164,7 @@ public class Controller extends HttpServlet {
 					fileName = request.getParameter("nombre");
 					archivo = request.getPart("archivo");
 					
-					fileName += "-" + Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+					fileName += "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);

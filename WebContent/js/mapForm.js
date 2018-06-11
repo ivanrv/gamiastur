@@ -36,6 +36,12 @@ initMap = function () {
     $("input[name=lat]").val(datosexp[0].substring(1, datosexp[0].length - 2));
     $("input[name=lng]").val(datosexp[1].substring(0, datosexp[1].length - 2));
   });
+  
+  var geocoder = new google.maps.Geocoder();
+
+ $("#address").on('keyup', function() {
+    geocodeAddress(geocoder, map);
+  });  
 }
 
 function addMarker(location, map) {
@@ -47,4 +53,15 @@ function addMarker(location, map) {
       map: map
     });
   }
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+	var address = document.getElementById('address').value;
+	geocoder.geocode({'address': address}, function(results, status) {
+	  if (status === 'OK') {
+	    resultsMap.setCenter(results[0].geometry.location);
+	  } else if ((status != 'ZERO_RESULTS') && (status != 'INVALID_REQUEST')){
+	    alert('Se ha producido un error: ' + status);
+	  }
+	});
 }

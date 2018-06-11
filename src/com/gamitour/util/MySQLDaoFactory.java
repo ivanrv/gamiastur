@@ -65,5 +65,9 @@ public class MySQLDaoFactory {
 	public ImagenActividadDAO getImagenActividadDAO() {
 		return new ImagenActividadDAOImp(sf);
 	}
+	
+	public ClienteHasActividadDAO getClienteHasActividadDAO() {
+		return new ClienteHasActividadDAOImp(sf);
+	}
 }
 

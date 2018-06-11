@@ -53,9 +53,9 @@ public class Principal {
 		
 		//p.pruebasNoticia();
 		
-		p.pruebasParada();
+		//p.pruebasParada();
 		
-		//p.pruebasPremio();
+		p.pruebasPremio();
 		
 		//p.pruebasPruebaCultural();
 		
@@ -284,11 +284,11 @@ public class Principal {
 		
 		//System.out.println("Propietario: " + sPremio.buscarPorNombre("prem1").getCliente().getNombre());
 		
-		/*
-		for(Premio p: sPremio.buscarTodos()){
+		
+		for(Premio p: sPremio.buscarDisponibles()){
 			System.out.println("Nombre: " + p.getNombre());
 		}
-		*/
+		
 		
 		//sPremio.borrar(sPremio.buscarPorNombre("prem1"));
 		

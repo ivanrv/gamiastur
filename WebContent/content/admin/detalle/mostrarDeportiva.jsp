@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
             <!DOCTYPE html>
             <html lang="es">
 
             <head>
-                <meta charset="UTF-8">
+                <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
                 <title>Modificar: ${deportiva.nombre}</title>
@@ -40,58 +40,59 @@
 			        </div>
 			    </div>
                 <header>
-                    <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
+                    <a href="${pageContext.servletContext.contextPath}/index.jsp">
                         <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
                     </a>
             
                     <div class="user">
-                        <a href="javascript:void(0)" id="menuUser">
-                            <i class="fas fa-angle-down"></i>
-                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
-                                <li>Editar Perfil</li>
-                                <li class="menuUserB">Mis Actividades</li>
-                                <li class="menuUserB">Logros</li>
-                                <c:if test="${userRol != 'user'}">
-                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
-                                </c:if>
-                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesi贸n</li>
-                            </ul>
-                        </a>
-                        <span>
-                            <a href="#">${username}</a>
-                        </span>
-                        <img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
-                    </div>
+	                        <a href="javascript:void(0)" id="menuUser">
+	                            <i class="fas fa-angle-down"></i>
+	                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
+	                                <li onclick="loading(); location.href='${pageContext.servletContext.contextPath}/content/user/editarPerfil.jsp';">Editar Perfil</li>
+	                                <li class="menuUserB" onclick="location.href='${pageContext.servletContext.contextPath}/content/user/misActividades.jsp'">Mis Actividades</li>
+	                                <li class="menuUserB" onclick="location.href='${pageContext.servletContext.contextPath}/content/user/misPremios.jsp'">Premios</li>
+	                                <c:if test="${userRol != 'user'}">
+	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
+	                                </c:if>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesi髇</li>
+	                            </ul>
+	                        </a>
+	                        <span>
+	                            <a href="${pageContext.servletContext.contextPath}/content/user/perfil.jsp">${username}</a>
+	                        </span>
+	                        <img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
+	                    </div>
                 </header>
 
                 <nav data-spy="affix" data-offset-top="150">
-                    <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
+                    <a href="${pageContext.servletContext.contextPath}/index.jsp" onclick="loading();">
                         <i class="fas fa-home"></i> &nbsp; Inicio</a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/noticias.jsp" onclick="loading();">
                         <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" onclick="loading();">
                         <i class="fas fa-search"></i> &nbsp; Actividades</a>
-                    <a href="#" id="menuIti">
+                   <a href="javascript:void(0)" id="menuIti" onclick="loading(); redirectIti();">
                         <i class="fas fa-map"></i> &nbsp; Itinerarios
                         <ul>
-                            <li id="gijonIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiGijon.html'">
-                                <span>Itinerario de Gij贸n</span>
-                            </li>
-                            <li id="avilesIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiAviles.html'">
-                                <span>Itinerario de Avil茅s</span>
-                            </li>
+                        	<c:forEach items="${listaItinerarios}" var="iti">
+                        		<li value="${iti}" onclick="loading();">
+                        			<span>${iti.nombre}</span>
+                        		</li>
+                        	</c:forEach>
                         </ul>
                     </a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
-                    <a href="#">
-                        <i class="fas fa-question"></i> &nbsp; Qui茅nes somos</a>
+                    <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
+                        <i class="fas fa-question"></i> &nbsp; Qui閚es somos</a>
                 </nav>
 
                 <div class="content">
+                	<a id="backPanel" href="Admin.do" onclick="loading();"><i class="fas fa-undo-alt"></i>&nbsp; Volver al panel de control</a>
+                	
                     <div id="nuevoForm">
                         <div class="tit">
-                            <h1>Actualizaci贸n de Prueba Deportiva: ${deportiva.nombre}</h1>
+                            <h1>Actualizaci髇 de Prueba Deportiva: ${deportiva.nombre}</h1>
                             <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
@@ -119,12 +120,12 @@
                         </div>
                         <div class="col2">
                             <div class="inputCon input-effect">
-                                <input class="textIn has-content datepicker" type="text" name="inicio" placeholder="" value="${deportiva.fechainicio}" required/>
+                                <input class="textIn has-content datepicker" type="text" name="inicio" placeholder="" value="<fmt:formatDate value="${deportiva.fechainicio}" pattern="dd-MM-yyyy"/>" required/>
                                 <label>Fecha de Inicio *</label>
                                 <span class="focus-border"></span>
                             </div>
                             <div class="inputCon input-effect">
-                                <input class="textIn has-content datepicker" type="text" name="fin" placeholder="" value="${deportiva.fechafin}" required/>
+                                <input class="textIn has-content datepicker" type="text" name="fin" placeholder="" value="<fmt:formatDate value="${deportiva.fechafin}" pattern="dd-MM-yyyy"/>" required/>
                                 <label>Fecha de Fin</label>
                                 <span class="focus-border"></span>
                             </div>                            
@@ -134,8 +135,8 @@
 					        <div class="modal-dialog modal-lg">
 					            <div class="modal-body" id="subidaImg">
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
-		                            	A帽adir Archivo
-		                            	<input type="file" name="archivo" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+		                            	Modificar Explicaci髇
+		                            	<input type="file" name="archivo" onchange="readURL(this)" accept=".pdf" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
 		                            	<embed id="showFile" src="/static${deportiva.explicacion}" alt="" style="height:200px;" type="application/pdf"/>
@@ -148,7 +149,7 @@
 					    </div>	
 
                         <div class="sbmt">
-                        	<a href="#modalImg" data-toggle="modal" class="btn">Modificar Explicaci贸n</a>
+                        	<a href="#modalImg" data-toggle="modal" class="btn">Modificar Explicaci髇</a>
                             <a id="enviar" class="btn">Actualizar</a>
                         </div>
                         </form>

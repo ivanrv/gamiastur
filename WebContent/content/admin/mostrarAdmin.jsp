@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 	<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
             <!DOCTYPE html>
             <html lang="es">
 
             <head>
-                <meta charset="UTF-8">
+                <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
                 <title>Tabla Admin</title>
@@ -26,50 +27,12 @@
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
-                <script src="${pageContext.servletContext.contextPath}/js/tablas.js"></script>                
-                
-                <script> 
-                	var stringParadas = "[";
-
-                	<c:forEach items="${listaParadas}" var="parada" varStatus="status">
-						stringParadas += '{"nombre": "${parada.nombre}", "itinerario": "${parada.itinerario.nombre}", "latitud": "${parada.latitud}", "longitud": "${parada.longitud}"}';
-						<c:if test="${!status.last}"> stringParadas += ","</c:if>					
-					</c:forEach>
-					stringParadas += "]";
-
-                	var stringDeportivas = "[";
-					<c:forEach items="${listaDeportivas}" var="deportiva" varStatus="status">
-						stringDeportivas += '{"nombre": "${deportiva.nombre}", "parada": "${deportiva.parada.nombre}", "fechainicio": "${deportiva.fechainicio}", "explicacion": "${deportiva.explicacion}", "puntos": "${deportiva.puntos}"}';
-						<c:if test="${!status.last}"> stringDeportivas += ","</c:if>					
-					</c:forEach>
-					stringDeportivas += "]";
-
-                	var stringCulturales = "[";
-					<c:forEach items="${listaCulturales}" var="cultural" varStatus="status">
-						stringCulturales += '{"nombre": "${cultural.nombre}", "parada": "${cultural.parada.nombre}", "puntos": "${cultural.puntos}"}';
-						<c:if test="${!status.last}"> stringCulturales += ","</c:if>					
-					</c:forEach>
-					stringCulturales += "]";
-
-					var stringClientes = "[";
-					<c:forEach items="${listaClientes}" var="cliente" varStatus="status">
-						stringClientes += '{"email": "${cliente.email}", "nombre": "${cliente.nombre}", "apellidos": "${cliente.apellidos}", "fechanacimiento": "${cliente.fechanacimiento}", "rol": "${cliente.rol.nombre}", "telefono": "${cliente.telefono}", "direccion": "${cliente.direccion}", "codigopostal": "${cliente.codigopostal}", "puntosacumulados": "${cliente.puntosacumulados}", "fecharegistro": "${cliente.fecharegistro}"}';
-						<c:if test="${!status.last}">stringClientes += ","</c:if>
-					</c:forEach>					
-					stringClientes += "]";
-					
-					var stringPremios = "[";					
-					<c:forEach items="${listaPremios}" var="premio" varStatus="status">
-						stringPremios += '{"nombre": "${premio.nombre}", "cliente": "${premio.cliente.email}", "descripcion": "${premio.descripcion}", "fechaactivacion": "${premio.fechaactivacion}", "fechaconsumo": "${premio.fechaconsumo}", "puntos": "${premio.puntos}"}';
-						<c:if test="${!status.last}">stringPremios += ","</c:if>
-					</c:forEach>					
-					stringPremios += "]";
-					
-                </script>
+                <script src="${pageContext.servletContext.contextPath}/js/tablas.js"></script>   
+                <c:if test="${flag != null}"><script>var flag = "${flag}"</script></c:if>           
             </head>
 
             <body>
-            <div id="loader">
+            	<div id="loader">
 			        <div class="sk-folding-cube">
 			            <div class="sk-cube1 sk-cube"></div>
 			            <div class="sk-cube2 sk-cube"></div>
@@ -79,52 +42,51 @@
 			    </div>
             
                 <header>
-                    <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
+                    <a href="${pageContext.servletContext.contextPath}/index.jsp">
                         <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
                     </a>
 
                     <div class="user">
-                        <a href="javascript:void(0)" id="menuUser">
-                            <i class="fas fa-angle-down"></i>
-                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
-                                <li>Editar Perfil</li>
-                                <li class="menuUserB">Mis Actividades</li>
-                                <li class="menuUserB">Logros</li>
-                                <c:if test="${userRol != 'user'}">
-                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
-                                </c:if>
-                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
-                            </ul>
-                        </a>
-                        <span>
-                            <a href="#">${username}</a>
-                        </span>
-                        <img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
-                    </div>
+	                        <a href="javascript:void(0)" id="menuUser">
+	                            <i class="fas fa-angle-down"></i>
+	                            <ul <c:if test="${userRol != 'user'}">class="adminUser"</c:if>>
+	                                <li onclick="loading(); location.href='${pageContext.servletContext.contextPath}/content/user/editarPerfil.jsp';">Editar Perfil</li>
+	                                <li class="menuUserB" onclick="location.href='${pageContext.servletContext.contextPath}/content/user/misActividades.jsp'">Mis Actividades</li>
+	                                <li class="menuUserB" onclick="location.href='${pageContext.servletContext.contextPath}/content/user/misPremios.jsp'">Premios</li>
+	                                <c:if test="${userRol != 'user'}">
+	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
+	                                </c:if>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
+	                            </ul>
+	                        </a>
+	                        <span>
+	                            <a href="${pageContext.servletContext.contextPath}/content/user/perfil.jsp">${username}</a>
+	                        </span>
+	                        <img src="${pageContext.servletContext.contextPath}/images/avatares/Ancla.png">
+	                    </div>
                 </header>
 
                 <nav data-spy="affix" data-offset-top="150">
-                    <a href="${pageContext.servletContext.contextPath}/content/user/index.jsp">
+                    <a href="${pageContext.servletContext.contextPath}/index.jsp" onclick="loading();">
                         <i class="fas fa-home"></i> &nbsp; Inicio</a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/noticias.jsp" onclick="loading();">
                         <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" onclick="loading();">
                         <i class="fas fa-search"></i> &nbsp; Actividades</a>
-                    <a href="#" id="menuIti">
+                   <a href="javascript:void(0)" id="menuIti" onclick="loading(); redirectIti();">
                         <i class="fas fa-map"></i> &nbsp; Itinerarios
                         <ul>
-                            <li id="gijonIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiGijon.html'">
-                                <span>Itinerario de GijÃ³n</span>
-                            </li>
-                            <li id="avilesIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiAviles.html'">
-                                <span>Itinerario de AvilÃ©s</span>
-                            </li>
+                        	<c:forEach items="${listaItinerarios}" var="iti">
+                        		<li value="${iti}" onclick="loading();">
+                        			<span>${iti.nombre}</span>
+                        		</li>
+                        	</c:forEach>
                         </ul>
                     </a>
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
-                    <a href="#">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                    <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
@@ -299,7 +261,7 @@
                                         <td>${cliente.nombre}</td>
                                         <td>${cliente.apellidos}</td>
                                         <td>${cliente.email}</td>
-                                        <td>${cliente.fecharegistro}</td>
+                                        <td><fmt:formatDate value="${cliente.fecharegistro}" pattern="dd-MM-yyyy"/></td>
                                         <td class="btnTabla">                                           
                                                 <a href="#infoCliente" data-toggle="modal" class="editar procModalInfoCliente" value="${cliente.email}">
                                                     <i class="fas fa-info"></i>&nbsp;
@@ -328,7 +290,7 @@
                             <table class="table table-striped table-responsive">
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>NÃºmero de clientes</th>
+                                    <th>Número de clientes</th>
                                     <th>Clientes</th>
                                 </tr>
                                 <c:forEach items="${listaRoles}" var="rol">
@@ -353,7 +315,7 @@
                                     <th>Nombre</th>
                                     <th>Fecha de inicio</th>
                                     <th>Fecha de fin</th>
-                                    <th>UbicaciÃ³n</th>
+                                    <th>Ubicación</th>
                                     <th>Participantes</th>
                                     <c:if test="${userRol == 'admin'}">
 	                                    <th class="theadHide"></th>
@@ -363,12 +325,12 @@
                                 <c:forEach items="${listaActividades}" var="actividad">
                                     <tr class="lineaFiltro">
                                         <td>${actividad.nombre}</td>
-                                        <td>${actividad.fechainicio}</td>
-                                        <td>${actividad.fechafin}</td>
+                                        <td><fmt:formatDate value="${actividad.fechainicio}" pattern="dd-MM-yyyy"/></td>
+                                        <td><fmt:formatDate value="${actividad.fechafin}" pattern="dd-MM-yyyy"/></td>
                                         <td>
                                         	<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${actividad.latitud} ${actividad.longitud}">
                                         		<i class="fas fa-map-marker-alt"></i>&nbsp;
-                                        		<span style="font-size: 1em;">Mostrar UbicaciÃ³n</span>
+                                        		<span style="font-size: 1em;">Mostrar Ubicación</span>
                                         	</a>
                                         </td>
                                         <td>${actividad.numparticipantes}</td>
@@ -407,7 +369,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaActividad.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -455,8 +417,8 @@
                             <table class="table table-striped table-responsive">
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>CategorÃ­a</th>
-                                    <th>UbicaciÃ³n</th>
+                                    <th>Categorí­a</th>
+                                    <th>Ubicación</th>
                                     <th>Paradas</th>
                                     <c:if test="${userRol == 'admin'}">
 	                                    <th class="theadHide"></th>
@@ -470,7 +432,7 @@
                                         <td>
 											<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${itinerario.latitud} ${itinerario.longitud}">
                                         		<i class="fas fa-map-marker-alt"></i>&nbsp;
-                                        		<span style="font-size: 1em;">Mostrar UbicaciÃ³n</span>
+                                        		<span style="font-size: 1em;">Mostrar Ubicación</span>
                                         	</a>
 										</td>
                                         <td>
@@ -512,7 +474,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevoItinerario.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -536,7 +498,7 @@
                                     <tr class="lineaFiltro">
                                         <td>${multimedia.cliente.email}</td>
                                         <td>${multimedia.pruebadeportiva.nombre}</td>
-                                        <td>${multimedia.fecha}</td>
+                                        <td><fmt:formatDate value="${multimedia.fecha}" pattern="dd-MM-yyyy"/></td>
                                         <td class="btnTabla">
                                             <form action="Mostrar.do" method="post">
                                                 <input type="hidden" name="tipo" value="multimedia">
@@ -582,7 +544,7 @@
                                     <tr class="lineaFiltro">
                                         <td>${noticia.nombre}</td>
                                         <td>${noticia.texto}</td>
-                                        <td>${noticia.fechaalta}</td>
+                                        <td><fmt:formatDate value="${noticia.fechaalta}" pattern="dd-MM-yyyy"/></td>
                                         <c:if test="${userRol == 'admin'}">
 	                                        <td class="btnTabla">
 	                                            <form action="Mostrar.do" method="post">
@@ -616,7 +578,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaNoticia.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -630,7 +592,7 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Itinerario</th>
-                                    <th>UbicaciÃ³n</th>
+                                    <th>Ubicación</th>
                                     <th>Pruebas</th>
                                     <c:if test="${userRol == 'admin'}">
 	                                    <th class="theadHide"></th>
@@ -644,7 +606,7 @@
                                         <td>
                                         	<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${parada.latitud} ${parada.longitud}">
                                         		<i class="fas fa-map-marker-alt"></i>&nbsp;
-                                        		<span style="font-size: 1em;">Mostrar UbicaciÃ³n</span>
+                                        		<span style="font-size: 1em;">Mostrar Ubicación</span>
                                         	</a>
                                         </td>
                                         <td>
@@ -686,7 +648,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaParada.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -700,7 +662,7 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Cliente</th>
-                                    <th>DescripciÃ³n</th>
+                                    <th>Descripción</th>
                                     <th class="theadHide"></th>
                                     <c:if test="${userRol == 'admin'}">
                                     	<th class="theadHide"></th>
@@ -744,7 +706,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevoPremio.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -798,7 +760,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaCultural.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -814,7 +776,7 @@
 	                                    <th>Nombre</th>
 	                                    <th>Parada</th>
 	                                    <th>Fecha Inicio</th>
-	                                    <th>ExplicaciÃ³n</th>
+	                                    <th>Explicación</th>
 	                                    <th>Puntos</th>
 	                                    <th class="theadHide"></th>
 	                                    <th class="theadHide"></th>
@@ -823,11 +785,11 @@
 	                                    <tr class="lineaFiltro">
 	                                        <td>${deportiva.nombre}</td>
 	                                        <td>${deportiva.parada.nombre}</td>
-	                                        <td>${deportiva.fechainicio}</td>
+	                                        <td><fmt:formatDate value="${deportiva.fechainicio}" pattern="dd-MM-yyyy"/></td>
 	                                        <td>
 	                                        	<a href="#modalPDF" data-toggle="modal" value="${deportiva.explicacion}" class="procModalPDF">
 	                                        		<i class="fas fa-file-pdf"></i>&nbsp;
-	                                        		<span>Mostrar ExplicaciÃ³n</span>
+	                                        		<span>Mostrar Explicación</span>
 	                                        	</a>
 	                                        </td>
 	                                        <td>${deportiva.puntos}</td>
@@ -863,7 +825,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaDeportiva.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -919,7 +881,7 @@
                             <table class="table table-striped table-responsive" id="modalParadasTable">
                                 <tr id="modalParadas">
                                     <th>Nombre</th>
-                                    <th>UbicaciÃ³n</th>
+                                    <th>Ubicación</th>
                                     <th class="theadHide"></th>
                                     <th class="theadHide"></th>
                                 </tr>
@@ -941,7 +903,7 @@
                                 <tr id="modalParadas">
                                     <th>Nombre</th>
                                     <th>Inicio</th>
-                                    <th>ExplicaciÃ³n</th>
+                                    <th>Explicación</th>
                                     <th>Puntos</th>
                                     <th class="theadHide"></th>
                                     <th class="theadHide"></th>
@@ -966,7 +928,7 @@
                         <div class="modal-header">
                             <button class="close" type="button" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="modal-body"><p>Â¿EstÃ¡ seguro de que desea eliminar?</p></div>
+                        <div class="modal-body"><p>¿Está seguro de que desea eliminar?</p></div>
                         <div class="modal-footer">
                             <button class="btn" id="btnEliminarModal">Eliminar</button>
                             <button class="btn" data-dismiss="modal">Cancelar</button>
@@ -998,7 +960,7 @@
 			                        <span id="infoClienteFechaNac"></span>
 			                    </p>
 			                    <p>
-			                        <strong>Correo Electr&oacute;nico: </strong>
+			                        <strong>Correo Electrónico: </strong>
 			                        <span id="infoClienteEmail"></span>
 			                    </p>
 			                    <p>
@@ -1012,11 +974,11 @@
 			                        <span id="infoClienteTelefono"></span>
 			                    </p>
 			                    <p>
-			                        <strong>Direcci&oacute;n: </strong>
+			                        <strong>Dirección: </strong>
 			                        <span id="infoClienteDireccion"></span>
 			                    </p>
 			                    <p>
-			                        <strong>C&oacute;digo Postal: </strong>
+			                        <strong>Código Postal: </strong>
 			                        <span id="infoClienteCP"></span>
 			                    </p>
 			                    <p>
@@ -1049,7 +1011,7 @@
 			                        <span id="infoPremioCliente"></span>
 			                    </p>
 			                    <p>
-			                        <strong>Fecha de Activaci&oacute;n: </strong>
+			                        <strong>Fecha de Activación: </strong>
 			                        <span id="infoPremioActivacion"></span>
 			                    </p>
 			                    <p>
@@ -1063,7 +1025,7 @@
 			                </div>
 			                <div id="infoPremioINfoSecundaria">
 			                    <p>
-			                        <strong>Descripci&oacute;n: </strong><br/>
+			                        <strong>Descripción: </strong><br/>
 			                        <span id="infoPremioDescripcion"></span>
 			                    </p>
 			                </div>
@@ -1075,7 +1037,7 @@
              		<div class="modal-dialog">
              			<div class="modal-header">
              				<button class="close" type="button" data-dismiss="modal">&times;</button>
-             				<h4 class="modal-title">UbicaciÃ³n</h4>
+             				<h4 class="modal-title">Ubicación</h4>
              			</div>
              			<div class="modal-body">
              				<div id="mapTabla"></div>
@@ -1087,7 +1049,7 @@
              		<div class="modal-dialog modal-lg">
              			<div class="modal-header">
              				<button class="close" type="button" data-dismiss="modal">&times;</button>
-             				<h4 class="modal-title">ExplicaciÃ³n</h4>
+             				<h4 class="modal-title">Explicación</h4>
              			</div>
              			<div class="modal-body">
              				<div>
@@ -1116,5 +1078,44 @@
                     <p>Gamiastur &copy; 2018</p>
                 </footer>
              </body>
+             
+             <script> 
+                	var stringParadas = "[";
+
+                	<c:forEach items="${listaParadas}" var="parada" varStatus="status">
+						stringParadas += '{"nombre": "${parada.nombre}", "itinerario": "${parada.itinerario.nombre}", "latitud": "${parada.latitud}", "longitud": "${parada.longitud}"}';
+						<c:if test="${!status.last}"> stringParadas += ","</c:if>					
+					</c:forEach>
+					stringParadas += "]";
+
+                	var stringDeportivas = "[";
+					<c:forEach items="${listaDeportivas}" var="deportiva" varStatus="status">
+						stringDeportivas += '{"nombre": "${deportiva.nombre}", "parada": "${deportiva.parada.nombre}", "fechainicio": "<fmt:formatDate value="${deportiva.fechainicio}" pattern="dd-MM-yyyy"/>", "explicacion": "${deportiva.explicacion}", "puntos": "${deportiva.puntos}"}';
+						<c:if test="${!status.last}"> stringDeportivas += ","</c:if>					
+					</c:forEach>
+					stringDeportivas += "]";
+
+                	var stringCulturales = "[";
+					<c:forEach items="${listaCulturales}" var="cultural" varStatus="status">
+						stringCulturales += '{"nombre": "${cultural.nombre}", "parada": "${cultural.parada.nombre}", "puntos": "${cultural.puntos}"}';
+						<c:if test="${!status.last}"> stringCulturales += ","</c:if>					
+					</c:forEach>
+					stringCulturales += "]";
+
+					var stringClientes = "[";
+					<c:forEach items="${listaClientes}" var="cliente" varStatus="status">
+						stringClientes += '{"email": "${cliente.email}", "nombre": "${cliente.nombre}", "apellidos": "${cliente.apellidos}", "fechanacimiento": "<fmt:formatDate value="${cliente.fechanacimiento}" pattern="dd-MM-yyyy"/>", "rol": "${cliente.rol.nombre}", "telefono": "${cliente.telefono}", "direccion": "${cliente.direccion}", "codigopostal": "${cliente.codigopostal}", "puntosacumulados": "${cliente.puntosacumulados}", "fecharegistro": "<fmt:formatDate value="${cliente.fecharegistro}" pattern="dd-MM-yyyy"/>"}';
+						<c:if test="${!status.last}">stringClientes += ","</c:if>
+					</c:forEach>					
+					stringClientes += "]";
+					
+					var stringPremios = "[";					
+					<c:forEach items="${listaPremios}" var="premio" varStatus="status">
+						stringPremios += '{"nombre": "${premio.nombre}", "cliente": "${premio.cliente.email}", "descripcion": "${premio.descripcion}", "fechaactivacion": "<fmt:formatDate value="${premio.fechaactivacion}" pattern="dd-MM-yyyy"/>", "fechaconsumo": "<fmt:formatDate value="${premio.fechaconsumo}" pattern="dd-MM-yyyy"/>", "puntos": "${premio.puntos}"}';
+						<c:if test="${!status.last}">stringPremios += ","</c:if>
+					</c:forEach>					
+					stringPremios += "]";
+					
+                </script>
 
             </html>

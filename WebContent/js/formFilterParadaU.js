@@ -40,6 +40,7 @@ $(document).ready(function () {
             }
         }
 
+        /*
         if ($("textarea[name=historia]").val().length > 200){
             $("#mensajeError").append("<p>El texto correspondiente a la historia es demasiado largo.</p>");
             $("textarea[name=historia]").addClass("has-warning");
@@ -59,6 +60,22 @@ $(document).ready(function () {
             $("textarea[name=gastronomia]").addClass("has-warning");
             
             submit = false;
+        }
+        */
+        if(typeof $("input[name=archivoImg]").get(0).files[0] != "undefined"){
+	        if ($("input[name=archivoImg]").files[0].size > 5242880){
+	            $("#mensajeError").append("<p>La imagen seleccionada es demasiado grande.</p>");
+	
+	            submit = false;
+	        }
+        }
+
+        if(typeof $("input[name=archivoVideo]").get(0).files[0] != "undefined"){
+	        if ($("input[name=archivoVideo]").get(0).files[0].size > 15728640){
+	            $("#mensajeError").append("<p>El v&iacute;deo seleccionado es demasiado grande.</p>");
+	
+	            submit = false;
+	        }
         }
 
         if(checkNParada){

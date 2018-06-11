@@ -1,0 +1,54 @@
+
+.premioItem{
+	margin: 40px auto 30px auto;
+}
+
+.premioImg, .premioNombre, .premioData, .premioDesc, .premioActiva{
+    border-right: 1px solid #1F2729;
+    border-left: 1px solid #1F2729;
+}
+
+.premioImg{	
+	border-top: 1px solid #1F2729;
+	width: 100%;
+	height: 200px;
+}
+
+.premioImg>img{
+	width: 100%;
+	max-height: 200px;
+	height: auto;
+}
+
+.premioDesc{
+	padding: 10px 15px;
+	max-height: 90px;
+}
+
+.premioDesc span{
+	font-size: 0.8em;
+	display: inline-block;
+	min-height: 50px;
+	max-height: 75px;
+}
+
+.premioActiva{
+	border-bottom: 1px solid #1F2729;
+}
+
+.premioActiva a {
+	margin-top: 20px;
+	margin-bottom: 25px;
+}
+
+.h3 {
+	margin: 0;
+	padding-top: 15px;
+	padding-bottom: 20px;
+}
+
+.premioData span{
+	font-size: 0.7em;
+	padding: 7px 0;
+}
+

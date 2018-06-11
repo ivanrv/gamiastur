@@ -1,0 +1,73 @@
+
+.h3{
+	margin: 0;
+	padding: 20px 0;
+}
+
+#teamContainer{
+	margin-top:35px;
+}
+
+.teamItem{
+	margin-top: 20px;
+}
+
+.teamItem>.teamImg, .teamItem>.teamNombre, .teamItem>.teamInfo, .teamItem>.teamContact {
+	border-left: 1px solid #1F2729;
+	border-right: 1px solid #1F2729;
+}
+
+.teamItem>.teamImg{
+	border-top: 1px solid #1F2729;
+	border-bottom: 1px solid #1F2729;
+}
+
+.teamItem>.teamContact{
+	border-bottom: 1px solid #1F2729;
+}
+
+.teamImg>img{
+	width: 100%;
+	height: auto;
+	max-height: 300px;
+}
+
+.teamInfo{
+	padding: 0 15px;
+}
+
+.teamInfo>span{
+	font-size: 0.8em;
+}
+
+.teamContact{
+	padding: 10px 25px 15px 25px;
+}
+
+.teamContact span{
+	font-size: 0.7em;
+}
+
+.teamSocials i{
+	margin: 15px;
+}
+
+#locationContainer{
+	margin-top: 35px;
+}
+
+#locationContainer h2{
+	margin-bottom: 25px;
+}
+
+.locationDireccion{
+	font-size: 0.75em;
+}
+
+#locationMap{
+	height: 100%;
+	width: auto;
+	min-height: 200px;
+	min-width: 450px;
+	border: 1px solid #1F2729;
+}

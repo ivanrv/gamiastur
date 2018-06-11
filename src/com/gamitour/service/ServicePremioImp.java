@@ -46,4 +46,9 @@ public class ServicePremioImp implements ServicePremio {
 		return p.buscarNombres();
 	}
 
+	@Override
+	public List<Premio> buscarDisponibles() {
+		return p.buscarDisponibles();
+	}
+
 }

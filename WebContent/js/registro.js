@@ -97,22 +97,35 @@ $(document).ready(function () {
                 }
             }
         }
-
+        
         if ($("input[name=fechaNac]").val() == "") {
             $("#mensajeError").append("<p>La fecha de nacimiento es un dato obligatorio.</p>");
             $("input[name=fechaNac]").addClass("has-warning");
 
             submit = false;
+        } else {
+            /* Comprobación fecha de nacimiento < 2010 */
+
+            var fInicio = $("input[name=fechaNac]").val().split("-");
+
+            if (new Date(fInicio[2], fInicio[1] - 1, fInicio[0]) > new Date(2010, 0, 1)) {
+                $("#mensajeError").append("<p>La fecha de nacimiento no puede ser posterior a 2010.</p>");
+                $("input[name=fechaNac]").addClass("has-warning");
+
+                submit = false;
+            } 
         }
+        
+        $(".has-warning").click(function () {
+            $(this).select();
+        });
 
         if (submit) {
             loading();
             $("#regForm").submit();
         } else {
             $("#modalError").modal();
-        }
-
-        
+        }        
     });
 });
 

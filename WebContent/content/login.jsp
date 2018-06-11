@@ -1,12 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
 
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
@@ -33,7 +34,16 @@
     </script>
 </head>
 
-<body>
+<body>		
+<c:if test="${itinerarios == null}">
+    <jsp:useBean id="sItinerarioImp" class="com.gamitour.service.ServiceItinerarioImp" />
+
+	<%
+		ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
+		request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+	%>
+</c:if>
+	
  <div id="loader">
 			        <div class="sk-folding-cube">
 			            <div class="sk-cube1 sk-cube"></div>
@@ -44,53 +54,52 @@
 			    </div>
 
     <header>
-        <a href="${pageContext.servletContext.contextPath}/index.html">
+        <a href="${pageContext.servletContext.contextPath}/index.jsp">
             <img src="${pageContext.servletContext.contextPath}/images/logos/logo gris.png">
         </a>
     </header>
 
     <nav data-spy="affix" data-offset-top="150">
-        <a href="${pageContext.servletContext.contextPath}/index.html">
-            <i class="fas fa-home"></i> &nbsp; Inicio</a>
-        <a href="#">
-            <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
-        <a href="#">
-            <i class="fas fa-search"></i> &nbsp; Actividades</a>
-        <a href="#" id="menuIti">
-            <i class="fas fa-map"></i> &nbsp; Itinerarios
-            <ul>
-                <li id="gijonIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiGijon.html'">
-                    <span>Itinerario de GijÃ³n</span>
-                </li>
-                <li id="avilesIti" onclick="location.href='${pageContext.servletContext.contextPath}/content/itiAviles.html'">
-                    <span>Itinerario de AvilÃ©s</span>
-                </li>
-            </ul>
-        </a>
-        <a href="#">
-            <i class="fas fa-trophy"></i> &nbsp; Premios</a>
-        <a href="#">
-            <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
-    </nav>
+                    <a href="${pageContext.servletContext.contextPath}/index.jsp" onclick="loading();">
+                        <i class="fas fa-home"></i> &nbsp; Inicio</a>
+                    <a href="${pageContext.servletContext.contextPath}/content/noticias.jsp" onclick="loading();">
+                        <i class="far fa-newspaper"></i> &nbsp; Noticias</a>
+                    <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" onclick="loading();">
+                        <i class="fas fa-search"></i> &nbsp; Actividades</a>
+                   <a href="javascript:void(0)" id="menuIti" onclick="loading(); redirectIti();">
+                        <i class="fas fa-map"></i> &nbsp; Itinerarios
+                        <ul>
+                        	<c:forEach items="${itinerarios}" var="iti">
+                        		<li value="${iti}" onclick="loading();">
+                        			<span>${iti}</span>
+                        		</li>
+                        	</c:forEach>
+                        </ul>
+                    </a>
+                    <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
+                        <i class="fas fa-trophy"></i> &nbsp; Premios</a>
+                    <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
+                </nav>
 
     <div class="content">
-        <h1>Inicia SesiÃ³n:</h1>
+        <h1>Inicia Sesión:</h1>
         <form action="Login.do" method="post">
             <div class="inputCon input-effect">
                 <input type="email" name="email" placeholder="" class="textIn" value="${prevEmail}" required/>
-                <label>Correo ElectrÃ³nico</label>
+                <label>Correo Electrónico</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
                 <input type="password" name="password" placeholder="" class="textIn" required/>
-                <label>ContraseÃ±a</label>
+                <label>Contraseña</label>
                 <span class="focus-border"></span>
             </div>
             <div>
                 <input type="submit" class="btn" value="Iniciar SesiÃ³n" onclick="loading();">
-                <span>Â¿AÃºn no tienes cuenta?
-                    <a href="${pageContext.servletContext.contextPath}/content/registro.jsp">RegÃ­strate</a>
+                <span>¿Aún no tienes cuenta?
+                    <a href="${pageContext.servletContext.contextPath}/content/registro.jsp">Regí­strate</a>
                 </span>
             </div>
 

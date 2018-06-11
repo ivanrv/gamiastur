@@ -3,12 +3,14 @@ package com.gamitour.util;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gamitour.accion.Activa;
 import com.gamitour.accion.EliminarUno;
 import com.gamitour.accion.Login;
 import com.gamitour.accion.Logout;
 import com.gamitour.accion.MostrarAccion;
 import com.gamitour.accion.MostrarUno;
 import com.gamitour.accion.Nuevo;
+import com.gamitour.accion.Reserva;
 import com.gamitour.accion.Update;
 
 public abstract class Accion {
@@ -44,6 +46,14 @@ public abstract class Accion {
 		
 		if(tipo.equals("Update")){
 			accion = new Update();
+		}
+		
+		if(tipo.equals("Reserva")) {
+			accion = new Reserva();
+		}
+		
+		if(tipo.equals("Activa")) {
+			accion = new Activa();
 		}
 		
 		return accion;

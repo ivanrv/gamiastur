@@ -1,19 +1,21 @@
 package com.gamitour.accion;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FilenameUtils;
+
 import com.gamitour.modelo.Actividad;
+import com.gamitour.modelo.Cliente;
 import com.gamitour.modelo.Itinerario;
 import com.gamitour.modelo.Noticia;
 import com.gamitour.modelo.Parada;
-import com.gamitour.modelo.Premio;
 import com.gamitour.modelo.Pruebacultural;
 import com.gamitour.modelo.Pruebadeportiva;
 import com.gamitour.service.ServiceActividad;
@@ -48,6 +50,8 @@ public class Update extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		Calendar fecha = Calendar.getInstance();
+		String retorno = null;
 
 		ServiceCliente sCliente = new ServiceClienteImp();
 		ServiceItinerario sItinerario = new ServiceItinerarioImp();
@@ -60,7 +64,44 @@ public class Update extends Accion{
 
 		switch(request.getParameter("tipo")){
 		case "cliente":
-			request.getSession().setAttribute("listaClientes", sCliente.buscarTodos());
+			Cliente cliente = sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString());
+			
+			if (!cliente.getNombre().equals(request.getParameter("nombre"))) {
+				cliente.setNombre(request.getParameter("nombre"));				
+				request.getSession().setAttribute("username", cliente.getNombre() + " " + cliente.getApellidos().substring(0, cliente.getApellidos().indexOf(" ")));
+			}
+			
+			if (!cliente.getApellidos().equals(request.getParameter("apellidos"))) {
+				cliente.setApellidos(request.getParameter("apellidos"));				
+				request.getSession().setAttribute("username", cliente.getNombre() + " " + cliente.getApellidos().substring(0, cliente.getApellidos().indexOf(" ")));
+			}
+			
+			if (!cliente.getEmail().equals(request.getParameter("email"))) {
+				cliente.setEmail(request.getParameter("email"));
+				request.getSession().setAttribute("userEmail", cliente.getEmail());
+			}
+			
+			try {
+				cliente.setFechanacimiento(sdf.parse(request.getParameter("fechanacimiento")));
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
+			
+			if (!request.getParameter("telefono").equals(""))
+				cliente.setTelefono(request.getParameter("telefono"));
+			
+			if(!request.getParameter("direccion").equals(""))
+				cliente.setDireccion(request.getParameter("direccion"));
+			
+			if(!request.getParameter("codigopostal").equals(""))
+				cliente.setCodigopostal(request.getParameter("codigopostal"));
+			
+			if(!request.getParameter("password").equals(""))
+				cliente.setPassword(request.getParameter("password"));
+			
+			sCliente.actualizar(cliente);
+			
+			retorno = "perfil.jsp";
 			break;
 			
 		case "actividad":
@@ -76,7 +117,7 @@ public class Update extends Accion{
 				actividad.setPuntos(Integer.parseInt(request.getParameter("puntos")));
 				
 				if(request.getPart("archivo") != null)
-					actividad.getImagenactividads().iterator().next().setArchivo("/actividades/" + request.getParameter("nombre") + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+					actividad.getImagenactividads().iterator().next().setArchivo("/actividades/" + request.getParameter("nombre") + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				if(!request.getParameter("fin").equals(""))
 					actividad.setFechafin(sdf.parse(request.getParameter("fin")));
@@ -87,6 +128,8 @@ public class Update extends Accion{
 				sImgAct.actualizar(actividad.getImagenactividads().iterator().next());
 				sActividad.actualizar(actividad);
 				request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());
+				request.getSession().setAttribute("flag", "tablaActividades");
+				retorno = "Admin.do";
 			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
 				e.printStackTrace();
 			}			
@@ -107,6 +150,10 @@ public class Update extends Accion{
 			
 			sItinerario.actualizar(itinerario);
 			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
+			if(request.getSession().getAttribute("itinerarios") != null)
+				request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+			request.getSession().setAttribute("flag", "tablaItinerarios");
+			retorno = "Admin.do";
 			break;
 			
 		case "multimedia":
@@ -123,13 +170,15 @@ public class Update extends Accion{
 				noticia.setTexto(request.getParameter("texto"));
 				
 				if(request.getPart("archivo") != null)
-					noticia.setImagen("/noticias/" + noticia.getNombre() + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+					noticia.setImagen("/noticias/" + noticia.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				if(!request.getParameter("caducidad").equals(""))
 					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));
 				
 				sNoticia.actualizar(noticia);
 				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
+				request.getSession().setAttribute("flag", "tablaNoticias");
+				retorno = "Admin.do";
 			} catch (ParseException | IOException | ServletException e) {
 				e.printStackTrace();
 			}
@@ -149,13 +198,12 @@ public class Update extends Accion{
 			
 			if(!request.getParameter("gastronomia").equals(""))
 				parada.setGastronomia(request.getParameter("gastronomia"));
-			
 			try {
 				if(request.getPart("archivoImg") != null)
-					parada.setImagen("/paradas/" + parada.getNombre() + "-" + Paths.get(request.getPart("archivoImg").getSubmittedFileName()).getFileName().toString());
+					parada.setImagen("/paradas/" + parada.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoImg").getSubmittedFileName()));
 				
 				if(request.getPart("archivoVideo") != null)
-					parada.setVideo("/paradas/" + parada.getNombre() + "-" + Paths.get(request.getPart("archivoVideo").getSubmittedFileName()).getFileName().toString());
+					parada.setVideo("/paradas/" + parada.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoVideo").getSubmittedFileName()));
 			} catch (IOException | ServletException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
@@ -166,6 +214,8 @@ public class Update extends Accion{
 			
 			sParada.actualizar(parada);
 			request.getSession().setAttribute("listaParadas", sParada.buscarTodos());
+			request.getSession().setAttribute("flag", "tablaParadas");
+			retorno = "Admin.do";
 			break;
 			
 		case "premio":
@@ -184,6 +234,8 @@ public class Update extends Accion{
 			
 			sPruebaCultural.actualizar(cultural);
 			request.getSession().setAttribute("listaCulturales", sPruebaCultural.buscarTodos());
+			request.getSession().setAttribute("flag", "tablaCulturales");
+			retorno = "Admin.do";
 			break;
 			
 		case "deportiva":
@@ -198,10 +250,12 @@ public class Update extends Accion{
 					deportiva.setFechafin(sdf.parse(request.getParameter("fin")));
 				
 				if(request.getPart("archivo") != null)
-					deportiva.setExplicacion("/deportivas/" + deportiva.getNombre() + "-" + Paths.get(request.getPart("archivo").getSubmittedFileName()).getFileName().toString());
+					deportiva.setExplicacion("/deportivas/" + deportiva.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				sPruebaDeportiva.actualizar(deportiva);
 				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
+				request.getSession().setAttribute("flag", "tablaDeportivas");
+				retorno = "Admin.do";
 			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
 				e.printStackTrace();
 			}
@@ -213,7 +267,7 @@ public class Update extends Accion{
 			break;
 		}		
 		
-		return "/content/admin/mostrarAdmin.jsp";
+		return retorno;
 	}
 
 }
