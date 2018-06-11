@@ -72,7 +72,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -103,7 +103,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
@@ -121,7 +121,7 @@
 									<div class="col-xs-2 text-center">
 										<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${cliAct.actividad.latitud} ${cliAct.actividad.longitud}">
                                         	<i class="fas fa-map-marker-alt"></i>&nbsp;
-                                        	<span>Mostrar UbicaciÃ³n</span>
+                                        	<span>Mostrar Ubicación</span>
                                         </a>
 									</div>
 									<div class="col-xs-2 text-right">
@@ -133,7 +133,7 @@
 							<c:if test="${fn:length(clienteActividades) == 0 }">
 									<div class="col-xs-12 text-center">
 										<h3 class="h3">-- No existe ninguna actividad para mostrar --</h3>
-										<h4 class="h4">-- Echa un vistazo a nuestras actividades <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" onclick="loading();">aquÃ­</a> --</h4>
+										<h4 class="h4">-- Echa un vistazo a nuestras actividades <a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" onclick="loading();">aquí­</a> --</h4>
 									</div>
 							</c:if>	
 						</div>
@@ -143,7 +143,7 @@
                 <div id="modalCancelar" class="modal fade" role="dialog">
 			        <div class="modal-dialog">
 			            <div class="modal-body" id="mensajeBorrar">
-			            	<p class="text-center">Â¿EstÃ¡ seguro de querer abandonar esta actividad?</p>
+			            	<p class="text-center">¿Está seguro de querer abandonar esta actividad?</p>
 			            </div>
 			            <div class="modal-footer">
 			                <form action="Reserva.do" method="post">

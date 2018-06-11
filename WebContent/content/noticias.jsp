@@ -62,7 +62,7 @@
                     <c:if test="${username == null}">
 	                    <div class="anonimo">
 				            <a href="${pageContext.servletContext.contextPath}/content/registro.jsp" id="signin">Registrarse</a>
-				            <a href="${pageContext.servletContext.contextPath}/content/login.jsp" id="login">Iniciar SesiÃ³n</a>
+				            <a href="${pageContext.servletContext.contextPath}/content/login.jsp" id="login">Iniciar Sesión</a>
 				        </div>			                    
                     </c:if>
 
@@ -77,7 +77,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -108,11 +108,11 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
-					<h1 class="text-center">Ãšltimas Noticias</h1>
+					<h1 class="text-center">Últimas Noticias</h1>
 					<div id="noticiasContainer" class="row">
                 		<c:forEach items="${noticias}" var="noticia">
                 			<div class="col-xs-3 noticiaItem">
@@ -127,14 +127,14 @@
                 				</div>
                 				
                 				<div class="noticiaMas text-center">
-                					<a class="btn" href="">Ver mÃ¡s</a>
+                					<a class="btn" href="">Ver más</a>
                 				</div>
                 			</div>
                 		</c:forEach>
                 		
                 		<c:if test="${fn:length(noticias) == 0 }">
                 			<h2 class="h2 text-center">-- Actualmente no tenemos ninguna noticia disponible --</h2>
-                			<h3 class="h3 text-center">IntÃ©ntalo en otro momento</h3>
+                			<h3 class="h3 text-center">Inténtelo en otro momento</h3>
                 		</c:if>
                 	</div>
                 </div>

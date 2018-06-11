@@ -60,7 +60,7 @@
                     <c:if test="${username == null}">
 	                    <div class="anonimo">
 				            <a href="${pageContext.servletContext.contextPath}/content/registro.jsp" id="signin">Registrarse</a>
-				            <a href="${pageContext.servletContext.contextPath}/content/login.jsp" id="login">Iniciar SesiÃ³n</a>
+				            <a href="${pageContext.servletContext.contextPath}/content/login.jsp" id="login">Iniciar Sesión</a>
 				        </div>			                    
                     </c:if>
 
@@ -75,7 +75,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -106,7 +106,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" class="actual" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
@@ -133,8 +133,8 @@
                 		</c:forEach>
                 		
                 		<c:if test="${fn:length(premios) == 0 }">
-                			<h2 class="h2 text-center">-- Actualmente no tenemos ningÃºn premio disponible --</h2>
-                			<h3 class="h3 text-center">IntÃ©ntalo en otro momento</h3>
+                			<h2 class="h2 text-center">-- Actualmente no tenemos ningún premio disponible --</h2>
+                			<h3 class="h3 text-center">Inténtelo en otro momento</h3>
                 		</c:if>
                 	</div>
                 </div>
@@ -142,7 +142,7 @@
                 <div id="modalActivar" class="modal fade" role="dialog">
 			        <div class="modal-dialog">
 			            <div class="modal-body" id="mensajeBorrar">
-			            	<p class="text-center">Â¿EstÃ¡ seguro de querer activar este premio?</p>
+			            	<p class="text-center">¿Está seguro de querer activar este premio?</p>
 			            </div>
 			            <div class="modal-footer">
 			                <form action="Activa.do" method="post">

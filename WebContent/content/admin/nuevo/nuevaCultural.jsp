@@ -62,7 +62,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -92,7 +92,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
                 
                 <div class="content">

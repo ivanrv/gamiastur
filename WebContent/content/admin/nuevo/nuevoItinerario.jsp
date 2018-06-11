@@ -66,7 +66,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -96,7 +96,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
@@ -116,18 +116,18 @@
 	                        </div>
 	                        <div class="inputCon input-effect" style="margin-bottom: 35px">
 	                            <input class="textIn" type="text" name="categoria" placeholder="" required/>
-	                            <label>CategorÃ­a *</label>
+	                            <label>Categorí­a *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
 	                        <div class="inputCon input-effect" style="margin-bottom: 35px">
 	                            <input class="textIn" type="text" name="duracion" placeholder="" required/>
-	                            <label>DuraciÃ³n *</label>
+	                            <label>Duración *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
 	                         
                            	<div id="floating-paner" class="inputCon input-effect" style="margin-bottom: 15px;">
                            		<input id="address" type="textbox" class="textIn"/>
-                           		<label>Introduzca una direcciÃ³n a buscar</label>
+                           		<label>Introduzca una dirección a buscar</label>
                                	<span class="focus-border"></span>
                            	</div>    
                            	<div id="mapForm" style="height:275px; margin-bottom: 35px;"></div>                  

@@ -79,27 +79,27 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
     <div class="content">
-        <h1>Inicia SesiÃ³n:</h1>
+        <h1>Inicia Sesión:</h1>
         <form action="Login.do" method="post">
             <div class="inputCon input-effect">
                 <input type="email" name="email" placeholder="" class="textIn" value="${prevEmail}" required/>
-                <label>Correo ElectrÃ³nico</label>
+                <label>Correo Electrónico</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
                 <input type="password" name="password" placeholder="" class="textIn" required/>
-                <label>ContraseÃ±a</label>
+                <label>Contraseña</label>
                 <span class="focus-border"></span>
             </div>
             <div>
                 <input type="submit" class="btn" value="Iniciar SesiÃ³n" onclick="loading();">
-                <span>Â¿AÃºn no tienes cuenta?
-                    <a href="${pageContext.servletContext.contextPath}/content/registro.jsp">RegÃ­strate</a>
+                <span>¿Aún no tienes cuenta?
+                    <a href="${pageContext.servletContext.contextPath}/content/registro.jsp">Regí­strate</a>
                 </span>
             </div>
 

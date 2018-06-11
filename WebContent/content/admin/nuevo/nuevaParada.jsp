@@ -78,7 +78,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -107,7 +107,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
@@ -133,7 +133,7 @@
                                 </div>                                
                                 <div class="inputCon input-effect">
                                     <input class="textIn" type="number" name="nParada" placeholder="" required/>
-                                    <label>NÃºmero de Parada *</label>
+                                    <label>Número de Parada *</label>
                                     <span class="focus-border"></span>
                                 </div>
                                 <div class="inputCon input-effect">
@@ -146,7 +146,7 @@
                             <div style="height:325px">  
                             	<div id="floating-paner" class="inputCon input-effect" style="margin-bottom: 15px">
                             		<input id="address" type="textbox" class="textIn"/>
-                            		<label>Introduzca una direcciÃ³n a buscar</label>
+                            		<label>Introduzca una dirección a buscar</label>
                                 	<span class="focus-border"></span>
                             	</div>                      
 	                            <div id="mapForm" style="height:85%"></div>
@@ -168,7 +168,7 @@
                             </div>
                             <div class="inputCon input-effect">
                                 <textarea class="textIn taShare" name="gastronomia" placeholder="" required rows="10"></textarea>
-                                <label>Gastronomia</label>
+                                <label>Gastronomía</label>
                                 <span class="focus-border"></span>
                             </div>
                         </div>
@@ -177,7 +177,7 @@
 					        <div class="modal-dialog modal-lg">
 					            <div class="modal-body" id="subidaImg">
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
-		                            	AÃ±adir Imagen
+		                            	Añadir Imagen
 		                            	<input type="file" name="archivoImg" onchange="readURL(this)" accept=".jpg, .png, .jpeg, .gif, .bmp" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
@@ -194,7 +194,7 @@
 					        <div class="modal-dialog modal-lg">
 					            <div class="modal-body" id="subidaVideo">
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
-		                            	AÃ±adir VÃ­deo
+		                            	Añadir Ví­deo
 		                            	<input type="file" name="archivoVideo" onchange="readURL(this)" accept=".mp4" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
@@ -211,8 +211,8 @@
                         
 
                         <div class="sbmt">
-                        	<a href="#modalImg" class="btn" data-toggle="modal">AÃ±adir Imagen</a>
-                        	<a href="#modalVideo" class="btn" data-toggle="modal">AÃ±adir VÃ­deo</a>
+                        	<a href="#modalImg" class="btn" data-toggle="modal">Añadir Imagen</a>
+                        	<a href="#modalVideo" class="btn" data-toggle="modal">Añadir Vídeo</a>
                             <a id="enviar" class="btn">Crear Parada</a>
                         </div>
                         </form>

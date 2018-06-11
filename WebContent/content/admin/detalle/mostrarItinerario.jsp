@@ -57,7 +57,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -87,14 +87,14 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
                 	<a id="backPanel" href="Admin.do" onclick="loading();"><i class="fas fa-undo-alt"></i>&nbsp; Volver al panel de control</a>
                 	
 					<div class="tit">              
-                    	<h1>Datos del nuevo Itinerario:</h1>
+                    	<h1>Modificación de itinerario Itinerario: ${itinerario.nombre}</h1>
                     	<span>Los campos marcados con asteriscos son obligatorios</span>
                     </div>
                     <div style="width: 30%; margin: 35px auto; height: 475px">
@@ -103,19 +103,19 @@
 	                        <input type="hidden" name="nombre" value="${itinerario.nombre}">
 	                        <div class="inputCon input-effect" style="margin-bottom:35px">
 	                            <input class="textIn has-content" type="text" name="categoria" placeholder="" value="${itinerario.categoria}" required />
-	                            <label>CategorÃ­a *</label>
+	                            <label>Categorí­a *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
 	                        <div class="inputCon input-effect" style="margin-bottom:25px">
 	                            <input class="textIn has-content" type="text" name="duracion" placeholder="" value="${itinerario.duracion}" required/>
-	                            <label>DuraciÃ³n *</label>
+	                            <label>Duración *</label>
 	                            <span class="focus-border"></span>
 	                        </div>
 	                       
 	                       <div style="height:250px;">  
                             	<div id="floating-paner" class="inputCon input-effect" style="margin-bottom: 15px">
                             		<input id="address" type="textbox" class="textIn"/>
-                            		<label>Introduzca una direcciÃ³n a buscar</label>
+                            		<label>Introduzca una dirección a buscar</label>
                                 	<span class="focus-border"></span>
                             	</div>                      
 	                            <div id="mapForm" style="height:100%"></div>

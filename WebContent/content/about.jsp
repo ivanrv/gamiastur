@@ -9,7 +9,7 @@
                 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                <title>QuiÃ©nes somos</title>
+                <title>Quiénes somos</title>
 
                 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
                 <link rel="icon" href="${pageContext.servletContext.contextPath}/images/logos/favicon.png">
@@ -55,7 +55,7 @@
                     <c:if test="${username == null}">
 	                    <div class="anonimo">
 				            <a href="${pageContext.servletContext.contextPath}/content/registro.jsp" id="signin">Registrarse</a>
-				            <a href="${pageContext.servletContext.contextPath}/content/login.jsp" id="login">Iniciar SesiÃ³n</a>
+				            <a href="${pageContext.servletContext.contextPath}/content/login.jsp" id="login">Iniciar Sesión</a>
 				        </div>			                    
                     </c:if>
 
@@ -70,7 +70,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -101,11 +101,11 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" class="actual" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
-					<h1 class="text-center">Descubre QuiÃ©nes Somos</h1>
+					<h1 class="text-center">Descubre Quiénes Somos</h1>
 					
 					<div class="row" id="teamContainer">
 						<div class="col-xs-3 teamItem">
@@ -114,7 +114,7 @@
 							</div>
 							
 							<div class="teamNombre">
-								<h3 class="h3 text-center">Imanol FernÃ¡ndez GarcÃ­a</h3>
+								<h3 class="h3 text-center">Imanol Fernández García</h3>
 							</div>
 							
 							<div class="teamInfo text-center">
@@ -134,7 +134,7 @@
 							</div>
 							
 							<div class="teamNombre">
-								<h3 class="h3 text-center">IvÃ¡n RodrÃ­guez ValdÃ©s</h3>
+								<h3 class="h3 text-center">Iván Rodrí­guez Valdés</h3>
 							</div>
 							
 							<div class="teamInfo text-center">
@@ -154,7 +154,7 @@
 							</div>
 							
 							<div class="teamNombre">
-								<h3 class="h3 text-center">Francisco Javier Rubio Ãlvarez</h3>
+								<h3 class="h3 text-center">Francisco Javier Rubio Álvarez</h3>
 							</div>
 							
 							<div class="teamInfo text-center">
@@ -174,7 +174,7 @@
 							</div>
 							
 							<div class="teamNombre">
-								<h3 class="h3 text-center">Daniel TascÃ³n Coalla</h3>
+								<h3 class="h3 text-center">Daniel Tascón Coalla</h3>
 							</div>
 							
 							<div class="teamInfo text-center">
@@ -190,13 +190,13 @@
 					</div>
 					
 					<div class="row" id="locationContainer">
-						<h2 class="h2 text-center">DÃ³nde Estamos</h2>
+						<h2 class="h2 text-center">Dónde Estamos</h2>
 						<div class="col-xs-3"></div>
 						
 						<div class="col-xs-3 text-right">
 							<h3 class="h3">Gamiastur</h3>
 							<p class="locationDireccion">Calle Luis Moya Blanco, 335</p>
-							<p class="locationDireccion">33203 GijÃ³n - Asturias - EspaÃ±a</p>
+							<p class="locationDireccion">33203 Gijón - Asturias - España</p>
 							<p class="locationDireccion"><i class="fas fa-phone"></i> &nbsp; 985 185 500</p>
 							<p class="locationDireccion"><i class="far fa-envelope"></i> &nbsp; info@gamiastur.com</p>							
 						</div>

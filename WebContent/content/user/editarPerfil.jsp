@@ -81,7 +81,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -112,7 +112,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
@@ -156,25 +156,25 @@
 								
 									<div class="inputCon input-effect">
 						                <input type="text" name="telefono" placeholder="" class="textIn" <c:if test="${cliente.telefono != null }">class="has-content"</c:if> required value="${cliente.telefono}" />
-						                <label>TelÃ©fono</label>
+						                <label>Teléfono</label>
 						                <span class="focus-border"></span>
 						            </div>
 									
 									<div class="inputCon input-effect">
 						                <input type="text" name="direccion" placeholder="" class="textIn" <c:if test="${cliente.direccion != null }">class="has-content"</c:if> required value="${cliente.direccion}" />
-						                <label>DirecciÃ³n</label>
+						                <label>Dirección</label>
 						                <span class="focus-border"></span>
 						            </div>
 						            
 						            <div class="inputCon input-effect">
 						                <input type="text" name="codigopostal" placeholder="" class="textIn" <c:if test="${cliente.codigopostal != null }">class="has-content"</c:if> required value="${cliente.codigopostal}" />
-						                <label>CÃ³digo Postal</label>
+						                <label>Código Postal</label>
 						                <span class="focus-border"></span>
 						            </div>
 							          
 						            <div class="col-md-12">
 							            <div class="col-md-6 text-right">
-											<a href="#modalPassword" class="btn" data-toggle="modal">Cambiar ContraseÃ±a</a>
+											<a href="#modalPassword" class="btn" data-toggle="modal">Cambiar Contraseña</a>
 										</div>
 																				
 										<div class="col-md-3 text-center">
@@ -191,24 +191,24 @@
 								<div id="modalPassword" class="modal fade" role="dialog">
 							        <div class="modal-dialog">
 							        	<div class="modal-header">
-							        		<h3 class="h3 text-center">Cambio de contraseÃ±a</h3>
+							        		<h3 class="h3 text-center">Cambio de contraseña</h3>
 							        	</div>
 							            <div class="modal-body" id="passwordContainer">
 							            	<div class="inputCon input-effect">
-								                <input type="password" name="passActual" id="passActual" placeholder="ContraseÃ±a Actual" class="textIn" required />
-								                <label>ContraseÃ±a actual</label>
+								                <input type="password" name="passActual" id="passActual" placeholder="Contraseña Actual" class="textIn" required />
+								                <label>Contraseña actual</label>
 								                <span class="focus-border"></span>
 								            </div>
 								            
 								            <div class="inputCon input-effect">
-								                <input type="password" name="password" placeholder="Nueva ContraseÃ±a" class="textIn" required />
-								                <label>Nueva ContraseÃ±a</label>
+								                <input type="password" name="password" placeholder="Nueva Contraseña" class="textIn" required />
+								                <label>Nueva Contraseña</label>
 								                <span class="focus-border"></span>
 								            </div>
 								            
 								            <div class="inputCon input-effect">
-								                <input type="password" name="passwordR" placeholder="Repita ContraseÃ±a" class="textIn" required />
-								                <label>Repita ContraseÃ±a</label>
+								                <input type="password" name="passwordR" placeholder="Repita Contraseña" class="textIn" required />
+								                <label>Repita Contraseña</label>
 								                <span class="focus-border"></span>
 								            </div>
 							            </div>
@@ -236,8 +236,8 @@
 			    <div id="modalBorrar" class="modal fade" role="dialog">
 			        <div class="modal-dialog">
 			            <div class="modal-body" id="mensajeBorrar">
-			            	<p class="text-center">Â¿EstÃ¡ seguro de que quiere eliminar su perfil? Esto eliminarÃ¡ toda la informaciÃ³n relacionada con usted de la que disponemos, ademÃ¡s de todos sus progresos y premios.</p>
-			            	<p class="text-center">Â¿Desea continuar?</p>
+			            	<p class="text-center">¿Está seguro de que quiere eliminar su perfil? Esto eliminará toda la información relacionada con usted de la que disponemos, además de todos sus progresos y premios.</p>
+			            	<p class="text-center">¿Desea continuar?</p>
 			            </div>
 			            <div class="modal-footer">
 			                <a href="#modalConfirmar" class="btn danger" data-toggle="modal">Continuar</a>
@@ -248,10 +248,10 @@
 			    <div id="modalConfirmar" class="modal fade" role="dialog">
 			        <div class="modal-dialog">
 			            <div class="modal-body" id="mensajeConfirmar">
-			            	<p class="text-center">Para eliminar su perfil es necesario que introduzca su contraseÃ±a de nuevo.</p>
+			            	<p class="text-center">Para eliminar su perfil es necesario que introduzca su contraseña de nuevo.</p>
 			            	<div class="inputCon input-effect">
-				                <input type="password" name="passConfirmar" id="passConfirmar" placeholder="ContraseÃ±a Actual" class="textIn" required />
-				                <label>ContraseÃ±a actual</label>
+				                <input type="password" name="passConfirmar" id="passConfirmar" placeholder="Contraseña Actual" class="textIn" required />
+				                <label>Contraseña actual</label>
 				                <span class="focus-border"></span>
 				            </div>
 				            <form action="Eliminar.do" method="POST" id="formBorrar">

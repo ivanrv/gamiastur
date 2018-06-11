@@ -85,11 +85,11 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; Qui茅nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Qui閚es somos</a>
                 </nav>
 
     <div class="content">
-        <h1>Reg铆strate:</h1>
+        <h1>Reg韘trate:</h1>
         <span style="font-size: 0.9em;">Los campos marcados con asteriscos son obligatorios</span>
         <form action="Nuevo.do" method="post" id="regForm">
             <input type="hidden" name="tipo" value="cliente">
@@ -107,25 +107,25 @@
 
             <div class="inputCon input-effect">
                 <input type="email" name="email" placeholder="" class="textIn" required />
-                <label>Correo Electr贸nico *</label>
+                <label>Correo Electr髇ico *</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
                 <input type="email" name="emailR" placeholder="" class="textIn" required/>
-                <label>Repita Correo Electr贸nico *</label>
+                <label>Repita Correo Electr髇ico *</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
                 <input type="password" name="password" placeholder="" class="textIn" required />
-                <label>Contrase帽a *</label>
+                <label>Contrase馻 *</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
                 <input type="password" name="passwordR" placeholder="" class="textIn" required/>
-                <label>Repita Contrase帽a *</label>
+                <label>Repita Contrase馻 *</label>
                 <span class="focus-border"></span>
             </div>
 
@@ -137,19 +137,19 @@
 
             <div class="inputCon input-effect">
                 <input type="text" name="telefono" placeholder="" class="textIn" />
-                <label>Tel茅fono</label>
+                <label>Tel閒ono</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
                 <input type="text" name="direccion" placeholder="" class="textIn" />
-                <label>Direcci贸n</label>
+                <label>Direcci髇</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="inputCon input-effect">
                 <input type="text" name="CP" placeholder="" class="textIn" />
-                <label>C贸digo Postal</label>
+                <label>C骴igo Postal</label>
                 <span class="focus-border"></span>
             </div>
 
@@ -159,8 +159,8 @@
 
             <div>
                 <a class="btn" id="btnRegistro">Registrarse</a>
-                <span>驴Ya tienes cuenta?
-                    <a href="${pageContext.servletContext.contextPath}/content/login.jsp">Inicia sesi贸n</a>
+                <span>縔a tienes cuenta?
+                    <a href="${pageContext.servletContext.contextPath}/content/login.jsp">Inicia sesi髇</a>
                 </span>
             </div>
 

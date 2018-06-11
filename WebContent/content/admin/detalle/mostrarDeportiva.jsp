@@ -54,7 +54,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesi贸n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesi髇</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -84,7 +84,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; Qui茅nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Qui閚es somos</a>
                 </nav>
 
                 <div class="content">
@@ -92,7 +92,7 @@
                 	
                     <div id="nuevoForm">
                         <div class="tit">
-                            <h1>Actualizaci贸n de Prueba Deportiva: ${deportiva.nombre}</h1>
+                            <h1>Actualizaci髇 de Prueba Deportiva: ${deportiva.nombre}</h1>
                             <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
@@ -135,7 +135,7 @@
 					        <div class="modal-dialog modal-lg">
 					            <div class="modal-body" id="subidaImg">
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
-		                            	Modificar Explicaci贸n
+		                            	Modificar Explicaci髇
 		                            	<input type="file" name="archivo" onchange="readURL(this)" accept=".pdf" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
@@ -149,7 +149,7 @@
 					    </div>	
 
                         <div class="sbmt">
-                        	<a href="#modalImg" data-toggle="modal" class="btn">Modificar Explicaci贸n</a>
+                        	<a href="#modalImg" data-toggle="modal" class="btn">Modificar Explicaci髇</a>
                             <a id="enviar" class="btn">Actualizar</a>
                         </div>
                         </form>

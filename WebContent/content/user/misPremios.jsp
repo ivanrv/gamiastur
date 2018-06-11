@@ -70,7 +70,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -101,7 +101,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
@@ -119,8 +119,8 @@
 							
 							<c:if test="${fn:length(premios) == 0 }">
 									<div class="col-xs-12 text-center">
-										<h3 class="h3">-- No existe ningÃºn premio para mostrar --</h3>
-										<h4 class="h4">-- Echa un vistazo a nuestras premios <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">aquÃ­</a> --</h4>
+										<h3 class="h3">-- No existe ningún premio para mostrar --</h3>
+										<h4 class="h4">-- Echa un vistazo a nuestras premios <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">aquí­</a> --</h4>
 									</div>
 							</c:if>	
 						</div>
@@ -130,7 +130,7 @@
                 <div id="modalActivar" class="modal fade" role="dialog">
 			        <div class="modal-dialog">
 			            <div class="modal-body" id="mensajeBorrar">
-			            	<p class="text-center">Â¿EstÃ¡ seguro de querer consumir este premio?</p>
+			            	<p class="text-center">¿Está seguro de querer consumir este premio?</p>
 			            </div>
 			            <div class="modal-footer">
 			                <form action="Activa.do" method="post">

@@ -56,7 +56,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -86,7 +86,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
@@ -290,7 +290,7 @@
                             <table class="table table-striped table-responsive">
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>NÃºmero de clientes</th>
+                                    <th>Número de clientes</th>
                                     <th>Clientes</th>
                                 </tr>
                                 <c:forEach items="${listaRoles}" var="rol">
@@ -315,7 +315,7 @@
                                     <th>Nombre</th>
                                     <th>Fecha de inicio</th>
                                     <th>Fecha de fin</th>
-                                    <th>UbicaciÃ³n</th>
+                                    <th>Ubicación</th>
                                     <th>Participantes</th>
                                     <c:if test="${userRol == 'admin'}">
 	                                    <th class="theadHide"></th>
@@ -330,7 +330,7 @@
                                         <td>
                                         	<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${actividad.latitud} ${actividad.longitud}">
                                         		<i class="fas fa-map-marker-alt"></i>&nbsp;
-                                        		<span style="font-size: 1em;">Mostrar UbicaciÃ³n</span>
+                                        		<span style="font-size: 1em;">Mostrar Ubicación</span>
                                         	</a>
                                         </td>
                                         <td>${actividad.numparticipantes}</td>
@@ -369,7 +369,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaActividad.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -417,8 +417,8 @@
                             <table class="table table-striped table-responsive">
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>CategorÃ­a</th>
-                                    <th>UbicaciÃ³n</th>
+                                    <th>Categorí­a</th>
+                                    <th>Ubicación</th>
                                     <th>Paradas</th>
                                     <c:if test="${userRol == 'admin'}">
 	                                    <th class="theadHide"></th>
@@ -432,7 +432,7 @@
                                         <td>
 											<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${itinerario.latitud} ${itinerario.longitud}">
                                         		<i class="fas fa-map-marker-alt"></i>&nbsp;
-                                        		<span style="font-size: 1em;">Mostrar UbicaciÃ³n</span>
+                                        		<span style="font-size: 1em;">Mostrar Ubicación</span>
                                         	</a>
 										</td>
                                         <td>
@@ -474,7 +474,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevoItinerario.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -578,7 +578,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaNoticia.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -592,7 +592,7 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Itinerario</th>
-                                    <th>UbicaciÃ³n</th>
+                                    <th>Ubicación</th>
                                     <th>Pruebas</th>
                                     <c:if test="${userRol == 'admin'}">
 	                                    <th class="theadHide"></th>
@@ -606,7 +606,7 @@
                                         <td>
                                         	<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${parada.latitud} ${parada.longitud}">
                                         		<i class="fas fa-map-marker-alt"></i>&nbsp;
-                                        		<span style="font-size: 1em;">Mostrar UbicaciÃ³n</span>
+                                        		<span style="font-size: 1em;">Mostrar Ubicación</span>
                                         	</a>
                                         </td>
                                         <td>
@@ -648,7 +648,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaParada.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -662,7 +662,7 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Cliente</th>
-                                    <th>DescripciÃ³n</th>
+                                    <th>Descripción</th>
                                     <th class="theadHide"></th>
                                     <c:if test="${userRol == 'admin'}">
                                     	<th class="theadHide"></th>
@@ -706,7 +706,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevoPremio.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -760,7 +760,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaCultural.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -776,7 +776,7 @@
 	                                    <th>Nombre</th>
 	                                    <th>Parada</th>
 	                                    <th>Fecha Inicio</th>
-	                                    <th>ExplicaciÃ³n</th>
+	                                    <th>Explicación</th>
 	                                    <th>Puntos</th>
 	                                    <th class="theadHide"></th>
 	                                    <th class="theadHide"></th>
@@ -789,7 +789,7 @@
 	                                        <td>
 	                                        	<a href="#modalPDF" data-toggle="modal" value="${deportiva.explicacion}" class="procModalPDF">
 	                                        		<i class="fas fa-file-pdf"></i>&nbsp;
-	                                        		<span>Mostrar ExplicaciÃ³n</span>
+	                                        		<span>Mostrar Explicación</span>
 	                                        	</a>
 	                                        </td>
 	                                        <td>${deportiva.puntos}</td>
@@ -825,7 +825,7 @@
 	                                    <td class="btnTabla">
 	                                        <a href="${pageContext.servletContext.contextPath}/content/admin/nuevo/nuevaDeportiva.jsp" class="nuevo" onclick="loading();">
 	                                            <i class="fas fa-plus"></i>&nbsp;
-	                                            <span>AÃ±adir</span>
+	                                            <span>Añadir</span>
 	                                        </a>
 	                                    </td>
 	                                </tr>
@@ -881,7 +881,7 @@
                             <table class="table table-striped table-responsive" id="modalParadasTable">
                                 <tr id="modalParadas">
                                     <th>Nombre</th>
-                                    <th>UbicaciÃ³n</th>
+                                    <th>Ubicación</th>
                                     <th class="theadHide"></th>
                                     <th class="theadHide"></th>
                                 </tr>
@@ -903,7 +903,7 @@
                                 <tr id="modalParadas">
                                     <th>Nombre</th>
                                     <th>Inicio</th>
-                                    <th>ExplicaciÃ³n</th>
+                                    <th>Explicación</th>
                                     <th>Puntos</th>
                                     <th class="theadHide"></th>
                                     <th class="theadHide"></th>
@@ -928,7 +928,7 @@
                         <div class="modal-header">
                             <button class="close" type="button" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="modal-body"><p>Â¿EstÃ¡ seguro de que desea eliminar?</p></div>
+                        <div class="modal-body"><p>¿Está seguro de que desea eliminar?</p></div>
                         <div class="modal-footer">
                             <button class="btn" id="btnEliminarModal">Eliminar</button>
                             <button class="btn" data-dismiss="modal">Cancelar</button>
@@ -960,7 +960,7 @@
 			                        <span id="infoClienteFechaNac"></span>
 			                    </p>
 			                    <p>
-			                        <strong>Correo Electr&oacute;nico: </strong>
+			                        <strong>Correo Electrónico: </strong>
 			                        <span id="infoClienteEmail"></span>
 			                    </p>
 			                    <p>
@@ -974,11 +974,11 @@
 			                        <span id="infoClienteTelefono"></span>
 			                    </p>
 			                    <p>
-			                        <strong>Direcci&oacute;n: </strong>
+			                        <strong>Dirección: </strong>
 			                        <span id="infoClienteDireccion"></span>
 			                    </p>
 			                    <p>
-			                        <strong>C&oacute;digo Postal: </strong>
+			                        <strong>Código Postal: </strong>
 			                        <span id="infoClienteCP"></span>
 			                    </p>
 			                    <p>
@@ -1011,7 +1011,7 @@
 			                        <span id="infoPremioCliente"></span>
 			                    </p>
 			                    <p>
-			                        <strong>Fecha de Activaci&oacute;n: </strong>
+			                        <strong>Fecha de Activación: </strong>
 			                        <span id="infoPremioActivacion"></span>
 			                    </p>
 			                    <p>
@@ -1025,7 +1025,7 @@
 			                </div>
 			                <div id="infoPremioINfoSecundaria">
 			                    <p>
-			                        <strong>Descripci&oacute;n: </strong><br/>
+			                        <strong>Descripción: </strong><br/>
 			                        <span id="infoPremioDescripcion"></span>
 			                    </p>
 			                </div>
@@ -1037,7 +1037,7 @@
              		<div class="modal-dialog">
              			<div class="modal-header">
              				<button class="close" type="button" data-dismiss="modal">&times;</button>
-             				<h4 class="modal-title">UbicaciÃ³n</h4>
+             				<h4 class="modal-title">Ubicación</h4>
              			</div>
              			<div class="modal-body">
              				<div id="mapTabla"></div>
@@ -1049,7 +1049,7 @@
              		<div class="modal-dialog modal-lg">
              			<div class="modal-header">
              				<button class="close" type="button" data-dismiss="modal">&times;</button>
-             				<h4 class="modal-title">ExplicaciÃ³n</h4>
+             				<h4 class="modal-title">Explicación</h4>
              			</div>
              			<div class="modal-body">
              				<div>

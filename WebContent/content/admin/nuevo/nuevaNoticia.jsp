@@ -63,7 +63,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -93,7 +93,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
@@ -113,7 +113,7 @@
                                     <span class="focus-border"></span>
                                 </div>								
                                 <div style="text-align:center;">
-                                	<a href="#modalImg" class="btn" data-toggle="modal">AÃ±adir Imagen *</a>
+                                	<a href="#modalImg" class="btn" data-toggle="modal">Añadir Imagen *</a>
                                 </div>
                         </div>
                         <div class="col2">
@@ -141,7 +141,7 @@
 					        <div class="modal-dialog modal-lg">
 					            <div class="modal-body" id="subidaImg">
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
-		                            	AÃ±adir Imagen
+		                            	Añadir Imagen
 		                            	<input type="file" name="archivo" accept=".jpg, .png, .jpeg, .gif, .bmp" onchange="readURL(this)" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>

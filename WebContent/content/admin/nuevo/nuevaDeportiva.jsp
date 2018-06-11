@@ -62,7 +62,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesi�n</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -92,7 +92,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Qui�nes somos</a>
                 </nav>
 
                 <div class="content">
@@ -146,7 +146,7 @@
 					        <div class="modal-dialog modal-lg">
 					            <div class="modal-body" id="subidaImg">
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
-		                            	Añadir Explicación
+		                            	A�adir Explicaci�n
 		                            	<input type="file" name="archivo" onchange="readURL(this)" accept=".pdf" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
@@ -160,7 +160,7 @@
 					    </div>	
 					    
                         <div class="sbmt">
-                        	<a href="#modalImg" class="btn" data-toggle="modal">Añadir descripción *</a>
+                        	<a href="#modalImg" class="btn" data-toggle="modal">Añadir descripci�n *</a>
                             <a id="enviar" class="btn">Crear Prueba</a>
                         </div>
                         </form>

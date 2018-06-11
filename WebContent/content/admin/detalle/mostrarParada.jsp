@@ -72,7 +72,7 @@
 	                                <c:if test="${userRol != 'user'}">
 	                                    <li class="menuUserB" id="panel" onclick="location.href='Admin.do'">Panel de Control</li>
 	                                </c:if>
-	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar SesiÃ³n</li>
+	                                <li class="menuUserB" onclick="location.href='Logout.do'">Cerrar Sesión</li>
 	                            </ul>
 	                        </a>
 	                        <span>
@@ -102,7 +102,7 @@
                     <a href="${pageContext.servletContext.contextPath}/content/premios.jsp" onclick="loading();">
                         <i class="fas fa-trophy"></i> &nbsp; Premios</a>
                     <a href="${pageContext.servletContext.contextPath}/content/about.jsp" onclick="loading();">
-                        <i class="fas fa-question"></i> &nbsp; QuiÃ©nes somos</a>
+                        <i class="fas fa-question"></i> &nbsp; Quiénes somos</a>
                 </nav>
 
                 <div class="content">
@@ -110,7 +110,7 @@
                 	
                     <div id="nuevoForm">
                         <div class="tit">
-                            <h1>ActualizaciÃ³n de Parada: ${parada.nombre}</h1>
+                            <h1>Actualización de Parada: ${parada.nombre}</h1>
                             <span>Los campos marcados con asteriscos son obligatorios</span>
                         </div>
                         <div class="col1">
@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="inputCon input-effect">
                                     <input class="textIn has-content" type="number" name="nParada" placeholder="" value="${parada.numeroParada}" required/>
-                                    <label>NÃºmero de Parada *</label>
+                                    <label>Número de Parada *</label>
                                     <span class="focus-border"></span>
                                 </div>
                         </div>
@@ -139,7 +139,7 @@
                             <div style="height:325px">  
                             	<div id="floating-paner" class="inputCon input-effect" style="margin-bottom: 15px">
                             		<input id="address" type="textbox" class="textIn"/>
-                            		<label>Introduzca una direcciÃ³n a buscar</label>
+                            		<label>Introduzca una dirección a buscar</label>
                                 	<span class="focus-border"></span>
                             	</div>                      
 	                            <div id="mapForm" style="height:85%"></div>
@@ -161,7 +161,7 @@
                             </div>
                             <div class="inputCon input-effect">
                                 <textarea class="textIn taShare has-content" name="gastronomia" placeholder="" required rows="10">${parada.gastronomia}</textarea>
-                                <label>Gastronomia</label>
+                                <label>Gastronomía</label>
                                 <span class="focus-border"></span>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
 					        <div class="modal-dialog modal-lg">
 					            <div class="modal-body" id="subidaVideo">
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
-		                            	Modificar VÃ­deo
+		                            	Modificar Vídeo
 		                            	<input type="file" name="archivoVideo" onchange="readURL(this)" accept=".mp4" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
