@@ -603,7 +603,6 @@
                             <table class="table table-striped table-responsive">
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>Texto</th>
                                     <th>Fecha</th>
                                     <c:if test="${userRol == 'admin'}">
 	                                    <th class="theadHide"></th>
@@ -614,7 +613,7 @@
 								<c:choose>
 									<c:when test="${fn:length(listaNoticias) == 0}">
 										<tr>
-											<td colspan="3">No existen noticias disponibles</td>
+											<td colspan="2">No existen noticias disponibles</td>
 										</tr>
 									</c:when>
 
@@ -622,7 +621,6 @@
 										<c:forEach items="${listaNoticias}" var="noticia">
 											<tr class="lineaFiltro">
 												<td>${noticia.nombre}</td>
-												<td>${noticia.texto}</td>
 												<td><fmt:formatDate value="${noticia.fechaalta}" pattern="dd-MM-yyyy"/></td>
 												<c:if test="${userRol == 'admin'}">
 													<td class="btnTabla">
@@ -653,7 +651,6 @@
 
                                 <c:if test="${userRol == 'admin'}">
 	                                <tr style="background-color:transparent">
-	                                    <td class="hiddenT"></td>
 	                                    <td class="hiddenT"></td>
 	                                    <td class="hiddenT"></td>
 	                                    <td class="hiddenT"></td>

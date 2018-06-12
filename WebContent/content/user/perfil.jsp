@@ -122,9 +122,9 @@
 								</div>
 								
 								<div id="perfilDataSec" class="col-xs-6">
-									<p><b>TelÃ©fono:</b> <span>${cliente.telefono}</span></p>
-									<p><b>DirecciÃ³n:</b> <span>${cliente.direccion}</span></p>
-									<p><b>CÃ³digo Postal:</b> <span>${cliente.codigopostal}</span></p>
+									<p><b>Teléfono:</b> <span>${cliente.telefono}</span></p>
+									<p><b>Dirección:</b> <span>${cliente.direccion}</span></p>
+									<p><b>Código Postal:</b> <span>${cliente.codigopostal}</span></p>
 									<p><b>Puntos Acumulados:</b> <span>${cliente.puntosacumulados}</span></p>
 								</div>
 							</div>
@@ -139,9 +139,7 @@
 							<div id="perfilActData">
 								<ul>
 									<c:forEach items="${cliente.clienteHasActividads}" var="cliAct">
-										<li>
-											<a href="">${cliAct.actividad.nombre}</a>
-										</li>
+										<li>${cliAct.actividad.nombre}</li>
 									</c:forEach>																		
 								</ul>
 								<c:if test="${fn:length(cliente.clienteHasActividads) == 0 }">
@@ -157,9 +155,7 @@
 							<div id="perfilPremData">
 								<ul>
 									<c:forEach items="${cliente.premios}" var="premio">
-										<li>
-											<a href="">${premio.nombre}</a>
-										</li>
+										<li>${premio.nombre}</li>
 									</c:forEach>
 								</ul>
 								<c:if test="${fn:length(cliente.premios) == 0 }">

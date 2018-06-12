@@ -59,6 +59,8 @@ public class Controller extends HttpServlet {
 			response.sendRedirect("/content/user/misActividades.jsp");
 		}else if(ejecutar.equals("perfil.jsp")) {
 			response.sendRedirect(request.getContextPath() + "/content/user/perfil.jsp");
+		}else if(ejecutar.equals("misPrem")){
+			response.sendRedirect(request.getContextPath() + "/content/user/misPremios.jsp");
 		}else{
 			despachador.forward(request, response);
 		}	
