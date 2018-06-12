@@ -25,14 +25,10 @@ import com.gamitour.service.ServiceActividad;
 import com.gamitour.service.ServiceActividadImp;
 import com.gamitour.service.ServiceCliente;
 import com.gamitour.service.ServiceClienteImp;
-import com.gamitour.service.ServiceComentario;
-import com.gamitour.service.ServiceComentarioImp;
 import com.gamitour.service.ServiceImagenActividad;
 import com.gamitour.service.ServiceImagenActividadImp;
 import com.gamitour.service.ServiceItinerario;
 import com.gamitour.service.ServiceItinerarioImp;
-import com.gamitour.service.ServiceMultimedia;
-import com.gamitour.service.ServiceMultimediaImp;
 import com.gamitour.service.ServiceNoticia;
 import com.gamitour.service.ServiceNoticiaImp;
 import com.gamitour.service.ServiceParada;
@@ -45,8 +41,6 @@ import com.gamitour.service.ServicePruebaDeportiva;
 import com.gamitour.service.ServicePruebaDeportivaImp;
 import com.gamitour.service.ServiceRol;
 import com.gamitour.service.ServiceRolImp;
-import com.gamitour.service.ServiceVoto;
-import com.gamitour.service.ServiceVotoImp;
 import com.gamitour.util.Accion;
 
 public class Nuevo extends Accion{
@@ -57,7 +51,6 @@ public class Nuevo extends Accion{
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		ServiceCliente sCliente = new ServiceClienteImp();
 		ServiceItinerario sItinerario = new ServiceItinerarioImp();
-		ServiceMultimedia sMultimedia = new ServiceMultimediaImp();
 		ServiceParada sParada = new ServiceParadaImp();
 		ServicePruebaDeportiva sPruebaDeportiva = new ServicePruebaDeportivaImp();
 		ServiceRol sRol = new ServiceRolImp();
@@ -131,7 +124,6 @@ public class Nuevo extends Accion{
 					
 				sImgActividad.insertar(imagen);
 				
-				request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());
 				request.getSession().setAttribute("flag", "tablaActividades");
 				retorno = "Admin.do";				
 			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
@@ -140,14 +132,11 @@ public class Nuevo extends Accion{
 			break;
 			
 		case "comentario":
-			ServiceComentario sComentario = new ServiceComentarioImp();
-			request.getSession().setAttribute("listaComentarios", sComentario.buscarTodos());
 			break;
 			
 		case "itinerario":
 			Itinerario itinerario = new Itinerario(0, request.getParameter("nombre"), request.getParameter("categoria"), request.getParameter("duracion"), request.getParameter("lat"), request.getParameter("lng"));
 			sItinerario.insertar(itinerario);
-			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
 			if(request.getSession().getAttribute("itinerarios") != null)
 				request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
 			request.getSession().setAttribute("flag", "tablaItinerarios");
@@ -155,7 +144,6 @@ public class Nuevo extends Accion{
 			break;
 			
 		case "multimedia":
-			request.getSession().setAttribute("listaMultimedias", sMultimedia.buscarTodos());
 			break;
 			
 		case "noticia":
@@ -168,7 +156,6 @@ public class Nuevo extends Accion{
 					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));							
 				
 				sNoticia.insertar(noticia);
-				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
 				request.getSession().setAttribute("flag", "tablaNoticias");
 				retorno = "Admin.do";
 			} catch (ParseException | IOException | ServletException e) {
@@ -201,7 +188,6 @@ public class Nuevo extends Accion{
 			}
 			
 			sParada.insertar(parada);
-			request.getSession().setAttribute("listaParadas", sParada.buscarTodos());
 			request.getSession().setAttribute("flag", "tablaParadas");
 			retorno = "Admin.do";
 			break;
@@ -215,8 +201,7 @@ public class Nuevo extends Accion{
 				if(request.getPart("archivo") != null)
 					premio.setImagen("/premios/" + premio.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
-				sPremio.insertar(premio);			
-				request.getSession().setAttribute("listaPremios", sPremio.buscarTodos());
+				sPremio.insertar(premio);
 				request.getSession().setAttribute("flag", "tablaPremios");
 				retorno = "Admin.do";
 			} catch (NumberFormatException | ParseException | IOException | ServletException e1) {
@@ -229,7 +214,6 @@ public class Nuevo extends Accion{
 			ServicePruebaCultural sPruebaCultural = new ServicePruebaCulturalImp();
 			Pruebacultural cultural = new Pruebacultural(sParada.buscarPorNombre(request.getParameter("parada")), request.getParameter("nombre"), request.getParameter("pregunta"), request.getParameter("respuesta"), Integer.parseInt(request.getParameter("puntos")));
 			sPruebaCultural.insertar(cultural);
-			request.getSession().setAttribute("listaCulturales", sPruebaCultural.buscarTodos());
 			request.getSession().setAttribute("flag", "tablaCulturales");
 			retorno = "Admin.do";
 			break;
@@ -244,7 +228,6 @@ public class Nuevo extends Accion{
 				deportiva.setExplicacion("/deportivas/" + deportiva.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 					
 				sPruebaDeportiva.insertar(deportiva);
-				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
 				request.getSession().setAttribute("flag", "tablaDeportivas");
 				retorno = "Admin.do";
 			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
@@ -254,8 +237,6 @@ public class Nuevo extends Accion{
 			break;
 			
 		case "voto":
-			ServiceVoto sVoto = new ServiceVotoImp();
-			request.getSession().setAttribute("listaVotos", sVoto.buscarTodos());
 			break;
 		}		
 		

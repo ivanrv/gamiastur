@@ -58,7 +58,6 @@ public class Update extends Accion{
 		ServiceMultimedia sMultimedia = new ServiceMultimediaImp();
 		ServiceParada sParada = new ServiceParadaImp();
 		
-		
 		ServicePruebaDeportiva sPruebaDeportiva = new ServicePruebaDeportivaImp();
 		
 
@@ -127,7 +126,7 @@ public class Update extends Accion{
 				
 				sImgAct.actualizar(actividad.getImagenactividads().iterator().next());
 				sActividad.actualizar(actividad);
-				request.getSession().setAttribute("listaActividades", sActividad.buscarTodos());
+				
 				request.getSession().setAttribute("flag", "tablaActividades");
 				retorno = "Admin.do";
 			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
@@ -136,8 +135,6 @@ public class Update extends Accion{
 			break;
 			
 		case "comentario":
-			ServiceComentario sComentario = new ServiceComentarioImp();
-			request.getSession().setAttribute("listaComentarios", sComentario.buscarTodos());
 			break;
 			
 		case "itinerario":
@@ -149,15 +146,14 @@ public class Update extends Accion{
 			itinerario.setLongitud(request.getParameter("lng"));
 			
 			sItinerario.actualizar(itinerario);
-			request.getSession().setAttribute("listaItinerarios", sItinerario.buscarTodos());
 			if(request.getSession().getAttribute("itinerarios") != null)
 				request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+			
 			request.getSession().setAttribute("flag", "tablaItinerarios");
 			retorno = "Admin.do";
 			break;
 			
 		case "multimedia":
-			request.getSession().setAttribute("listaMultimedias", sMultimedia.buscarTodos());
 			break;
 			
 		case "noticia":
@@ -176,7 +172,7 @@ public class Update extends Accion{
 					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));
 				
 				sNoticia.actualizar(noticia);
-				request.getSession().setAttribute("listaNoticias", sNoticia.buscarTodos());
+				
 				request.getSession().setAttribute("flag", "tablaNoticias");
 				retorno = "Admin.do";
 			} catch (ParseException | IOException | ServletException e) {
@@ -213,14 +209,12 @@ public class Update extends Accion{
 			parada.setLongitud(request.getParameter("lng"));
 			
 			sParada.actualizar(parada);
-			request.getSession().setAttribute("listaParadas", sParada.buscarTodos());
+			
 			request.getSession().setAttribute("flag", "tablaParadas");
 			retorno = "Admin.do";
 			break;
 			
 		case "premio":
-			ServicePremio sPremio = new ServicePremioImp();
-			request.getSession().setAttribute("listaPremios", sPremio.buscarTodos());
 			break;
 			
 		case "cultural":
@@ -233,7 +227,7 @@ public class Update extends Accion{
 			cultural.setPuntos(Integer.parseInt(request.getParameter("puntos")));
 			
 			sPruebaCultural.actualizar(cultural);
-			request.getSession().setAttribute("listaCulturales", sPruebaCultural.buscarTodos());
+			
 			request.getSession().setAttribute("flag", "tablaCulturales");
 			retorno = "Admin.do";
 			break;
@@ -253,7 +247,7 @@ public class Update extends Accion{
 					deportiva.setExplicacion("/deportivas/" + deportiva.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				sPruebaDeportiva.actualizar(deportiva);
-				request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
+				
 				request.getSession().setAttribute("flag", "tablaDeportivas");
 				retorno = "Admin.do";
 			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
@@ -262,8 +256,6 @@ public class Update extends Accion{
 			break;
 			
 		case "voto":
-			ServiceVoto sVoto = new ServiceVotoImp();
-			request.getSession().setAttribute("listaVotos", sVoto.buscarTodos());
 			break;
 		}		
 		
