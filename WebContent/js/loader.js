@@ -41,7 +41,7 @@ $(document).ready(function(){
 function  redirectIti(){
 	setTimeout(function(){
 		if (iti == false)
-			location.href=("/gamiastur/content/itinerarios.jsp");
+			location.href=("/content/itinerarios.jsp");
 	}, 800);
 	
 }

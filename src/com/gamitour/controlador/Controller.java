@@ -56,7 +56,7 @@ public class Controller extends HttpServlet {
 		}else if(ejecutar.equals("Logout.do")){
 			response.sendRedirect("Logout.do");
 		}else if(ejecutar.equals("misActs")) {
-			response.sendRedirect("/gamiastur/content/user/misActividades.jsp");
+			response.sendRedirect("/content/user/misActividades.jsp");
 		}else if(ejecutar.equals("perfil.jsp")) {
 			response.sendRedirect(request.getContextPath() + "/content/user/perfil.jsp");
 		}else{
@@ -82,10 +82,10 @@ public class Controller extends HttpServlet {
 				if(request.getPart("archivo") != null){
 					directorio = "/opt/tomcat/webapps/uploads/gamitour/actividades/";
 					
-					fileName = request.getParameter("nombre");
+					fileName = "ACT";
 					archivo = request.getPart("archivo");
 					
-					fileName += "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					fileName += "-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -98,10 +98,10 @@ public class Controller extends HttpServlet {
 				directorio = "/opt/tomcat/webapps/uploads/gamitour/paradas/";
 				if(request.getPart("archivoImg") != null){					
 					
-					fileName = request.getParameter("nombre");
+					fileName = "PAR_IMG";
 					archivo = request.getPart("archivoImg");
 					
-					fileName += "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					fileName += "-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -111,10 +111,10 @@ public class Controller extends HttpServlet {
 				
 				
 				if(request.getPart("archivoVideo") != null){
-					fileName = request.getParameter("nombre");
+					fileName = "PAR_VID";
 					archivo = request.getPart("archivoVideo");
 					
-					fileName += "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					fileName += "-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -128,10 +128,10 @@ public class Controller extends HttpServlet {
 				if(request.getPart("archivo") != null){
 					directorio = "/opt/tomcat/webapps/uploads/gamitour/noticias/";
 					
-					fileName = request.getParameter("nombre");
+					fileName = "NOT";
 					archivo = request.getPart("archivo");
 					
-					fileName += "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					fileName += "-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -144,10 +144,10 @@ public class Controller extends HttpServlet {
 				if(request.getPart("archivo") != null){
 					directorio = "/opt/tomcat/webapps/uploads/gamitour/premios/";
 					
-					fileName = request.getParameter("nombre");
+					fileName = "PRE";
 					archivo = request.getPart("archivo");
 					
-					fileName += "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					fileName += "-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -161,10 +161,10 @@ public class Controller extends HttpServlet {
 				if(request.getPart("archivo") != null){
 					directorio = "/opt/tomcat/webapps/uploads/gamitour/deportivas/";
 					
-					fileName = request.getParameter("nombre");
+					fileName = "DEP";
 					archivo = request.getPart("archivo");
 					
-					fileName += "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					fileName += "-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
