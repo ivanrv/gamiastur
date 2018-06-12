@@ -47,7 +47,7 @@ public class FiltroLogin implements Filter {
 			req.getSession().setAttribute("filter", req.getRequestURL());
 			res.sendRedirect(req.getContextPath() + "/content/login.jsp");
 		}else{
-			if((req.getSession().getAttribute("userRol").equals("admin")) || (req.getSession().getAttribute("userRol").equals("hosteleria")) || (req.getSession().getAttribute("userRol").equals("deportivas")) ){
+			if((req.getSession().getAttribute("userRol").equals("admin")) || (req.getSession().getAttribute("userRol").equals("turismo")) || (req.getSession().getAttribute("userRol").equals("deportivas")) ){
 				chain.doFilter(request, response);
 			}else{
 				if(req.getServletPath().contains(req.getSession().getAttribute("userRol").toString())){

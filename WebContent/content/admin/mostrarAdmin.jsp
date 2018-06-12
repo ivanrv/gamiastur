@@ -142,7 +142,7 @@
                             </c:choose>
 
                             <c:choose>
-                            	<c:when test="${userRol == 'hosteleria'}">
+                            	<c:when test="${userRol == 'turismo'}">
                             		<a href="javascript:void(0)" class="selAdmin selAdminDisabled" value="tablaDeportivas">
 		                                <i class="fas fa-volleyball-ball"></i>
 		                                <span>Pruebas Deportivas</span>
@@ -219,7 +219,7 @@
                             </c:choose>
                             
                             <c:choose>
-                            	<c:when test="${userRol == 'hosteleria'}">
+                            	<c:when test="${userRol == 'turismo'}">
                             		<a href="javascript:void(0)" class="selAdminNav selAdminNavDisabled" value="tablaDeportivas">
 		                                <i class="fas fa-volleyball-ball"></i>&nbsp;
 		                                <span>Pruebas Deportivas</span>
@@ -322,42 +322,54 @@
 	                                    <th class="theadHide"></th>
                                     </c:if>
                                 </tr>
-                                <c:forEach items="${listaActividades}" var="actividad">
-                                    <tr class="lineaFiltro">
-                                        <td>${actividad.nombre}</td>
-                                        <td><fmt:formatDate value="${actividad.fechainicio}" pattern="dd-MM-yyyy"/></td>
-                                        <td><fmt:formatDate value="${actividad.fechafin}" pattern="dd-MM-yyyy"/></td>
-                                        <td>
-                                        	<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${actividad.latitud} ${actividad.longitud}">
-                                        		<i class="fas fa-map-marker-alt"></i>&nbsp;
-                                        		<span style="font-size: 1em;">Mostrar Ubicación</span>
-                                        	</a>
-                                        </td>
-                                        <td>${actividad.numparticipantes}</td>
-                                        <c:if test="${userRol == 'admin'}">
-	                                        <td class="btnTabla">
-	                                            <form action="Mostrar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="actividad">
-	                                                <input type="hidden" name="actividad" value="${actividad.nombre}">
-	                                                <button name="submit" value="submit" class="editar" onclick="loading();">
-	                                                    <i class="fas fa-pencil-alt"></i>&nbsp;
-	                                                    <span>Editar</span>
-	                                                </button>
-	                                            </form>
-	                                        </td>
-	                                        <td class="btnTabla">
-	                                            <form action="Eliminar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="actividad">
-	                                                <input type="hidden" name="actividad" value="${actividad.nombre}">
-	                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
-	                                                    <i class="fas fa-times"></i>&nbsp;
-	                                                    <span>Eliminar</span>
-	                                                </a>
-	                                            </form>
-	                                        </td>
-                                        </c:if>
-                                    </tr>
-                                </c:forEach>
+
+								<c:choose>
+									<c:when test="${listaActividades == null}">
+										<tr>
+											<td colspan="5">No existen actividades disponibles</td>
+										</tr>
+									</c:when>
+
+									<c:otherwise>
+										<c:forEach items="${listaActividades}" var="actividad">
+											<tr class="lineaFiltro">
+												<td>${actividad.nombre}</td>
+												<td><fmt:formatDate value="${actividad.fechainicio}" pattern="dd-MM-yyyy"/></td>
+												<td><fmt:formatDate value="${actividad.fechafin}" pattern="dd-MM-yyyy"/></td>
+												<td>
+													<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${actividad.latitud} ${actividad.longitud}">
+														<i class="fas fa-map-marker-alt"></i>&nbsp;
+														<span style="font-size: 1em;">Mostrar Ubicación</span>
+													</a>
+												</td>
+												<td>${actividad.numparticipantes}</td>
+												<c:if test="${userRol == 'admin'}">
+													<td class="btnTabla">
+														<form action="Mostrar.do" method="post">
+															<input type="hidden" name="tipo" value="actividad">
+															<input type="hidden" name="actividad" value="${actividad.nombre}">
+															<button name="submit" value="submit" class="editar" onclick="loading();">
+																<i class="fas fa-pencil-alt"></i>&nbsp;
+																<span>Editar</span>
+															</button>
+														</form>
+													</td>
+													<td class="btnTabla">
+														<form action="Eliminar.do" method="post">
+															<input type="hidden" name="tipo" value="actividad">
+															<input type="hidden" name="actividad" value="${actividad.nombre}">
+															<a href="#modalEliminar" data-toggle="modal" class="eliminar">
+																<i class="fas fa-times"></i>&nbsp;
+																<span>Eliminar</span>
+															</a>
+														</form>
+													</td>
+												</c:if>
+											</tr>
+										</c:forEach>
+									</c:otherwise>								
+								</c:choose>
+
                                 <c:if test="${userRol == 'admin'}">
 	                                <tr style="background-color:transparent">
 	                                    <td class="hiddenT"></td>
@@ -388,27 +400,38 @@
                                     	<th class="theadHide"></th>
                                     </c:if>
                                 </tr>
-                                <c:forEach items="${listaComentarios}" var="comentario">
-                                    <tr class="lineaFiltro">
-                                        <td>${comentario.cliente.email}</td>
-                                        <td>Subido por: ${comentario.multimedia.cliente.email} &nbsp; Prueba: ${comentario.multimedia.pruebadeportiva.nombre}</td>
-                                        <td>${comentario.texto}</td>
-                                        <c:if test="${userRol == 'admin'}">
-	                                        <td class="btnTabla">
-	                                            <form action="Eliminar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="comentario">
-	                                                <input type="hidden" name="email" value="${comentario.cliente.email}">
-	                                                <input type="hidden" name="emailMult" value="${comentario.multimedia.cliente.email }">
-	                                                <input type="hidden" name="prueba" value="${comentario.multimedia.pruebadeportiva.nombre}">
-	                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
-	                                                    <i class="fas fa-times"></i>&nbsp;
-	                                                    <span>Eliminar</span>
-	                                                </a>
-	                                            </form>
-	                                        </td>
-                                        </c:if>
-                                    </tr>
-                                </c:forEach>
+
+								<c:choose>
+									<c:when test="${listaComentarios == null}">
+										<tr>
+											<td colspan="3">No existen comentarios disponibles</td>
+										</tr>
+									</c:when>
+
+									<c:otherwise>
+										<c:forEach items="${listaComentarios}" var="comentario">
+											<tr class="lineaFiltro">
+												<td>${comentario.cliente.email}</td>
+												<td>Subido por: ${comentario.multimedia.cliente.email} &nbsp; Prueba: ${comentario.multimedia.pruebadeportiva.nombre}</td>
+												<td>${comentario.texto}</td>
+												<c:if test="${userRol == 'admin'}">
+													<td class="btnTabla">
+														<form action="Eliminar.do" method="post">
+															<input type="hidden" name="tipo" value="comentario">
+															<input type="hidden" name="email" value="${comentario.cliente.email}">
+															<input type="hidden" name="emailMult" value="${comentario.multimedia.cliente.email }">
+															<input type="hidden" name="prueba" value="${comentario.multimedia.pruebadeportiva.nombre}">
+															<a href="#modalEliminar" data-toggle="modal" class="eliminar">
+																<i class="fas fa-times"></i>&nbsp;
+																<span>Eliminar</span>
+															</a>
+														</form>
+													</td>
+												</c:if>
+											</tr>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
                             </table>
                         </div>
 
@@ -425,45 +448,57 @@
 	                                    <th class="theadHide"></th>
                                     </c:if>
                                 </tr>
-                                <c:forEach items="${listaItinerarios}" var="itinerario">
-                                    <tr class="lineaFiltro">
-                                        <td>${itinerario.nombre}</td>
-                                        <td>${itinerario.categoria}</td>
-                                        <td>
-											<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${itinerario.latitud} ${itinerario.longitud}">
-                                        		<i class="fas fa-map-marker-alt"></i>&nbsp;
-                                        		<span style="font-size: 1em;">Mostrar Ubicación</span>
-                                        	</a>
-										</td>
-                                        <td>
-                                            <a href="#modalParadas" value="${itinerario.nombre}" class="itiParadas" data-toggle="modal">
-                                                <i class="fas fa-map-pin"></i> Ver paradas
-                                            </a>
-                                        </td>
-                                        <c:if test="${userRol == 'admin'}">
-	                                        <td class="btnTabla">
-	                                            <form action="Mostrar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="itinerario">
-	                                                <input type="hidden" name="itinerario" value="${itinerario.nombre}">
-	                                                <button name="submit" value="submit" class="editar" onclick="loading();">
-	                                                    <i class="fas fa-pencil-alt"></i>&nbsp;
-	                                                    <span>Editar</span>
-	                                                </button>
-	                                            </form>
-	                                        </td>
-	                                        <td class="btnTabla">
-	                                            <form action="Eliminar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="itinerario">
-	                                                <input type="hidden" name="itinerario" value="${itinerario.nombre}">
-	                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
-	                                                    <i class="fas fa-times"></i>&nbsp;
-	                                                    <span>Eliminar</span>
-	                                                </a>
-	                                            </form>
-	                                        </td>
-                                        </c:if>
-                                    </tr>
-                                </c:forEach>
+
+								<c:choose>
+									<c:when test="{listaItinerarios == null}">
+										<tr>
+											<td colspan="4">No existen itinerarios disponibles</td>
+										</tr>
+									</c:when>
+
+									<c:otherwise>
+										<c:forEach items="${listaItinerarios}" var="itinerario">
+											<tr class="lineaFiltro">
+												<td>${itinerario.nombre}</td>
+												<td>${itinerario.categoria}</td>
+												<td>
+													<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${itinerario.latitud} ${itinerario.longitud}">
+														<i class="fas fa-map-marker-alt"></i>&nbsp;
+														<span style="font-size: 1em;">Mostrar Ubicación</span>
+													</a>
+												</td>
+												<td>
+													<a href="#modalParadas" value="${itinerario.nombre}" class="itiParadas" data-toggle="modal">
+														<i class="fas fa-map-pin"></i> Ver paradas
+													</a>
+												</td>
+												<c:if test="${userRol == 'admin'}">
+													<td class="btnTabla">
+														<form action="Mostrar.do" method="post">
+															<input type="hidden" name="tipo" value="itinerario">
+															<input type="hidden" name="itinerario" value="${itinerario.nombre}">
+															<button name="submit" value="submit" class="editar" onclick="loading();">
+																<i class="fas fa-pencil-alt"></i>&nbsp;
+																<span>Editar</span>
+															</button>
+														</form>
+													</td>
+													<td class="btnTabla">
+														<form action="Eliminar.do" method="post">
+															<input type="hidden" name="tipo" value="itinerario">
+															<input type="hidden" name="itinerario" value="${itinerario.nombre}">
+															<a href="#modalEliminar" data-toggle="modal" class="eliminar">
+																<i class="fas fa-times"></i>&nbsp;
+																<span>Eliminar</span>
+															</a>
+														</form>
+													</td>
+												</c:if>
+											</tr>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+                                
                                 <c:if test="${userRol == 'admin'}">
 	                                <tr style="background-color:transparent">
 	                                    <td class="hiddenT"></td>
@@ -494,37 +529,48 @@
                                     	<th class="theadHide"></th>
                                     </c:if>
                                 </tr>
-                                <c:forEach items="${listaMultimedias}" var="multimedia">
-                                    <tr class="lineaFiltro">
-                                        <td>${multimedia.cliente.email}</td>
-                                        <td>${multimedia.pruebadeportiva.nombre}</td>
-                                        <td><fmt:formatDate value="${multimedia.fecha}" pattern="dd-MM-yyyy"/></td>
-                                        <td class="btnTabla">
-                                            <form action="Mostrar.do" method="post">
-                                                <input type="hidden" name="tipo" value="multimedia">
-                                                <input type="hidden" name="email" value="${multimedia.cliente.email}">
-                                                <input type="hidden" name="prueba" value="${multimedia.pruebadeportiva.nombre }">
-                                                <button name="submit" value="submit" class="editar" onclick="loading();">
-                                                    <i class="fas fa-info"></i>&nbsp;
-                                                    <span>Info</span>
-                                                </button>
-                                            </form>
-                                        </td>
-                                        <c:if test="${userRol == 'admin'}">
-	                                        <td class="btnTabla">
-	                                            <form action="Eliminar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="multimedia">
-	                                                <input type="hidden" name="email" value="${multimedia.cliente.email}">
-	                                                <input type="hidden" name="prueba" value="${multimedia.pruebadeportiva.nombre }">
-	                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
-	                                                    <i class="fas fa-times"></i>&nbsp;
-	                                                    <span>Eliminar</span>
-	                                                </a>
-	                                            </form>
-	                                        </td>
-                                        </c:if>
-                                    </tr>
-                                </c:forEach>
+
+								<c:choose>
+									<c:when test="${listaMultimedias == null}">
+										<tr>
+											<td colspan="3">No existen multimedias disponibles</td>
+										</tr>
+									</c:when>
+
+									<c:otherwise>
+										<c:forEach items="${listaMultimedias}" var="multimedia">
+											<tr class="lineaFiltro">
+												<td>${multimedia.cliente.email}</td>
+												<td>${multimedia.pruebadeportiva.nombre}</td>
+												<td><fmt:formatDate value="${multimedia.fecha}" pattern="dd-MM-yyyy"/></td>
+												<td class="btnTabla">
+													<form action="Mostrar.do" method="post">
+														<input type="hidden" name="tipo" value="multimedia">
+														<input type="hidden" name="email" value="${multimedia.cliente.email}">
+														<input type="hidden" name="prueba" value="${multimedia.pruebadeportiva.nombre }">
+														<button name="submit" value="submit" class="editar" onclick="loading();">
+															<i class="fas fa-info"></i>&nbsp;
+															<span>Info</span>
+														</button>
+													</form>
+												</td>
+												<c:if test="${userRol == 'admin'}">
+													<td class="btnTabla">
+														<form action="Eliminar.do" method="post">
+															<input type="hidden" name="tipo" value="multimedia">
+															<input type="hidden" name="email" value="${multimedia.cliente.email}">
+															<input type="hidden" name="prueba" value="${multimedia.pruebadeportiva.nombre }">
+															<a href="#modalEliminar" data-toggle="modal" class="eliminar">
+																<i class="fas fa-times"></i>&nbsp;
+																<span>Eliminar</span>
+															</a>
+														</form>
+													</td>
+												</c:if>
+											</tr>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>                               
                             </table>
                         </div>
 
@@ -540,35 +586,47 @@
 	                                    <th class="theadHide"></th>
                                     </c:if>
                                 </tr>
-                                <c:forEach items="${listaNoticias}" var="noticia">
-                                    <tr class="lineaFiltro">
-                                        <td>${noticia.nombre}</td>
-                                        <td>${noticia.texto}</td>
-                                        <td><fmt:formatDate value="${noticia.fechaalta}" pattern="dd-MM-yyyy"/></td>
-                                        <c:if test="${userRol == 'admin'}">
-	                                        <td class="btnTabla">
-	                                            <form action="Mostrar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="noticia">
-	                                                <input type="hidden" name="noticia" value="${noticia.nombre}">
-	                                                <button name="submit" value="submit" class="editar" onclick="loading();">
-	                                                    <i class="fas fa-pencil-alt"></i>&nbsp;
-	                                                    <span>Editar</span>
-	                                                </button>
-	                                            </form>
-	                                        </td>
-	                                        <td class="btnTabla">
-	                                            <form action="Eliminar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="noticia">
-	                                                <input type="hidden" name="noticia" value="${noticia.nombre}">
-	                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
-	                                                    <i class="fas fa-times"></i>&nbsp;
-	                                                    <span>Eliminar</span>
-	                                                </a>
-	                                            </form>
-	                                        </td>
-                                        </c:if>
-                                    </tr>
-                                </c:forEach>
+
+								<c:choose>
+									<c:when test="${listaNoticias == null}">
+										<tr>
+											<td colspan="3">No existen noticias disponibles</td>
+										</tr>
+									</c:when>
+
+									<c:otherwise>
+										<c:forEach items="${listaNoticias}" var="noticia">
+											<tr class="lineaFiltro">
+												<td>${noticia.nombre}</td>
+												<td>${noticia.texto}</td>
+												<td><fmt:formatDate value="${noticia.fechaalta}" pattern="dd-MM-yyyy"/></td>
+												<c:if test="${userRol == 'admin'}">
+													<td class="btnTabla">
+														<form action="Mostrar.do" method="post">
+															<input type="hidden" name="tipo" value="noticia">
+															<input type="hidden" name="noticia" value="${noticia.nombre}">
+															<button name="submit" value="submit" class="editar" onclick="loading();">
+																<i class="fas fa-pencil-alt"></i>&nbsp;
+																<span>Editar</span>
+															</button>
+														</form>
+													</td>
+													<td class="btnTabla">
+														<form action="Eliminar.do" method="post">
+															<input type="hidden" name="tipo" value="noticia">
+															<input type="hidden" name="noticia" value="${noticia.nombre}">
+															<a href="#modalEliminar" data-toggle="modal" class="eliminar">
+																<i class="fas fa-times"></i>&nbsp;
+																<span>Eliminar</span>
+															</a>
+														</form>
+													</td>
+												</c:if>
+											</tr>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+
                                 <c:if test="${userRol == 'admin'}">
 	                                <tr style="background-color:transparent">
 	                                    <td class="hiddenT"></td>
@@ -599,45 +657,57 @@
 	                                    <th class="theadHide"></th>
                                     </c:if>
                                 </tr>
-                                <c:forEach items="${listaParadas}" var="parada">
-                                    <tr class="lineaFiltro">
-                                        <td>${parada.nombre}</td>
-                                        <td>${parada.itinerario.nombre}</td>
-                                        <td>
-                                        	<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${parada.latitud} ${parada.longitud}">
-                                        		<i class="fas fa-map-marker-alt"></i>&nbsp;
-                                        		<span style="font-size: 1em;">Mostrar Ubicación</span>
-                                        	</a>
-                                        </td>
-                                        <td>
-                                        	<a href="#modalPruebas" value="${parada.nombre}" class="paradaPruebas" data-toggle="modal">
-                                                <i class="fas fa-flag"></i> Ver pruebas
-                                            </a>
-                                       	</td>
-                                       	<c:if test="${userRol == 'admin'}">                                            
-	                                        <td class="btnTabla">
-	                                            <form action="Mostrar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="parada">
-	                                                <input type="hidden" name="parada" value="${parada.nombre}">
-	                                                <button name="submit" value="submit" class="editar" onclick="loading();">
-	                                                    <i class="fas fa-pencil-alt"></i>&nbsp;
-	                                                    <span>Editar</span>
-	                                                </button>
-	                                            </form>
-	                                        </td>
-	                                        <td class="btnTabla">
-	                                            <form action="Eliminar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="parada">
-	                                                <input type="hidden" name="parada" value="${parada.nombre}">
-	                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
-	                                                    <i class="fas fa-times"></i>&nbsp;
-	                                                    <span>Eliminar</span>
-	                                                </a>
-	                                            </form>
-	                                        </td>
-                                        </c:if>
-                                    </tr>
-                                </c:forEach>
+
+								<c:choose>
+									<c:when test="${listaParadas == null}">
+										<tr>
+											<td colspan="4">No existen paradas disponibles</td>
+										</tr>
+									</c:when>
+									
+									<c:otherwise>
+										<c:forEach items="${listaParadas}" var="parada">
+											<tr class="lineaFiltro">
+												<td>${parada.nombre}</td>
+												<td>${parada.itinerario.nombre}</td>
+												<td>
+													<a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="${parada.latitud} ${parada.longitud}">
+														<i class="fas fa-map-marker-alt"></i>&nbsp;
+														<span style="font-size: 1em;">Mostrar Ubicación</span>
+													</a>
+												</td>
+												<td>
+													<a href="#modalPruebas" value="${parada.nombre}" class="paradaPruebas" data-toggle="modal">
+														<i class="fas fa-flag"></i> Ver pruebas
+													</a>
+												</td>
+												<c:if test="${userRol == 'admin'}">                                            
+													<td class="btnTabla">
+														<form action="Mostrar.do" method="post">
+															<input type="hidden" name="tipo" value="parada">
+															<input type="hidden" name="parada" value="${parada.nombre}">
+															<button name="submit" value="submit" class="editar" onclick="loading();">
+																<i class="fas fa-pencil-alt"></i>&nbsp;
+																<span>Editar</span>
+															</button>
+														</form>
+													</td>
+													<td class="btnTabla">
+														<form action="Eliminar.do" method="post">
+															<input type="hidden" name="tipo" value="parada">
+															<input type="hidden" name="parada" value="${parada.nombre}">
+															<a href="#modalEliminar" data-toggle="modal" class="eliminar">
+																<i class="fas fa-times"></i>&nbsp;
+																<span>Eliminar</span>
+															</a>
+														</form>
+													</td>
+												</c:if>
+											</tr>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+                                
                                 <c:if test="${userRol == 'admin'}">
 	                                <tr style="background-color:transparent">
 	                                    <td class="hiddenT"></td>
@@ -668,35 +738,47 @@
                                     	<th class="theadHide"></th>
                                     </c:if>
                                 </tr>
-                                <c:forEach items="${listaPremios}" var="premio">
-                                    <tr class="lineaFiltro">
-                                        <td>${premio.nombre}</td>
-                                        <td>${premio.cliente.email}</td>
-                                        <td>${premio.descripcion}</td>
-                                        <td class="btnTabla">
-                                            <form action="Mostrar.do" method="post">
-                                                <input type="hidden" name="tipo" value="premio">
-                                                <input type="hidden" name="premio" value="${premio.nombre}">
-                                                <a href="#infoPremio" data-toggle="modal" class="editar procModalInfoPremio" value="${premio.nombre}">
-                                                    <i class="fas fa-info"></i>&nbsp;
-                                                    <span>Info</span>
-                                                </a>
-                                            </form>
-                                        </td>
-                                        <c:if test="${userRol == 'admin'}">
-	                                        <td class="btnTabla">
-	                                            <form action="Eliminar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="premio">
-	                                                <input type="hidden" name="premio" value="${premio.nombre}">
-	                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
-	                                                    <i class="fas fa-times"></i>&nbsp;
-	                                                    <span>Eliminar</span>
-	                                                </a>
-	                                            </form>
-	                                        </td>
-                                        </c:if>
-                                    </tr>
-                                </c:forEach>
+
+								<c:choose>
+									<c:when test="${listaPremios == null}">
+										<tr>
+											<td colspan="3">No existen premios disponibles</td>
+										</tr>
+									</c:when>
+
+									<c:otherwise>
+										<c:forEach items="${listaPremios}" var="premio">
+											<tr class="lineaFiltro">
+												<td>${premio.nombre}</td>
+												<td>${premio.cliente.email}</td>
+												<td>${premio.descripcion}</td>
+												<td class="btnTabla">
+													<form action="Mostrar.do" method="post">
+														<input type="hidden" name="tipo" value="premio">
+														<input type="hidden" name="premio" value="${premio.nombre}">
+														<a href="#infoPremio" data-toggle="modal" class="editar procModalInfoPremio" value="${premio.nombre}">
+															<i class="fas fa-info"></i>&nbsp;
+															<span>Info</span>
+														</a>
+													</form>
+												</td>
+												<c:if test="${userRol == 'admin'}">
+													<td class="btnTabla">
+														<form action="Eliminar.do" method="post">
+															<input type="hidden" name="tipo" value="premio">
+															<input type="hidden" name="premio" value="${premio.nombre}">
+															<a href="#modalEliminar" data-toggle="modal" class="eliminar">
+																<i class="fas fa-times"></i>&nbsp;
+																<span>Eliminar</span>
+															</a>
+														</form>
+													</td>
+												</c:if>
+											</tr>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+                                
                                 <c:if test="${userRol == 'admin'}">
 	                                <tr style="background-color:transparent">
 	                                    <td class="hiddenT"></td>
@@ -725,33 +807,45 @@
 	                                    <th class="theadHide"></th>
 	                                    <th class="theadHide"></th>
 	                                </tr>
-	                                <c:forEach items="${listaCulturales}" var="cultural">
-	                                    <tr class="lineaFiltro">
-	                                        <td>${cultural.nombre}</td>
-	                                        <td>${cultural.parada.nombre}</td>
-	                                        <td>${cultural.puntos}</td>
-	                                        <td class="btnTabla">
-	                                            <form action="Mostrar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="cultural">
-	                                                <input type="hidden" name="prueba" value="${cultural.nombre}">
-	                                                <button name="submit" value="submit" class="editar" onclick="loading();">
-	                                                    <i class="fas fa-pencil-alt"></i>&nbsp;
-	                                                    <span>Editar</span>
-	                                                </button>
-	                                            </form>
-	                                        </td>
-	                                        <td class="btnTabla">
-	                                            <form action="Eliminar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="cultural">
-	                                                <input type="hidden" name="prueba" value="${cultural.nombre}">
-	                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
-	                                                    <i class="fas fa-times"></i>&nbsp;
-	                                                    <span>Eliminar</span>
-	                                                </a>
-	                                            </form>
-	                                        </td>
-	                                    </tr>
-	                                </c:forEach>
+
+									<c:choose>
+										<c:when test="${listaCulturales == null}">
+											<tr>
+												<td colspan="3">No existen pruebas culturales disponibles</td>
+											</tr>
+										</c:when>
+
+										<c:otherwise>
+											<c:forEach items="${listaCulturales}" var="cultural">
+												<tr class="lineaFiltro">
+													<td>${cultural.nombre}</td>
+													<td>${cultural.parada.nombre}</td>
+													<td>${cultural.puntos}</td>
+													<td class="btnTabla">
+														<form action="Mostrar.do" method="post">
+															<input type="hidden" name="tipo" value="cultural">
+															<input type="hidden" name="prueba" value="${cultural.nombre}">
+															<button name="submit" value="submit" class="editar" onclick="loading();">
+																<i class="fas fa-pencil-alt"></i>&nbsp;
+																<span>Editar</span>
+															</button>
+														</form>
+													</td>
+													<td class="btnTabla">
+														<form action="Eliminar.do" method="post">
+															<input type="hidden" name="tipo" value="cultural">
+															<input type="hidden" name="prueba" value="${cultural.nombre}">
+															<a href="#modalEliminar" data-toggle="modal" class="eliminar">
+																<i class="fas fa-times"></i>&nbsp;
+																<span>Eliminar</span>
+															</a>
+														</form>
+													</td>
+												</tr>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+                                
 	                                <tr style="background-color:transparent">
 	                                    <td class="hiddenT"></td>
 	                                    <td class="hiddenT"></td>
@@ -768,7 +862,7 @@
 	                        </div>    
                         </c:if>
 
-						<c:if test="${userRol != 'hosteleria'}">
+						<c:if test="${userRol != 'turismo'}">
 	                        <div class="tablaHid" id="tablaDeportivas">
 	                            <h1>Pruebas Deportivas:</h1>
 	                            <table class="table table-striped table-responsive">
@@ -781,40 +875,52 @@
 	                                    <th class="theadHide"></th>
 	                                    <th class="theadHide"></th>
 	                                </tr>
-	                                <c:forEach items="${listaDeportivas}" var="deportiva">
-	                                    <tr class="lineaFiltro">
-	                                        <td>${deportiva.nombre}</td>
-	                                        <td>${deportiva.parada.nombre}</td>
-	                                        <td><fmt:formatDate value="${deportiva.fechainicio}" pattern="dd-MM-yyyy"/></td>
-	                                        <td>
-	                                        	<a href="#modalPDF" data-toggle="modal" value="${deportiva.explicacion}" class="procModalPDF">
-	                                        		<i class="fas fa-file-pdf"></i>&nbsp;
-	                                        		<span>Mostrar Explicación</span>
-	                                        	</a>
-	                                        </td>
-	                                        <td>${deportiva.puntos}</td>
-	                                        <td class="btnTabla">
-	                                            <form action="Mostrar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="deportiva">
-	                                                <input type="hidden" name="prueba" value="${deportiva.nombre}">
-	                                                <button name="submit" value="submit" class="editar" onclick="loading();">
-	                                                    <i class="fas fa-pencil-alt"></i>&nbsp;
-	                                                    <span>Editar</span>
-	                                                </button>
-	                                            </form>
-	                                        </td>
-	                                        <td class="btnTabla">
-	                                            <form action="Eliminar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="deportiva">
-	                                                <input type="hidden" name="prueba" value="${deportiva.nombre}">
-	                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
-	                                                    <i class="fas fa-times"></i>&nbsp;
-	                                                    <span>Eliminar</span>
-	                                                </a>
-	                                            </form>
-	                                        </td>
-	                                    </tr>
-	                                </c:forEach>
+
+									<c:choose>
+										<c:when test="${listaDeportivas == null}">
+											<tr>
+												<td colspan="5">No existen pruebas deportivas disponibles</td>
+											</tr>
+										</c:when>
+
+										<c:otherwise>
+											<c:forEach items="${listaDeportivas}" var="deportiva">
+												<tr class="lineaFiltro">
+													<td>${deportiva.nombre}</td>
+													<td>${deportiva.parada.nombre}</td>
+													<td><fmt:formatDate value="${deportiva.fechainicio}" pattern="dd-MM-yyyy"/></td>
+													<td>
+														<a href="#modalPDF" data-toggle="modal" value="${deportiva.explicacion}" class="procModalPDF">
+															<i class="fas fa-file-pdf"></i>&nbsp;
+															<span>Mostrar Explicación</span>
+														</a>
+													</td>
+													<td>${deportiva.puntos}</td>
+													<td class="btnTabla">
+														<form action="Mostrar.do" method="post">
+															<input type="hidden" name="tipo" value="deportiva">
+															<input type="hidden" name="prueba" value="${deportiva.nombre}">
+															<button name="submit" value="submit" class="editar" onclick="loading();">
+																<i class="fas fa-pencil-alt"></i>&nbsp;
+																<span>Editar</span>
+															</button>
+														</form>
+													</td>
+													<td class="btnTabla">
+														<form action="Eliminar.do" method="post">
+															<input type="hidden" name="tipo" value="deportiva">
+															<input type="hidden" name="prueba" value="${deportiva.nombre}">
+															<a href="#modalEliminar" data-toggle="modal" class="eliminar">
+																<i class="fas fa-times"></i>&nbsp;
+																<span>Eliminar</span>
+															</a>
+														</form>
+													</td>
+												</tr>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+	                                
 	                                <tr style="background-color:transparent">
 	                                    <td class="hiddenT"></td>
 	                                    <td class="hiddenT"></td>
@@ -844,27 +950,38 @@
                                     	<th class="theadHide"></th>
                                     </c:if>
                                 </tr>
-                                <c:forEach items="${listaVotos}" var="voto">
-                                    <tr class="lineaFiltro">
-                                        <td>${voto.cliente.email}</td>
-                                        <td>Subido por: ${voto.multimedia.cliente.email} &nbsp; Prueba: ${voto.multimedia.pruebadeportiva.nombre}</td>
-                                        <td>${voto.puntos}</td>
-                                        <c:if test="${userRol == 'admin'}">
-	                                        <td class="btnTabla">
-	                                            <form action="Eliminar.do" method="post">
-	                                                <input type="hidden" name="tipo" value="voto">
-	                                                <input type="hidden" name="email" value="${voto.cliente.email}">
-	                                                <input type="hidden" name="emailMult" value="${voto.multimedia.cliente.email }">
-	                                                <input type="hidden" name="prueba" value="${voto.multimedia.pruebadeportiva.nombre }">
-	                                                <a href="#modalEliminar" data-toggle="modal" class="eliminar">
-	                                                    <i class="fas fa-times"></i>&nbsp;
-	                                                    <span>Eliminar</span>
-	                                                </a>
-	                                            </form>
-	                                        </td>
-                                        </c:if>
-                                    </tr>
-                                </c:forEach>
+
+								<c:choose>
+									<c:when test="${listaVotos == null}">
+										<tr>
+											<td colspan="3">No existen votos disponibles</td>
+										</tr>
+									</c:when>
+
+									<c:otherwise>
+										<c:forEach items="${listaVotos}" var="voto">
+											<tr class="lineaFiltro">
+												<td>${voto.cliente.email}</td>
+												<td>Subido por: ${voto.multimedia.cliente.email} &nbsp; Prueba: ${voto.multimedia.pruebadeportiva.nombre}</td>
+												<td>${voto.puntos}</td>
+												<c:if test="${userRol == 'admin'}">
+													<td class="btnTabla">
+														<form action="Eliminar.do" method="post">
+															<input type="hidden" name="tipo" value="voto">
+															<input type="hidden" name="email" value="${voto.cliente.email}">
+															<input type="hidden" name="emailMult" value="${voto.multimedia.cliente.email }">
+															<input type="hidden" name="prueba" value="${voto.multimedia.pruebadeportiva.nombre }">
+															<a href="#modalEliminar" data-toggle="modal" class="eliminar">
+																<i class="fas fa-times"></i>&nbsp;
+																<span>Eliminar</span>
+															</a>
+														</form>
+													</td>
+												</c:if>
+											</tr>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>                                
                             </table>
                         </div>
                     </div>

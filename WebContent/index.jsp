@@ -203,7 +203,7 @@
               		</c:if>
                 </div>
                 
-                <c:if test="${(userRol == 'admin' || userRol == 'hosteleria' || userRol == 'deportivas') && (popup != true)}">
+                <c:if test="${(userRol == 'admin' || userRol == 'turismo' || userRol == 'deportivas') && (popup != true)}">
                 	<c:set var="popup" value="true" scope="session" />
 	                <div id="modalAdmin" class="modal fade info-modal" role="dialog">
 	                    <div class="modal-dialog">

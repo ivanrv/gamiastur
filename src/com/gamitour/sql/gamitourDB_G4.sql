@@ -21,7 +21,7 @@ CREATE TABLE `rol` (
 INSERT INTO `rol` VALUES (1, 'user');
 INSERT INTO `rol` VALUES(2, 'admin');
 INSERT INTO `rol` VALUES(3, 'deportivas');
-INSERT INTO `rol` VALUES(4, 'hosteleria');
+INSERT INTO `rol` VALUES(4, 'turismo');
 
 CREATE TABLE `cliente` (
   `idcliente` int(11) NOT NULL AUTO_INCREMENT,
