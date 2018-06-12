@@ -97,7 +97,7 @@
                 <span class="focus-border"></span>
             </div>
             <div>
-                <input type="submit" class="btn" value="Iniciar SesiÃ³n" onclick="loading();">
+                <input type="submit" class="btn" value="Iniciar Sesión" onclick="loading();">
                 <span>¿Aún no tienes cuenta?
                     <a href="${pageContext.servletContext.contextPath}/content/registro.jsp">Regí­strate</a>
                 </span>

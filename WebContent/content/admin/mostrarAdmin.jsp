@@ -324,7 +324,7 @@
                                 </tr>
 
 								<c:choose>
-									<c:when test="${listaActividades == null}">
+									<c:when test="${fn:length(listaActividades) == 0}">
 										<tr>
 											<td colspan="5">No existen actividades disponibles</td>
 										</tr>
@@ -402,7 +402,7 @@
                                 </tr>
 
 								<c:choose>
-									<c:when test="${listaComentarios == null}">
+									<c:when test="${fn:length(listaComentarios) == 0}">
 										<tr>
 											<td colspan="3">No existen comentarios disponibles</td>
 										</tr>
@@ -450,7 +450,7 @@
                                 </tr>
 
 								<c:choose>
-									<c:when test="{listaItinerarios == null}">
+									<c:when test="{fn:length(listaItinerarios) == 0}">
 										<tr>
 											<td colspan="4">No existen itinerarios disponibles</td>
 										</tr>
@@ -531,7 +531,7 @@
                                 </tr>
 
 								<c:choose>
-									<c:when test="${listaMultimedias == null}">
+									<c:when test="${fn:length(listaMultimedias) == 0}">
 										<tr>
 											<td colspan="3">No existen multimedias disponibles</td>
 										</tr>
@@ -588,7 +588,7 @@
                                 </tr>
 
 								<c:choose>
-									<c:when test="${listaNoticias == null}">
+									<c:when test="${fn:length(listaNoticias) == 0}">
 										<tr>
 											<td colspan="3">No existen noticias disponibles</td>
 										</tr>
@@ -659,7 +659,7 @@
                                 </tr>
 
 								<c:choose>
-									<c:when test="${listaParadas == null}">
+									<c:when test="${fn:length(listaParadas) == 0}">
 										<tr>
 											<td colspan="4">No existen paradas disponibles</td>
 										</tr>
@@ -740,7 +740,7 @@
                                 </tr>
 
 								<c:choose>
-									<c:when test="${listaPremios == null}">
+									<c:when test="${fn:length(listaPremios) == 0}">
 										<tr>
 											<td colspan="3">No existen premios disponibles</td>
 										</tr>
@@ -809,7 +809,7 @@
 	                                </tr>
 
 									<c:choose>
-										<c:when test="${listaCulturales == null}">
+										<c:when test="${fn:length(listaCulturales) == 0}">
 											<tr>
 												<td colspan="3">No existen pruebas culturales disponibles</td>
 											</tr>
@@ -877,7 +877,7 @@
 	                                </tr>
 
 									<c:choose>
-										<c:when test="${listaDeportivas == null}">
+										<c:when test="${fn:length(listaDeportivas) == 0}">
 											<tr>
 												<td colspan="5">No existen pruebas deportivas disponibles</td>
 											</tr>
@@ -952,7 +952,7 @@
                                 </tr>
 
 								<c:choose>
-									<c:when test="${listaVotos == null}">
+									<c:when test="${fn:length(listaVotos) == 0}">
 										<tr>
 											<td colspan="3">No existen votos disponibles</td>
 										</tr>

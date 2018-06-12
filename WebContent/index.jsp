@@ -143,7 +143,7 @@
               				<h2 class="h2"><i class="fas fa-map"></i></h2>
               				<h2 class="h2">Fant·sticos Itinerarios</h2>
               				<span>Recorre fant·sticos lugares con nuestros maravillosos itinerarios</span>
-              				<a href="${pageContext.servletContext.contextPath}/content/itinerarios.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Saber m√°s</a>
+              				<a href="${pageContext.servletContext.contextPath}/content/itinerarios.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Saber m·s</a>
               			</div>
               			<div class="col-xs-2"></div>
               		</div>
