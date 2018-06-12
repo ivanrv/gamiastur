@@ -25,7 +25,7 @@
                 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE="
                     crossorigin="anonymous"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/tablas.js"></script>   
                 <c:if test="${flag != null}"><script>var flag = "${flag}"</script></c:if>           
