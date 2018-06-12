@@ -156,9 +156,9 @@
                             	</c:otherwise>
                             </c:choose>
                             
-                            <a href="javascript:void(0)" class="selAdmin" value="tablaRoles">
-                                <i class="fas fa-user-secret"></i>
-                                <span>Roles</span>
+                            <a href="javascript:void(0)" class="selAdmin" value="tablaReservas">
+                                <i class="fas fa-book-open"></i>
+                                <span>Reservas</span>
                             </a>
                             <a href="javascript:void(0)" class="selAdmin" value="tablaVotos">
                                 <i class="far fa-thumbs-up"></i>
@@ -233,9 +233,9 @@
                             	</c:otherwise>
                             </c:choose>
  
-                            <a href="javascript:void(0)" class="selAdminNav" value="tablaRoles">
-                                <i class="fas fa-user-secret"></i>&nbsp;
-                                <span>Roles</span>
+                            <a href="javascript:void(0)" class="selAdminNav" value="tablaReservas">
+                                <i class="fas fa-book-open"></i>&nbsp;
+                                <span>Reservas</span>
                             </a>
                             <a href="javascript:void(0)" class="selAdminNav" value="tablaVotos">
                                 <i class="far fa-thumbs-up"></i>&nbsp;
@@ -283,28 +283,52 @@
                                     </tr>
                                 </c:forEach>
                             </table>
-                        </div>
-
-                        <div class="tablaHid" id="tablaRoles">
-                            <h1>Roles:</h1>
+						</div>
+						
+						<div class="tablaHid" id="tablaReservas">
+                            <h1>Reservas:</h1>
                             <table class="table table-striped table-responsive">
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Número de clientes</th>
-                                    <th>Clientes</th>
+                                    <th>Actividad</th>
+                                    <th>Cliente</th>
+									<th>Fecha de Reserva</th>
+									<th>Personas</th>
+                                    <c:if test="${userRol == 'admin'}">
+                                    	<th class="theadHide"></th>
+                                    </c:if>
                                 </tr>
-                                <c:forEach items="${listaRoles}" var="rol">
-                                    <tr class="lineaFiltro">
-                                        <td>${rol.nombre}</td>
-                                        <td>${fn:length(rol.clientes)}</td>
-                                        <td>
-                                            <c:forEach items="${rol.clientes}" var="cliente">
-                                                ${cliente.email}
-                                                <br/>
-                                            </c:forEach>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
+
+								<c:choose>
+									<c:when test="${fn:length(listaReservas) == 0}">
+										<tr>
+											<td colspan="4">No existen reservas disponibles</td>
+										</tr>
+									</c:when>
+
+									<c:otherwise>
+										<c:forEach items="${listaReservas}" var="reserva">
+											<tr class="lineaFiltro">
+												<td>${reserva.actividad.nombre}</td>
+												<td>${reserva.cliente.email}</td>
+												<td><fmt:formatDate value="${reserva.fechaReserva}" pattern="dd-MM-yyyy"/></td>
+												<td>${reserva.numPersonas}</td>
+												<c:if test="${userRol == 'admin'}">
+													<td class="btnTabla">
+														<form action="Eliminar.do" method="post">
+															<input type="hidden" name="tipo" value="reserva">
+															<input type="hidden" name="email" value="${reserva.cliente.email}">
+															<input type="hidden" name="actividad" value="${reserva.actividad.nombre}">
+															<a href="#modalEliminar" data-toggle="modal" class="eliminar">
+																<i class="fas fa-times"></i>&nbsp;
+																<span>Eliminar</span>
+															</a>
+														</form>
+													</td>
+												</c:if>
+											</tr>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
                             </table>
                         </div>
 

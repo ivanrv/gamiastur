@@ -14,6 +14,7 @@ public class MostrarAccion extends Accion {
 		ServiceCliente sCliente = new ServiceClienteImp();
 		ServiceActividad sActividad = new ServiceActividadImp();
 		ServiceComentario sComentario = new ServiceComentarioImp();
+		ServiceClienteHasActividad sCliAct = new ServiceClienteHasActividadImp();
 		ServiceItinerario sItinerario = new ServiceItinerarioImp();
 		ServiceMultimedia sMultimedia = new ServiceMultimediaImp();
 		ServiceNoticia sNoticia = new ServiceNoticiaImp();
@@ -34,6 +35,7 @@ public class MostrarAccion extends Accion {
 		request.getSession().setAttribute("listaCulturales", sPruebaCultural.buscarTodos());
 		request.getSession().setAttribute("listaDeportivas", sPruebaDeportiva.buscarTodos());
 		request.getSession().setAttribute("listaVotos", sVoto.buscarTodos());
+		request.getSession().setAttribute("listaReservas", sCliAct.buscarTodos());
 
 		if (request.getSession().getAttribute("flag") != null) {
 			request.setAttribute("flag", request.getSession().getAttribute("flag"));

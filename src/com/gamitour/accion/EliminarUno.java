@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.gamitour.service.ServiceActividad;
 import com.gamitour.service.ServiceActividadImp;
 import com.gamitour.service.ServiceCliente;
+import com.gamitour.service.ServiceClienteHasActividad;
+import com.gamitour.service.ServiceClienteHasActividadImp;
 import com.gamitour.service.ServiceClienteImp;
 import com.gamitour.service.ServiceComentario;
 import com.gamitour.service.ServiceComentarioImp;
@@ -37,6 +39,7 @@ public class EliminarUno extends Accion{
 		
 		ServiceCliente sCliente = new ServiceClienteImp();
 		ServiceActividad sActividad = new ServiceActividadImp();
+		ServiceClienteHasActividad sCliAct = new ServiceClienteHasActividadImp();
 		ServiceComentario sComentario = new ServiceComentarioImp();
 		ServiceItinerario sItinerario = new ServiceItinerarioImp();
 		ServiceMultimedia sMultimedia = new ServiceMultimediaImp();
@@ -116,6 +119,12 @@ public class EliminarUno extends Accion{
 		case "voto":
 			sVoto.borrar(sVoto.buscarVoto(sCliente.buscarPorEmail(request.getParameter("email")), sMultimedia.buscarMultimedia(sCliente.buscarPorEmail(request.getParameter("emailMult")), sPruebaDeportiva.buscarPorNombre(request.getParameter("prueba")))));
 			request.getSession().setAttribute("flag", "tablaVotos");
+			retorno = "Admin.do";
+			break;
+			
+		case "reserva":
+			sCliAct.borrar(sCliAct.buscarReserva(sCliente.buscarPorEmail(request.getParameter("email")), sActividad.buscarPorNombre(request.getParameter("actividad"))));
+			request.getSession().setAttribute("flag", "tablaReservas");
 			retorno = "Admin.do";
 			break;
 		}
