@@ -2,7 +2,8 @@
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
         <%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
-        <%@ page import="com.gamitour.service.ServicePremioImp" %>
+		<%@ page import="com.gamitour.service.ServicePremioImp" %>
+		<%@ page import="com.gamitour.service.ServiceClienteImp" %>		
             <!DOCTYPE html>
             <html lang="es">
 
@@ -34,6 +35,15 @@
 				<%
 					ServiceItinerarioImp sItinerario = new ServiceItinerarioImp();
 					request.getSession().setAttribute("itinerarios", sItinerario.buscarNombres());
+				%>
+			</c:if>
+
+
+			<c:if test="${username != null}">
+				<jsp:useBean id="sClienteImp" class="com.gamitour.service.ServiceClienteImp"/>
+				<%
+					ServiceClienteImp sCliente = new ServiceClienteImp();
+					request.setAttribute("puntosCliente", sCliente.buscarPuntos(request.getSession().getAttribute("userEmail").toString()));
 				%>
 			</c:if>
 			
@@ -111,6 +121,11 @@
 
                 <div class="content">
 					<h1 class="text-center">Premios Disponibles</h1>
+					<c:if test="${puntosCliente != null}">
+						<h3 class="h3 text-center">En este momento tienes <em>${puntosCliente}</em> puntos disponibles.</h3>
+						<input type="hidden" id="puntosCliente" value="${puntosCliente}"/>
+					</c:if>
+
 					<div id="premiosContainer" class="row">
                 		<c:forEach items="${premios}" var="premio">
                 			<div class="col-xs-3 premioItem">

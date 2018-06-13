@@ -46,4 +46,9 @@ public class ServiceClienteImp implements ServiceCliente {
 		return c.buscarEmails();
 	}
 
+	@Override
+	public int buscarPuntos(String email) {
+		return c.buscarPuntos(email);
+	}
+
 }

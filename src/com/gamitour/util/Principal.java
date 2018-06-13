@@ -55,7 +55,7 @@ public class Principal {
 		
 		//p.pruebasParada();
 		
-		p.pruebasPremio();
+		//p.pruebasPremio();
 		
 		//p.pruebasPruebaCultural();
 		
@@ -94,8 +94,8 @@ public class Principal {
 		//pruebas tabla cliente
 		
 		
-		Cliente cliente = new Cliente(sRol.buscarPorNombre("user"), "ivan", "rguez", new Date(), "email", "1234", "987", "direccion", "33700", "avatar", 200, new Date(), null, null, null, null, null);
-		sCliente.insertar(cliente);
+		//Cliente cliente = new Cliente(sRol.buscarPorNombre("user"), "ivan", "rguez", new Date(), "email", "1234", "987", "direccion", "33700", "avatar", 200, new Date(), null, null, null, null, null);
+		//sCliente.insertar(cliente);
 		
 		
 		//System.out.println("Nombre: " + sCliente.buscarPorEmail("email").getNombre());
@@ -113,6 +113,8 @@ public class Principal {
 		cliente.setNombre("nuevoNombre");
 		sCliente.actualizar(cliente);
 		*/
+		
+		System.out.println(sCliente.buscarPuntos("ivan@gamitour.com"));
 	}
 
 	public void pruebasActividad(){

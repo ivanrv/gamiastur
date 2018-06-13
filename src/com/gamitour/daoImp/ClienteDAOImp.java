@@ -79,4 +79,18 @@ public class ClienteDAOImp extends GenericDAOImp<Cliente, String> implements Cli
 		return emails;
 	}
 
+	@Override
+	public int buscarPuntos(String email) {
+		int puntos;
+		
+		sf.getCurrentSession().beginTransaction();
+		Query q = sf.getCurrentSession().createQuery("select c.puntosacumulados from Cliente c where email = :email");
+		q.setParameter("email", email);
+		puntos = (int) q.getSingleResult();
+		sf.getCurrentSession().getTransaction().commit();
+		sf.getCurrentSession().close();
+		
+		return puntos;
+	}
+
 }

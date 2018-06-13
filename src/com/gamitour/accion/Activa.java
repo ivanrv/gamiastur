@@ -28,7 +28,7 @@ public class Activa extends Accion{
 		case "activa":
 			
 			premio.setCliente(cliente);
-			premio.setFechaactivacion(new Date());
+			premio.setFechaconsumo(new Date());
 			cliente.setPuntosacumulados(cliente.getPuntosacumulados() - premio.getPuntos());
 			sPremio.actualizar(premio);
 			sCli.actualizar(cliente);

@@ -11,4 +11,5 @@ public interface ServiceCliente {
 	public Cliente buscarPorEmail(String email);
 	public List<Cliente> buscarTodos();
 	public List<String> buscarEmails();
+	public int buscarPuntos(String email);
 }
