@@ -204,7 +204,7 @@
 
                         <div class="sbmt">
                         	<a href="#modalImg" class="btn" data-toggle="modal">Modificar Imagen</a>
-                        	<a href="#modalVideo" class="btn" data-toggle="modal">Modificar VÃ­deo</a>
+                        	<a href="#modalVideo" class="btn" data-toggle="modal">Modificar Ví­deo</a>
                             <a id="enviar" class="btn">Actualizar</a>
                         </div>
                         </form>

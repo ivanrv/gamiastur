@@ -40,7 +40,7 @@ $(document).ready(function () {
         
         arrayParadas.forEach(element => {
             if(element.itinerario == idClick)
-                $("#modalParadasTable").append('<tr class="paradaRow"><td>' + element.nombre + '</td><td><a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="' + element.latitud + " " + element.longitud + '"><i class="fas fa-map-marker-alt"></i>&nbsp;<span style="font-size: 1em;">Mostrar Ubicaci贸n</span></a></td><td class="btnTabla"><form action="Mostrar.do" method="post"><input type="hidden" name="tipo" value="parada"><input type="hidden" name="parada" value="' + element.nombre + '"><button name="submit" value="submit" class="editar"><i class="fas fa-pencil-alt"></i>&nbsp;<span>Editar</span></button></form></td><td class="btnTabla"><form action="Eliminar.do" method="post"><input type="hidden" name="tipo" value="parada"><input type="hidden" name="parada" value="' + element.nombre + '"><a href="#modalEliminar" data-toggle="modal" class="eliminar"><i class="fas fa-times"></i>&nbsp;<span>Eliminar</span></a></form></td></tr>');
+                $("#modalParadasTable").append('<tr class="paradaRow"><td>' + element.nombre + '</td><td><a href="#modalMaps" data-toggle="modal" class="procModalMaps" value="' + element.latitud + " " + element.longitud + '"><i class="fas fa-map-marker-alt"></i>&nbsp;<span style="font-size: 1em;">Mostrar Ubicaci髇</span></a></td><td class="btnTabla"><form action="Mostrar.do" method="post"><input type="hidden" name="tipo" value="parada"><input type="hidden" name="parada" value="' + element.nombre + '"><button name="submit" value="submit" class="editar"><i class="fas fa-pencil-alt"></i>&nbsp;<span>Editar</span></button></form></td><td class="btnTabla"><form action="Eliminar.do" method="post"><input type="hidden" name="tipo" value="parada"><input type="hidden" name="parada" value="' + element.nombre + '"><a href="#modalEliminar" data-toggle="modal" class="eliminar"><i class="fas fa-times"></i>&nbsp;<span>Eliminar</span></a></form></td></tr>');
         });
         
         if($(".paradaRow").length == 0){
@@ -63,7 +63,7 @@ $(document).ready(function () {
 
         arrayDeportivas.forEach(element => {
             if(element.parada == paradaClick)
-                $("#modalPruebasDepTable").append('<tr class="pruebaRow pruebaRowDep"><td>' + element.nombre + '</td><td>' + element.fechainicio + '</td><td><a href="#modalPDF" data-toggle="modal" value="' + element.explicacion + '" class="procModalPDF"><i class="fas fa-file-pdf"></i>&nbsp;<span style="font-size: 1em;">Mostrar Explicaci贸n</span></a></td><td>' + element.puntos + '</td><td class="btnTabla"><form action="Mostrar.do" method="post"><input type="hidden" name="tipo" value="deportiva"><input type="hidden" name="prueba" value="' + element.nombre + '"><button name="submit" value="submit" class="editar"><i class="fas fa-pencil-alt"></i>&nbsp;<span>Editar</span></button></form></td><td class="btnTabla"><form action="Eliminar.do" method="post"><input type="hidden" name="tipo" value="deportiva"><input type="hidden" name="prueba" value="' + element.nombre + '"><a href="#modalEliminar" data-toggle="modal" class="eliminar"><i class="fas fa-times"></i>&nbsp;<span>Eliminar</span></a></form></td></tr>');
+                $("#modalPruebasDepTable").append('<tr class="pruebaRow pruebaRowDep"><td>' + element.nombre + '</td><td>' + element.fechainicio + '</td><td><a href="#modalPDF" data-toggle="modal" value="' + element.explicacion + '" class="procModalPDF"><i class="fas fa-file-pdf"></i>&nbsp;<span style="font-size: 1em;">Mostrar Explicaci髇</span></a></td><td>' + element.puntos + '</td><td class="btnTabla"><form action="Mostrar.do" method="post"><input type="hidden" name="tipo" value="deportiva"><input type="hidden" name="prueba" value="' + element.nombre + '"><button name="submit" value="submit" class="editar"><i class="fas fa-pencil-alt"></i>&nbsp;<span>Editar</span></button></form></td><td class="btnTabla"><form action="Eliminar.do" method="post"><input type="hidden" name="tipo" value="deportiva"><input type="hidden" name="prueba" value="' + element.nombre + '"><a href="#modalEliminar" data-toggle="modal" class="eliminar"><i class="fas fa-times"></i>&nbsp;<span>Eliminar</span></a></form></td></tr>');
         });        
      
         if($(".pruebaRowDep").length == 0){
@@ -103,7 +103,7 @@ $(document).ready(function () {
 
         arrayClientes.forEach(element =>{
             if(element.email == $(this).attr("value")){
-                $("#infoClienteTitle").text("Informaci贸n de cliente: " + element.email);
+                $("#infoClienteTitle").text("Informaci髇 de cliente: " + element.email);
                 $("#infoClienteNombre").text(element.nombre);
                 $("#infoClienteApellidos").text(element.apellidos);
                 $("#infoClienteFechaNac").text(element.fechanacimiento);
@@ -139,7 +139,7 @@ $(document).ready(function () {
 
         arrayPremios.forEach(element =>{
             if(element.nombre == $(this).attr("value")){
-                $("#infoPremioTitle").text("Informaci贸n de premio: " + element.nombre);
+                $("#infoPremioTitle").text("Informaci髇 de premio: " + element.nombre);
                 $("#infoPremioNombre").text(element.nombre);
                 $("#infoPremioCliente").text(element.cliente);
                 $("#infoPremioActivacion").text(element.fechaactivacion);
