@@ -23,6 +23,7 @@
                 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE=" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/form.js" type="text/javascript"></script>
                 <script src="${pageContext.servletContext.contextPath}/js/loader.js" type="text/javascript"></script>
@@ -114,7 +115,12 @@
                                     <label>Pregunta *</label>
                                     <span class="focus-border"></span>
                                 </div>
-                                
+
+                                <div class="inputCon input-effect">
+                                        <input class="textIn has-content" type="number" name="puntos" placeholder="" value="${cultural.puntos}" required/>
+                                        <label>Puntos *</label>
+                                        <span class="focus-border"></span>
+                                    </div>     
                         </div>
                         <div class="col2">
                             
@@ -123,11 +129,24 @@
                                 <label>Respuesta *</label>
                                 <span class="focus-border"></span>
                             </div>
+
                             <div class="inputCon input-effect">
-                                <input class="textIn has-content" type="number" name="puntos" placeholder="" value="${cultural.puntos}" required/>
-                                <label>Puntos *</label>
+                                <input class="textIn has-content" type="text" name="fallo1" placeholder="" value="${cultural.fallo1}" required/>
+                                <label>Respuesta errónea 1 *</label>
                                 <span class="focus-border"></span>
                             </div>
+
+                            <div class="inputCon input-effect">
+                                <input class="textIn has-content" type="text" name="fallo2" placeholder="" value="${cultural.fallo2}" required/>
+                                <label>Respuesta errónea 2</label>
+                                <span class="focus-border"></span>
+                            </div>
+
+                            <div class="inputCon input-effect">
+                                <input class="textIn has-content" type="text" name="fallo3" placeholder="" value="${cultural.fallo3}" required/>
+                                <label>Respuesta errónea 3</label>
+                                <span class="focus-border"></span>
+                            </div>                             
                         </div>
 
                         <div class="sbmt">

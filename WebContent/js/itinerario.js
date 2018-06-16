@@ -1,5 +1,5 @@
 
-var paradas;
+var paradas, paradaActual;
 
 $(document).ready(function () {
 	paradas = JSON.parse(stringParadas);
@@ -16,36 +16,35 @@ $(document).ready(function () {
 
 
 function showParada(numParada){
-	
 	for (let index = 0; index < paradas.length; index++) {
 		const parada = paradas[index];
 
 		if (parada.numeroParada == numParada){
-			$("#paradaTit").css("background-image", "static" + parada.imagen);
+			paradaActual = parada;
 
 			$("#paradaNombre").text(parada.nombre);
 			$("#paradaNumero").text("Parada " + parada.numeroParada);
 			
 			if(parada.historia == "")
-				$("#paradaHistoria").text("No tenemos datos histÃ³ricos de esta parada");
+				$("#paradaHistoria").text("No tenemos datos históricos de esta parada");
 			else
 				$("#paradaHistoria").text(parada.historia);
 
 			if(parada.anecdotario == "")
-				$("#paradaAnecdotario").text("No tenemos datos anecdÃ³ticos de esta parada");
+				$("#paradaAnecdotario").text("No tenemos datos anecdóticos de esta parada");
 			else
 				$("#paradaAnecdotario").text(parada.anecdotario);
 
 			if(parada.gastronomia == "")
-				$("#paradaGastronomia").text("No tenemos datos gastronÃ³micos de esta parada");
+				$("#paradaGastronomia").text("No tenemos datos gastronómicos de esta parada");
 			else
 				$("#paradaGastronomia").text(parada.gastronomia);
 
-			$("#paradaVid").attr("src", "static" + parada.video);
+			$("#imgContainer").attr("src", "static" + parada.imagen);
 			initMapaParada(parada.latitud, parada.longitud);
 
-			if(typeof $("#pruebasContainer") != undefined){
-				//TODO PRUEBAS
+			if(typeof $("#titCulturales").val() != "undefined"){	
+				showCultural(0);					
 			}
 
 			if (parada.numeroParada == 1){
@@ -68,6 +67,63 @@ function showParada(numParada){
 		}
 	}
 	
+}
+
+function showCultural(contador){
+	$("#titCulturales").text(paradaActual.pruebasCulturales[contador].nombre);
+	$("#respuestasContainer").html('<div class="row"><div class="col-xs-12 text-center"><h3 class="h3" id="preguntaCultural">' + paradaActual.pruebasCulturales[contador].pregunta + '</h3></div></div>');
+
+	var respuestas = [paradaActual.pruebasCulturales[contador].respuesta, paradaActual.pruebasCulturales[contador].fallo1];
+
+	if (paradaActual.pruebasCulturales[contador].fallo2 != "")
+		respuestas.push(paradaActual.pruebasCulturales[contador].fallo2);
+
+	if (paradaActual.pruebasCulturales[contador].fallo3 != "")
+		respuestas.push(paradaActual.pruebasCulturales[contador].fallo3);
+
+	respuestas.sort(function(a, b){return 0.5 - Math.random()});
+
+	for (let culIndex = 0; culIndex < respuestas.length; culIndex++) {
+		const resp = respuestas[culIndex];
+		
+		$("#respuestasContainer").html($("#respuestasContainer").html() + '<div class="row"><div class="col-xs-1"></div><div class="col-xs-10 text-center respuesta">'+ resp +'</div></div>');
+	}
+
+	$(".respuesta").click(function(){
+		if($(this).text() == paradaActual.pruebasCulturales[contador].respuesta)
+			$(this).addClass("respuestaBien");
+		else{
+			$(this).addClass("respuestaMal");
+
+			$(".respuesta:contains('" + paradaActual.pruebasCulturales[contador].respuesta + "')").addClass("respuestaBien");
+		}
+
+		$(".respuesta").addClass("respuestaDisabled");
+	});
+
+	if (contador == 0){
+		$("#culturalesCambio").html('<div class="col-xs-8"></div> <div class="col-xs-3 text-center btnCambioCultural" id="btnCulturalNext">Siguiente &nbsp; &rarr;</div><div class="col-xs-1"></div>');
+
+		$("#btnCulturalNext").click(function(){
+			showCultural(contador+1);
+		});
+	}else if(contador == paradaActual.pruebasCulturales.length-1){
+		$("#culturalesCambio").html('<div class="col-xs-1"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnCulturalPrev">&larr; &nbsp; Anterior</div>');
+		
+		$("#btnCulturalPrev").click(function(){
+			showCultural(contador-1);
+		});
+	}else{
+		$("#culturalesCambio").html('<div class="col-xs-1"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnCulturalPrev">&larr; &nbsp; Anterior</div><div class="col-xs-4"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnCulturalNext">Siguiente &nbsp; &rarr;</div><div class="col-xs-1"></div>');
+		
+		$("#btnCulturalPrev").click(function(){
+			showCultural(contador-1);
+		});
+
+		$("#btnCulturalNext").click(function(){
+			showCultural(contador+1);
+		});
+	}
 }
 
 function initMapaParada(lat, lng){

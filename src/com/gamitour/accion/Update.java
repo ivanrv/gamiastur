@@ -225,6 +225,9 @@ public class Update extends Accion{
 			cultural.setPregunta(request.getParameter("pregunta"));
 			cultural.setRespuesta(request.getParameter("respuesta"));
 			cultural.setPuntos(Integer.parseInt(request.getParameter("puntos")));
+			cultural.setFallo1(request.getParameter("fallo1"));		
+			cultural.setFallo2(request.getParameter("fallo2"));			
+			cultural.setFallo3(request.getParameter("fallo3"));
 			
 			sPruebaCultural.actualizar(cultural);
 			

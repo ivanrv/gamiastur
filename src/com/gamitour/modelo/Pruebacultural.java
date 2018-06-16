@@ -25,16 +25,20 @@ public class Pruebacultural implements java.io.Serializable {
 	private String pregunta;
 	private String respuesta;
 	private int puntos;
+	private String fallo1;
+	private String fallo2;
+	private String fallo3;
 
 	public Pruebacultural() {
 	}
 
-	public Pruebacultural(Parada parada, String nombre, String pregunta, String respuesta, int puntos) {
+	public Pruebacultural(Parada parada, String nombre, String pregunta, String respuesta, int puntos, String fallo1) {
 		this.parada = parada;
 		this.nombre = nombre;
 		this.pregunta = pregunta;
 		this.respuesta = respuesta;
 		this.puntos = puntos;
+		this.fallo1 = fallo1;
 	}
 
 	@Id
@@ -93,6 +97,33 @@ public class Pruebacultural implements java.io.Serializable {
 
 	public void setPuntos(int puntos) {
 		this.puntos = puntos;
+	}
+	
+	@Column(name = "fallo1", nullable = false)
+	public String getFallo1() {
+		return this.fallo1;
+	}
+
+	public void setFallo1(String fallo1) {
+		this.fallo1 = fallo1;
+	}
+	
+	@Column(name = "fallo2")
+	public String getFallo2() {
+		return this.fallo2;
+	}
+
+	public void setFallo2(String fallo2) {
+		this.fallo2 = fallo2;
+	}
+	
+	@Column(name = "fallo3")
+	public String getFallo3() {
+		return this.fallo3;
+	}
+
+	public void setFallo3(String fallo3) {
+		this.fallo3 = fallo3;
 	}
 
 }

@@ -40,9 +40,9 @@
 							stringParadas += '{"nombre": "${pd.nombre}", "fechainicio": "<fmt:formatDate value="${pd.fechainicio}" pattern="dd-MM-yyyy"/>", "fechafin": "<fmt:formatDate value="${pd.fechafin}" pattern="dd-MM-yyyy"/>", "explicacion": "${pd.explicacion}", "puntos": "${pd.puntos}"}';
 							<c:if test="${!pdStatus.last}">stringParadas += ",";</c:if>
 						</c:forEach>
-						stringParadas += '], "pruebasCulutrales": [';
+						stringParadas += '], "pruebasCulturales": [';
 						<c:forEach items="${parada.pruebaculturals}" var="pc" varStatus="pcStatus">
-							stringParadas += '{"nombre": "${pc.nombre}", "pregunta": "${pc.pregunta}", "respuesta": "${pc.respuesta}", "puntos": "${pc.puntos}"}';
+							stringParadas += '{"nombre": "${pc.nombre}", "pregunta": "${pc.pregunta}", "respuesta": "${pc.respuesta}","fallo1": "${pc.fallo1}", "fallo2": "${pc.fallo2}", "fallo3": "${pc.fallo3}", "puntos": "${pc.puntos}"}';
 							<c:if test="${!pcStatus.last}">stringParadas += ",";</c:if>
 						</c:forEach>
 						stringParadas += "]}";
@@ -159,9 +159,8 @@
                 		</div>
                 		
                 		<div class="col-xs-12" id="adicionalContainer">
-                			<div class="col-xs-6 text-right" id="vidContainer">
-                				<video src="" id="paradaVid"></video>
-                				
+							<div class="col-xs-6 text-right" id="mediaContainer">
+								<img id="imgContainer"/>
                 			</div>
                 			
                 			<div class="col-xs-6 text-left" id="mapContainer">
@@ -175,10 +174,10 @@
                 			<c:choose>
                 				<c:when test="${username != null}">
                 					<div class="col-xs-2 text-center">
-                						<div class="btnPruebas" id="btnDeportivas"><i class="fas fa-volleyball-ball"></i></div>
+                						<a href="#modalDeportivas" data-toggle="modal" class="btnModalPruebas"><div class="btnPruebas" id="btnDeportivas"><i class="fas fa-volleyball-ball"></i></div></a>
                 					</div>
                 					<div class="col-xs-2 text-center">
-                						<div class="btnPruebas" id="btnCulturales"><i class="fas fa-book"></i></div>
+										<a href="#modalCulturales" data-toggle="modal" class="btnModalPruebas"><div class="btnPruebas" id="btnCulturales"><i class="fas fa-book"></i></div></a>
                 					</div>
                 				</c:when>
                 			
@@ -206,7 +205,41 @@
                 			</div>                    			                        			
                 		</div>
                 	</div>
-                </div>
+				</div>
+				
+				<c:if test="${username != null}">
+					<div id="modalCulturales" class="modal fade" role="dialog">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-header">
+								<button class="close" type="button" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title text-center" id="titCulturales">TITULO CULTURALES</h4>
+							</div>
+
+							<div class="modal-body" id="respuestasContainer"></div>
+
+							<div class="modal-footer">
+								<div class="row" id="culturalesCambio"></div>
+							</div>
+						</div>
+					</div>	
+					
+					<div id="modalDeportivas" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-header">
+								<button class="close" type="button" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title" id="titDeportivas"></h4>
+							</div>
+
+							<div class="modal-body">
+								
+							</div>
+
+							<div class="modal-footer">
+								
+							</div>
+						</div>
+					</div>
+				</c:if>
 
                 <footer>
                     <div class="socials">

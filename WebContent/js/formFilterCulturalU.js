@@ -23,6 +23,13 @@ $(document).ready(function () {
             submit = false;
         }
 
+        if ($("input[name=fallo1]").val() == "") {
+            $("#mensajeError").append("<p>La respuesta errónea 1 es un dato obligatorio.</p>");
+            $("input[name=fallo1]").addClass("has-warning");
+
+            submit = false;
+        }
+
         if ($("input[name=puntos]").val() == "") {
             $("#mensajeError").append("<p>Los puntos son un dato obligatorio.</p>");
             $("input[name=puntos]").addClass("has-warning");

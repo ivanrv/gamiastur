@@ -137,14 +137,18 @@
 						<div id="perfilActividades" class="col-xs-5">
 							<h3 class="h3 text-center"><a href="${pageContext.servletContext.contextPath}/content/user/misActividades.jsp" onclick="loading();">Actividades</a></h3>
 							<div id="perfilActData">
-								<ul>
+								<table class="table table-striped table-responsive">
 									<c:forEach items="${cliente.clienteHasActividads}" var="cliAct">
-										<li>${cliAct.actividad.nombre}</li>
+										<tr>
+											<td>${cliAct.actividad.nombre}</td>
+											<td>${cliAct.actividad.fechainicio}</td>
+											<td>${cliAct.numPersonas} Personas</td>
+										</tr>
 									</c:forEach>																		
-								</ul>
-								<c:if test="${fn:length(cliente.clienteHasActividads) == 0 }">
-										<p class="text-center">-- No existe ninguna actividad reservada --</p>
-								</c:if>								
+									<c:if test="${fn:length(cliente.clienteHasActividads) == 0 }">
+										<tr><td>-- No existe ninguna actividad reservada --</td></tr>
+									</c:if>		
+								</table>						
 							</div>
 						</div>
 						
@@ -153,14 +157,18 @@
 						<div id="perfilPremios" class="col-xs-5">
 							<h3 class="h3 text-center"><a href="${pageContext.servletContext.contextPath}/content/user/misPremios.jsp" onclick="loading()">Premios</a></h3>
 							<div id="perfilPremData">
-								<ul>
+								<table class="table table-striped table-responsive">
 									<c:forEach items="${cliente.premios}" var="premio">
-										<li>${premio.nombre}</li>
+										<tr>
+											<td>${premio.nombre}</td>
+											<td>${premio.descripcion}</td>
+										</tr>
 									</c:forEach>
-								</ul>
-								<c:if test="${fn:length(cliente.premios) == 0 }">
-										<p class="text-center">-- No existe ningún premio activado --</p>
-								</c:if>	
+
+									<c:if test="${fn:length(cliente.premios) == 0 }">
+										<tr><td>-- No existe ningún premio activado --</td></tr>
+									</c:if>	
+								</table>
 							</div>
 						</div>					
 					</div>

@@ -145,18 +145,32 @@
                 <div id="modalReserva" class="modal fade" role="dialog">
 			        <div class="modal-dialog">
 			            <div class="modal-body" id="mensajeBorrar">
-			            	<p class="text-center">¿Está seguro de querer participar en esta actividad?</p>
+							<p class="text-center">Introduzca el número de personas que van a participar</p>
+
+							<div class="inputCon input-effect">
+								<form action="Reserva.do" method="post" id="formReservaAct">
+									<input type="hidden" id="actReserva" name="actividad" value=""/>
+									<input type="hidden" name="tipo" value="reserva"/>
+									<input type="number" name="nPersonas" placeholder="Número de participantes" class="textIn" />
+									<span class="focus-border"></span>
+								</form>
+							</div>
 			            </div>
-			            <div class="modal-footer">
-			                <form action="Reserva.do" method="post">
-			                	<input type="hidden" id="actReserva" name="actividad" value=""/>
-			                	<input type="hidden" name="tipo" value="reserva"/>
-			                	<input type="submit" class="btn" value="Participar"></input>
-			           			<a href="javascript:void(0);" class="btn" data-dismiss="modal">Cancelar</a>
-			                </form>
+			            <div class="modal-footer">			    
+			                <a href="javascript:void(0)" class="btn" id="btnReservaAct">Participar</a>
+			           		<a href="javascript:void(0);" class="btn" data-dismiss="modal">Cancelar</a>
 			            </div>
 			        </div>
-			    </div>
+				</div>
+				
+				<div id="modalError" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-body">Por favor, introduzca un número de participantes en la reserva.</div>
+						<div class="modal-footer">
+							<button class="btn" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
                 
 
                 <footer>
@@ -182,6 +196,13 @@
       		<script>
 				$(".btnReserva").click(function(){
 					$("#actReserva").attr("value", $(this).attr("value"));
+				});
+
+				$("#btnReservaAct").click(function(){
+					if($("input[name=nPersonas]").val() == "")
+						$("#modalError").modal();
+					else
+						$("#formReservaAct").submit();
 				});
       		</script>
 

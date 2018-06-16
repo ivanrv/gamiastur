@@ -212,7 +212,14 @@ public class Nuevo extends Accion{
 			
 		case "cultural":
 			ServicePruebaCultural sPruebaCultural = new ServicePruebaCulturalImp();
-			Pruebacultural cultural = new Pruebacultural(sParada.buscarPorNombre(request.getParameter("parada")), request.getParameter("nombre"), request.getParameter("pregunta"), request.getParameter("respuesta"), Integer.parseInt(request.getParameter("puntos")));
+			Pruebacultural cultural = new Pruebacultural(sParada.buscarPorNombre(request.getParameter("parada")), request.getParameter("nombre"), request.getParameter("pregunta"), request.getParameter("respuesta"), Integer.parseInt(request.getParameter("puntos")), request.getParameter("fallo1"));
+			
+			if (!request.getParameter("fallo2").equals(""))
+				cultural.setFallo2(request.getParameter("fallo2"));
+			
+			if (!request.getParameter("fallo3").equals(""))
+				cultural.setFallo3(request.getParameter("fallo3"));
+			
 			sPruebaCultural.insertar(cultural);
 			request.getSession().setAttribute("flag", "tablaCulturales");
 			retorno = "Admin.do";

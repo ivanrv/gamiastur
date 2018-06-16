@@ -142,7 +142,7 @@
                 				<div class="premioDesc"><span>${premio.descripcion}</span></div>
                 				
                 				<div class="premioActiva text-center">
-                					<a class="btn btnActivar" value="${premio.nombre}" href="<c:choose><c:when test="${username!=null}">#modalActivar</c:when><c:otherwise>${pageContext.servletContext.contextPath}/content/login.jsp</c:otherwise></c:choose>" <c:if test="${username!=null}">data-toggle="modal"</c:if>>Activar</a>
+                					<a class="btn btnActivar" value="${premio.nombre}%${premio.puntos}" href="<c:choose><c:when test="${username!=null}">#modalActivar</c:when><c:otherwise>${pageContext.servletContext.contextPath}/content/login.jsp</c:otherwise></c:choose>" <c:if test="${username!=null}">data-toggle="modal"</c:if>>Activar</a>
                 				</div>
                 			</div>
                 		</c:forEach>
@@ -156,19 +156,29 @@
                 
                 <div id="modalActivar" class="modal fade" role="dialog">
 			        <div class="modal-dialog">
-			            <div class="modal-body" id="mensajeBorrar">
+			            <div class="modal-body">
 			            	<p class="text-center">¿Está seguro de querer activar este premio?</p>
 			            </div>
 			            <div class="modal-footer">
-			                <form action="Activa.do" method="post">
-			                	<input type="hidden" id="actPremio" name="premio" value=""/>
+			                <form action="Activa.do" method="post" id="formActivaPremio">
+								<input type="hidden" id="actPremio" name="premio" value=""/>
+								<input type="hidden" id="actPremioPts" name="pts" value=""/>
 			                	<input type="hidden" name="tipo" value="activa"/>
-			                	<input type="submit" class="btn" value="Activar"></input>
+			                	<a href="javascript:void(0)" class="btn" id="btnActivarPremio">Activar</input>
 			           			<a href="javascript:void(0);" class="btn" data-dismiss="modal">Cancelar</a>
 			                </form>
 			            </div>
 			        </div>
-			    </div>
+				</div>
+				
+				<div id="modalError" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-body">No dispone de puntos suficientes para activar este premio</div>
+						<div class="modal-footer">
+							<button class="btn" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
 
                 <footer>
                     <div class="socials">
@@ -192,7 +202,17 @@
 
 			<script>
 				$(".btnActivar").click(function(){
-					$("#actPremio").attr("value", $(this).attr("value"));
+					var premioData = $(this).attr("value").split("%");
+
+					$("#actPremio").attr("value", premioData[0]);
+					$("#actPremioPts").attr("value", premioData[1]);
+				});
+
+				$("#btnActivarPremio").click(function(){
+					if(parseInt($("#actPremioPts").attr("value")) > parseInt($("#puntosCliente").attr("value")))
+						$("#modalError").modal();
+					else
+						$("#formActivaPremio").submit();
 				});
       		</script>
 

@@ -198,8 +198,8 @@
 		                            	<input type="file" name="archivoVideo" onchange="readURL(this)" accept=".mp4" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
 		                            </label>		                            	                          
 		                            <div>
-		                            	<video style="height:480px;" controls>
-		                            		<source id="showFileVid" src=""/>
+		                            	<video style="height:360px;" controls>
+		                            		<source id="showFileVid" src="" type="video/mp4"/>
 		                            	</video>
 		                            </div> 
 					            </div>

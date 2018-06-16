@@ -52,9 +52,11 @@ function readURL(input){
         var reader = new FileReader();
 
         reader.onload = function(e){
-			if($(this).attr("name") == "archivoVideo"){
-				$("#showFileVid").attr("src", e.target.result);
-				$("video").height(480);
+			if(input.files[0].name.endsWith(".mp4")){
+				var fileUrl = window.URL.createObjectURL(input.files[0]);
+				$("#showFileVid").attr("src", fileUrl);
+				$("#showFileVid").parent()[0].load();
+				alert("hola");
 			}else{
 				$("#showFile").attr("src", e.target.result).css("min-height", "400px").css("width", "100%");
 			}

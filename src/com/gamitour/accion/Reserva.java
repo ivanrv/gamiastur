@@ -29,9 +29,9 @@ public class Reserva extends Accion{
 		switch(request.getParameter("tipo")) {
 		case "reserva":
 			
-			// TODO seleccion de personas, pago, etc
+			// TODO pago, etc
 			
-			sCliHAct.insertar(new ClienteHasActividad(actividad, sCli.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()), new Date(), 1));
+			sCliHAct.insertar(new ClienteHasActividad(actividad, sCli.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()), new Date(), Integer.parseInt(request.getParameter("nPersonas"))));
 			actividad.setNumparticipantes(actividad.getNumparticipantes() + 1);
 			sAct.actualizar(actividad);
 			

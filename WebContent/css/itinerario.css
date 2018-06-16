@@ -41,7 +41,7 @@
 	margin-top: 25px;
 }
 
-#paradaVid, #paradaMap{
+#mediaContainer>img, #paradaMap{
 	width: 75%;
 	height: auto;
 	min-height: 325px;
@@ -51,6 +51,7 @@
 
 .btnParada, .btnPruebas{
 	border: 1px solid #ECF0F1;
+	color: #ECF0F1;
 	margin: 25px;
 	height: 55px;
 	padding: 10px 0;
@@ -63,3 +64,87 @@
 	color: #1f2729;
 	transition: all 400ms;
 }
+
+/* Ajustes de ventanas modales */
+
+.modal-dialog{
+	border: 1px solid #1F2729;
+	border-radius: 10px;
+	margin-top: 10%;
+}
+
+.modal-header{
+	background-color: #ECF0F1;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.modal-body{
+	background-color: #ECF0F1;
+}
+
+.modal-body>p{
+	font-size: 0.9em;
+}
+
+.modal-footer{
+	background-color: #ECF0F1;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+#preguntaCultural{
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+.respuesta{
+	border: 1px solid #1F2729;
+	color: #1f2729;
+	transition: all 400ms;
+	cursor: pointer;
+	padding: 7px 10px;
+	margin: 10px auto;
+	min-height: 30px;
+}
+
+.respuesta:hover{
+	background-color: #1F2729;
+	color: #ECF0F1;
+	transition: all 400ms;
+}
+
+.respuestaBien{
+	background-color: #48ad44;
+	color: #1f2729;
+	transition: all 400ms;
+}
+
+.respuestaMal{
+	background-color: #a0292f;
+	color: #ECF0F1;
+	transition: all 400ms;
+}
+
+.respuestaDisabled{
+	pointer-events: none;
+}
+
+.btnCambioCultural{
+	border: 1px solid #1F2729;
+	color: #1f2729;
+	transition: all 400ms;
+	cursor: pointer;
+	padding: 7px 5px;
+	margin: 7px auto;
+	min-height: 40px;
+}
+
+.btnCambioCultural:hover{
+	background-color: #1F2729;
+	color: #ECF0F1;
+	transition: all 400ms;
+}
+
+
+

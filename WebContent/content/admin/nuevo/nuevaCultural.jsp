@@ -115,7 +115,20 @@
                                     </select>
                                     <label>Seleccione una parada *</label>
                                     <span class="focus-border"></span>
-                                </div>                                
+                                </div>      
+                                
+                                <div class="inputCon input-effect">
+                                    <input class="textIn" type="text" name="nombre" placeholder="" required/>
+                                    <label>Nombre de la Prueba Cultural *</label>
+                                    <span class="focus-border"></span>
+                                </div>
+
+                                <div class="inputCon input-effect">
+                                    <input class="textIn" type="text" name="pregunta" placeholder="" required/>
+                                    <label>Pregunta *</label>
+                                    <span class="focus-border"></span>
+                                </div>
+                                
                                 <div class="inputCon input-effect">
 	                                <input class="textIn" type="number" name="puntos" placeholder="" required/>
 	                                <label>Puntos *</label>
@@ -124,22 +137,29 @@
                                 
                         </div>
                         <div class="col2">
-                        	<div class="inputCon input-effect">
-                                <input class="textIn" type="text" name="nombre" placeholder="" required/>
-                                <label>Nombre de la Prueba Cultural *</label>
-                                <span class="focus-border"></span>
-                            </div>                        
-                            <div class="inputCon input-effect">
-                                <input class="textIn" type="text" name="pregunta" placeholder="" required/>
-                                <label>Pregunta *</label>
-                                <span class="focus-border"></span>
-                            </div>
                             <div class="inputCon input-effect">
                                 <input class="textIn" type="text" name="respuesta" placeholder="" required/>
                                 <label>Respuesta *</label>
                                 <span class="focus-border"></span>
                             </div>
-                            
+
+                            <div class="inputCon input-effect">
+                                <input class="textIn" type="text" name="fallo1" placeholder="" required/>
+                                <label>Respuesta errónea 1 *</label>
+                                <span class="focus-border"></span>
+                            </div>
+
+                            <div class="inputCon input-effect">
+                                <input class="textIn" type="text" name="fallo2" placeholder="" required/>
+                                <label>Respuesta errónea 2</label>
+                                <span class="focus-border"></span>
+                            </div>
+
+                            <div class="inputCon input-effect">
+                                <input class="textIn" type="text" name="fallo3" placeholder="" required/>
+                                <label>Respuesta errónea 3</label>
+                                <span class="focus-border"></span>
+                            </div>                            
                         </div>
 
                         <div class="sbmt">

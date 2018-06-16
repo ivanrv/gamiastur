@@ -13,7 +13,7 @@ $(document).ready(function () {
         /* Comprobación de campos obligatorios no vacíos */
 
         if ($("input[name=nombre]").val() == "") {
-            $("#mensajeError").append("<p>El nombre es un dato obligatoriÓó??¿?¿?¿?.</p>");
+            $("#mensajeError").append("<p>El nombre es un dato obligatorio.</p>");
             $("input[name=nombre]").addClass("has-warning");
 
             submit = false;
@@ -60,6 +60,13 @@ $(document).ready(function () {
         if ($("input[name=respuesta]").val() == "") {
             $("#mensajeError").append("<p>La respuesta es un dato obligatorio.</p>");
             $("input[name=respuesta]").addClass("has-warning");
+
+            submit = false;
+        }
+
+        if ($("input[name=fallo1]").val() == "") {
+            $("#mensajeError").append("<p>La respuesta err�nea 1 es un dato obligatorio.</p>");
+            $("input[name=fallo1]").addClass("has-warning");
 
             submit = false;
         }
