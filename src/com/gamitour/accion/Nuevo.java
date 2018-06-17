@@ -117,7 +117,7 @@ public class Nuevo extends Accion{
 				
 				sActividad.insertar(actividad);
 				
-				Imagenactividad imagen = new Imagenactividad(sActividad.buscarPorNombre(actividad.getNombre()), "/actividades/" + "ACT-" +  fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
+				Imagenactividad imagen = new Imagenactividad(sActividad.buscarPorNombre(actividad.getNombre()), "/actividades/" + "ACT-" +  fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				if(!request.getParameter("archivoTitulo").equals(""))
 					imagen.setTitulo(request.getParameter("archivoTitulo"));
@@ -150,7 +150,7 @@ public class Nuevo extends Accion{
 			ServiceNoticia sNoticia = new ServiceNoticiaImp();
 			Noticia noticia;
 			try {
-				noticia = new Noticia(0, request.getParameter("nombre"), request.getParameter("texto"), sdf.parse(request.getParameter("alta")), "/noticias/" + "NOT-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName())); 
+				noticia = new Noticia(0, request.getParameter("nombre"), request.getParameter("texto"), sdf.parse(request.getParameter("alta")), "/noticias/" + "NOT-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName())); 
 				
 				if(!request.getParameter("caducidad").equals(""))
 					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));							
@@ -178,10 +178,10 @@ public class Nuevo extends Accion{
 			
 			try {
 				if(request.getPart("archivoImg") != null)
-					parada.setImagen("/paradas/" + "PAR_IMG-"  + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoImg").getSubmittedFileName()));
+					parada.setImagen("/paradas/" + "PAR_IMG-"  + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoImg").getSubmittedFileName()));
 				
 				if(request.getPart("archivoVideo") != null)
-					parada.setVideo("/paradas/" + "PAR_VID-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoVideo").getSubmittedFileName()));
+					parada.setVideo("/paradas/" + "PAR_VID-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoVideo").getSubmittedFileName()));
 			} catch (IOException | ServletException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
@@ -199,7 +199,7 @@ public class Nuevo extends Accion{
 				premio = new Premio(null, request.getParameter("nombre"), request.getParameter("descripcion"), sdf.parse(request.getParameter("activacion")), Integer.parseInt(request.getParameter("puntos")));
 				
 				if(request.getPart("archivo") != null)
-					premio.setImagen("/premios/" + "PRE-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
+					premio.setImagen("/premios/" + "PRE-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				sPremio.insertar(premio);
 				request.getSession().setAttribute("flag", "tablaPremios");
@@ -232,7 +232,7 @@ public class Nuevo extends Accion{
 				if(!request.getParameter("fin").equals(""))
 					deportiva.setFechafin(sdf.parse(request.getParameter("fin")));
 				
-				deportiva.setExplicacion("/deportivas/" + "DEP-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
+				deportiva.setExplicacion("/deportivas/" + "DEP-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 					
 				sPruebaDeportiva.insertar(deportiva);
 				request.getSession().setAttribute("flag", "tablaDeportivas");

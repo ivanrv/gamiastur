@@ -116,7 +116,7 @@ public class Update extends Accion{
 				actividad.setPuntos(Integer.parseInt(request.getParameter("puntos")));
 				
 				if(request.getPart("archivo") != null)
-					actividad.getImagenactividads().iterator().next().setArchivo("/actividades/" + request.getParameter("nombre") + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
+					actividad.getImagenactividads().iterator().next().setArchivo("/actividades/" + "ACT-" +  fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				if(!request.getParameter("fin").equals(""))
 					actividad.setFechafin(sdf.parse(request.getParameter("fin")));
@@ -166,7 +166,7 @@ public class Update extends Accion{
 				noticia.setTexto(request.getParameter("texto"));
 				
 				if(request.getPart("archivo") != null)
-					noticia.setImagen("/noticias/" + noticia.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
+					noticia.setImagen("/noticias/" + "NOT-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				if(!request.getParameter("caducidad").equals(""))
 					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));
@@ -196,10 +196,10 @@ public class Update extends Accion{
 				parada.setGastronomia(request.getParameter("gastronomia"));
 			try {
 				if(request.getPart("archivoImg") != null)
-					parada.setImagen("/paradas/" + parada.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoImg").getSubmittedFileName()));
+					parada.setImagen("/paradas/" + "PAR_IMG-"  + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoImg").getSubmittedFileName()));
 				
 				if(request.getPart("archivoVideo") != null)
-					parada.setVideo("/paradas/" + parada.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoVideo").getSubmittedFileName()));
+					parada.setVideo("/paradas/" + "PAR_VID-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoVideo").getSubmittedFileName()));
 			} catch (IOException | ServletException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
@@ -247,7 +247,7 @@ public class Update extends Accion{
 					deportiva.setFechafin(sdf.parse(request.getParameter("fin")));
 				
 				if(request.getPart("archivo") != null)
-					deportiva.setExplicacion("/deportivas/" + deportiva.getNombre() + "-" + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
+					deportiva.setExplicacion("/deportivas/" + "DEP-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
 				
 				sPruebaDeportiva.actualizar(deportiva);
 				

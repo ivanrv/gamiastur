@@ -3,6 +3,7 @@ package com.gamitour.controlador;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Timestamp;
 import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
@@ -87,7 +88,7 @@ public class Controller extends HttpServlet {
 					fileName = "ACT";
 					archivo = request.getPart("archivo");
 					
-					fileName += "-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -103,7 +104,7 @@ public class Controller extends HttpServlet {
 					fileName = "PAR_IMG";
 					archivo = request.getPart("archivoImg");
 					
-					fileName += "-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -116,7 +117,7 @@ public class Controller extends HttpServlet {
 					fileName = "PAR_VID";
 					archivo = request.getPart("archivoVideo");
 					
-					fileName += "-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -133,7 +134,7 @@ public class Controller extends HttpServlet {
 					fileName = "NOT";
 					archivo = request.getPart("archivo");
 					
-					fileName += "-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -149,7 +150,7 @@ public class Controller extends HttpServlet {
 					fileName = "PRE";
 					archivo = request.getPart("archivo");
 					
-					fileName += "-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
@@ -166,7 +167,7 @@ public class Controller extends HttpServlet {
 					fileName = "DEP";
 					archivo = request.getPart("archivo");
 					
-					fileName += "-" + fecha.get(Calendar.DAY_OF_MONTH) + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
