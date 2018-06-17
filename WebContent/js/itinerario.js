@@ -40,7 +40,7 @@ function showParada(numParada){
 			else
 				$("#paradaGastronomia").text(parada.gastronomia);
 
-			$("#imgContainer").attr("src", "static" + parada.imagen);
+			$("#imgContainer").attr("src", "/static" + parada.imagen);
 			initMapaParada(parada.latitud, parada.longitud);
 
 			if(typeof $("#titCulturales").val() != "undefined"){	

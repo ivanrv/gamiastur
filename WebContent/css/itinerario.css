@@ -37,14 +37,21 @@
 	border-radius: 3px;
 }
 
+.dataText::-webkit-scrollbar {
+	width: 7px;
+}
+ 
+.dataText::-webkit-scrollbar-thumb {
+	background: #ECF0F1; 
+}
+
 #adicionalContainer{
 	margin-top: 25px;
 }
 
 #mediaContainer>img, #paradaMap{
 	width: 75%;
-	height: auto;
-	min-height: 325px;
+	height: 325px;
 	border: 1px solid #ECF0F1;
 	border-radius: 3px;
 }
