@@ -26,7 +26,7 @@ $(document).ready(function(){
 	    var element1 = document.createElement("input"); 
 
 	    form.method = "POST";
-	    form.action = "/gamiastur/content/itinerario.jsp";
+	    form.action = "/content/itinerario.jsp";
 	    
 	    element1.name="iti";
 	    element1.value= $(this).attr("value");

@@ -116,7 +116,7 @@
                 						<h3 class="h3 text-center">${itiOBJ.nombre}</h3>
                 					</div>
                 					<div class="text-center">
-                						<form action="${pageContext.servletContext.contextPath}/content/itinerario.jsp" method="GET" id="iti${itiOBJ.iditinerario}">
+                						<form action="${pageContext.servletContext.contextPath}/content/itinerario.jsp" method="POST" id="iti${itiOBJ.iditinerario}">
                 							<input type="hidden" name="iti" value="${itiOBJ.nombre}"/>
                 						</form>
                 					</div>
