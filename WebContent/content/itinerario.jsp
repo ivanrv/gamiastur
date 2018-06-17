@@ -174,10 +174,10 @@
                 			<c:choose>
                 				<c:when test="${username != null}">
                 					<div class="col-xs-2 text-center">
-                						<a href="#modalDeportivas" data-toggle="modal" class="btnModalPruebas"><div class="btnPruebas" id="btnDeportivas"><i class="fas fa-volleyball-ball"></i></div></a>
+                						<a href="#modalDeportivas" data-toggle="modal" class="btnModalPruebas" id="butDeportivas"><div class="btnPruebas" id="btnDeportivas"><i class="fas fa-volleyball-ball"></i></div></a>
                 					</div>
                 					<div class="col-xs-2 text-center">
-										<a href="#modalCulturales" data-toggle="modal" class="btnModalPruebas"><div class="btnPruebas" id="btnCulturales"><i class="fas fa-book"></i></div></a>
+										<a href="#modalCulturales" data-toggle="modal" class="btnModalPruebas" id="butCulturales"><div class="btnPruebas" id="btnCulturales"><i class="fas fa-book"></i></div></a>
                 					</div>
                 				</c:when>
                 			
@@ -212,7 +212,7 @@
 						<div class="modal-dialog modal-lg">
 							<div class="modal-header">
 								<button class="close" type="button" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title text-center" id="titCulturales">TITULO CULTURALES</h4>
+								<h3 class="modal-title h3 text-center" id="titCulturales">TITULO CULTURALES</h3>
 							</div>
 
 							<div class="modal-body" id="respuestasContainer"></div>
@@ -224,21 +224,40 @@
 					</div>	
 					
 					<div id="modalDeportivas" class="modal fade" role="dialog">
-						<div class="modal-dialog">
+						<div class="modal-dialog modal-lg">
 							<div class="modal-header">
 								<button class="close" type="button" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title" id="titDeportivas"></h4>
+								<h3 class="modal-title h3 text-center" id="titDeportivas"></h3>
 							</div>
 
 							<div class="modal-body">
-								
+								<div class="row">
+									<div class="col-xs-4 text-center" id="puntosDeportiva"></div>
+									<div class="col-xs-4 text-center"><a href="#modalPDF" data-toggle="modal" id="explicacionDeportiva"><i class="fas fa-file-pdf"></i>&nbsp;<span>Mostrar Explicación</span></a></div>
+									<div class="col-xs-4 text-center" id="fechaDeportiva"></div>	
+								</div>								
 							</div>
 
 							<div class="modal-footer">
-								
+								<div class="row" id="deportivasCambio"></div>
 							</div>
 						</div>
 					</div>
+
+					<div id="modalPDF" class="modal fade info-modal" role="dialog">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-header">
+								<button class="close" type="button" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Explicación</h4>
+							</div>
+							<div class="modal-body">
+								<div>
+									<embed id="modalPDFDoc" src="" type="application/pdf" style="width:100%; min-height: 400px"/>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</c:if>
 
                 <footer>

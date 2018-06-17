@@ -1,0 +1,23 @@
+
+#fechaNoticia{
+    font-size: 0.9em;
+}
+
+#imgContainer{
+    margin: 15px -45px;
+    height: 400px;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+#backNoticias{
+    font-size: 0.8em;
+}
+
+#textoNoticia{
+    margin-top: 15px;
+    text-align: justify;
+    font-size: 0.9em;
+    line-height: 1.2em;
+}

@@ -56,7 +56,6 @@ function readURL(input){
 				var fileUrl = window.URL.createObjectURL(input.files[0]);
 				$("#showFileVid").attr("src", fileUrl);
 				$("#showFileVid").parent()[0].load();
-				alert("hola");
 			}else{
 				$("#showFile").attr("src", e.target.result).css("min-height", "400px").css("width", "100%");
 			}

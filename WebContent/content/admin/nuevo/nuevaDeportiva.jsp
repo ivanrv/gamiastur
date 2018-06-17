@@ -160,7 +160,7 @@
 					    </div>	
 					    
                         <div class="sbmt">
-                        	<a href="#modalImg" class="btn" data-toggle="modal">AÃ±adir descripción *</a>
+                        	<a href="#modalImg" class="btn" data-toggle="modal">Añadir descripción *</a>
                             <a id="enviar" class="btn">Crear Prueba</a>
                         </div>
                         </form>

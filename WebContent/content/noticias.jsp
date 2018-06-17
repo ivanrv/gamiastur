@@ -127,7 +127,10 @@
                 				</div>
                 				
                 				<div class="noticiaMas text-center">
-                					<a class="btn" href="">Ver más</a>
+                                    <form action="${pageContext.servletContext.contextPath}/content/noticia.jsp" method="POST">
+                                        <input type="hidden" name="not" value="${noticia.nombre}"/>
+                                        <input type="submit" class="btn" value="Ver más"/>
+                                    </form>
                 				</div>
                 			</div>
                 		</c:forEach>

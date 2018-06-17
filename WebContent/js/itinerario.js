@@ -44,7 +44,27 @@ function showParada(numParada){
 			initMapaParada(parada.latitud, parada.longitud);
 
 			if(typeof $("#titCulturales").val() != "undefined"){	
-				showCultural(0);					
+				if(parada.pruebasCulturales.length > 0){		
+					showCultural(0);
+					$("#butCulturales").attr("href", "#modalCulturales");
+					$("#butCulturales").removeClass("btnPruebasDisabled");
+					$("#btnCulturales").removeClass("btnPruebasDisabled");
+				}else{
+					$("#butCulturales").attr("href", "");
+					$("#butCulturales").addClass("btnPruebasDisabled");
+					$("#btnCulturales").addClass("btnPruebasDisabled");
+				}
+
+				if(parada.pruebasDeportivas.length > 0){
+					showDeportiva(0);
+					$("#butDeportivas").attr("href", "#modalDeportivas");
+					$("#butDeportivas").removeClass("btnPruebasDisabled");
+					$("#btnDeportivas").removeClass("btnPruebasDisabled");
+				}else{
+					$("#butDeportivas").attr("href", "");	
+					$("#butDeportivas").addClass("btnPruebasDisabled");	
+					$("#btnDeportivas").addClass("btnPruebasDisabled");			
+				}		
 			}
 
 			if (parada.numeroParada == 1){
@@ -122,6 +142,37 @@ function showCultural(contador){
 
 		$("#btnCulturalNext").click(function(){
 			showCultural(contador+1);
+		});
+	}
+}
+
+function showDeportiva(contador){
+	$("#titDeportivas").text(paradaActual.pruebasDeportivas[contador].nombre);
+	$("#puntosDeportiva").text(paradaActual.pruebasDeportivas[contador].puntos + " puntos");
+	$("#modalPDFDoc").attr("src", paradaActual.pruebasDeportivas[contador].explicacion);
+	$("#fechaDeportiva").text(paradaActual.pruebasDeportivas[contador].fechainicio);
+
+	if (contador == 0){
+		$("#deportivasCambio").html('<div class="col-xs-8"></div> <div class="col-xs-3 text-center btnCambioCultural" id="btnDepNext">Siguiente &nbsp; &rarr;</div><div class="col-xs-1"></div>');
+
+		$("#btnDepNext").click(function(){
+			showDeportiva(contador+1);
+		});
+	}else if(contador == paradaActual.pruebasCulturales.length-1){
+		$("#deportivasCambio").html('<div class="col-xs-1"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnDepPrev">&larr; &nbsp; Anterior</div>');
+		
+		$("#btnDepPrev").click(function(){
+			showDeportiva(contador-1);
+		});
+	}else{
+		$("#deportivasCambio").html('<div class="col-xs-1"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnDepPrev">&larr; &nbsp; Anterior</div><div class="col-xs-4"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnDepNext">Siguiente &nbsp; &rarr;</div><div class="col-xs-1"></div>');
+		
+		$("#btnDepPrev").click(function(){
+			showDeportiva(contador-1);
+		});
+
+		$("#btnDepNext").click(function(){
+			showDeportiva(contador+1);
 		});
 	}
 }

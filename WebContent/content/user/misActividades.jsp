@@ -26,7 +26,8 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-                <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
+				<script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>
+				<script src="${pageContext.servletContext.contextPath}/js/misActs.js"></script>
             </head>
 
             <body>
@@ -154,7 +155,19 @@
 			                </form>
 			            </div>
 			        </div>
-			    </div>
+				</div>
+				
+				<div id="modalMaps" class="modal fade info-modal" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-header">
+							<button class="close" type="button" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Ubicación</h4>
+						</div>
+						<div class="modal-body">
+							<div id="mapTabla"></div>
+						</div>
+					</div>
+				</div>
 
                 <footer>
                     <div class="socials">

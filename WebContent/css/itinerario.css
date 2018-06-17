@@ -65,6 +65,13 @@
 	transition: all 400ms;
 }
 
+.btnPruebasDisabled{
+	border-color: rgba(236, 240, 241, 0.4);
+	color: rgba(236, 240, 241, 0.4);
+	pointer-events: none;
+	cursor: no-drop;
+}
+
 /* Ajustes de ventanas modales */
 
 .modal-dialog{
