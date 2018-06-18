@@ -3,14 +3,11 @@ package com.gamitour.accion;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.io.FilenameUtils;
 
 import com.gamitour.modelo.Actividad;
 import com.gamitour.modelo.Cliente;
@@ -55,7 +52,6 @@ public class Nuevo extends Accion{
 		ServicePruebaDeportiva sPruebaDeportiva = new ServicePruebaDeportivaImp();
 		ServiceRol sRol = new ServiceRolImp();
 		String retorno = "";
-		Calendar fecha = Calendar.getInstance();
 		
 
 		switch(request.getParameter("tipo")){
@@ -117,7 +113,7 @@ public class Nuevo extends Accion{
 				
 				sActividad.insertar(actividad);
 				
-				Imagenactividad imagen = new Imagenactividad(sActividad.buscarPorNombre(actividad.getNombre()), "/actividades/" + "ACT-" +  fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
+				Imagenactividad imagen = new Imagenactividad(sActividad.buscarPorNombre(actividad.getNombre()), "/actividades/" + request.getAttribute("fileName").toString());
 				
 				if(!request.getParameter("archivoTitulo").equals(""))
 					imagen.setTitulo(request.getParameter("archivoTitulo"));
@@ -126,7 +122,7 @@ public class Nuevo extends Accion{
 				
 				request.getSession().setAttribute("flag", "tablaActividades");
 				retorno = "Admin.do";				
-			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
+			} catch (NumberFormatException | ParseException e) {
 				e.printStackTrace();
 			}			
 			break;
@@ -150,7 +146,7 @@ public class Nuevo extends Accion{
 			ServiceNoticia sNoticia = new ServiceNoticiaImp();
 			Noticia noticia;
 			try {
-				noticia = new Noticia(0, request.getParameter("nombre"), request.getParameter("texto"), sdf.parse(request.getParameter("alta")), "/noticias/" + "NOT-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName())); 
+				noticia = new Noticia(0, request.getParameter("nombre"), request.getParameter("texto"), sdf.parse(request.getParameter("alta")), "/noticias/" + request.getParameter("fileName").toString()); 
 				
 				if(!request.getParameter("caducidad").equals(""))
 					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));							
@@ -158,7 +154,7 @@ public class Nuevo extends Accion{
 				sNoticia.insertar(noticia);
 				request.getSession().setAttribute("flag", "tablaNoticias");
 				retorno = "Admin.do";
-			} catch (ParseException | IOException | ServletException e) {
+			} catch (ParseException  e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -178,10 +174,10 @@ public class Nuevo extends Accion{
 			
 			try {
 				if(request.getPart("archivoImg") != null)
-					parada.setImagen("/paradas/" + "PAR_IMG-"  + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoImg").getSubmittedFileName()));
+					parada.setImagen("/paradas/" + request.getAttribute("fileNameImg").toString());
 				
 				if(request.getPart("archivoVideo") != null)
-					parada.setVideo("/paradas/" + "PAR_VID-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivoVideo").getSubmittedFileName()));
+					parada.setVideo("/paradas/" + request.getAttribute("fileNameVid").toString());
 			} catch (IOException | ServletException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
@@ -199,7 +195,7 @@ public class Nuevo extends Accion{
 				premio = new Premio(null, request.getParameter("nombre"), request.getParameter("descripcion"), sdf.parse(request.getParameter("activacion")), Integer.parseInt(request.getParameter("puntos")));
 				
 				if(request.getPart("archivo") != null)
-					premio.setImagen("/premios/" + "PRE-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
+					premio.setImagen("/premios/" + request.getAttribute("fileName").toString());
 				
 				sPremio.insertar(premio);
 				request.getSession().setAttribute("flag", "tablaPremios");
@@ -232,12 +228,13 @@ public class Nuevo extends Accion{
 				if(!request.getParameter("fin").equals(""))
 					deportiva.setFechafin(sdf.parse(request.getParameter("fin")));
 				
-				deportiva.setExplicacion("/deportivas/" + "DEP-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(request.getPart("archivo").getSubmittedFileName()));
+				deportiva.setExplicacion("/deportivas/" + request.getAttribute("fileName").toString());
+				
 					
 				sPruebaDeportiva.insertar(deportiva);
 				request.getSession().setAttribute("flag", "tablaDeportivas");
 				retorno = "Admin.do";
-			} catch (NumberFormatException | ParseException | IOException | ServletException e) {
+			} catch (NumberFormatException | ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

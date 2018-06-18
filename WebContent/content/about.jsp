@@ -193,7 +193,7 @@
 						<h2 class="h2 text-center">Dónde Estamos</h2>
 						<div class="col-xs-3"></div>
 						
-						<div class="col-xs-3 text-right">
+						<div class="col-xs-3 text-center">
 							<h3 class="h3">Gamiastur</h3>
 							<p class="locationDireccion">Calle Luis Moya Blanco, 335</p>
 							<p class="locationDireccion">33203 Gijón - Asturias - España</p>

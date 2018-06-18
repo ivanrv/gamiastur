@@ -75,3 +75,15 @@
 }
 
 
+@media(max-width: 1366px){
+	.premioActiva a{
+		margin-top: 0;
+		margin-bottom: 20px;
+	}
+}
+
+@media(max-width: 1024px){
+	.premioActiva a{
+		margin-bottom: 15px; 
+	}
+}

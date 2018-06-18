@@ -160,5 +160,8 @@
 	transition: all 400ms;
 }
 
+@media(max-width: 1366px){
+}
 
-
+@media(max-width: 1024px){
+}

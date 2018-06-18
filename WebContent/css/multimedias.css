@@ -1,0 +1,72 @@
+
+.multimediaContainer{
+    margin-top: 25px;
+}
+
+.multContainer{
+    border-top: 1px solid #1F2729;
+}
+
+.multContainer, .multData, .multComentarios{
+    border-right: 1px solid #1F2729;
+    border-left: 1px solid #1F2729;
+}
+
+.multComentarios{
+    border-bottom: 1px solid #1F2729;    
+}
+
+.multContainer img, .multContainer video{
+    width: 100%;
+    border-bottom: 1px solid #1F2729;
+}
+
+.multData{
+    padding: 15px 0;
+}
+
+.multData a{
+    cursor: pointer;
+}
+
+.multComentarios{
+    padding: 20px 12px;
+}
+
+.comentarios{
+    padding: 15px 0;
+}
+
+.comentarioUser{
+    color: #2C3E50;
+    font-size: 0.9em;
+}
+
+
+
+.comentar{
+    border-top: 1px solid #1F2729;
+    padding-top: 10px;
+}
+
+.comentar input[type=text]{
+    background-color: transparent;
+    border: none;
+    height: 40px;
+    width: 70%;
+    margin: auto;
+    float: left;
+}
+
+input[type=text]:focus{
+    outline: none;
+}
+
+@media(max-width: 1366px){
+    .multData span, .multData a{
+        font-size: 0.5em; 
+    }
+}
+
+@media(max-width: 1024px){
+}

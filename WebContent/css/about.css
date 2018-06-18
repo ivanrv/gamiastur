@@ -17,6 +17,10 @@
 	border-right: 1px solid #1F2729;
 }
 
+.teamItem>.teamNombre{
+	min-height: 85px;
+}
+
 .teamItem>.teamImg{
 	border-top: 1px solid #1F2729;
 	border-bottom: 1px solid #1F2729;
@@ -70,4 +74,22 @@
 	min-height: 200px;
 	min-width: 450px;
 	border: 1px solid #1F2729;
+}
+
+@media(max-width: 1366px){
+	.h3{
+		font-size: 0.9em;
+	}
+	.teamInfo>span{
+		font-size: 0.7em;
+	}
+	.teamContact span{
+		font-size: 0.6em;
+	}
+}
+
+@media(max-width: 1024px){
+	.teamContact span{
+		font-size: 0.5em;
+	}
 }

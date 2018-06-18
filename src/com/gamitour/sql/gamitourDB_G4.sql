@@ -1,5 +1,6 @@
 CREATE DATABASE `gamitour` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
+-- Creación de tabla Actividad
 CREATE TABLE `actividad` (
   `idactividad` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL UNIQUE,
@@ -13,16 +14,20 @@ CREATE TABLE `actividad` (
   PRIMARY KEY (`idactividad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--Creación de tabla Rol
 CREATE TABLE `rol` (
   `idrol` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL,
   PRIMARY KEY (`idrol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--Inserción de datos en tabla Rol
 INSERT INTO `rol` VALUES (1, 'user');
 INSERT INTO `rol` VALUES(2, 'admin');
 INSERT INTO `rol` VALUES(3, 'deportivas');
 INSERT INTO `rol` VALUES(4, 'turismo');
 
+--Creación de tabla Cliente
 CREATE TABLE `cliente` (
   `idcliente` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL,
@@ -41,8 +46,9 @@ CREATE TABLE `cliente` (
   KEY `fk_cliente_rol1_idx` (`rol_idrol`),
   CONSTRAINT `fk_cliente_rol1` FOREIGN KEY (`rol_idrol`) REFERENCES `rol` (`idrol`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-INSERT INTO `cliente` VALUES(1, 'IvÃ¡n', 'RodrÃ­guez ValdÃ©s', '1996-10-15', 'ivan@gamiastur.com', 'admin12', NULL, NULL, NULL, NULL, 0, CURRENT_DATE, 2);
 
+
+--Creación de relación entre Cliente y Actividad
 CREATE TABLE `cliente_has_actividad` (
   `cliente_idcliente` int(11) NOT NULL,
   `actividad_idactividad` int(11) NOT NULL,
@@ -56,6 +62,7 @@ CREATE TABLE `cliente_has_actividad` (
   CONSTRAINT `FK_cliente` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--Creación de tabla Itinerario
 CREATE TABLE `itinerario` (
   `iditinerario` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL UNIQUE,
@@ -66,6 +73,7 @@ CREATE TABLE `itinerario` (
   PRIMARY KEY (`iditinerario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--Creación de tabla Parada
 CREATE TABLE `parada` (
   `idparada` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL UNIQUE,
@@ -83,6 +91,7 @@ CREATE TABLE `parada` (
   CONSTRAINT `fk_parada_itinerario` FOREIGN KEY (`itinerario_iditinerario`) REFERENCES `itinerario` (`iditinerario`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--Creación de tabla Prueba Deportiva
 CREATE TABLE `pruebadeportiva` (
   `idpruebadeportiva` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL UNIQUE,
@@ -96,6 +105,7 @@ CREATE TABLE `pruebadeportiva` (
   CONSTRAINT `fk_pruebaDeportiva_parada1` FOREIGN KEY (`parada_idparada`) REFERENCES `parada` (`idparada`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--Creación de tabla Multimedia
 CREATE TABLE `multimedia` (
   `idmultimedia` int(11) NOT NULL AUTO_INCREMENT,
   `fecha` date NOT NULL,
@@ -112,6 +122,7 @@ CREATE TABLE `multimedia` (
   CONSTRAINT `fk_multimedia_pruebaDeportiva1` FOREIGN KEY (`pruebaDeportiva_idpruebadeportiva`) REFERENCES `pruebadeportiva` (`idpruebadeportiva`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--Creación de tabla Comentario
 CREATE TABLE `comentario` (
   `idcomentario` int(11) NOT NULL AUTO_INCREMENT,
   `texto` varchar(200) NOT NULL,
@@ -124,6 +135,7 @@ CREATE TABLE `comentario` (
   CONSTRAINT `fk_comentario_multimedia1` FOREIGN KEY (`multimedia_idmultimedia`) REFERENCES `multimedia` (`idmultimedia`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--Creación de tabla Imagen Actividad
 CREATE TABLE `imagenactividad` (
   `idImagenActividad` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(45) DEFAULT NULL,
@@ -134,6 +146,7 @@ CREATE TABLE `imagenactividad` (
   CONSTRAINT `fk_idactividad` FOREIGN KEY (`idActividad`) REFERENCES `actividad` (`idactividad`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--Creación de tabla Noticia
 CREATE TABLE `noticia` (
   `idnoticia` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL UNIQUE,
@@ -144,6 +157,7 @@ CREATE TABLE `noticia` (
   PRIMARY KEY (`idnoticia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--Creación de tabla Premio
 CREATE TABLE `premio` (
   `idpremio` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL,
@@ -158,6 +172,7 @@ CREATE TABLE `premio` (
   CONSTRAINT `fk_premio_cliente1` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--Creación de tabla Prueba Cultural
 CREATE TABLE `pruebacultural` (
   `idpruebacultural` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL UNIQUE,
@@ -170,6 +185,7 @@ CREATE TABLE `pruebacultural` (
   CONSTRAINT `fk_pruebaCultural_parada1` FOREIGN KEY (`parada_idparada`) REFERENCES `parada` (`idparada`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--Creación de tabla Voto
 CREATE TABLE `voto` (
   `idvoto` int(11) NOT NULL AUTO_INCREMENT,
   `puntos` int(11) NOT NULL DEFAULT 0,

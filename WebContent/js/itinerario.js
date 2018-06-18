@@ -122,19 +122,19 @@ function showCultural(contador){
 	});
 
 	if (contador == 0){
-		$("#culturalesCambio").html('<div class="col-xs-8"></div> <div class="col-xs-3 text-center btnCambioCultural" id="btnCulturalNext">Siguiente &nbsp; &rarr;</div><div class="col-xs-1"></div>');
+		$("#culturalesCambio").html('<div class="col-xs-8"></div> <div class="col-xs-3 text-center btnCambioCultural" id="btnCulturalNext">&rarr;</div><div class="col-xs-1"></div>');
 
 		$("#btnCulturalNext").click(function(){
 			showCultural(contador+1);
 		});
 	}else if(contador == paradaActual.pruebasCulturales.length-1){
-		$("#culturalesCambio").html('<div class="col-xs-1"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnCulturalPrev">&larr; &nbsp; Anterior</div>');
+		$("#culturalesCambio").html('<div class="col-xs-1"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnCulturalPrev">&larr;</div>');
 		
 		$("#btnCulturalPrev").click(function(){
 			showCultural(contador-1);
 		});
 	}else{
-		$("#culturalesCambio").html('<div class="col-xs-1"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnCulturalPrev">&larr; &nbsp; Anterior</div><div class="col-xs-4"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnCulturalNext">Siguiente &nbsp; &rarr;</div><div class="col-xs-1"></div>');
+		$("#culturalesCambio").html('<div class="col-xs-1"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnCulturalPrev">&larr;</div><div class="col-xs-4"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnCulturalNext">&rarr;</div><div class="col-xs-1"></div>');
 		
 		$("#btnCulturalPrev").click(function(){
 			showCultural(contador-1);
@@ -148,24 +148,25 @@ function showCultural(contador){
 
 function showDeportiva(contador){
 	$("#titDeportivas").text(paradaActual.pruebasDeportivas[contador].nombre);
+	$(".formPruebaName").attr("value", paradaActual.pruebasDeportivas[contador].nombre);
 	$("#puntosDeportiva").text(paradaActual.pruebasDeportivas[contador].puntos + " puntos");
 	$("#modalPDFDoc").attr("src", paradaActual.pruebasDeportivas[contador].explicacion);
 	$("#fechaDeportiva").text(paradaActual.pruebasDeportivas[contador].fechainicio);
 
 	if (contador == 0){
-		$("#deportivasCambio").html('<div class="col-xs-8"></div> <div class="col-xs-3 text-center btnCambioCultural" id="btnDepNext">Siguiente &nbsp; &rarr;</div><div class="col-xs-1"></div>');
+		$("#deportivasCambio").html('<div class="col-xs-8"></div> <div class="col-xs-3 text-center btnCambioCultural" id="btnDepNext">&rarr;</div><div class="col-xs-1"></div>');
 
 		$("#btnDepNext").click(function(){
 			showDeportiva(contador+1);
 		});
 	}else if(contador == paradaActual.pruebasCulturales.length-1){
-		$("#deportivasCambio").html('<div class="col-xs-1"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnDepPrev">&larr; &nbsp; Anterior</div>');
+		$("#deportivasCambio").html('<div class="col-xs-1"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnDepPrev">&larr;</div>');
 		
 		$("#btnDepPrev").click(function(){
 			showDeportiva(contador-1);
 		});
 	}else{
-		$("#deportivasCambio").html('<div class="col-xs-1"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnDepPrev">&larr; &nbsp; Anterior</div><div class="col-xs-4"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnDepNext">Siguiente &nbsp; &rarr;</div><div class="col-xs-1"></div>');
+		$("#deportivasCambio").html('<div class="col-xs-1"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnDepPrev">&larr;</div><div class="col-xs-4"></div><div class="col-xs-3 text-center btnCambioCultural" id="btnDepNext">&rarr;</div><div class="col-xs-1"></div>');
 		
 		$("#btnDepPrev").click(function(){
 			showDeportiva(contador-1);

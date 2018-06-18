@@ -90,6 +90,7 @@ public class Controller extends HttpServlet {
 					
 					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
+					request.setAttribute("fileName", fileName);
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
 					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
@@ -106,6 +107,7 @@ public class Controller extends HttpServlet {
 					
 					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
 									
+					request.setAttribute("fileNameImg", fileName);
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
 					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
@@ -118,7 +120,8 @@ public class Controller extends HttpServlet {
 					archivo = request.getPart("archivoVideo");
 					
 					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
-									
+							
+					request.setAttribute("fileNameVid", fileName);
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
 					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
@@ -135,7 +138,8 @@ public class Controller extends HttpServlet {
 					archivo = request.getPart("archivo");
 					
 					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
-									
+					
+					request.setAttribute("fileName", fileName);
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
 					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
@@ -151,7 +155,8 @@ public class Controller extends HttpServlet {
 					archivo = request.getPart("archivo");
 					
 					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
-									
+							
+					request.setAttribute("fileName", fileName);
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
 					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
@@ -168,7 +173,8 @@ public class Controller extends HttpServlet {
 					archivo = request.getPart("archivo");
 					
 					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
-									
+						
+					request.setAttribute("fileName", fileName);
 					archivoStream = archivo.getInputStream();
 					archivoSalida = new File(directorio + fileName);
 					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);

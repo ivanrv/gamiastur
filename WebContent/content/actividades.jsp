@@ -125,8 +125,8 @@
                 				<div class="actividadData">
                 					<div class="col-xs-6 text-center"><span><fmt:formatDate value="${actividad.fechainicio}" pattern="dd-MM-yyyy"/></span></div>
                 					<div class="col-xs-6 text-center"><span>${actividad.puntos} Puntos</span></div>
-                					<div class="col-xs-6 text-center"><span>${actividad.numparticipantes} Participantes</span></div>
-                					<div class="col-xs-6 text-center"><span>${actividad.precio} ?</span></div>
+                					<div class="col-xs-6 text-center"><span>Participan ${actividad.numparticipantes}</span></div>
+                					<div class="col-xs-6 text-center"><span>${actividad.precio} &#8364;</span></div>
                 				</div>
                 				
                 				<div class="actividadReserva text-center">

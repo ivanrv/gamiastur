@@ -191,7 +191,7 @@
                 			
                 			<div class="col-xs-2 text-center">
                 				<div class="btnParada" id="btnParadaBack" value="">
-                				&larr; &nbsp; Anterior
+                				&larr;
                 				<input type="hidden" value=""/>
                 				</div>
                 			</div>
@@ -199,7 +199,7 @@
                 			
                 			<div class="col-xs-2 text-center">
                 				<div class="btnParada" id="btnParadaNext">
-                				Siguiente &nbsp; &rarr;
+                				&rarr;
                 				<input type="hidden" value=""/>
                 				</div>
                 			</div>                    			                        			
@@ -235,7 +235,28 @@
 									<div class="col-xs-4 text-center" id="puntosDeportiva"></div>
 									<div class="col-xs-4 text-center"><a href="#modalPDF" data-toggle="modal" id="explicacionDeportiva"><i class="fas fa-file-pdf"></i>&nbsp;<span>Mostrar Explicación</span></a></div>
 									<div class="col-xs-4 text-center" id="fechaDeportiva"></div>	
-								</div>								
+								</div>
+								
+								<div class="row" style="margin-top: 20px;">
+									<div class="col-xs-3"></div>
+
+									<div class="col-xs-2 text-center">
+										<form action="${pageContext.servletContext.contextPath}/content/multimedias.jsp" method="POST">
+											<input type="hidden" name="prueba" class="formPruebaName" value="" />
+											<input type="submit" value="Ver multimedias" class="btn"/>
+										</form>
+									</div>
+
+									<div class="col-xs-2"></div>
+
+									<div class="col-xs-2 text-center">
+										<form action="${pageContext.servletContext.contextPath}/content/multimedias.jsp" method="POST">
+											<input type="hidden" name="prueba" class="formPruebaName" value="" />
+											<input type="hidden" name="subir" value="subir"/>
+											<input type="submit" value="Subir multimedia" class="btn"/>
+										</form>
+									</div>
+								</div>
 							</div>
 
 							<div class="modal-footer">

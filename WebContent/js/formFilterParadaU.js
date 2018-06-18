@@ -63,7 +63,7 @@ $(document).ready(function () {
         }
         */
         if(typeof $("input[name=archivoImg]").get(0).files[0] != "undefined"){
-	        if ($("input[name=archivoImg]").files[0].size > 5242880){
+	        if ($("input[name=archivoImg]").get(0).files[0].size > 5242880){
 	            $("#mensajeError").append("<p>La imagen seleccionada es demasiado grande.</p>");
 	
 	            submit = false;
