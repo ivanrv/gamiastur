@@ -113,56 +113,65 @@
                 <div class="content">
                     <h1 class="text-center">Multimedias: ${pdOBJ.nombre}</h1>
                     <div class="row">
-                        <c:forEach items="${pdOBJ.multimedias}" var="multimedia">
-                            <div class="col-xs-4 multimediaContainer">
-                                <div class="multContainer">
-                                    <c:choose>
-                                        <c:when test="${multimedia.imagen != null}">
-                                            <img src="/static${multimedia.imagen}"/>
-                                        </c:when>
+                        <c:choose>
+                            <c:when test="${fn.length(pdOBJ.multimedias)== 0}">
+                                <h2 class="h2 text-center">--Esta prueba deportiva no cuenta con ningún archivo multimedia disponible--</h2>
+                                <h3 class="h3 text-center">Inténtelo en otro momento</h3>
+                            </c:when>
 
-                                        <c:otherwise>
-                                            <video controls>
-                                                <source src="/static${multimedia.video}" type="video/mp4"/>
-                                            </video>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
+                            <c:otherwise>
+                                <c:forEach items="${pdOBJ.multimedias}" var="multimedia">
+                                    <div class="col-xs-4 multimediaContainer">
+                                        <div class="multContainer">
+                                            <c:choose>
+                                                <c:when test="${multimedia.imagen != null}">
+                                                    <img src="/static${multimedia.imagen}"/>
+                                                </c:when>
 
-                                <div class="multData">
-                                    <div class="text-left col-xs-3"><span><fmt:formatDate value="${multimedia.fecha}" pattern="dd-MM-yyyy"/></span></div>
-                                    <div class="text-center col-xs-3"><span>${multimedia.puntosacumulados} Puntos</span></div>
-                                    <div class="text-center col-xs-3"><span>${fn:length(multimedia.votos)} Votos</span></div>
-                                    <div class="text-right col-xs-3"><a><i class="far fa-thumbs-up"></i>&nbsp; Votar</a></div>
-                                </div>
+                                                <c:otherwise>
+                                                    <video controls>
+                                                        <source src="/static${multimedia.video}" type="video/mp4"/>
+                                                    </video>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </div>
 
-                                <div class="multComentarios">
-                                    <div class="comentarios">
-                                        <c:choose>                                        
-                                            <c:when test="${fn:length(multimedia.comentarios) == 0}">
-                                                <span>No existen comentarios.</span>
-                                            </c:when>
-                                            
-                                            <c:otherwise>
-                                                <c:forEach items="${multimedia.comentarios}" var="comentario">
-                                                    <div class="comentario">
-                                                        <span class="comentarioUser">${comentario.cliente.nombre} ${comentario.cliente.apellidos}: </span>
-                                                        <span class="comentarioTexto">${comentario.texto}</span>
-                                                    </div>
-                                                </c:forEach>
-                                            </c:otherwise>
-                                        </c:choose>
+                                        <div class="multData">
+                                            <div class="text-left col-xs-3"><span><fmt:formatDate value="${multimedia.fecha}" pattern="dd-MM-yyyy"/></span></div>
+                                            <div class="text-center col-xs-3"><span>${multimedia.puntosacumulados} Puntos</span></div>
+                                            <div class="text-center col-xs-3"><span>${fn:length(multimedia.votos)} Votos</span></div>
+                                            <div class="text-right col-xs-3"><a><i class="far fa-thumbs-up"></i>&nbsp; Votar</a></div>
+                                        </div>
+
+                                        <div class="multComentarios">
+                                            <div class="comentarios">
+                                                <c:choose>                                        
+                                                    <c:when test="${fn:length(multimedia.comentarios) == 0}">
+                                                        <span class="noComentarios">No existen comentarios.</span>
+                                                    </c:when>
+                                                    
+                                                    <c:otherwise>
+                                                        <c:forEach items="${multimedia.comentarios}" var="comentario">
+                                                            <div class="comentario">
+                                                                <span class="comentarioUser">${comentario.cliente.nombre} ${comentario.cliente.apellidos}: </span>
+                                                                <span class="comentarioTexto">${comentario.texto}</span>
+                                                            </div>
+                                                        </c:forEach>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </div>
+                                            <div class="comentar text-right">
+                                                <form action="" method="POST">
+                                                    <input type="text" name="comentario" placeholder="Escribe un comentario..."/>
+                                                    <input type="hidden" name="prueba" value="${pdOBJ.nombre}"/>
+                                                    <input type="submit" class="btn" value="Comentar"/>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="comentar text-right">
-                                        <form action="" method="POST">
-                                            <input type="text" name="comentario" placeholder="Escribe un comentario..."/>
-                                            <input type="submit" class="btn" value="Comentar"/>
-                                        </form>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </c:forEach>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
                 

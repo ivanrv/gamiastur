@@ -42,8 +42,6 @@
     font-size: 0.9em;
 }
 
-
-
 .comentar{
     border-top: 1px solid #1F2729;
     padding-top: 10px;
@@ -66,7 +64,32 @@ input[type=text]:focus{
     .multData span, .multData a{
         font-size: 0.5em; 
     }
+    .comentarioTexto, .noComentarios{
+        font-size: 0.8em;
+    }
+    .comentarioUser{
+        font-size: 0.7em;
+    }
+    input[type=text]{
+        font-size: 0.8em;
+    }
 }
 
+
 @media(max-width: 1024px){
+    .multData{
+        display: none;
+    }
+    .comentarioTexto, .noComentarios{
+        font-size: 0.7em;
+    }
+    .comentarioUser{
+        font-size: 0.6em;
+    }
+    input[type=text]{
+        font-size: 0.7em;
+    }
+    input[type=submit]{
+        font-size: 0.6em;
+    }
 }
