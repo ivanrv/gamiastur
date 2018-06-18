@@ -181,6 +181,39 @@ public class Controller extends HttpServlet {
 					archivoStream.close();
 				}
 				break;
+			case "multimediaImg":
+				if (request.getPart("archivoImg") != null){
+					directorio = "/opt/tomcat/webapps/uploads/gamitour/multimedias";
+					
+					fileName = "MUL";
+					archivo = request.getPart("archivoImg");
+					
+					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					
+					request.setAttribute("fileName", fileName);
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
+				break;
+				
+			case "multimediaVid":
+				if (request.getPart("archivoVid") != null){
+					directorio = "/opt/tomcat/webapps/uploads/gamitour/multimedias";
+					
+					fileName = "MUL";
+					archivo = request.getPart("archivoVid");
+					
+					fileName += "-" + fecha.getTimeInMillis() + "_" + fecha.get(Calendar.MONTH) + "_" + fecha.get(Calendar.YEAR) + "." + FilenameUtils.getExtension(archivo.getSubmittedFileName());
+					
+					request.setAttribute("fileName", fileName);
+					archivoStream = archivo.getInputStream();
+					archivoSalida = new File(directorio + fileName);
+					FileUtils.copyInputStreamToFile(archivoStream, archivoSalida);
+					archivoStream.close();
+				}
+				break;
 			}
 		}	
 		

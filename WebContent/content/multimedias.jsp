@@ -31,7 +31,8 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-                <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>          
+                <script src="${pageContext.servletContext.contextPath}/js/loader.js"></script>   
+                <script src="${pageContext.servletContext.contextPath}/js/multimedias.js"></script>         
             </head>
 
             <body>
@@ -139,8 +140,8 @@
                                         <div class="multData">
                                             <div class="text-left col-xs-3"><span><fmt:formatDate value="${multimedia.fecha}" pattern="dd-MM-yyyy"/></span></div>
                                             <div class="text-center col-xs-3"><span>${multimedia.puntosacumulados} Puntos</span></div>
-                                            <div class="text-center col-xs-3"><span>${fn:length(multimedia.votos)} Votos</span></div>
-                                            <div class="text-right col-xs-3"><a><i class="far fa-thumbs-up"></i>&nbsp; Votar</a></div>
+                                            <div class="text-center col-xs-3"><span id="pts${multimedia.idmultimedia}">${fn:length(multimedia.votos)}</span> <span>Votos</span></div>
+                                            <div class="text-right col-xs-3"><a class="btnVoto" value="${multimedia.idmultimedia}"><i class="far fa-thumbs-up"></i>&nbsp; Votar</a></div>
                                         </div>
 
                                         <div class="multComentarios">
@@ -173,10 +174,65 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
+                    <a href="#modalSubida" data-toggle="modal"><h3 class="h3 text-center" style="margin-top: 25px;">Subir archivo</h3></a>
                 </div>
                 
+                <div id="modalSubida" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-body">Seleccione un tipo de archivo a subir</div>
+                        <div class="modal-footer">
+                            <a href="#modalImg" class="btn" data-dismiss="modal" data-toggle="modal">Imagen</a>
+                            <a href="#modalVideo" class="btn" data-dismiss="modal" data-toggle="modal">Vídeo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="Nuevo.do" method="POST" enctype="multipart/form-data">
+                    <div id="modalImg" class="modal fade" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-body text-center" id="subidaImg">                            
+                                <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
+                                    Añadir Imagen
+                                    <input type="hidden" name="tipo" value="multimediaImg"/>
+                                    <input type="hidden" name="prueba" value="${pdOBJ.nombre}"/>
+                                    <input type="file" name="archivoImg" onchange="readURL(this)" accept=".jpg, .png, .jpeg, .gif, .bmp" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+                                </label>		                            	                          
+                                <div>
+                                    <img id="showFile" src="" alt=""/>
+                                </div>                            
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn" value="Subir" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                    
+                <form action="Nuevo.do" method="POST" enctype="multipart/form-data">
+                    <div id="modalVideo" class="modal fade" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-body text-center" id="subidaVideo">                                
+                                <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
+                                    Añadir Ví­deo 
+                                    <input type="hidden" name="tipo" value="multimediaVid"/>
+                                    <input type="hidden" name="prueba" value="${pdOBJ.nombre}"/>
+                                    <input type="file" name="archivoVideo" onchange="readURL(this)" accept=".mp4" style="opacity: 0; width: 100%; height: 100%; position: absolute; right: 0; top: 0; text-align:right;" class="btn">
+                                </label>		                            	                          
+                                <div>
+                                    <video style="height:360px;" controls>
+                                        <source id="showFileVid" src="" type="video/mp4"/>
+                                    </video>
+                                </div> 
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn" value="Subir" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
                 <c:if test="${subir != null}">
-                    <script>alert("SUBIR MULTIMEDIA");</script>
+                    <script>$("")</script>
                 </c:if>
 
                 <footer>

@@ -13,6 +13,7 @@ import com.gamitour.modelo.Actividad;
 import com.gamitour.modelo.Cliente;
 import com.gamitour.modelo.Imagenactividad;
 import com.gamitour.modelo.Itinerario;
+import com.gamitour.modelo.Multimedia;
 import com.gamitour.modelo.Noticia;
 import com.gamitour.modelo.Parada;
 import com.gamitour.modelo.Premio;
@@ -26,6 +27,8 @@ import com.gamitour.service.ServiceImagenActividad;
 import com.gamitour.service.ServiceImagenActividadImp;
 import com.gamitour.service.ServiceItinerario;
 import com.gamitour.service.ServiceItinerarioImp;
+import com.gamitour.service.ServiceMultimedia;
+import com.gamitour.service.ServiceMultimediaImp;
 import com.gamitour.service.ServiceNoticia;
 import com.gamitour.service.ServiceNoticiaImp;
 import com.gamitour.service.ServiceParada;
@@ -51,6 +54,7 @@ public class Nuevo extends Accion{
 		ServiceParada sParada = new ServiceParadaImp();
 		ServicePruebaDeportiva sPruebaDeportiva = new ServicePruebaDeportivaImp();
 		ServiceRol sRol = new ServiceRolImp();
+		ServiceMultimedia sMult = new ServiceMultimediaImp();
 		String retorno = "";
 		
 
@@ -139,7 +143,27 @@ public class Nuevo extends Accion{
 			retorno = "Admin.do";
 			break;
 			
-		case "multimedia":
+		case "multimediaImg":
+			
+			Multimedia multimedia = new Multimedia(sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()), sPruebaDeportiva.buscarPorNombre(request.getParameter("prueba")), new Date(), 0);
+			multimedia.setImagen("/multimedias/" + request.getAttribute("fileName").toString());
+			
+			sMult.insertar(multimedia);
+			
+			request.setAttribute("prueba", request.getParameter("prueba"));
+			retorno = "/content/subidaCompletada.jsp";
+			break;
+			
+		case "multimediaVid":
+			
+			
+			Multimedia multi = new Multimedia(sCliente.buscarPorEmail(request.getAttribute("userEmail").toString()), sPruebaDeportiva.buscarPorNombre(request.getParameter("prueba")), new Date(), 0);
+			multi.setVideo("/multimedias/" + request.getAttribute("fileName").toString());
+			
+			sMult.insertar(multi);
+			
+			request.setAttribute("prueba", request.getParameter("prueba"));
+			retorno = "/content/subidaCompletada.jsp";
 			break;
 			
 		case "noticia":

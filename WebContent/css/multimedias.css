@@ -60,6 +60,28 @@ input[type=text]:focus{
     outline: none;
 }
 
+.modal-dialog{
+	border: 1px solid #1F2729;
+	border-radius: 10px;
+	margin-top: 10%;
+}
+
+.modal-body{
+	background-color: #ECF0F1;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.modal-body>p{
+	font-size: 0.9em;
+}
+
+.modal-footer{
+	background-color: #ECF0F1;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
 @media(max-width: 1366px){
     .multData span, .multData a{
         font-size: 0.5em; 
