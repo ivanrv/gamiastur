@@ -53,7 +53,7 @@ public class Controller extends HttpServlet {
 		if(ejecutar.equals("/index.jsp")){
 			response.sendRedirect(request.getContextPath() + "/index.jsp");
 		}else if(ejecutar.equals("Admin.do")){
-			response.sendRedirect("/gamiastur/Admin.do");
+			response.sendRedirect("/Admin.do");
 		}else if(ejecutar.equals("Logout.do")){
 			response.sendRedirect("Logout.do");
 		}else if(ejecutar.equals("misActs")) {

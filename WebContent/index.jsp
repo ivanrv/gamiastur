@@ -135,14 +135,14 @@
               			<div class="col-xs-3 text-center">
               				<h2 class="h2"><i class="fas fa-search"></i></h2>
               				<h2 class="h2">Nuestras Actividades</h2>
-              				<span>Conoce nuestras fantásticas actividades y diviértete con nosotros</span>
+              				<span class="indexText">Conoce nuestras fantásticas actividades y diviértete con nosotros</span>
               				<a href="${pageContext.servletContext.contextPath}/content/actividades.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Descubrir</a>
               			</div>
               			<div class="col-xs-2"></div>
               			<div class="col-xs-3 text-center">
               				<h2 class="h2"><i class="fas fa-map"></i></h2>
               				<h2 class="h2">Fantásticos Itinerarios</h2>
-              				<span>Recorre fantásticos lugares con nuestros maravillosos itinerarios</span>
+              				<span class="indexText">Recorre fantásticos lugares con nuestros maravillosos itinerarios</span>
               				<a href="${pageContext.servletContext.contextPath}/content/itinerarios.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Saber más</a>
               			</div>
               			<div class="col-xs-2"></div>
@@ -154,7 +154,7 @@
 	              			<div class="col-xs-3 text-center">
 	              				<h2 class="h2"><i class="fas fa-search"></i></h2>
 	              				<h2 class="h2">Últimas Noticias</h2>
-	              				<span>No te pierdas ninguna noticia de interés turístico</span>
+	              				<span class="indexText">No te pierdas ninguna noticia de interés turístico</span>
 	              				<a href="${pageContext.servletContext.contextPath}/content/noticias.jsp" class="btn" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Mantenerse Informado</a>
 	              			</div>
               			</div>
@@ -164,7 +164,7 @@
 	              			<div class="col-xs-3 text-center">
 	              				<h2 class="h2"><i class="fas fa-trophy"></i></h2>
 	              				<h2 class="h2">Premios Impresionantes</h2>
-	              				<span>Gana fantásticos premios solamente con participar en nuestros servicios</span>
+	              				<span class="indexText">Gana fantásticos premios solamente con participar en nuestros servicios</span>
 	              				<a href="${pageContext.servletContext.contextPath}/content/premios.jsp" class="btn" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Obtener Premios</a>
 	              			</div>
               			</div>
@@ -175,7 +175,7 @@
               			<div class="col-xs-4 text-center">
               				<h2 class="h2"><i class="fas fa-question"></i></h2>
               				<h2 class="h2">Sobre Nosotros</h2>
-              				<span>Descubre un poco más sobre el equipo detrás de Gamiastur</span>
+              				<span class="indexText">Descubre un poco más sobre el equipo detrás de Gamiastur</span>
               				<a href="${pageContext.servletContext.contextPath}/content/about.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Conocernos</a>
               			</div>
               			<div class="col-xs-4"></div>
@@ -188,14 +188,14 @@
               			<div class="col-xs-3 text-center">
               				<h2 class="h2"><i class="fas fa-sign-in-alt"></i></h2>
               				<h2 class="h2">Únete</h2>
-              				<span>Participa en Gamiastur y disfruta de todas las ventajas</span>
+              				<span class="indexText">Participa en Gamiastur y disfruta de todas las ventajas</span>
               				<a href="${pageContext.servletContext.contextPath}/content/registro.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Registrarse</a>
               			</div>
               			<div class="col-xs-2"></div>
               			<div class="col-xs-3 text-center">
               				<h2 class="h2"><i class="fas fa-key"></i></h2>
               				<h2 class="h2">Inicia Sesión</h2>
-              				<span>¿Ya tienes cuenta? Accede y descubre nuestras actividades</span>
+              				<span class="indexText">¿Ya tienes cuenta? Accede y descubre nuestras actividades</span>
               				<a href="${pageContext.servletContext.contextPath}/content/login.jsp" class="btn btn-contrast" onclick="loading();"><i class="fas fa-info"></i> &nbsp; Entrar</a>
               			</div>
               			<div class="col-xs-2"></div>

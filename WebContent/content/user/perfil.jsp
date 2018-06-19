@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-        <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+		<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+		<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
         <%@ page import="com.gamitour.service.ServiceItinerarioImp" %>
         <%@ page import="com.gamitour.service.ServiceClienteImp" %>
         
@@ -117,7 +118,7 @@
 								<div id="perfilDataPrin" class="col-xs-6">
 									<p><b>Nombre:</b> <span>${cliente.nombre}</span></p>
 									<p><b>Apellidos:</b> <span>${cliente.apellidos}</span></p>
-									<p><b>Fecha de Nacimiento:</b> <span>${cliente.fechanacimiento}</span></p>
+									<p><b>Fecha de Nacimiento:</b> <span><fmt:formatDate value="${cliente.fechanacimiento}" pattern="dd-MM-yyyy"/></span></p>
 									<p><b>Email:</b> <span>${cliente.email}</span></p>
 								</div>
 								

@@ -19,6 +19,7 @@
 
 .teamItem>.teamNombre{
 	min-height: 85px;
+	padding: 0 7px;
 }
 
 .teamItem>.teamImg{
@@ -38,6 +39,7 @@
 
 .teamInfo{
 	padding: 0 15px;
+	height: 150px;
 }
 
 .teamInfo>span{

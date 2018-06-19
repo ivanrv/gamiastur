@@ -131,8 +131,8 @@
                                 	<span class="focus-border"></span>
                             	</div>                      
 	                            <div id="mapForm" style="height:100%"></div>
-	                			<input type="hidden" name="lat" value="">
-	                			<input type="hidden" name="lng" value="">  
+	                			<input type="hidden" name="lat" value="${actividad.latitud}">
+	                			<input type="hidden" name="lng" value="${actividad.longitud}">  
                 			</div> 
                         </div>
                         

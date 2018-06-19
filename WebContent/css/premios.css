@@ -17,7 +17,7 @@
 .premioImg>img{
 	width: 100%;
 	max-height: 200px;
-	height: auto;
+	height: 100%;
 }
 
 .premioDesc{

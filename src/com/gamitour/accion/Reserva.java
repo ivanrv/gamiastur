@@ -32,14 +32,15 @@ public class Reserva extends Accion{
 			// TODO pago, etc
 			
 			sCliHAct.insertar(new ClienteHasActividad(actividad, sCli.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()), new Date(), Integer.parseInt(request.getParameter("nPersonas"))));
-			actividad.setNumparticipantes(actividad.getNumparticipantes() + 1);
+			actividad.setNumparticipantes(actividad.getNumparticipantes() + Integer.parseInt(request.getParameter("nPersonas")));
 			sAct.actualizar(actividad);
 			
 			break;
 		
 		case "cancela":
-			sCliHAct.borrar(sCliHAct.buscarReserva(sCli.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()), actividad));
-			actividad.setNumparticipantes(actividad.getNumparticipantes()-1);
+			ClienteHasActividad reserva = sCliHAct.buscarReserva(sCli.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()), actividad);
+			sCliHAct.borrar(reserva);
+			actividad.setNumparticipantes(actividad.getNumparticipantes() - reserva.getNumPersonas());
 			sAct.actualizar(actividad);
 			
 			break;

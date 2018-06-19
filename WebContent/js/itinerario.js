@@ -150,7 +150,7 @@ function showDeportiva(contador){
 	$("#titDeportivas").text(paradaActual.pruebasDeportivas[contador].nombre);
 	$(".formPruebaName").attr("value", paradaActual.pruebasDeportivas[contador].nombre);
 	$("#puntosDeportiva").text(paradaActual.pruebasDeportivas[contador].puntos + " puntos");
-	$("#modalPDFDoc").attr("src", paradaActual.pruebasDeportivas[contador].explicacion);
+	$("#modalPDFDoc").attr("src", "/static" + paradaActual.pruebasDeportivas[contador].explicacion);
 	$("#fechaDeportiva").text(paradaActual.pruebasDeportivas[contador].fechainicio);
 
 	if (contador == 0){

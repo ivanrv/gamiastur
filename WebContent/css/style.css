@@ -326,7 +326,11 @@ a:hover, a:focus{
     
     .carousel-inner>.item{
         width:100%;
-        max-height: 450px;
+        height: 425px;
+    }
+
+    .indexText{
+        height: 75px;
     }
 
     .item>img{
