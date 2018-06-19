@@ -49,4 +49,18 @@ public class MultimediaDAOImp extends GenericDAOImp<Multimedia, String> implemen
 		System.out.println("Se ha eliminado el multimedia con autor " + multimedia.getCliente().getNombre() + " asociado a la prueba " + multimedia.getPruebadeportiva().getNombre() + " de la base de datos");
 	}
 
+	@Override
+	public Multimedia buscarPorId(int id) {
+		Multimedia multimedia;
+		
+		sf.getCurrentSession().beginTransaction();
+		Query q = sf.getCurrentSession().createQuery("select m from Multimedia m where idmultimedia = :id");
+		q.setParameter("id", id);
+		multimedia = (Multimedia) q.getSingleResult();
+		sf.getCurrentSession().getTransaction().commit();
+		sf.getCurrentSession().close();
+		
+		return multimedia;
+	}
+
 }

@@ -183,7 +183,7 @@ public class Controller extends HttpServlet {
 				break;
 			case "multimediaImg":
 				if (request.getPart("archivoImg") != null){
-					directorio = "/opt/tomcat/webapps/uploads/gamitour/multimedias";
+					directorio = "/opt/tomcat/webapps/uploads/gamitour/multimedias/";
 					
 					fileName = "MUL";
 					archivo = request.getPart("archivoImg");
@@ -199,8 +199,8 @@ public class Controller extends HttpServlet {
 				break;
 				
 			case "multimediaVid":
-				if (request.getPart("archivoVid") != null){
-					directorio = "/opt/tomcat/webapps/uploads/gamitour/multimedias";
+				if (request.getPart("archivoVideo") != null){
+					directorio = "/opt/tomcat/webapps/uploads/gamitour/multimedias/";
 					
 					fileName = "MUL";
 					archivo = request.getPart("archivoVid");

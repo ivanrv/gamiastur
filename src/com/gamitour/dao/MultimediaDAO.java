@@ -7,4 +7,5 @@ import com.gamitour.modelo.Pruebadeportiva;
 
 public interface MultimediaDAO extends GenericDAO<Multimedia, String>{
 	public Multimedia buscarMultimedia(Cliente cliente, Pruebadeportiva prueba);
+	public Multimedia buscarPorId(int id);
 }

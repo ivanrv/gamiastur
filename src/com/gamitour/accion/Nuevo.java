@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.gamitour.modelo.Actividad;
 import com.gamitour.modelo.Cliente;
+import com.gamitour.modelo.Comentario;
 import com.gamitour.modelo.Imagenactividad;
 import com.gamitour.modelo.Itinerario;
 import com.gamitour.modelo.Multimedia;
@@ -19,10 +20,13 @@ import com.gamitour.modelo.Parada;
 import com.gamitour.modelo.Premio;
 import com.gamitour.modelo.Pruebacultural;
 import com.gamitour.modelo.Pruebadeportiva;
+import com.gamitour.modelo.Voto;
 import com.gamitour.service.ServiceActividad;
 import com.gamitour.service.ServiceActividadImp;
 import com.gamitour.service.ServiceCliente;
 import com.gamitour.service.ServiceClienteImp;
+import com.gamitour.service.ServiceComentario;
+import com.gamitour.service.ServiceComentarioImp;
 import com.gamitour.service.ServiceImagenActividad;
 import com.gamitour.service.ServiceImagenActividadImp;
 import com.gamitour.service.ServiceItinerario;
@@ -41,6 +45,8 @@ import com.gamitour.service.ServicePruebaDeportiva;
 import com.gamitour.service.ServicePruebaDeportivaImp;
 import com.gamitour.service.ServiceRol;
 import com.gamitour.service.ServiceRolImp;
+import com.gamitour.service.ServiceVoto;
+import com.gamitour.service.ServiceVotoImp;
 import com.gamitour.util.Accion;
 
 public class Nuevo extends Accion{
@@ -132,6 +138,13 @@ public class Nuevo extends Accion{
 			break;
 			
 		case "comentario":
+			ServiceComentario sCom = new ServiceComentarioImp();
+			
+			Cliente cli = sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString());
+			Comentario comentario = new  Comentario(cli, sMult.buscarPorId(Integer.parseInt(request.getParameter("multimedia"))), request.getParameter("comentario"));
+			
+			sCom.insertar(comentario);
+			retorno = "";
 			break;
 			
 		case "itinerario":
@@ -143,8 +156,7 @@ public class Nuevo extends Accion{
 			retorno = "Admin.do";
 			break;
 			
-		case "multimediaImg":
-			
+		case "multimediaImg":			
 			Multimedia multimedia = new Multimedia(sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()), sPruebaDeportiva.buscarPorNombre(request.getParameter("prueba")), new Date(), 0);
 			multimedia.setImagen("/multimedias/" + request.getAttribute("fileName").toString());
 			
@@ -155,9 +167,7 @@ public class Nuevo extends Accion{
 			break;
 			
 		case "multimediaVid":
-			
-			
-			Multimedia multi = new Multimedia(sCliente.buscarPorEmail(request.getAttribute("userEmail").toString()), sPruebaDeportiva.buscarPorNombre(request.getParameter("prueba")), new Date(), 0);
+			Multimedia multi = new Multimedia(sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()), sPruebaDeportiva.buscarPorNombre(request.getParameter("prueba")), new Date(), 0);
 			multi.setVideo("/multimedias/" + request.getAttribute("fileName").toString());
 			
 			sMult.insertar(multi);
@@ -170,7 +180,7 @@ public class Nuevo extends Accion{
 			ServiceNoticia sNoticia = new ServiceNoticiaImp();
 			Noticia noticia;
 			try {
-				noticia = new Noticia(0, request.getParameter("nombre"), request.getParameter("texto"), sdf.parse(request.getParameter("alta")), "/noticias/" + request.getParameter("fileName").toString()); 
+				noticia = new Noticia(0, request.getParameter("nombre"), request.getParameter("texto"), sdf.parse(request.getParameter("alta")), "/noticias/" + request.getAttribute("fileName").toString()); 
 				
 				if(!request.getParameter("caducidad").equals(""))
 					noticia.setFechacaducidad(sdf.parse(request.getParameter("caducidad")));							
@@ -265,6 +275,12 @@ public class Nuevo extends Accion{
 			break;
 			
 		case "voto":
+			ServiceVoto sVoto = new ServiceVotoImp();
+			
+			Voto voto = new Voto(sCliente.buscarPorEmail(request.getSession().getAttribute("userEmail").toString()), sMult.buscarPorId(Integer.parseInt(request.getParameter("multimedia"))), 0);
+			sVoto.insertar(voto);
+			
+			retorno="";
 			break;
 		}		
 		

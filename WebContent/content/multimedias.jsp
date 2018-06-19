@@ -142,6 +142,10 @@
                                             <div class="text-center col-xs-3"><span>${multimedia.puntosacumulados} Puntos</span></div>
                                             <div class="text-center col-xs-3"><span id="pts${multimedia.idmultimedia}">${fn:length(multimedia.votos)}</span> <span>Votos</span></div>
                                             <div class="text-right col-xs-3"><a class="btnVoto" value="${multimedia.idmultimedia}"><i class="far fa-thumbs-up"></i>&nbsp; Votar</a></div>
+                                            <form id="sbmtVoto${multimedia.idmultimedia}">
+                                                <input type="hidden" name="multimedia" value="${multimedia.idmultimedia}"/>
+                                                <input type="hidden" name="tipo" value="voto"/>
+                                            </form>
                                         </div>
 
                                         <div class="multComentarios">
@@ -162,11 +166,13 @@
                                                 </c:choose>
                                             </div>
                                             <div class="comentar text-right">
-                                                <form action="" method="POST">
+                                                <form id="sbmtComentario${multimedia.idmultimedia}">
+                                                    <input type="hidden" name="tipo" value="comentario"/>
                                                     <input type="text" name="comentario" placeholder="Escribe un comentario..."/>
-                                                    <input type="hidden" name="prueba" value="${pdOBJ.nombre}"/>
-                                                    <input type="submit" class="btn" value="Comentar"/>
+                                                    <input type="hidden" name="multimedia" value="${multimedia.idmultimedia}"/>
                                                 </form>
+
+                                                <a href="javascript:void(0);" class="btn submitComentario" value="${multimedia.idmultimedia}">Comentar</a>
                                             </div>
                                         </div>
                                     </div>

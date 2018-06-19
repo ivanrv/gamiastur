@@ -35,6 +35,10 @@
 	padding-bottom: 20px;
 }
 
+.actividadNombre{
+	height: 85px;
+}
+
 .actividadData span{
 	font-size: 0.7em;
 	padding: 7px 0;

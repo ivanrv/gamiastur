@@ -43,4 +43,9 @@ public class ServiceMultimediaImp implements ServiceMultimedia {
 		return m.buscarTodos();
 	}
 
+	@Override
+	public Multimedia buscarPorId(int id) {
+		return m.buscarPorId(id);
+	}
+
 }

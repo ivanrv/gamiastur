@@ -2,8 +2,29 @@
 $(document).ready(function(){
     
     $(".btnVoto").click(function(){
-        var counter = parseInt($("#pts" + $(this).attr("value")).text());
-        $("#pts" + $(this).attr("value")).text(counter + 1);
+       loading();
+
+       $.ajax({
+            type: "POST",
+            url: "Nuevo.do",
+            data: $("#sbmtVoto" + $(this).attr("value")).serialize(),
+            complete: function(){
+                location.reload();
+            }
+       });
+    });
+
+    $(".submitComentario").click(function(){
+        loading();
+
+        $.ajax({
+            type: "POST",
+            url: "Nuevo.do",
+            data: $("#sbmtComentario" + $(this).attr("value")).serialize(),
+            complete: function(){
+                location.reload();
+            }
+        });
     });
 });
 

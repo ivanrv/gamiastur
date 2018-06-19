@@ -22,6 +22,10 @@
     line-height: 1.2em;
 }
 
+.noticiaNombre{
+    height: 85px;
+}
+
 @media(max-width: 1366px){
     #textoNoticia{
         font-size: 0.8em;

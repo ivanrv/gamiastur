@@ -118,7 +118,7 @@
 							</div>
 							
 							<div class="teamInfo text-center">
-								<span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, modi voluptatibus architecto, doloremque quae vero porro dolor illo, tempora est quod deserunt.</span>
+								<span>Encargado de interfaz. Responsable del diseño de la estética de la aplicación, así como de los datos necesarios para que esta funcione.</span>
 							</div>
 							
 							<div class="teamContact">
@@ -138,7 +138,7 @@
 							</div>
 							
 							<div class="teamInfo text-center">
-								<span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, modi voluptatibus architecto, doloremque quae vero porro dolor illo, tempora est quod deserunt.</span>
+								<span>Jefe del equipo. Su función es la de coordinar el trabajo del resto de integrantes, así como prestarles apoyo cuando lo necesitan.</span>
 							</div>
 							
 							<div class="teamContact">
@@ -158,7 +158,7 @@
 							</div>
 							
 							<div class="teamInfo text-center">
-								<span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, modi voluptatibus architecto, doloremque quae vero porro dolor illo, tempora est quod deserunt.</span>
+								<span>Controlador de experiencia de usuario. Encargado de mejorar el trabajo con la aplicación a través de pruebas y desarrollo cliente.</span>
 							</div>
 							
 							<div class="teamContact">
@@ -178,7 +178,7 @@
 							</div>
 							
 							<div class="teamInfo text-center">
-								<span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, modi voluptatibus architecto, doloremque quae vero porro dolor illo, tempora est quod deserunt.</span>
+								<span>Distribuidor de la aplicación. Encargado del mantenimiento del servidor, además de controlar problemas que pueda presentar.</span>
 							</div>
 							
 							<div class="teamContact">

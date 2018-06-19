@@ -77,7 +77,7 @@
                         <i class="fas fa-map"></i> &nbsp; Itinerarios
                         <ul>
                         	<c:forEach items="${listaItinerarios}" var="iti">
-                        		<li value="${iti}" onclick="loading();">
+                        		<li value="${iti.nombre}" onclick="loading();">
                         			<span>${iti.nombre}</span>
                         		</li>
                         	</c:forEach>

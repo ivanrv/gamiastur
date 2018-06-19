@@ -12,4 +12,5 @@ public interface ServiceMultimedia {
 	public void actualizar(Multimedia multimedia);
 	public Multimedia buscarMultimedia(Cliente cliente, Pruebadeportiva prueba);
 	public List<Multimedia> buscarTodos();
+	public Multimedia buscarPorId(int id);
 }

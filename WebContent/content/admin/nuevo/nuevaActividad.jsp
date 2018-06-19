@@ -153,7 +153,7 @@
 					            <div class="modal-body" id="subidaImg">
 					            	
 					            	<div class="inputCon input-effect" style="margin-bottom:25px">
-		                                <input class="textIn" type="text" name="archivoTitulo" placeholder="TÃ­tulo"/>		                                
+		                                <input class="textIn" type="text" name="archivoTitulo" placeholder="Tí­tulo"/>		                                
 		                                <span class="focus-border"></span>
 		                            </div>
 		                            <label class="btn" style="overflow:hidden; position:relative; margin-bottom: 25px;">
